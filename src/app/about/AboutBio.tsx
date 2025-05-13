@@ -10,6 +10,7 @@ import {
   staggerItemVariants,
 } from "@/components/core/Animations";
 import { Heading, Text } from "@/components/common/Typography";
+import RichText from "@/components/common/Typography/RichText";
 import { cn } from "@/utils/classNames";
 
 interface StatItem {
@@ -153,7 +154,7 @@ const AboutBio: React.FC<AboutBioProps> = ({
 
       {/* Technical system status bar */}
       <div className="absolute top-0 left-0 right-0 h-8 border-b border-divider bg-bg-tertiary/30 backdrop-blur-sm hidden md:block">
-        <div className="container mx-auto h-full flex items-center justify-between px-4">
+        <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
           <div className="flex items-center space-x-6">
             <div className="flex items-center">
               <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse mr-2"></div>
@@ -174,7 +175,7 @@ const AboutBio: React.FC<AboutBioProps> = ({
         </div>
       </div>
 
-      <div className="container mx-auto py-16 md:py-24 relative z-10">
+      <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         {/* Section heading with technical styling */}
         <div
           ref={headingRef}
@@ -243,9 +244,10 @@ const AboutBio: React.FC<AboutBioProps> = ({
                   variants={staggerItemVariants}
                   className="relative bg-bg-secondary/60 backdrop-blur-sm rounded p-6 border-l-2 border-brand-primary/70"
                 >
-                  <Text className="text-base md:text-lg text-text-primary leading-relaxed">
-                    {paragraph}
-                  </Text>
+                  <RichText
+                    content={paragraph}
+                    className="text-base md:text-lg text-text-primary leading-relaxed"
+                  />
 
                   {/* Technical indicators for first paragraph */}
                   {index === 0 && (
@@ -335,9 +337,10 @@ const AboutBio: React.FC<AboutBioProps> = ({
                     >
                       {/* Value with measurement tick */}
                       <div className="flex mb-2 items-end">
-                        <Text className="text-4xl font-heading font-bold text-accent-primary">
-                          {stat.value}
-                        </Text>
+                        <RichText
+                          content={stat.value}
+                          className="text-4xl font-heading font-bold text-accent-primary"
+                        />
                         {/* Technical measurement tick */}
                         <motion.div
                           className="h-8 ml-2 flex flex-col items-center justify-end"
@@ -361,9 +364,10 @@ const AboutBio: React.FC<AboutBioProps> = ({
                       </div>
 
                       {/* Label with progress bar */}
-                      <Text className="text-text-secondary font-medium">
-                        {stat.label}
-                      </Text>
+                      <RichText
+                        content={stat.label}
+                        className="text-text-secondary font-medium"
+                      />
 
                       {/* Technical data visualization bar */}
                       <div className="mt-2 h-1 w-full bg-bg-tertiary rounded-full overflow-hidden">

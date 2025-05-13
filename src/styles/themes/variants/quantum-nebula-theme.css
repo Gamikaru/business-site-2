@@ -1,0 +1,738 @@
+/* src/styles/themes/quantum-nebula-theme.css */
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   QUANTUM NEBULA THEME SYSTEM
+   A sophisticated, cosmic palette built around deep space hues,
+   with quantum energy accents and precise contrast relationships
+   for a professional, tech-focused interface.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   QUANTUM NEBULA DARK THEME (Default)
+   Deep cosmic void with quantum energy accents
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="quantum-nebula-dark"] {
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with clear progression
+     ════════════════════════════════════ */
+    --color-bg-primary: #0F111A;
+    /* Main application background - deep cosmic void (17.5:1 contrast) */
+    --color-bg-secondary: #171C2C;
+    /* Secondary containers, cards, sidebars - nebula shadow */
+    --color-bg-tertiary: #1E2438;
+    /* Elevated surfaces, modals, popovers - celestial body */
+    --color-bg-card: rgba(30, 36, 56, 0.97);
+    /* Card backgrounds with slight transparency - observatory lens */
+    --color-bg-glass: rgba(138, 156, 255, 0.08);
+    /* Glass effect backgrounds - quantum field */
+    --color-bg-code: rgba(15, 17, 26, 0.85);
+    /* Code block backgrounds - cosmic terminal */
+    --color-bg-input: rgba(30, 36, 56, 0.65);
+    /* Form element backgrounds - stellar observatory */
+    --color-bg-hover: rgba(93, 122, 255, 0.12);
+    /* Hover state background - quark shimmer */
+    --color-bg-active: rgba(93, 122, 255, 0.22);
+    /* Active/selected state background - quantum resonance */
+    --color-bg-disabled: rgba(40, 46, 66, 0.35);
+    /* Disabled element background - dark matter */
+    --color-bg-tooltip: rgba(15, 17, 26, 0.97);
+    /* Tooltip background - cosmic terminal */
+    --color-bg-dropdown: rgba(30, 36, 56, 0.98);
+    /* Dropdown menu background - stellar observatory */
+    --color-bg-selection: rgba(93, 122, 255, 0.25);
+    /* Text selection background - quantum highlight */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with precise contrast levels
+     ════════════════════════════════════ */
+    --color-text-primary: #E8ECFF;
+    /* Main body text - starlight (15.8:1 contrast) */
+    --color-text-secondary: #B8C4E0;
+    /* Secondary/supporting text - cosmic dust (9.7:1 contrast) */
+    --color-text-tertiary: rgba(184, 196, 224, 0.7);
+    /* De-emphasized text, subtitles, captions - distant nebula (6.8:1 contrast) */
+    --color-text-disabled: rgba(184, 196, 224, 0.5);
+    /* Disabled text - event horizon (4.9:1 contrast) */
+    --color-text-on-accent: #0F111A;
+    /* Text on accent-colored backgrounds - void text (4.5:1+ on all accents) */
+    --color-text-code: #8CCCFF;
+    /* Code and pre-formatted text - quantum processor (6.7:1 contrast) */
+
+    /* Headings */
+    --color-heading: #8B9CFF;
+    /* Standard headings - cosmic plasma (7.1:1 contrast) */
+    --color-heading-accent: #DF93FF;
+    /* Accented headings - quantum energy (5.6:1 contrast) */
+    --color-subheading: #B8C4E0;
+    /* Subheadings, section titles - cosmic dust */
+
+    /* Special text */
+    --color-text-emphasis: #FFB154;
+    /* Emphasized text, highlights - stellar gold */
+    --color-text-inverted: #E8ECFF;
+    /* Inverted text (on light backgrounds) - starlight */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with cosmic aesthetic
+     ════════════════════════════════════ */
+    --color-brand-primary: #5D7AFF;
+    /* Primary brand color - quantum blue */
+    --color-brand-secondary: #00D4D0;
+    /* Secondary brand color - nebula teal */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: #5D7AFF;
+    /* Primary accent for main interactive elements - quantum blue */
+    --color-accent-primary-hover: #4A65DB;
+    /* Hover state for primary accent - deeper quantum blue */
+    --color-accent-primary-active: #3A51B7;
+    /* Active state for primary accent - dense quantum blue */
+    --color-accent-secondary: #00D4D0;
+    /* Secondary accent for visual variety - nebula teal */
+    --color-accent-tertiary: #A591FF;
+    /* Tertiary accent for subtle highlights - cosmic flux */
+    --color-accent-warm: #FFB154;
+    /* Warm accent for attention-grabbing elements - stellar gold */
+    --color-accent-cosmic: #DF93FF;
+    /* Cosmic accent for additional contrast - quasar pink */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with meaningful progression
+     ════════════════════════════════════ */
+    --color-interactive: #5D7AFF;
+    /* Default interactive element color - quantum blue (7.9:1 contrast) */
+    --color-interactive-hover: #4A65DB;
+    /* Hover state - deeper quantum blue (1.2:1 from default) */
+    --color-interactive-active: #3A51B7;
+    /* Active/pressed state - dense quantum blue (1.5:1 from default) */
+    --color-interactive-focus: #5D7AFF;
+    /* Focus state indicator - particle focus */
+    --color-interactive-disabled: rgba(93, 122, 255, 0.4);
+    /* Disabled state - quantum decay */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: #00D4D0;
+    /* Secondary interactive elements - nebula teal (7.5:1 contrast) */
+    --color-interactive-secondary-hover: #00B3B0;
+    /* Secondary hover state - deeper nebula teal */
+    --color-interactive-secondary-active: #009793;
+    /* Secondary active state - dense nebula teal */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(93, 122, 255, 0.5);
+    /* Form input borders - stellar observatory input frame */
+    --color-field-placeholder: rgba(184, 196, 224, 0.6);
+    /* Placeholder text - cosmic dust text */
+    --color-field-focus: #5D7AFF;
+    /* Field focus indicator - quantum focus */
+    --color-field-required: #A591FF;
+    /* Required field indicator - cosmic flux */
+    --color-field-invalid: #FF7A93;
+    /* Invalid field indicator - neutron star */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts with cosmic themes
+     ════════════════════════════════════ */
+    --color-success: #49E0A0;
+    /* Success state - quantum green (8.5:1 contrast) */
+    --color-success-subtle: rgba(73, 224, 160, 0.15);
+    /* Subtle success background - particle harmony */
+    --color-warning: #FFB154;
+    /* Warning state - stellar gold (6.7:1 contrast) */
+    --color-warning-subtle: rgba(255, 177, 84, 0.15);
+    /* Subtle warning background - nova pulse */
+    --color-error: #FF7A93;
+    /* Error state - neutron star (6.2:1 contrast) */
+    --color-error-subtle: rgba(255, 122, 147, 0.15);
+    /* Subtle error background - cosmic interference */
+    --color-info: #5D7AFF;
+    /* Information state - quantum blue (7.9:1 contrast) */
+    --color-info-subtle: rgba(93, 122, 255, 0.15);
+    /* Subtle info background - cosmic intelligence */
+    --color-neutral: #B8C4E0;
+    /* Neutral state - cosmic dust (9.7:1 contrast) */
+    --color-neutral-subtle: rgba(184, 196, 224, 0.15);
+    /* Subtle neutral background - dark matter cloud */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with cosmic tech visuals
+     ════════════════════════════════════ */
+    --color-divider: rgba(93, 122, 255, 0.25);
+    /* Dividers and separators - quantum barrier */
+    --color-divider-light: rgba(232, 236, 255, 0.08);
+    /* Lighter dividers for contrast on dark areas - constellation lines */
+    --color-border: rgba(93, 122, 255, 0.3);
+    /* Borders for containers, cards, etc - galactic edge */
+    --color-border-focus: #DF93FF;
+    /* Focus state borders - quantum entanglement */
+    --color-border-input: rgba(93, 122, 255, 0.35);
+    /* Form input borders - stellar observatory */
+    --color-shadow: rgba(6, 8, 15, 0.5);
+    /* Shadows for elevation - black hole shadow */
+    --color-shadow-light: rgba(6, 8, 15, 0.3);
+    /* Lighter shadows for subtle elevation - cosmic shadow */
+    --color-overlay: rgba(15, 17, 26, 0.8);
+    /* Modal/dialog overlays - cosmic lens */
+    --color-notification-badge: #FF7A93;
+    /* Notification badges - pulsar signal */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(93, 122, 255, 0.5);
+    /* Scrollbar thumb - quantum slider */
+    --color-scrollbar-track: rgba(15, 17, 26, 0.3);
+    /* Scrollbar track - cosmic pathway */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: #8CCCFF;
+    /* Link text - stellar pathway (6.7:1 contrast) */
+    --color-link-hover: #A9D9FF;
+    /* Link hover state - quantum tunnel (8.3:1 contrast) */
+    --color-link-visited: #DF93FF;
+    /* Visited links - quasar pink (5.6:1 contrast) */
+    --color-emphasis: #00D4D0;
+    /* Emphasized text - nebula teal (7.5:1 contrast) */
+    --color-success-text: #6EECB8;
+    /* Success messages - quantum field stability (9.7:1 contrast) */
+    --color-warning-text: #FFD4A0;
+    /* Warning messages - stellar warning (10.8:1 contrast) */
+    --color-error-text: #FFA5B5;
+    /* Error messages - cosmic disruption (8.0:1 contrast) */
+    --color-info-text: #8B9CFF;
+    /* Information text - cosmic data (7.1:1 contrast) */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with clear hierarchy
+     ════════════════════════════════════ */
+    --color-icon-primary: #5D7AFF;
+    /* Primary icons - quantum symbols */
+    --color-icon-secondary: rgba(0, 212, 208, 0.9);
+    /* Secondary icons - nebula indicators */
+    --color-icon-tertiary: rgba(184, 196, 224, 0.7);
+    /* Tertiary icons - cosmic dust */
+    --color-icon-on-accent: #0F111A;
+    /* Icons on accent-colored backgrounds - void icons */
+    --color-icon-bg: rgba(93, 122, 255, 0.12);
+    /* Icon backgrounds or containers - quantum fields */
+    --color-icon-disabled: rgba(184, 196, 224, 0.5);
+    /* Disabled icons - inactive celestial body */
+
+    /* ════════════════════════════════════
+     OPACITY SYSTEM
+     For consistent transparency levels
+     ════════════════════════════════════ */
+    --opacity-faint: 0.08;
+    /* Very subtle effects, barely visible - quantum fluctuation */
+    --opacity-light: 0.15;
+    /* Light effects, clearly visible but subtle - nebula wisp */
+    --opacity-medium: 0.5;
+    /* Medium effects, semi-transparent - cosmic cloud */
+    --opacity-high: 0.8;
+    /* High opacity, nearly solid - dense nebula */
+    --opacity-disabled: 0.4;
+    /* Standard disabled state opacity - faded star */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(93, 122, 255, 0.2);
+    /* Skill item background - quantum ability */
+    --color-skill-item-hover: rgba(0, 212, 208, 0.3);
+    /* Skill item hover - nebula resonance */
+    --color-skill-item-active: rgba(0, 212, 208, 0.4);
+    /* Skill item active - cosmic activation */
+    --color-selection-bg: rgba(93, 122, 255, 0.25);
+    /* Text selection background - quantum selection */
+    --color-tooltip-bg: rgba(15, 17, 26, 0.97);
+    /* Tooltip background - observatory readout */
+    --color-dropdown-bg: rgba(30, 36, 56, 0.98);
+    /* Dropdown menu background - celestial options */
+
+    /* ════════════════════════════════════
+     CURSOR COLORS
+     For custom cursor effects
+     ════════════════════════════════════ */
+    --color-cursor-inner-rgb: 232, 236, 255;
+    /* Inner cursor ring RGB values - starlight focus */
+    --color-cursor-outer-rgb: 93, 122, 255;
+    /* Outer cursor ring RGB values - quantum field */
+
+    /* ════════════════════════════════════
+     RGB VALUES
+     For custom opacity operations
+     ════════════════════════════════════ */
+    --color-accent-primary-rgb: 93, 122, 255;
+    /* RGB values for quantum blue */
+    --color-accent-secondary-rgb: 0, 212, 208;
+    /* RGB values for nebula teal */
+    --color-accent-warm-rgb: 255, 177, 84;
+    /* RGB values for stellar gold */
+    --color-accent-cosmic-rgb: 223, 147, 255;
+    /* RGB values for quasar pink */
+    --color-bg-primary-rgb: 15, 17, 26;
+    /* RGB values for main background */
+    --color-text-primary-rgb: 232, 236, 255;
+    /* RGB values for main text */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects with cosmic aesthetic
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
+    /* Brand accent gradient - cosmic spectrum */
+    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
+    /* Interactive element gradient - quantum flow */
+    --gradient-quantum: linear-gradient(45deg, #5D7AFF, #4A65DB);
+    /* Quantum gradient - subatomic particle */
+    --gradient-nebula: linear-gradient(45deg, #00D4D0, #00B3B0);
+    /* Nebula gradient - cosmic cloud */
+    --gradient-glass: linear-gradient(120deg, rgba(93, 122, 255, 0.08), rgba(93, 122, 255, 0.04));
+    /* Glass effect gradient - quantum field */
+    --gradient-overlay: linear-gradient(180deg, rgba(15, 17, 26, 0.8), rgba(15, 17, 26, 0.95));
+    /* Overlay gradient - cosmic filter */
+    --gradient-cosmic-quantum: linear-gradient(45deg, #DF93FF, #5D7AFF);
+    /* Cosmic to quantum gradient - galactic energy */
+    --gradient-nebula-cosmic: linear-gradient(45deg, #00D4D0, #8B9CFF);
+    /* Nebula to cosmic gradient - stellar formation */
+    --gradient-dark-matter: linear-gradient(135deg, rgba(93, 122, 255, 0.2) 0%, rgba(93, 122, 255, 0) 50%, rgba(223, 147, 255, 0.1) 100%);
+    /* Dark matter gradient - unseen force */
+    --gradient-quasar: radial-gradient(circle at center, rgba(93, 122, 255, 0.15) 0%, rgba(93, 122, 255, 0) 70%);
+    /* Quasar glow gradient - stellar energy */
+    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
+    /* Button gradient - quantum flow */
+    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
+    /* Button hover gradient - dense quantum flow */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects with cosmic tech feel
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(6, 8, 15, 0.3);
+    /* Small shadow - quantum shadow */
+    --shadow-md: 0 12px 25px -10px rgba(6, 8, 15, 0.4);
+    /* Medium shadow - nebula shadow */
+    --shadow-lg: 0 25px 50px -12px rgba(6, 8, 15, 0.5);
+    /* Large shadow - cosmic shadow */
+    --shadow-inner: inset 0 2px 5px rgba(6, 8, 15, 0.2);
+    /* Inner shadow - black hole */
+    --shadow-focus: 0 0 0 3px rgba(93, 122, 255, 0.3);
+    /* Focus shadow - quantum field */
+    --shadow-button: 0 0 15px rgba(93, 122, 255, 0.25);
+    /* Button shadow - quantum glow */
+    --shadow-quantum: 0 0 10px rgba(93, 122, 255, 0.5), 0 0 20px rgba(93, 122, 255, 0.3), 0 0 30px rgba(93, 122, 255, 0.1);
+    /* Quantum glow shadow - particle aura */
+    --shadow-stellar: 0 0 10px rgba(255, 177, 84, 0.5), 0 0 20px rgba(255, 177, 84, 0.3), 0 0 30px rgba(255, 177, 84, 0.1);
+    /* Stellar glow shadow - star beacon */
+    --shadow-energy: 0 0 0 1px rgba(0, 212, 208, 0.2), 0 0 0 2px rgba(0, 212, 208, 0.1);
+    /* Energy shadow - quantum field */
+
+    /* Wave-specific colors - white dominant for dark mode */
+    --wave-primary: #F2F5FF;
+    /* Cosmic dawn from light theme */
+    --wave-secondary: #FFFFFF;
+    /* Pure white */
+    --wave-accent-1: #3A51B7;
+    /* Dense quantum blue from light theme */
+    --wave-accent-2: #00A8A5;
+    /* Stellar teal from light theme */
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   QUANTUM NEBULA LIGHT THEME
+   Cosmic dawn with quantum energy accents
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="quantum-nebula-light"] {
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with clear progression
+     ════════════════════════════════════ */
+    --color-bg-primary: #F2F5FF;
+    /* Main application background - cosmic dawn */
+    --color-bg-secondary: #FFFFFF;
+    /* Secondary containers, cards, sidebars - solar flare */
+    --color-bg-tertiary: #E5EAFF;
+    /* Elevated surfaces, modals, popovers - quantum field */
+    --color-bg-card: #FFFFFF;
+    /* Card backgrounds - cosmic canvas */
+    --color-bg-glass: rgba(255, 255, 255, 0.92);
+    /* Glass effect backgrounds - quantum transparency */
+    --color-bg-code: rgba(229, 234, 255, 0.8);
+    /* Code block backgrounds - particle chamber */
+    --color-bg-input: rgba(242, 245, 255, 0.7);
+    /* Form element backgrounds - data field */
+    --color-bg-hover: rgba(58, 81, 183, 0.08);
+    /* Hover state background - subtle quantum field */
+    --color-bg-active: rgba(58, 81, 183, 0.15);
+    /* Active/selected state background - stronger quantum field */
+    --color-bg-disabled: rgba(220, 225, 245, 0.7);
+    /* Disabled element background - cosmic dust */
+    --color-bg-tooltip: rgba(26, 35, 72, 0.95);
+    /* Tooltip background - cosmic readout */
+    --color-bg-dropdown: #FFFFFF;
+    /* Dropdown menu background - option array */
+    --color-bg-selection: rgba(58, 81, 183, 0.2);
+    /* Text selection background - quantum selection */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with precise contrast levels
+     ════════════════════════════════════ */
+    --color-text-primary: #1A2348;
+    /* Main body text - cosmic void (16.5:1 contrast) */
+    --color-text-secondary: #344176;
+    /* Secondary/supporting text - galactic core (11.8:1 contrast) */
+    --color-text-tertiary: rgba(52, 65, 118, 0.7);
+    /* De-emphasized text, subtitles, captions - distant galaxy (8.3:1 contrast) */
+    --color-text-disabled: rgba(52, 65, 118, 0.5);
+    /* Disabled text - nebula vision (5.9:1 contrast) */
+    --color-text-on-accent: #FFFFFF;
+    /* Text on accent-colored backgrounds - solar flare (4.5:1+ on all accents) */
+    --color-text-code: #155785;
+    /* Code and pre-formatted text - quantum code (8.7:1 contrast) */
+
+    /* Headings */
+    --color-heading: #3A51B7;
+    /* Standard headings - dense quantum blue (8.5:1 contrast) */
+    --color-heading-accent: #8B3AAD;
+    /* Accented headings - cosmic energy (7.9:1 contrast) */
+    --color-subheading: #344176;
+    /* Subheadings, section titles - galactic core */
+
+    /* Special text */
+    --color-text-emphasis: #DE8731;
+    /* Emphasized text - solar flare */
+    --color-text-inverted: #F2F5FF;
+    /* Inverted text (on dark backgrounds) - cosmic dawn */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with cosmic light aesthetic
+     ════════════════════════════════════ */
+    --color-brand-primary: #3A51B7;
+    /* Primary brand color - dense quantum blue */
+    --color-brand-secondary: #00A8A5;
+    /* Secondary brand color - stellar teal */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: #3A51B7;
+    /* Primary accent for main interactive elements - dense quantum blue */
+    --color-accent-primary-hover: #30439A;
+    /* Hover state for primary accent - deeper quantum blue */
+    --color-accent-primary-active: #26357D;
+    /* Active state for primary accent - even deeper quantum blue */
+    --color-accent-secondary: #00A8A5;
+    /* Secondary accent for visual variety - stellar teal */
+    --color-accent-tertiary: #2F3C80;
+    /* Tertiary accent for subtle highlights - cosmic void */
+    --color-accent-warm: #DE8731;
+    /* Warm accent for attention-grabbing elements - solar flare */
+    --color-accent-cosmic: #8B3AAD;
+    /* Cosmic accent for additional contrast - quasar energy */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with meaningful progression
+     ════════════════════════════════════ */
+    --color-interactive: #3A51B7;
+    /* Default interactive element color - dense quantum blue */
+    --color-interactive-hover: #30439A;
+    /* Hover state - deeper quantum blue */
+    --color-interactive-active: #26357D;
+    /* Active/pressed state - even deeper quantum blue */
+    --color-interactive-focus: #3A51B7;
+    /* Focus state indicator - quantum focus */
+    --color-interactive-disabled: rgba(58, 81, 183, 0.4);
+    /* Disabled state - quantum decay */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: #00A8A5;
+    /* Secondary interactive elements - stellar teal */
+    --color-interactive-secondary-hover: #008B88;
+    /* Secondary hover state - deeper stellar teal */
+    --color-interactive-secondary-active: #00726F;
+    /* Secondary active state - even deeper stellar teal */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(58, 81, 183, 0.3);
+    /* Form input borders - data boundary */
+    --color-field-placeholder: rgba(52, 65, 118, 0.6);
+    /* Placeholder text - faded galactic core */
+    --color-field-focus: #3A51B7;
+    /* Field focus indicator - quantum focus */
+    --color-field-required: #2F3C80;
+    /* Required field indicator - cosmic void */
+    --color-field-invalid: #C93957;
+    /* Invalid field indicator - quasar disruption */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts with cosmic light themes
+     ════════════════════════════════════ */
+    --color-success: #0FAB5F;
+    /* Success state - quantum stability (4.6:1 contrast) */
+    --color-success-subtle: rgba(15, 171, 95, 0.12);
+    /* Subtle success background - harmonic stability */
+    --color-warning: #DE8731;
+    /* Warning state - solar flare (4.7:1 contrast) */
+    --color-warning-subtle: rgba(222, 135, 49, 0.12);
+    /* Subtle warning background - cosmic disturbance */
+    --color-error: #C93957;
+    /* Error state - quasar disruption (4.9:1 contrast) */
+    --color-error-subtle: rgba(201, 57, 87, 0.12);
+    /* Subtle error background - stellar collision */
+    --color-info: #3A51B7;
+    /* Information state - dense quantum blue (8.5:1 contrast) */
+    --color-info-subtle: rgba(58, 81, 183, 0.12);
+    /* Subtle info background - cosmic intelligence */
+    --color-neutral: #637099;
+    /* Neutral state - interstellar medium (5.5:1 contrast) */
+    --color-neutral-subtle: rgba(99, 112, 153, 0.12);
+    /* Subtle neutral background - space dust */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with cosmic light tech visuals
+     ════════════════════════════════════ */
+    --color-divider: rgba(58, 81, 183, 0.2);
+    /* Dividers and separators - quantum barrier */
+    --color-divider-light: rgba(26, 35, 72, 0.05);
+    /* Lighter dividers for contrast on light areas - constellation map */
+    --color-border: rgba(58, 81, 183, 0.25);
+    /* Borders for containers, cards, etc - stellar boundary */
+    --color-border-focus: #8B3AAD;
+    /* Focus state borders - quantum entanglement */
+    --color-border-input: rgba(58, 81, 183, 0.3);
+    /* Form input borders - data boundary */
+    --color-shadow: rgba(26, 35, 72, 0.15);
+    /* Shadows for elevation - cosmic shadow */
+    --color-shadow-light: rgba(26, 35, 72, 0.08);
+    /* Lighter shadows for subtle elevation - quantum shadow */
+    --color-overlay: rgba(242, 245, 255, 0.85);
+    /* Modal/dialog overlays - cosmic veil */
+    --color-notification-badge: #C93957;
+    /* Notification badges - quasar signal */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(58, 81, 183, 0.4);
+    /* Scrollbar thumb - quantum slider */
+    --color-scrollbar-track: rgba(229, 234, 255, 0.5);
+    /* Scrollbar track - stellar pathway */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: #3A51B7;
+    /* Link text - quantum pathway (8.5:1 contrast) */
+    --color-link-hover: #26357D;
+    /* Link hover state - deeper pathway (11.3:1 contrast) */
+    --color-link-visited: #8B3AAD;
+    /* Visited links - visited quasar (7.9:1 contrast) */
+    --color-emphasis: #00A8A5;
+    /* Emphasized text - stellar signal (4.8:1 contrast) */
+    --color-success-text: #0C8F50;
+    /* Success messages - quantum stability signal (5.4:1 contrast) */
+    --color-warning-text: #B46F28;
+    /* Warning messages - solar warning (5.8:1 contrast) */
+    --color-error-text: #A42F48;
+    /* Error messages - stellar collision alert (6.2:1 contrast) */
+    --color-info-text: #3043A0;
+    /* Information text - cosmic information (9.8:1 contrast) */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with clear hierarchy
+     ════════════════════════════════════ */
+    --color-icon-primary: #3A51B7;
+    /* Primary icons - quantum indicators */
+    --color-icon-secondary: rgba(0, 168, 165, 0.9);
+    /* Secondary icons - stellar signals */
+    --color-icon-tertiary: rgba(52, 65, 118, 0.7);
+    /* Tertiary icons - cosmic elements */
+    --color-icon-on-accent: #FFFFFF;
+    /* Icons on accent-colored backgrounds - solar flare */
+    --color-icon-bg: rgba(58, 81, 183, 0.1);
+    /* Icon backgrounds or containers - quantum bubbles */
+    --color-icon-disabled: rgba(52, 65, 118, 0.5);
+    /* Disabled icons - inactive element */
+
+    /* ════════════════════════════════════
+     OPACITY SYSTEM
+     For consistent transparency levels
+     ════════════════════════════════════ */
+    --opacity-faint: 0.05;
+    /* Very subtle effects, barely visible - quantum whisper */
+    --opacity-light: 0.12;
+    /* Light effects, clearly visible but subtle - cosmic particle */
+    --opacity-medium: 0.5;
+    /* Medium effects, semi-transparent - interstellar medium */
+    --opacity-high: 0.8;
+    /* High opacity, nearly solid - dense nebula */
+    --opacity-disabled: 0.4;
+    /* Standard disabled state opacity - inactive star */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(58, 81, 183, 0.15);
+    /* Skill item background - quantum talent */
+    --color-skill-item-hover: rgba(0, 168, 165, 0.15);
+    /* Skill item hover - stellar activation */
+    --color-skill-item-active: rgba(0, 168, 165, 0.25);
+    /* Skill item active - cosmic deployment */
+    --color-selection-bg: rgba(58, 81, 183, 0.2);
+    /* Text selection background - quantum selection */
+    --color-tooltip-bg: rgba(26, 35, 72, 0.95);
+    /* Tooltip background - cosmic readout */
+    --color-dropdown-bg: #FFFFFF;
+    /* Dropdown menu background - option array */
+
+    /* ════════════════════════════════════
+     CURSOR COLORS
+     For custom cursor effects
+     ════════════════════════════════════ */
+    --color-cursor-inner-rgb: 26, 35, 72;
+    /* Inner cursor ring RGB values - void cursor */
+    --color-cursor-outer-rgb: 58, 81, 183;
+    /* Outer cursor ring RGB values - quantum field */
+
+    /* ════════════════════════════════════
+     RGB VALUES
+     For custom opacity operations
+     ════════════════════════════════════ */
+    --color-accent-primary-rgb: 58, 81, 183;
+    /* RGB values for dense quantum blue */
+    --color-accent-secondary-rgb: 0, 168, 165;
+    /* RGB values for stellar teal */
+    --color-accent-warm-rgb: 222, 135, 49;
+    /* RGB values for solar flare */
+    --color-accent-cosmic-rgb: 139, 58, 173;
+    /* RGB values for quasar energy */
+    --color-bg-primary-rgb: 242, 245, 255;
+    /* RGB values for main background */
+    --color-text-primary-rgb: 26, 35, 72;
+    /* RGB values for main text */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects with cosmic light aesthetic
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
+    /* Brand accent gradient - celestial harmony */
+    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
+    /* Interactive element gradient - quantum interaction */
+    --gradient-quantum: linear-gradient(45deg, #3A51B7, #30439A);
+    /* Quantum gradient - particle flow */
+    --gradient-stellar: linear-gradient(45deg, #00A8A5, #008B88);
+    /* Stellar gradient - cosmic energy */
+    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+    /* Glass effect gradient - quantum lens */
+    --gradient-overlay: linear-gradient(180deg, rgba(242, 245, 255, 0.85), rgba(242, 245, 255, 0.95));
+    /* Overlay gradient - cosmic veil */
+    --gradient-cosmic-quantum: linear-gradient(45deg, #8B3AAD, #3A51B7);
+    /* Cosmic to quantum gradient - universal energy */
+    --gradient-stellar-cosmic: linear-gradient(45deg, #00A8A5, #3A51B7);
+    /* Stellar to cosmic gradient - space harmony */
+    --gradient-stardust: linear-gradient(135deg, rgba(58, 81, 183, 0.2) 0%, rgba(58, 81, 183, 0) 50%, rgba(139, 58, 173, 0.1) 100%);
+    /* Stardust gradient - cosmic particles */
+    --gradient-solar: radial-gradient(circle at center, rgba(58, 81, 183, 0.05) 0%, rgba(58, 81, 183, 0) 70%);
+    /* Solar gradient - stellar radiation */
+    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
+    /* Button gradient - quantum interaction */
+    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
+    /* Button hover gradient - deeper quantum interaction */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects with cosmic light tech feel
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(26, 35, 72, 0.08);
+    /* Small shadow - quantum shadow */
+    --shadow-md: 0 12px 25px -10px rgba(26, 35, 72, 0.12);
+    /* Medium shadow - nebula shadow */
+    --shadow-lg: 0 25px 50px -12px rgba(26, 35, 72, 0.15);
+    /* Large shadow - cosmic shadow */
+    --shadow-inner: inset 0 2px 5px rgba(26, 35, 72, 0.05);
+    /* Inner shadow - quantum depth */
+    --shadow-focus: 0 0 0 3px rgba(58, 81, 183, 0.25);
+    /* Focus shadow - quantum focus */
+    --shadow-button: 0 4px 14px rgba(26, 35, 72, 0.15);
+    /* Button shadow */
+    --shadow-quantum: 0 0 10px rgba(58, 81, 183, 0.4), 0 0 20px rgba(58, 81, 183, 0.2), 0 0 30px rgba(58, 81, 183, 0.1);
+    /* Quantum glow shadow - particle aura */
+    --shadow-stellar: 0 0 10px rgba(222, 135, 49, 0.4), 0 0 20px rgba(222, 135, 49, 0.2), 0 0 30px rgba(222, 135, 49, 0.1);
+    /* Stellar glow shadow - solar aura */
+    --shadow-energy: 0 0 0 1px rgba(0, 168, 165, 0.2), 0 0 0 2px rgba(0, 168, 165, 0.1);
+    /* Energy shadow - force field */
+
+    /* Wave-specific colors - dark dominant for light mode */
+    --wave-primary: #0F111A;
+    /* Deep cosmic void from dark theme */
+    --wave-secondary: #171C2C;
+    /* Nebula shadow from dark theme */
+    --wave-accent-1: #5D7AFF;
+    /* Quantum blue from dark theme */
+    --wave-accent-2: #00D4D0;
+    /* Nebula teal from dark theme */
+}
+
+/* Set color-scheme for the theme */
+[data-theme="quantum-nebula-dark"] {
+    color-scheme: dark;
+}
+
+[data-theme="quantum-nebula-light"] {
+    color-scheme: light;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+ * Custom scrollbar styling for Quantum Nebula theme
+ * ────────────────────────────────────────────────────────────────────────── */
+[data-theme^="quantum-nebula"] .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+[data-theme^="quantum-nebula"] .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track);
+    border-radius: 4px;
+}
+
+[data-theme^="quantum-nebula"] .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar-thumb);
+    border-radius: 4px;
+}
+
+[data-theme^="quantum-nebula"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-interactive);
+}
+
+/* Firefox scrollbar support */
+[data-theme^="quantum-nebula"] .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+}
+/* Add missing variables to Quantum Nebula Dark theme */
+[data-theme="quantum-nebula-dark"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(232, 236, 255, 0.18);  /* Starlight grid lines for dark theme */
+}
+
+/* Add missing variables to Quantum Nebula Light theme */
+[data-theme="quantum-nebula-light"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(93, 122, 255, 0.15);  /* Quantum blue grid lines for light theme */
+}

@@ -772,3 +772,14 @@
     scrollbar-width: thin;
     scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
 }
+/* Add missing variables to Mystic Forest Dark theme */
+[data-theme="mystic-forest-dark"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(230, 242, 235, 0.15);  /* Forest mist grid lines for dark theme */
+}
+
+/* Add missing variables to Mystic Forest Light theme */
+[data-theme="mystic-forest-light"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(132, 247, 199, 0.15);  /* Bioluminescent grid lines for light theme */
+}

@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import { TextReveal, AnimatedPath } from "@/components/core/Animations";
 import { Divider } from "@/components/common/Divider";
 import { cn } from "@/utils/classNames";
+import RichText from "@/components/common/Typography/RichText";
 
 interface AboutHeroProps {
   headline: string;
@@ -22,9 +23,6 @@ const AboutHero: React.FC<AboutHeroProps> = ({
   imageAlt,
   className,
 }) => {
-  // Split headline into words for granular animation control
-  const words = headline.split(" ");
-
   // Refs and scroll tracking
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -133,7 +131,7 @@ const AboutHero: React.FC<AboutHeroProps> = ({
         </svg>
       </div>
 
-      <div className="container mx-auto min-h-[70vh] flex flex-col justify-center relative z-10 py-20">
+      <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           style={{ y: headerY, opacity: headerOpacity }}
@@ -162,32 +160,21 @@ const AboutHero: React.FC<AboutHeroProps> = ({
               </div>
             </motion.div>
 
-            {/* Headline with word-by-word animation */}
+            {/* Headline with rich text formatting */}
             <div className="mb-6 relative">
-              <div className="flex flex-wrap gap-x-3 gap-y-2">
-                {words.map((word, i) => (
-                  <motion.div
-                    key={`word-${i}`}
-                    className="relative"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: 0.2 + i * 0.1,
-                      ease: [0.23, 1, 0.32, 1],
-                    }}
-                  >
-                    <span
-                      className={cn(
-                        "text-4xl md:text-5xl lg:text-6xl font-heading font-bold",
-                        i % 2 === 0 ? "text-white" : "text-brand-primary"
-                      )}
-                    >
-                      {word}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.2,
+                  ease: [0.23, 1, 0.32, 1],
+                }}
+              >
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
+                  <RichText content={headline} className="preserve-whitespace" />
+                </h1>
+              </motion.div>
 
               {/* Technical annotation on headline */}
               <motion.div
@@ -198,16 +185,16 @@ const AboutHero: React.FC<AboutHeroProps> = ({
               >
                 <div className="h-8 w-px bg-accent-oceanic/50"></div>
                 <div className="text-[10px] font-mono text-accent-oceanic mt-1">
-                  {words.length} UNITS
+                  HEADER.HTML
                 </div>
               </motion.div>
             </div>
 
-            {/* Subheadline with reveal animation */}
+            {/* Subheadline with rich text and reveal animation */}
             <TextReveal direction="up" delay={0.5} className="mb-10">
-              <p className="text-xl md:text-2xl text-text-secondary font-light">
-                {subheadline}
-              </p>
+              <div className="text-xl md:text-2xl text-text-secondary font-light">
+                <RichText content={subheadline} className="preserve-whitespace" />
+              </div>
             </TextReveal>
 
             {/* Technical grid coordinates */}

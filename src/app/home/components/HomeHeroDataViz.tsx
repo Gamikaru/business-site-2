@@ -10,11 +10,19 @@ interface HomeHeroDataVizProps {
     coordinates: { x: number; y: number };
     spectrumValue: number;
   };
+  accentColors?: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+    brand: string;
+    oceanic: string;
+  };
 }
 
 const HomeHeroDataViz: React.FC<HomeHeroDataVizProps> = ({
   mousePosition,
   randomData,
+  accentColors
 }) => {
   return (
     <motion.div
@@ -27,7 +35,7 @@ const HomeHeroDataViz: React.FC<HomeHeroDataVizProps> = ({
         {/* Technical data readout header */}
         <div className="border-b border-white/20 py-2 text-xs font-mono text-white/80 flex justify-between">
           <span>SYSTEM//METRICS</span>
-          <span className="text-brand-primary">LIVE</span>
+          <span style={{ color: accentColors?.secondary || "var(--color-brand-primary)" }}>LIVE</span>
         </div>
 
         {/* Animated data visualization */}
@@ -37,7 +45,7 @@ const HomeHeroDataViz: React.FC<HomeHeroDataVizProps> = ({
               {/* Outer circle */}
               <motion.circle
                 cx="50" cy="50" r="45"
-                stroke="var(--color-accent-oceanic)"
+                stroke={accentColors?.oceanic || "var(--color-accent-oceanic)"}
                 strokeWidth="0.5"
                 strokeDasharray="282.7"
                 initial={{ strokeDashoffset: 282.7 }}
@@ -48,7 +56,7 @@ const HomeHeroDataViz: React.FC<HomeHeroDataVizProps> = ({
               {/* Cross axis */}
               <motion.path
                 d="M50 5 L50 95 M5 50 L95 50"
-                stroke="var(--color-accent-oceanic)"
+                stroke={accentColors?.oceanic || "var(--color-accent-oceanic)"}
                 strokeWidth="0.2"
                 strokeDasharray="4 2"
                 initial={{ pathLength: 0 }}
@@ -60,7 +68,7 @@ const HomeHeroDataViz: React.FC<HomeHeroDataVizProps> = ({
               <motion.circle
                 cx="50" cy="50" r="5"
                 fill="none"
-                stroke="var(--color-brand-primary)"
+                stroke={accentColors?.secondary || "var(--color-brand-primary)"}
                 strokeWidth="0.5"
               />
 
@@ -69,7 +77,7 @@ const HomeHeroDataViz: React.FC<HomeHeroDataVizProps> = ({
                 cx={mousePosition.x * 90 + 5}
                 cy={mousePosition.y * 90 + 5}
                 r="2"
-                fill="var(--color-brand-primary)"
+                fill={accentColors?.secondary || "var(--color-brand-primary)"}
               />
 
               {/* Connect to center with line */}
@@ -77,7 +85,7 @@ const HomeHeroDataViz: React.FC<HomeHeroDataVizProps> = ({
                 x1="50" y1="50"
                 x2={mousePosition.x * 90 + 5}
                 y2={mousePosition.y * 90 + 5}
-                stroke="var(--color-brand-primary)"
+                stroke={accentColors?.secondary || "var(--color-brand-primary)"}
                 strokeWidth="0.3"
                 strokeDasharray="3 2"
               />
@@ -88,11 +96,18 @@ const HomeHeroDataViz: React.FC<HomeHeroDataVizProps> = ({
                 const x = Math.cos(angle) * 40 + 50;
                 const y = Math.sin(angle) * 40 + 50;
 
+                // Alternate between accent colors
+                const pointColor = i % 3 === 0
+                  ? accentColors?.tertiary || "var(--color-accent-primary)"
+                  : i % 2 === 0
+                    ? accentColors?.primary || "var(--color-accent-oceanic)"
+                    : accentColors?.secondary || "var(--color-accent-oceanic)";
+
                 return (
                   <motion.circle
                     key={`data-point-${i}`}
                     cx={x} cy={y} r="1"
-                    fill={i % 3 === 0 ? "var(--color-accent-primary)" : "var(--color-accent-oceanic)"}
+                    fill={pointColor}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 2 + (i * 0.1) }}
@@ -118,15 +133,21 @@ const HomeHeroDataViz: React.FC<HomeHeroDataVizProps> = ({
         <div className="text-[10px] font-mono space-y-1">
           <div className="flex justify-between text-white/70">
             <span>X-SPECTRUM</span>
-            <span className="text-brand-primary">{randomData.coordinates.x.toString().padStart(3, '0')}</span>
+            <span style={{ color: accentColors?.secondary || "var(--color-brand-primary)" }}>
+              {randomData.coordinates.x.toString().padStart(3, '0')}
+            </span>
           </div>
           <div className="flex justify-between text-white/70">
             <span>Y-SPECTRUM</span>
-            <span className="text-accent-oceanic">{randomData.coordinates.y.toString().padStart(3, '0')}</span>
+            <span style={{ color: accentColors?.oceanic || "var(--color-accent-oceanic)" }}>
+              {randomData.coordinates.y.toString().padStart(3, '0')}
+            </span>
           </div>
           <div className="flex justify-between text-white/70">
             <span>SYNC-RATE</span>
-            <span className="text-accent-cosmic">{Math.floor(Math.random() * 100)}Hz</span>
+            <span style={{ color: accentColors?.tertiary || "var(--color-accent-cosmic)" }}>
+              {Math.floor(Math.random() * 100)}Hz
+            </span>
           </div>
         </div>
       </div>

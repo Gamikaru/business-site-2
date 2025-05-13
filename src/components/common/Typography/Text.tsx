@@ -1,9 +1,10 @@
+// src/components/common/Typography/Text.tsx
 import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/utils/classNames';
 
 // Define variants for the Text component using class-variance-authority
-const textVariants = cva('text-text-primary', {
+const textVariants = cva('text-text-primary whitespace-normal', { // Added whitespace-normal
   variants: {
     variant: {
       default: 'text-text-primary',
@@ -78,6 +79,12 @@ const textVariants = cva('text-text-primary', {
       underline: 'underline',
       lineThrough: 'line-through',
     },
+    // Add word spacing variant
+    wordSpacing: {
+      normal: 'word-spacing-normal',
+      wide: 'word-spacing-wide',
+      wider: 'word-spacing-wider',
+    },
   },
   defaultVariants: {
     variant: 'default',
@@ -86,6 +93,7 @@ const textVariants = cva('text-text-primary', {
     family: 'body',
     leading: 'normal',
     align: 'left',
+    wordSpacing: 'normal', // Default to normal word spacing
   },
 });
 
@@ -98,6 +106,7 @@ export interface TextProps
     VariantProps<typeof textVariants> {
   as?: ElementType;
   truncate?: boolean;
+  preserveSpacing?: boolean; // Add this option
 }
 
 // Create a more specific type for the ref based on the element type
@@ -114,12 +123,17 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
     transform,
     wrap,
     decoration,
+    wordSpacing,
     truncate,
+    preserveSpacing = true, // Default to preserve spacing
     className,
     children,
     ...props
   }, ref) => {
     // Combine all classes using the utility function
+    // If preserveSpacing is true, add an additional class to ensure spacing
+    const spacingClass = preserveSpacing && !wrap ? 'whitespace-normal word-break-normal preserve-whitespace' : '';
+
     const combinedClasses = cn(
       textVariants({
         variant,
@@ -132,40 +146,78 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
         transform,
         wrap,
         decoration,
+        wordSpacing,
       }),
       truncate && 'truncate',
+      spacingClass,
       className
     );
+
+    // Add inline style with word-spacing based on font family
+    const inlineStyle = {
+      wordSpacing: family === 'heading'
+        ? 'var(--word-spacing-heading)'
+        : family === 'body'
+          ? 'var(--word-spacing-body)'
+          : family === 'code'
+            ? 'var(--word-spacing-code)'
+            : 'var(--word-spacing-normal)'
+    };
 
     // Render the appropriate element based on the 'as' prop
     switch (as) {
       case 'p':
         return (
-          <p ref={ref as React.ForwardedRef<HTMLParagraphElement>} className={combinedClasses} {...props}>
+          <p
+            ref={ref as React.ForwardedRef<HTMLParagraphElement>}
+            className={combinedClasses}
+            style={inlineStyle}
+            {...props}
+          >
             {children}
           </p>
         );
       case 'span':
         return (
-          <span ref={ref as React.ForwardedRef<HTMLSpanElement>} className={combinedClasses} {...props}>
+          <span
+            ref={ref as React.ForwardedRef<HTMLSpanElement>}
+            className={combinedClasses}
+            style={inlineStyle}
+            {...props}
+          >
             {children}
           </span>
         );
       case 'div':
         return (
-          <div ref={ref as React.ForwardedRef<HTMLDivElement>} className={combinedClasses} {...props}>
+          <div
+            ref={ref as React.ForwardedRef<HTMLDivElement>}
+            className={combinedClasses}
+            style={inlineStyle}
+            {...props}
+          >
             {children}
           </div>
         );
       case 'label':
         return (
-          <label ref={ref as React.ForwardedRef<HTMLLabelElement>} className={combinedClasses} {...props}>
+          <label
+            ref={ref as React.ForwardedRef<HTMLLabelElement>}
+            className={combinedClasses}
+            style={inlineStyle}
+            {...props}
+          >
             {children}
           </label>
         );
       default:
         return (
-          <p ref={ref as React.ForwardedRef<HTMLParagraphElement>} className={combinedClasses} {...props}>
+          <p
+            ref={ref as React.ForwardedRef<HTMLParagraphElement>}
+            className={combinedClasses}
+            style={inlineStyle}
+            {...props}
+          >
             {children}
           </p>
         );

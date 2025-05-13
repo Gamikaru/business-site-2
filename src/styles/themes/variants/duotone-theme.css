@@ -1,0 +1,320 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   DUOTONE THEME VARIANT
+
+   A two-color theme system that creates a striking visual effect by using
+   a limited palette. This creates a focused, cohesive visual style that's
+   ideal for highlighting content without distraction.
+
+   Available in both dark and light modes.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   DUOTONE DARK
+   A high-contrast dark theme with two dominant colors
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="duotone-dark"] {
+    /* Core colors - limit to two main colors plus supporting neutrals */
+    --primary-color: #3BBDAA;  /* Teal */
+    --primary-dark: #2A8C80;
+    --primary-light: #64D2C3;
+    --primary-pale: #A7E3DB;
+    --primary-rgb: 59, 189, 170;
+
+    --secondary-color: #5B56E0;  /* Indigo */
+    --secondary-dark: #4540AD;
+    --secondary-light: #7E7AE5;
+    --secondary-pale: #B2B0F0;
+    --secondary-rgb: 91, 86, 224;
+
+    /* Dark neutrals */
+    --neutral-900: #10151E;
+    --neutral-800: #161D28;
+    --neutral-700: #1E2736;
+    --neutral-600: #2A3446;
+    --neutral-500: #3B485D;
+    --neutral-400: #58697E;
+    --neutral-300: #8A99AA;
+    --neutral-200: #B9C2CC;
+    --neutral-100: #D9DEE5;
+    --neutral-50: #F6F8FA;
+
+    /* Assign to semantic variables */
+    --color-bg-primary: var(--neutral-900);
+    --color-bg-secondary: var(--neutral-800);
+    --color-bg-tertiary: var(--neutral-700);
+    --color-bg-card: var(--neutral-800);
+    --color-bg-glass: rgba(22, 29, 40, 0.85);
+    --color-bg-code: rgba(16, 21, 30, 0.9);
+    --color-bg-input: rgba(42, 52, 70, 0.7);
+    --color-bg-hover: rgba(59, 189, 170, 0.1);
+    --color-bg-active: rgba(59, 189, 170, 0.2);
+    --color-bg-disabled: rgba(58, 69, 94, 0.5);
+    --color-bg-tooltip: rgba(16, 21, 30, 0.95);
+    --color-bg-dropdown: rgba(16, 21, 30, 0.95);
+    --color-bg-selection: rgba(59, 189, 170, 0.3);
+
+    --color-text-primary: var(--neutral-100);
+    --color-text-secondary: var(--neutral-300);
+    --color-text-tertiary: var(--neutral-400);
+    --color-text-disabled: var(--neutral-500);
+    --color-text-on-accent: var(--neutral-900);
+    --color-text-code: var(--primary-light);
+    --color-text-emphasis: var(--primary-color);
+    --color-text-inverted: var(--neutral-900);
+
+    --color-heading: var(--neutral-50);
+    --color-heading-accent: var(--primary-color);
+    --color-subheading: var(--neutral-200);
+
+    /* Brand and accent colors */
+    --color-brand-primary: var(--primary-color);
+    --color-brand-secondary: var(--secondary-color);
+
+    --color-accent-primary: var(--primary-color);
+    --color-accent-primary-hover: var(--primary-light);
+    --color-accent-primary-active: var(--primary-dark);
+    --color-accent-secondary: var(--secondary-color);
+    --color-accent-tertiary: var(--primary-dark);
+    --color-accent-oceanic: var(--secondary-light);
+    --color-accent-cosmic: var(--secondary-dark);
+    --color-accent-contrast: var(--secondary-color);
+    --color-accent-warm: var(--primary-light);
+
+    /* Interactive elements */
+    --color-interactive: var(--primary-color);
+    --color-interactive-hover: var(--primary-light);
+    --color-interactive-active: var(--primary-dark);
+    --color-interactive-focus: var(--primary-color);
+    --color-interactive-disabled: rgba(59, 189, 170, 0.4);
+
+    --color-interactive-secondary: var(--secondary-color);
+    --color-interactive-secondary-hover: var(--secondary-light);
+    --color-interactive-secondary-active: var(--secondary-dark);
+
+    /* Status colors */
+    --color-success: var(--primary-color);
+    --color-success-subtle: rgba(59, 189, 170, 0.15);
+    --color-success-text: var(--primary-light);
+
+    --color-warning: #E0A030;
+    --color-warning-subtle: rgba(224, 160, 48, 0.15);
+    --color-warning-text: #F5BB45;
+
+    --color-error: #E04F4F;
+    --color-error-subtle: rgba(224, 79, 79, 0.15);
+    --color-error-text: #F57878;
+
+    --color-info: var(--secondary-color);
+    --color-info-subtle: rgba(91, 86, 224, 0.15);
+    --color-info-text: var(--secondary-light);
+
+    --color-neutral: var(--neutral-400);
+    --color-neutral-subtle: rgba(88, 105, 126, 0.15);
+
+    /* UI elements */
+    --color-border: rgba(59, 189, 170, 0.3);
+    --color-border-focus: var(--primary-color);
+    --color-border-input: rgba(59, 189, 170, 0.25);
+    --color-divider: rgba(59, 189, 170, 0.2);
+    --color-divider-light: rgba(185, 194, 204, 0.1);
+
+    /* Links */
+    --color-link: var(--secondary-light);
+    --color-link-hover: var(--secondary-pale);
+    --color-link-visited: var(--secondary-color);
+    --color-emphasis: var(--primary-color);
+
+    /* Icons */
+    --color-icon-primary: var(--primary-color);
+    --color-icon-secondary: var(--secondary-color);
+    --color-icon-tertiary: var(--neutral-300);
+    --color-icon-on-accent: var(--neutral-900);
+    --color-icon-bg: rgba(59, 189, 170, 0.1);
+    --color-icon-disabled: var(--neutral-500);
+
+    /* Shadows */
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-shadow-light: rgba(0, 0, 0, 0.25);
+    --color-overlay: rgba(16, 21, 30, 0.8);
+
+    /* Components */
+    --color-skill-item: rgba(59, 189, 170, 0.8);
+    --color-skill-item-hover: rgba(91, 86, 224, 0.2);
+    --color-skill-item-active: rgba(91, 86, 224, 0.3);
+    --color-notification-badge: var(--secondary-color);
+    --color-tooltip-bg: var(--color-bg-tooltip);
+    --color-dropdown-bg: var(--color-bg-dropdown);
+
+    /* Set color scheme for browser */
+    color-scheme: dark;
+
+    /* Gradients */
+    --gradient-accent: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --gradient-interactive: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    --gradient-cosmic-green: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    --gradient-button: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+    --gradient-button-hover: linear-gradient(to right, var(--primary-light), var(--primary-color));
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   DUOTONE LIGHT
+   A clean light theme with two dominant colors
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="duotone-light"] {
+    /* Core colors - limit to two main colors plus supporting neutrals */
+    --primary-color: #208D82;  /* Teal */
+    --primary-dark: #17635B;
+    --primary-light: #30B6A7;
+    --primary-pale: #A7E3DB;
+    --primary-rgb: 32, 141, 130;
+
+    --secondary-color: #4A45C2;  /* Indigo */
+    --secondary-dark: #36328C;
+    --secondary-light: #6A65E5;
+    --secondary-pale: #BDBCF8;
+    --secondary-rgb: 74, 69, 194;
+
+    /* Light neutrals */
+    --neutral-50: #F8FAFB;
+    --neutral-100: #EEF1F5;
+    --neutral-200: #DEE3EA;
+    --neutral-300: #BDC5D1;
+    --neutral-400: #99A4B4;
+    --neutral-500: #767F8F;
+    --neutral-600: #5A6475;
+    --neutral-700: #424A5A;
+    --neutral-800: #2C3241;
+    --neutral-900: #191E2B;
+
+    /* Assign to semantic variables */
+    --color-bg-primary: var(--neutral-50);
+    --color-bg-secondary: var(--neutral-100);
+    --color-bg-tertiary: var(--white);
+    --color-bg-card: var(--white);
+    --color-bg-glass: rgba(255, 255, 255, 0.85);
+    --color-bg-code: rgba(222, 227, 234, 0.6);
+    --color-bg-input: rgba(248, 250, 251, 0.8);
+    --color-bg-hover: rgba(32, 141, 130, 0.08);
+    --color-bg-active: rgba(32, 141, 130, 0.15);
+    --color-bg-disabled: rgba(189, 197, 209, 0.5);
+    --color-bg-tooltip: rgba(25, 30, 43, 0.95);
+    --color-bg-dropdown: rgba(255, 255, 255, 0.98);
+    --color-bg-selection: rgba(32, 141, 130, 0.2);
+
+    --color-text-primary: var(--neutral-900);
+    --color-text-secondary: var(--neutral-700);
+    --color-text-tertiary: var(--neutral-600);
+    --color-text-disabled: var(--neutral-500);
+    --color-text-on-accent: var(--white);
+    --color-text-code: var(--primary-dark);
+    --color-text-emphasis: var(--primary-color);
+    --color-text-inverted: var(--white);
+
+    --color-heading: var(--primary-dark);
+    --color-heading-accent: var(--secondary-dark);
+    --color-subheading: var(--neutral-700);
+
+    /* Brand and accent colors */
+    --color-brand-primary: var(--primary-color);
+    --color-brand-secondary: var(--secondary-color);
+
+    --color-accent-primary: var(--primary-color);
+    --color-accent-primary-hover: var(--primary-dark);
+    --color-accent-primary-active: var(--primary-dark);
+    --color-accent-secondary: var(--secondary-color);
+    --color-accent-tertiary: var(--primary-light);
+    --color-accent-oceanic: var(--secondary-dark);
+    --color-accent-cosmic: var(--secondary-light);
+    --color-accent-contrast: var(--secondary-color);
+    --color-accent-warm: var(--primary-light);
+
+    /* Interactive elements */
+    --color-interactive: var(--primary-color);
+    --color-interactive-hover: var(--primary-dark);
+    --color-interactive-active: var(--primary-dark);
+    --color-interactive-focus: var(--primary-color);
+    --color-interactive-disabled: rgba(32, 141, 130, 0.4);
+
+    --color-interactive-secondary: var(--secondary-color);
+    --color-interactive-secondary-hover: var(--secondary-dark);
+    --color-interactive-secondary-active: var(--secondary-dark);
+
+    /* Status colors */
+    --color-success: #1E9D6A;
+    --color-success-subtle: rgba(30, 157, 106, 0.12);
+    --color-success-text: #17754F;
+
+    --color-warning: #C78D29;
+    --color-warning-subtle: rgba(199, 141, 41, 0.12);
+    --color-warning-text: #A06C14;
+
+    --color-error: #D04747;
+    --color-error-subtle: rgba(208, 71, 71, 0.12);
+    --color-error-text: #B23939;
+
+    --color-info: var(--secondary-color);
+    --color-info-subtle: rgba(74, 69, 194, 0.12);
+    --color-info-text: var(--secondary-dark);
+
+    --color-neutral: var(--neutral-600);
+    --color-neutral-subtle: rgba(90, 100, 117, 0.12);
+
+    /* UI elements */
+    --color-border: rgba(32, 141, 130, 0.25);
+    --color-border-focus: var(--primary-color);
+    --color-border-input: rgba(32, 141, 130, 0.2);
+    --color-divider: rgba(32, 141, 130, 0.15);
+    --color-divider-light: rgba(0, 0, 0, 0.05);
+
+    /* Links */
+    --color-link: var(--secondary-color);
+    --color-link-hover: var(--secondary-dark);
+    --color-link-visited: var(--secondary-dark);
+    --color-emphasis: var(--primary-color);
+
+    /* Icons */
+    --color-icon-primary: var(--primary-color);
+    --color-icon-secondary: var(--secondary-color);
+    --color-icon-tertiary: var(--neutral-600);
+    --color-icon-on-accent: var(--white);
+    --color-icon-bg: rgba(32, 141, 130, 0.1);
+    --color-icon-disabled: var(--neutral-500);
+
+    /* Shadows */
+    --color-shadow: rgba(25, 30, 43, 0.15);
+    --color-shadow-light: rgba(25, 30, 43, 0.08);
+    --color-overlay: rgba(248, 250, 251, 0.85);
+
+    /* Components */
+    --color-skill-item: rgba(32, 141, 130, 0.8);
+    --color-skill-item-hover: rgba(74, 69, 194, 0.15);
+    --color-skill-item-active: rgba(74, 69, 194, 0.25);
+    --color-notification-badge: var(--secondary-color);
+    --color-tooltip-bg: var(--color-bg-tooltip);
+    --color-dropdown-bg: var(--color-bg-dropdown);
+
+    /* Set color scheme for browser */
+    color-scheme: light;
+
+    /* White & black */
+    --white: #FFFFFF;
+    --black: #000000;
+
+    /* Gradients */
+    --gradient-accent: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --gradient-interactive: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    --gradient-cosmic-green: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    --gradient-button: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+    --gradient-button-hover: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+}
+/* Add missing variables to Duotone Dark theme */
+[data-theme="duotone-dark"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(240, 242, 248, 0.15);  /* Light grid lines for duotone dark theme */
+}
+
+/* Add missing variables to Duotone Light theme */
+[data-theme="duotone-light"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(105, 35, 176, 0.1);  /* Purple grid lines for light theme */
+}

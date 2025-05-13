@@ -10,6 +10,7 @@ import {
   staggerItemVariants,
 } from "@/components/core/Animations";
 import { Heading, Text } from "@/components/common/Typography";
+import RichText from "@/components/common/Typography/RichText";
 import { cn } from "@/utils/classNames";
 
 interface ValueItem {
@@ -82,7 +83,10 @@ const AboutValues: React.FC<AboutValuesProps> = ({
   return (
     <motion.section
       ref={sectionRef}
-      className={cn("relative bg-bg-secondary overflow-hidden py-20", className)}
+      className={cn(
+        "relative bg-bg-secondary overflow-hidden py-20",
+        className
+      )}
       onMouseMove={handleMouseMove}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -152,7 +156,7 @@ const AboutValues: React.FC<AboutValuesProps> = ({
 
       {/* Technical status bar */}
       <div className="absolute top-0 left-0 right-0 h-8 border-b border-divider bg-bg-tertiary/30 backdrop-blur-sm hidden md:block">
-        <div className="container mx-auto h-full flex items-center justify-between px-4">
+        <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
           <div className="flex items-center space-x-6">
             <div className="flex items-center">
               <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse mr-2"></div>
@@ -165,23 +169,21 @@ const AboutValues: React.FC<AboutValuesProps> = ({
             </div>
           </div>
           <div className="text-xs font-mono text-text-tertiary">
-            PRINCIPLES/{techValues.coreValues} • EFF/{techValues.systemEfficiency}%
+            PRINCIPLES/{techValues.coreValues} • EFF/
+            {techValues.systemEfficiency}%
           </div>
         </div>
       </div>
 
       <div className="container mx-auto relative z-10">
         {/* Section header with technical styling */}
-        <div
-          ref={headingRef}
-          className="max-w-3xl mx-auto text-center mb-16"
-        >
+        <div ref={headingRef} className="max-w-3xl mx-auto text-center mb-16">
           <TextReveal direction="up" delay={0.2} className="mb-6">
             <Heading
               level={2}
               className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading relative inline-block"
             >
-              {heading}
+              <RichText content={heading} className="preserve-whitespace" />
               <motion.div
                 className="absolute -bottom-3 left-0 right-0 h-[3px]"
                 initial={{ width: 0 }}
@@ -195,7 +197,7 @@ const AboutValues: React.FC<AboutValuesProps> = ({
 
           <ScrollReveal direction="up" delay={0.3}>
             <Text className="text-center text-text-secondary text-lg md:text-xl">
-              {introduction}
+              <RichText content={introduction} className="preserve-whitespace" />
             </Text>
           </ScrollReveal>
 
@@ -236,7 +238,9 @@ const AboutValues: React.FC<AboutValuesProps> = ({
               {/* Technical header with values system */}
               <div className="border-b border-divider pb-3 mb-6">
                 <div className="flex items-center justify-between">
-                  <Text className="font-heading font-semibold">Core Values</Text>
+                  <Text className="font-heading font-semibold">
+                    Core Values
+                  </Text>
                   <div className="flex items-center">
                     <div className="w-2 h-2 rounded-full bg-accent-oceanic mr-2 animate-pulse"></div>
                     <span className="text-xs font-mono text-accent-oceanic">
@@ -328,9 +332,7 @@ const AboutValues: React.FC<AboutValuesProps> = ({
                         style={{ width: `${techValues.systemEfficiency}%` }}
                       />
                     </div>
-                    <span>
-                      {techValues.systemEfficiency}%
-                    </span>
+                    <span>{techValues.systemEfficiency}%</span>
                   </div>
                 </div>
               </div>
@@ -380,18 +382,18 @@ const AboutValues: React.FC<AboutValuesProps> = ({
                 {/* Value content with technical indicators */}
                 <div className="mb-6 flex items-center">
                   <div className="flex items-center justify-center mr-4 w-12 h-12 rounded-sm bg-brand-primary text-white font-mono text-xl font-bold">
-                    {item.number}
+                    <RichText content={item.number} />
                   </div>
                   <Heading
                     level={3}
                     className="text-2xl md:text-3xl font-heading text-heading"
                   >
-                    {item.title}
+                    <RichText content={item.title} className="preserve-whitespace" />
                   </Heading>
                 </div>
 
                 <Text className="text-lg text-text-primary leading-relaxed">
-                  {item.description}
+                  <RichText content={item.description} className="preserve-whitespace" />
                 </Text>
 
                 {/* Technical coordinate readout */}
@@ -413,9 +415,7 @@ const AboutValues: React.FC<AboutValuesProps> = ({
                         ></div>
                       ))}
                     </div>
-                    <span>
-                      KEY PRINCIPLE
-                    </span>
+                    <span>KEY PRINCIPLE</span>
                   </div>
                 </div>
               </motion.div>

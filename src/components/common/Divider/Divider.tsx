@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { motion, useReducedMotion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useMotionValue, useTransform, useScroll } from "framer-motion";
 import { cn } from "@/utils/classNames";
 
-export type DividerType = "plane" | "wave" | "tick" | "glitch" | "steps" | "stripes";
+export type DividerType = "plane" | "wave" | "tick" | "glitch" | "steps" | "stripes" | "zigzag" | "circuit" | "parallax-wave";
 
 interface DividerProps {
   type?: DividerType;
@@ -39,6 +39,12 @@ const Divider: React.FC<DividerProps> = ({
   const mouseY = useMotionValue(0);
   const offsetX = useTransform(mouseX, [-100, 100], [-5, 5]);
   const offsetY = useTransform(mouseY, [-100, 100], [-5, 5]);
+
+  // Scroll-based animations for parallax-wave (moved outside the renderDivider function)
+  const { scrollY } = useScroll();
+  const slow = useTransform(scrollY, [0, 600], [0, 40]);
+  const mid = useTransform(scrollY, [0, 600], [0, 80]);
+  const fast = useTransform(scrollY, [0, 600], [0, 160]);
 
   // For jittery/glitchy animations
   useEffect(() => {
@@ -509,6 +515,168 @@ const Divider: React.FC<DividerProps> = ({
             />
           </div>
         );
+
+      case "parallax-wave": {
+        const shape = "M0,100 C250,30 750,170 1000,100 L1000,0 L0,0 Z";
+
+        return (
+          <div
+            ref={dividerRef}
+            className={cn("relative w-full overflow-hidden", className)}
+            style={{ height: `${height}px` }}
+            aria-hidden="true"
+          >
+            {/* background fill (static) */}
+            <div
+              className="absolute inset-0 -z-10"
+              style={{ background: bgBottom ?? "var(--color-bg-tertiary)" }}
+            />
+            <svg
+              className="absolute inset-0 h-full w-full"
+              viewBox="0 0 1000 100"
+              preserveAspectRatio="none"
+            >
+              {/* rear layer – moves slowest */}
+              <motion.path
+                d={shape}
+                fill={color ?? "var(--color-bg-secondary)"}
+                style={{ y: prefersReducedMotion ? 0 : slow }}
+              />
+              {/* mid layer – semi‑transparent */}
+              <motion.path
+                d={shape}
+                fill="var(--color-accent-oceanic)"
+                fillOpacity="0.35"
+                style={{ y: prefersReducedMotion ? 0 : mid }}
+              />
+              {/* front layer – accent outline */}
+              <motion.path
+                d={shape}
+                fill="transparent"
+                stroke="var(--color-divider)"
+                strokeWidth="2"
+                style={{ y: prefersReducedMotion ? 0 : fast }}
+              />
+            </svg>
+          </div>
+        );
+      }
+
+      case "zigzag": {
+        return (
+          <div
+            ref={dividerRef}
+            className={cn("relative w-full overflow-hidden", className)}
+            style={{ height: `${height}px` }}
+            aria-hidden="true"
+          >
+            {/* repeating teeth pattern */}
+            <svg
+              width="100%"
+              height="100%"
+              preserveAspectRatio="none"
+              className="absolute inset-0"
+            >
+              <pattern
+                id="zig"
+                width="40"
+                height="40"
+                patternUnits="userSpaceOnUse"
+              >
+                <polygon
+                  points="0,40 10,0 20,40 30,0 40,40"
+                  fill={color || "var(--color-bg-secondary)"}
+                  stroke="var(--color-divider)"
+                  strokeWidth="1.5"
+                />
+              </pattern>
+
+              <motion.rect
+                width="100%"
+                height="100%"
+                fill="url(#zig)"
+                /* sideways drift */
+                animate={
+                  shouldAnimate
+                    ? { x: ["0%", "-40%"] }
+                    : undefined
+                }
+                transition={{
+                  duration: 30,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            </svg>
+
+            {/* underlying background */}
+            <div
+              className="absolute inset-0 -z-10"
+              style={{ background: bgBottom ?? "var(--color-bg-tertiary)" }}
+            />
+          </div>
+        );
+      }
+
+      case "circuit": {
+        return (
+          <div
+            ref={dividerRef}
+            className={cn("relative w-full overflow-hidden", className)}
+            style={{ height: `${height}px` }}
+            aria-hidden="true"
+            onMouseMove={handleMouseMove}
+          >
+            <svg
+              width="100%"
+              height="100%"
+              preserveAspectRatio="none"
+              className="absolute inset-0"
+            >
+              {/* pcb backbone */}
+              <motion.path
+                d="
+                  M0,50 H120 V20 H240 V80 H360 V30 H480
+                  V70 H600 V40 H720 V60 H840 V25 H1000"
+                fill="none"
+                stroke="var(--color-divider)"
+                strokeWidth="2"
+                strokeLinecap="square"
+                style={{
+                  x: shouldAnimate ? offsetX : 0,
+                  y: shouldAnimate ? offsetY : 0,
+                }}
+              />
+              {/* junction blips */}
+              {[120, 240, 360, 480, 600, 720, 840].map((x) => (
+                <motion.circle
+                  key={x}
+                  cx={x}
+                  cy={x % 240 ? 40 : 70}
+                  r="4"
+                  fill="var(--color-accent-primary)"
+                  animate={
+                    shouldAnimate
+                      ? { opacity: [0.3, 1, 0.3] }
+                      : undefined
+                  }
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: (x % 1000) * 0.2,
+                  }}
+                />
+              ))}
+            </svg>
+
+            {/* subtle background */}
+            <div
+              className="absolute inset-0 -z-10"
+              style={{ background: bgBottom ?? "var(--color-bg-secondary)" }}
+            />
+          </div>
+        );
+      }
 
       default:
         return null;

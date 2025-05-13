@@ -1,0 +1,717 @@
+/* src/styles/themes/nostalgia-pastel-theme.css */
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   NOSTALGIA PASTEL THEME SYSTEM
+
+   A playful, childhood-inspired palette built with 90s nostalgia, arcade energy,
+   and funky geometric patterns. Combines pastel with punchy accents for a balance
+   between dreamy and bold that works for any gender.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   NOSTALGIA PASTEL DARK THEME (Arcade Night)
+   Deep midnight blues with nostalgic arcade accents
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="nostalgia-pastel-dark"] {
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with nostalgic depth
+     ════════════════════════════════════ */
+    --color-bg-primary: #1A1B30;
+    /* Main application background - arcade midnight */
+    --color-bg-secondary: #232442;
+    /* Secondary containers, cards, sidebars - game cartridge */
+    --color-bg-tertiary: #2C2D54;
+    /* Elevated surfaces, modals, popovers - console casing */
+    --color-bg-card: rgba(35, 36, 66, 0.97);
+    /* Card backgrounds with slight transparency - game screens */
+    --color-bg-glass: rgba(143, 205, 255, 0.08);
+    /* Glass effect backgrounds - holographic sticker */
+    --color-bg-code: rgba(26, 27, 48, 0.85);
+    /* Code block backgrounds - code screen */
+    --color-bg-input: rgba(35, 36, 66, 0.65);
+    /* Form element backgrounds - game inputs */
+    --color-bg-hover: rgba(143, 205, 255, 0.12);
+    /* Hover state background - character select */
+    --color-bg-active: rgba(143, 205, 255, 0.22);
+    /* Active/selected state background - player active */
+    --color-bg-disabled: rgba(53, 54, 84, 0.35);
+    /* Disabled element background - game locked */
+    --color-bg-tooltip: rgba(26, 27, 48, 0.97);
+    /* Tooltip background - hint bubble */
+    --color-bg-dropdown: rgba(35, 36, 66, 0.98);
+    /* Dropdown menu background - game menu */
+    --color-bg-selection: rgba(143, 205, 255, 0.25);
+    /* Text selection background - high score select */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with nostalgic clarity
+     ════════════════════════════════════ */
+    --color-text-primary: #EEF5FF;
+    /* Main body text - game text (18:1 contrast) */
+    --color-text-secondary: #B8CCFF;
+    /* Secondary/supporting text - helper text (10.2:1 contrast) */
+    --color-text-tertiary: rgba(184, 204, 255, 0.7);
+    /* De-emphasized text, subtitles, captions - hint text (7.1:1 contrast) */
+    --color-text-disabled: rgba(184, 204, 255, 0.5);
+    /* Disabled text - locked features (5.1:1 contrast) */
+    --color-text-on-accent: #1A1B30;
+    /* Text on accent-colored backgrounds - button text (4.5:1+ on all accents) */
+    --color-text-code: #8FCDFF;
+    /* Code and pre-formatted text - cheat code (8.7:1 contrast) */
+
+    /* Headings */
+    --color-heading: #FFC178;
+    /* Standard headings - high score (8.3:1 contrast) */
+    --color-heading-accent: #FF90B3;
+    /* Accented headings - power-up (6.5:1 contrast) */
+    --color-subheading: #B8CCFF;
+    /* Subheadings, section titles - level name */
+
+    /* Special text */
+    --color-text-emphasis: #FFA454;
+    /* Emphasized text, highlights - bonus points */
+    --color-text-inverted: #EEF5FF;
+    /* Inverted text (on light backgrounds) - reverse text */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with nostalgic vibes
+     ════════════════════════════════════ */
+    --color-brand-primary: #8FCDFF;
+    /* Primary brand color - arcade blue */
+    --color-brand-secondary: #FFC178;
+    /* Secondary brand color - retro orange */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: #8FCDFF;
+    /* Primary accent for main interactive elements - arcade blue */
+    --color-accent-primary-hover: #6DB0E8;
+    /* Hover state for primary accent - charged blue */
+    --color-accent-primary-active: #5699D3;
+    /* Active state for primary accent - button press */
+    --color-accent-secondary: #FFC178;
+    /* Secondary accent for visual variety - retro orange */
+    --color-accent-tertiary: #B7E1FF;
+    /* Tertiary accent for subtle highlights - baby blue */
+    --color-accent-warm: #FFA454;
+    /* Warm accent for attention-grabbing elements - peach blast */
+    --color-accent-contrast: #FF90B3;
+    /* High-contrast accent for important elements - bubblegum blast */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with nostalgic feedback
+     ════════════════════════════════════ */
+    --color-interactive: #8FCDFF;
+    /* Default interactive element color - arcade blue */
+    --color-interactive-hover: #6DB0E8;
+    /* Hover state - charged blue (1.2:1 from default) */
+    --color-interactive-active: #5699D3;
+    /* Active/pressed state - button press (1.5:1 from default) */
+    --color-interactive-focus: #8FCDFF;
+    /* Focus state indicator - player select */
+    --color-interactive-disabled: rgba(143, 205, 255, 0.4);
+    /* Disabled state - game paused */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: #FFC178;
+    /* Secondary interactive elements - retro orange */
+    --color-interactive-secondary-hover: #E8A958;
+    /* Secondary hover state - deeper retro */
+    --color-interactive-secondary-active: #D19547;
+    /* Secondary active state - button press */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(143, 205, 255, 0.35);
+    /* Form input borders - game input */
+    --color-field-placeholder: rgba(184, 204, 255, 0.6);
+    /* Placeholder text - controller hint */
+    --color-field-focus: #8FCDFF;
+    /* Field focus indicator - player select */
+    --color-field-required: #FFC178;
+    /* Required field indicator - must enter */
+    --color-field-invalid: #FF90B3;
+    /* Invalid field indicator - wrong code */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts with nostalgic themes
+     ════════════════════════════════════ */
+    --color-success: #76E1CB;
+    /* Success state - bonus level (9.1:1 contrast) */
+    --color-success-subtle: rgba(118, 225, 203, 0.15);
+    /* Subtle success background - level up */
+    --color-warning: #FFD571;
+    /* Warning state - final lap (9.1:1 contrast) */
+    --color-warning-subtle: rgba(255, 213, 113, 0.15);
+    /* Subtle warning background - caution zone */
+    --color-error: #FF90B3;
+    /* Error state - game over (6.5:1 contrast) */
+    --color-error-subtle: rgba(255, 144, 179, 0.15);
+    /* Subtle error background - damage taken */
+    --color-info: #8FCDFF;
+    /* Information state - arcade blue (8.7:1 contrast) */
+    --color-info-subtle: rgba(143, 205, 255, 0.15);
+    /* Subtle info background - tutorial tip */
+    --color-neutral: #B8CCFF;
+    /* Neutral state - standby (10.2:1 contrast) */
+    --color-neutral-subtle: rgba(184, 204, 255, 0.15);
+    /* Subtle neutral background - pause menu */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with arcade visuals
+     ════════════════════════════════════ */
+    --color-divider: rgba(143, 205, 255, 0.2);
+    /* Dividers and separators - screen divisions */
+    --color-divider-light: rgba(255, 255, 255, 0.08);
+    /* Lighter dividers for contrast on dark areas - grid lines */
+    --color-border: rgba(143, 205, 255, 0.3);
+    /* Borders for containers, cards, etc - screen borders */
+    --color-border-focus: #FF90B3;
+    /* Focus state borders - highlight selection */
+    --color-border-input: rgba(143, 205, 255, 0.35);
+    /* Form input borders - game input */
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    /* Shadows for elevation - game shadow */
+    --color-shadow-light: rgba(0, 0, 0, 0.3);
+    /* Lighter shadows for subtle elevation - sprite shadow */
+    --color-overlay: rgba(26, 27, 48, 0.8);
+    /* Modal/dialog overlays - game pause */
+    --color-notification-badge: #FF90B3;
+    /* Notification badges - new bonus */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(143, 205, 255, 0.5);
+    /* Scrollbar thumb - game slider */
+    --color-scrollbar-track: rgba(26, 27, 48, 0.3);
+    /* Scrollbar track - scroll track */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: #8FCDFF;
+    /* Link text - warp zone (8.7:1 contrast) */
+    --color-link-hover: #B7E1FF;
+    /* Link hover state - power up (12.1:1 contrast) */
+    --color-link-visited: #D493FF;
+    /* Visited links - completed level (9.3:1 contrast) */
+    --color-emphasis: #FFA454;
+    /* Emphasized text - bonus points (8.2:1 contrast) */
+    --color-success-text: #90FFDF;
+    /* Success messages - high score text (11.2:1 contrast) */
+    --color-warning-text: #FFDF8F;
+    /* Warning messages - low health text (11.2:1 contrast) */
+    --color-error-text: #FFABC6;
+    /* Error messages - game over text (8.9:1 contrast) */
+    --color-info-text: #B7E1FF;
+    /* Information text - tutorial text (12.1:1 contrast) */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with retro charm
+     ════════════════════════════════════ */
+    --color-icon-primary: #8FCDFF;
+    /* Primary icons - game controls */
+    --color-icon-secondary: rgba(255, 193, 120, 0.9);
+    /* Secondary icons - power-ups */
+    --color-icon-tertiary: rgba(184, 204, 255, 0.7);
+    /* Tertiary icons - background elements */
+    --color-icon-on-accent: #1A1B30;
+    /* Icons on accent-colored backgrounds - button icons */
+    --color-icon-bg: rgba(143, 205, 255, 0.1);
+    /* Icon backgrounds or containers - icon zones */
+    --color-icon-disabled: rgba(184, 204, 255, 0.5);
+    /* Disabled icons - locked features */
+
+    /* ════════════════════════════════════
+     OPACITY SYSTEM
+     For consistent transparency levels with nostalgic feel
+     ════════════════════════════════════ */
+    --opacity-faint: 0.08;
+    /* Very subtle effects, barely visible - ghost pixels */
+    --opacity-light: 0.15;
+    /* Light effects, clearly visible but subtle - screen filter */
+    --opacity-medium: 0.5;
+    /* Medium effects, semi-transparent - character fade */
+    --opacity-high: 0.8;
+    /* High opacity, nearly solid - game elements */
+    --opacity-disabled: 0.4;
+    /* Standard disabled state opacity - game pause */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(143, 205, 255, 0.2);
+    /* Skill item background - power ability */
+    --color-skill-item-hover: rgba(255, 193, 120, 0.3);
+    /* Skill item hover - skill highlight */
+    --color-skill-item-active: rgba(255, 193, 120, 0.4);
+    /* Skill item active - skill activated */
+
+    /* ════════════════════════════════════
+     RGB VALUES
+     For custom opacity operations with 90s digital flair
+     ════════════════════════════════════ */
+    --color-accent-primary-rgb: 143, 205, 255;
+    /* RGB values for arcade blue */
+    --color-accent-secondary-rgb: 255, 193, 120;
+    /* RGB values for retro orange */
+    --color-accent-tertiary-rgb: 183, 225, 255;
+    /* RGB values for baby blue */
+    --color-accent-warm-rgb: 255, 164, 84;
+    /* RGB values for peach blast */
+    --color-accent-pop-rgb: 255, 144, 179;
+    /* RGB values for bubblegum blast */
+    --color-bg-primary-rgb: 26, 27, 48;
+    /* RGB values for arcade midnight */
+    --color-text-primary-rgb: 238, 245, 255;
+    /* RGB values for game text */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects with retro vibes
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
+    /* Brand accent gradient - arcade spectrum */
+    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
+    /* Interactive element gradient - button glow */
+    --gradient-arcade: linear-gradient(45deg, #8FCDFF, #6DB0E8);
+    /* Arcade gradient - blue energy */
+    --gradient-retro: linear-gradient(45deg, #FFC178, #E8A958);
+    /* Retro gradient - orange glow */
+    --gradient-glass: linear-gradient(120deg, rgba(143, 205, 255, 0.08), rgba(143, 205, 255, 0.04));
+    /* Glass effect gradient - hologram */
+    --gradient-overlay: linear-gradient(180deg, rgba(26, 27, 48, 0.8), rgba(26, 27, 48, 0.95));
+    /* Overlay gradient - game menu */
+    --gradient-bubblegum: linear-gradient(45deg, #D493FF, #FF90B3);
+    /* Bubblegum gradient - bonus round */
+    --gradient-tropical: linear-gradient(45deg, #76E1CB, #8FCDFF);
+    /* Tropical gradient - bonus level */
+    --gradient-sunset: linear-gradient(135deg, rgba(255, 164, 84, 0.4) 0%, rgba(255, 164, 84, 0) 50%, rgba(143, 205, 255, 0.3) 100%);
+    /* Sunset gradient - day-night cycle */
+    --gradient-rainbow: linear-gradient(to right, #76E1CB 0%, #8FCDFF 25%, #D493FF 50%, #FF90B3 75%, #FFA454 100%);
+    /* Rainbow gradient - power-up */
+    --gradient-pastel-glow: radial-gradient(circle at center, rgba(143, 205, 255, 0.15) 0%, rgba(143, 205, 255, 0) 70%);
+    /* Pastel glow gradient - character aura */
+    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
+    /* Button gradient - game button */
+    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
+    /* Button hover gradient - activated button */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects with retro gaming feel
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
+    /* Small shadow - pixel shadow */
+    --shadow-md: 0 12px 25px -10px rgba(0, 0, 0, 0.4);
+    /* Medium shadow - sprite shadow */
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    /* Large shadow - game element */
+    --shadow-inner: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Inner shadow - button press */
+    --shadow-focus: 0 0 0 3px rgba(143, 205, 255, 0.3);
+    /* Focus shadow - player select */
+    --shadow-button: 0 0 15px rgba(143, 205, 255, 0.25);
+    /* Button shadow - control pad */
+    --shadow-arcade-blue: 0 0 10px rgba(143, 205, 255, 0.5), 0 0 20px rgba(143, 205, 255, 0.3), 0 0 30px rgba(143, 205, 255, 0.1);
+    /* Arcade blue glow shadow - power-up aura */
+    --shadow-retro-orange: 0 0 10px rgba(255, 193, 120, 0.5), 0 0 20px rgba(255, 193, 120, 0.3), 0 0 30px rgba(255, 193, 120, 0.1);
+    /* Retro orange glow shadow - bonus item */
+    --shadow-pixel-edge: 0 0 0 1px rgba(118, 225, 203, 0.2), 0 0 0 2px rgba(118, 225, 203, 0.1);
+    /* Pixel edge shadow - game sprite */
+
+    /* Wave-specific colors - white dominant for dark mode */
+    --wave-primary: #F0F7FF;
+    /* Daytime sky from light theme */
+    --wave-secondary: #FFFFFF;
+    /* Pure white */
+    --wave-accent-1: #469BE6;
+    /* Saturday cartoon blue from light theme */
+    --wave-accent-2: #FF8534;
+    /* Juice box orange from light theme */
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   NOSTALGIA PASTEL LIGHT THEME (Daytime Arcade)
+   Bright sky blue with playful colorful accents
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="nostalgia-pastel-light"] {
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with nostalgic brightness
+     ════════════════════════════════════ */
+    --color-bg-primary: #F0F7FF;
+    /* Main application background - daytime sky */
+    --color-bg-secondary: #FFFFFF;
+    /* Secondary containers, cards, sidebars - cloud white */
+    --color-bg-tertiary: #E0ECFF;
+    /* Elevated surfaces, modals, popovers - toy plastic */
+    --color-bg-card: #FFFFFF;
+    /* Card backgrounds - trading card */
+    --color-bg-glass: rgba(255, 255, 255, 0.92);
+    /* Glass effect backgrounds - bubble shield */
+    --color-bg-code: rgba(224, 236, 255, 0.8);
+    /* Code block backgrounds - game manual */
+    --color-bg-input: rgba(240, 247, 255, 0.7);
+    /* Form element backgrounds - draw area */
+    --color-bg-hover: rgba(70, 155, 230, 0.08);
+    /* Hover state background - playful highlight */
+    --color-bg-active: rgba(70, 155, 230, 0.15);
+    /* Active/selected state background - toy activated */
+    --color-bg-disabled: rgba(220, 230, 245, 0.7);
+    /* Disabled element background - battery empty */
+    --color-bg-tooltip: rgba(14, 29, 74, 0.95);
+    /* Tooltip background - instruction tip */
+    --color-bg-dropdown: #FFFFFF;
+    /* Dropdown menu background - selection menu */
+    --color-bg-selection: rgba(70, 155, 230, 0.2);
+    /* Text selection background - crayon highlight */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with nostalgic clarity
+     ════════════════════════════════════ */
+    --color-text-primary: #14294A;
+    /* Main body text - cartoon text (14.1:1 contrast) */
+    --color-text-secondary: #2C466C;
+    /* Secondary/supporting text - instructions (10.5:1 contrast) */
+    --color-text-tertiary: rgba(44, 70, 108, 0.7);
+    /* De-emphasized text, subtitles, captions - fun facts (7.4:1 contrast) */
+    --color-text-disabled: rgba(44, 70, 108, 0.5);
+    /* Disabled text - not available (5.3:1 contrast) */
+    --color-text-on-accent: #FFFFFF;
+    /* Text on accent-colored backgrounds - button text (4.5:1+ on all accents) */
+    --color-text-code: #1A5FB0;
+    /* Code and pre-formatted text - secret code (9.2:1 contrast) */
+
+    /* Headings */
+    --color-heading: #FF8534;
+    /* Standard headings - chapter title (4.6:1 contrast) */
+    --color-heading-accent: #469BE6;
+    /* Accented headings - special note (4.6:1 contrast) */
+    --color-subheading: #2C466C;
+    /* Subheadings, section titles - instructions */
+
+    /* Special text */
+    --color-text-emphasis: #FF8534;
+    /* Emphasized text - important note */
+    --color-text-inverted: #F0F7FF;
+    /* Inverted text (on dark backgrounds) - reverse text */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with nostalgic vibes
+     ════════════════════════════════════ */
+    --color-brand-primary: #469BE6;
+    /* Primary brand color - saturday cartoon blue */
+    --color-brand-secondary: #FF8534;
+    /* Secondary brand color - juice box orange */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: #469BE6;
+    /* Primary accent for main interactive elements - saturday cartoon blue */
+    --color-accent-primary-hover: #3582C7;
+    /* Hover state for primary accent - toy button */
+    --color-accent-primary-active: #2769A7;
+    /* Active state for primary accent - pressed button */
+    --color-accent-secondary: #FF8534;
+    /* Secondary accent for visual variety - juice box orange */
+    --color-accent-tertiary: #2982CF;
+    /* Tertiary accent for subtle highlights - toy blue */
+    --color-accent-warm: #FF7747;
+    /* Warm accent for attention-grabbing elements - snack time */
+    --color-accent-contrast: #FF5F8F;
+    /* High-contrast accent for important elements - sticker pink */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with nostalgic feedback
+     ════════════════════════════════════ */
+    --color-interactive: #469BE6;
+    /* Default interactive element color - saturday cartoon blue */
+    --color-interactive-hover: #3582C7;
+    /* Hover state - toy button (1.2:1 from default) */
+    --color-interactive-active: #2769A7;
+    /* Active/pressed state - pressed button (1.5:1 from default) */
+    --color-interactive-focus: #469BE6;
+    /* Focus state indicator - game selected */
+    --color-interactive-disabled: rgba(70, 155, 230, 0.4);
+    /* Disabled state - toy broken */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: #FF8534;
+    /* Secondary interactive elements - juice box orange */
+    --color-interactive-secondary-hover: #E66F27;
+    /* Secondary hover state - pressed juice */
+    --color-interactive-secondary-active: #CC5C1E;
+    /* Secondary active state - squeezed juice */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(70, 155, 230, 0.35);
+    /* Form input borders - drawing area */
+    --color-field-placeholder: rgba(44, 70, 108, 0.6);
+    /* Placeholder text - crayon hint */
+    --color-field-focus: #469BE6;
+    /* Field focus indicator - coloring focus */
+    --color-field-required: #FF8534;
+    /* Required field indicator - must fill */
+    --color-field-invalid: #FF5F8F;
+    /* Invalid field indicator - color outside lines */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts with nostalgic themes
+     ════════════════════════════════════ */
+    --color-success: #41BF9C;
+    /* Success state - challenge complete (4.6:1 contrast) */
+    --color-success-subtle: rgba(65, 191, 156, 0.12);
+    /* Subtle success background - sticker earned */
+    --color-warning: #FFB039;
+    /* Warning state - snack time (4.5:1 contrast) */
+    --color-warning-subtle: rgba(255, 176, 57, 0.12);
+    /* Subtle warning background - juice spill */
+    --color-error: #FF5F8F;
+    /* Error state - game over (4.5:1 contrast) */
+    --color-error-subtle: rgba(255, 95, 143, 0.12);
+    /* Subtle error background - toy broken */
+    --color-info: #469BE6;
+    /* Information state - fun fact (4.6:1 contrast) */
+    --color-info-subtle: rgba(70, 155, 230, 0.12);
+    /* Subtle info background - hint bubble */
+    --color-neutral: #6D84A9;
+    /* Neutral state - crayon gray (5.3:1 contrast) */
+    --color-neutral-subtle: rgba(109, 132, 169, 0.12);
+    /* Subtle neutral background - coloring page */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with playful precision
+     ════════════════════════════════════ */
+    --color-divider: rgba(70, 155, 230, 0.25);
+    /* Dividers and separators - toy seams */
+    --color-divider-light: rgba(0, 0, 0, 0.05);
+    /* Lighter dividers for contrast on light areas - coloring lines */
+    --color-border: rgba(70, 155, 230, 0.3);
+    /* Borders for containers, cards, etc - toy outlines */
+    --color-border-focus: #FF8534;
+    /* Focus state borders - selected toy */
+    --color-border-input: rgba(70, 155, 230, 0.35);
+    /* Form input borders - drawing area */
+    --color-shadow: rgba(20, 41, 74, 0.15);
+    /* Shadows for elevation - toy shadow */
+    --color-shadow-light: rgba(20, 41, 74, 0.05);
+    /* Lighter shadows for subtle elevation - sticker shadow */
+    --color-overlay: rgba(240, 247, 255, 0.85);
+    /* Modal/dialog overlays - bubble overlay */
+    --color-notification-badge: #FF5F8F;
+    /* Notification badges - new toy alert */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(70, 155, 230, 0.4);
+    /* Scrollbar thumb - crayon slider */
+    --color-scrollbar-track: rgba(224, 236, 255, 0.5);
+    /* Scrollbar track - coloring paper */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: #469BE6;
+    /* Link text - click here (4.6:1 contrast) */
+    --color-link-hover: #2769A7;
+    /* Link hover state - button press (7.3:1 contrast) */
+    --color-link-visited: #6B68E0;
+    /* Visited links - played game (5.5:1 contrast) */
+    --color-emphasis: #FF8534;
+    /* Emphasized text - important note (4.6:1 contrast) */
+    --color-success-text: #26805F;
+    /* Success messages - winner text (6.9:1 contrast) */
+    --color-warning-text: #C77A0A;
+    /* Warning messages - caution text (5.9:1 contrast) */
+    --color-error-text: #CF3968;
+    /* Error messages - problem text (6.5:1 contrast) */
+    --color-info-text: #1A5FB0;
+    /* Information text - tip text (9.2:1 contrast) */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with playful clarity
+     ════════════════════════════════════ */
+    --color-icon-primary: #469BE6;
+    /* Primary icons - main buttons */
+    --color-icon-secondary: rgba(255, 133, 52, 0.9);
+    /* Secondary icons - fun features */
+    --color-icon-tertiary: rgba(44, 70, 108, 0.7);
+    /* Tertiary icons - helper symbols */
+    --color-icon-on-accent: #FFFFFF;
+    /* Icons on accent-colored backgrounds - button symbols */
+    --color-icon-bg: rgba(70, 155, 230, 0.1);
+    /* Icon backgrounds or containers - bubble zones */
+    --color-icon-disabled: rgba(44, 70, 108, 0.5);
+    /* Disabled icons - locked toys */
+
+    /* ════════════════════════════════════
+     OPACITY SYSTEM
+     For consistent transparency levels with playful efficiency
+     ════════════════════════════════════ */
+    --opacity-faint: 0.05;
+    /* Very subtle effects, barely visible - sketch marks */
+    --opacity-light: 0.12;
+    /* Light effects, clearly visible but subtle - crayon overlay */
+    --opacity-medium: 0.5;
+    /* Medium effects, semi-transparent - toy translucency */
+    --opacity-high: 0.8;
+    /* High opacity, nearly solid - sticker opacity */
+    --opacity-disabled: 0.4;
+    /* Standard disabled state opacity - broken toy */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(70, 155, 230, 0.15);
+    /* Skill item background - toy ability */
+    --color-skill-item-hover: rgba(255, 133, 52, 0.15);
+    /* Skill item hover - toy selection */
+    --color-skill-item-active: rgba(255, 133, 52, 0.25);
+    /* Skill item active - toy in use */
+
+    /* ════════════════════════════════════
+     RGB VALUES
+     For custom opacity operations with playful precision
+     ════════════════════════════════════ */
+    --color-accent-primary-rgb: 70, 155, 230;
+    /* RGB values for saturday cartoon blue */
+    --color-accent-secondary-rgb: 255, 133, 52;
+    /* RGB values for juice box orange */
+    --color-accent-tertiary-rgb: 41, 130, 207;
+    /* RGB values for toy blue */
+    --color-accent-warm-rgb: 255, 119, 71;
+    /* RGB values for snack time */
+    --color-accent-pop-rgb: 255, 95, 143;
+    /* RGB values for sticker pink */
+    --color-bg-primary-rgb: 240, 247, 255;
+    /* RGB values for daytime sky */
+    --color-text-primary-rgb: 20, 41, 74;
+    /* RGB values for cartoon text */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects with playful nostalgia
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
+    /* Brand accent gradient - fun blend */
+    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
+    /* Interactive element gradient - button gradient */
+    --gradient-cartoon: linear-gradient(45deg, #469BE6, #3582C7);
+    /* Cartoon gradient - Saturday morning */
+    --gradient-juice: linear-gradient(45deg, #FF8534, #E66F27);
+    /* Juice gradient - snack time */
+    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+    /* Glass effect gradient - bubble texture */
+    --gradient-overlay: linear-gradient(180deg, rgba(240, 247, 255, 0.85), rgba(240, 247, 255, 0.95));
+    /* Overlay gradient - cloud filter */
+    --gradient-sticker: linear-gradient(45deg, #6B68E0, #FF5F8F);
+    /* Sticker gradient - holographic sticker */
+    --gradient-fruity: linear-gradient(45deg, #41BF9C, #469BE6);
+    /* Fruity gradient - bubblegum flavor */
+    --gradient-sunset: linear-gradient(135deg, rgba(255, 119, 71, 0.2) 0%, rgba(255, 119, 71, 0) 50%, rgba(70, 155, 230, 0.1) 100%);
+    /* Sunset gradient - Saturday sunset */
+    --gradient-rainbow-light: linear-gradient(to right, #41BF9C 0%, #469BE6 25%, #6B68E0 50%, #FF5F8F 75%, #FF8534 100%);
+    /* Rainbow light gradient - sticker book */
+    --gradient-toy-glow: radial-gradient(circle at center, rgba(70, 155, 230, 0.1) 0%, rgba(70, 155, 230, 0) 70%);
+    /* Toy glow gradient - battery-powered */
+    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
+    /* Button gradient - toy button */
+    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
+    /* Button hover gradient - pressed toy button */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects with playful quality
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(20, 41, 74, 0.05);
+    /* Small shadow - sticker shadow */
+    --shadow-md: 0 12px 25px -10px rgba(20, 41, 74, 0.1);
+    /* Medium shadow - toy block shadow */
+    --shadow-lg: 0 25px 50px -12px rgba(20, 41, 74, 0.15);
+    /* Large shadow - playground shadow */
+    --shadow-inner: inset 0 2px 5px rgba(20, 41, 74, 0.03);
+    /* Inner shadow - button press */
+    --shadow-focus: 0 0 0 3px rgba(70, 155, 230, 0.25);
+    /* Focus shadow - toy selected */
+    --shadow-button: 0 4px 14px rgba(20, 41, 74, 0.15);
+    /* Button shadow - toy button */
+    --shadow-cartoon-blue: 0 0 10px rgba(70, 155, 230, 0.4), 0 0 20px rgba(70, 155, 230, 0.2), 0 0 30px rgba(70, 155, 230, 0.1);
+    /* Cartoon blue glow shadow - special effect */
+    --shadow-juice-orange: 0 0 10px rgba(255, 133, 52, 0.4), 0 0 20px rgba(255, 133, 52, 0.2), 0 0 30px rgba(255, 133, 52, 0.1);
+    /* Juice orange glow shadow - power-up */
+    --shadow-toy-edge: 0 0 0 1px rgba(65, 191, 156, 0.2), 0 0 0 2px rgba(65, 191, 156, 0.1);
+    /* Toy edge shadow - plastic seam */
+
+    /* Wave-specific colors - dark dominant for light mode */
+    --wave-primary: #1A1B30;
+    /* Arcade midnight from dark theme */
+    --wave-secondary: #232442;
+    /* Game cartridge from dark theme */
+    --wave-accent-1: #8FCDFF;
+    /* Arcade blue from dark theme */
+    --wave-accent-2: #FFC178;
+    /* Retro orange from dark theme */
+}
+
+/* Set color-scheme for the theme */
+[data-theme="nostalgia-pastel-dark"] {
+    color-scheme: dark;
+}
+
+[data-theme="nostalgia-pastel-light"] {
+    color-scheme: light;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+ * Custom scrollbar styling for Nostalgia Pastel theme
+ * ────────────────────────────────────────────────────────────────────────── */
+[data-theme^="nostalgia-pastel"] .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+[data-theme^="nostalgia-pastel"] .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track);
+    border-radius: 4px;
+}
+
+[data-theme^="nostalgia-pastel"] .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar-thumb);
+    border-radius: 4px;
+}
+
+[data-theme^="nostalgia-pastel"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-interactive);
+}
+
+/* Firefox scrollbar support */
+[data-theme^="nostalgia-pastel"] .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+}
+/* Add missing variables to Nostalgia Pastel Dark theme */
+[data-theme="nostalgia-pastel-dark"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(238, 245, 255, 0.2);  /* Game text grid lines for dark theme */
+}
+
+/* Add missing variables to Nostalgia Pastel Light theme */
+[data-theme="nostalgia-pastel-light"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(143, 205, 255, 0.15);  /* Arcade blue grid lines for light theme */
+}

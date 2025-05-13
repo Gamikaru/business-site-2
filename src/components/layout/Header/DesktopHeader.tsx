@@ -1,145 +1,129 @@
+/* src/components/layout/Header/DesktopHeader.tsx */
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Icon from "@/components/common/Icons/Icon";
 import { useTheme } from "@/context/ThemeContext";
-import { cn } from "@/utils/classNames";
 import ThemeSelector from "@/components/core/ThemeSelector";
-import { FontSelector } from "@/components/common/Typography"; // Import FontSelector
+import { FontSelector } from "@/components/common/Typography";
+import Icon from "@/components/common/Icons/Icon";
+import { cn } from "@/utils/classNames";
 
-const nav = [
-  { n: "01", label: "Home",     href: "/" },
-  { n: "02", label: "About",    href: "/about" },
-  { n: "03", label: "Services", href: "/services" },
-  { n: "04", label: "Work",     href: "/portfolio" },
-  { n: "05", label: "Blog",     href: "/blog" },
+const NAV = [
+  { n: "01", label: "HOME",     href: "/" },
+  { n: "02", label: "ABOUT",    href: "/about" },
+  { n: "03", label: "SERVICES", href: "/services" },
+  { n: "04", label: "WORK",     href: "/portfolio" },
+  { n: "05", label: "BLOG",     href: "/blog" },
 ];
 
 export default function DesktopHeader() {
-  const path = usePathname();
+  const pathname          = usePathname();
   const { mode, toggleMode } = useTheme();
-  const { scrollY } = useScroll();
+  const { scrollY }       = useScroll();
 
-  /* glass & shrink */
-  const h      = useTransform(scrollY, [0,120], [96,64]);
-  const yPad   = useTransform(scrollY, [0,120], ["1.5rem","0.75rem"]);
-  const bgOpa  = useTransform(scrollY, [0,120], [0,0.85]);
-  const blur   = useTransform(scrollY, [0,120], ["blur(0)","blur(8px)"]);
+  /* shrink + translucency */
+  const h       = useTransform(scrollY, [0,120], [96,64]);
+  const yPad    = useTransform(scrollY, [0,120], ["1.5rem","0.75rem"]);
+  const glass   = useTransform(scrollY, [0,120], [0,0.9]);
+  const blur    = useTransform(scrollY, [0,120], ["blur(0)","blur(10px)"]);
 
   return (
-    <motion.header style={{height: h, paddingTop: yPad, paddingBottom: yPad}}
-      className="fixed inset-x-0 top-0 z-50">
-
-      {/* glass surface */}
-      <motion.div style={{opacity:bgOpa, backdropFilter:blur}}
-        className="absolute inset-0 bg-transparent" /* <-- changed from bg-surface-primary */
+    <motion.header
+      style={{ height: h, paddingTop: yPad, paddingBottom: yPad }}
+      className="fixed inset-x-0 top-0 z-50"
+    >
+      {/* translucent surface */}
+      <motion.div
+        style={{ opacity: glass, backdropFilter: blur }}
+        className="absolute inset-0 bg-bg-secondary/70 border-b border-divider shadow-sm pointer-events-none"
       />
 
-      <div className="relative z-10 container mx-auto grid grid-cols-12 items-center gap-6">
-        {/* LEFT spacer for logo (kept bare per request) */}
-        <div className="col-span-2" />
+      {/* main row – everything pushed right */}
+      <div className="relative z-10 container mx-auto flex items-center justify-end gap-10">
 
         {/* NAVIGATION */}
-        <nav className="col-span-7">
-          <ul className="flex items-center gap-8">
-            {nav.map(({ n, label, href }) => {
-              const active = path === href;
+        <nav>
+          <ul className="flex items-center gap-6">
+            {NAV.map(({ n, label, href }) => {
+              const active = pathname === href;
               return (
                 <li key={href} className="relative">
-                  <Link
-                    href={href}
-                    className={cn(
-                      "group flex items-baseline gap-1 px-2 py-1",
-                      active
-                        ? "text-text-heading font-medium"
-                        : "text-text-secondary hover:text-text-heading"
-                    )}
-                  >
-                    {/* numeric index */}
-                    <span className="font-mono text-xs tracking-wider opacity-50 group-hover:opacity-80 transition-opacity">
+                  <Link href={href} className="group flex items-center gap-2 px-2 py-1">
+                    <span className="font-mono text-xs text-accent-secondary opacity-70 group-hover:opacity-100 transition-opacity">
                       {n}
                     </span>
-                    {label}
-                  </Link>
+                    <span
+                      className={cn(
+                        "text-sm tracking-widest transition-colors",
+                        active ? "text-heading font-semibold"
+                               : "text-text-secondary group-hover:text-text-primary"
+                      )}
+                    >
+                      {label}
+                    </span>
 
-                  {/* shared animated underline */}
-                  {active && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute -bottom-1 left-0 h-[2px] w-full rounded-md bg-brand-primary"
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    />
-                  )}
+                    {/* brutalist pill highlight */}
+                    {active && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        className="absolute inset-x-[-8px] top-0 h-full -z-[1]
+                                   bg-accent-primary/10 border border-accent-primary"
+                        transition={{ type: "spring", stiffness: 600, damping: 40 }}
+                      />
+                    )}
+                  </Link>
                 </li>
               );
             })}
+
+            {/* CTA */}
+            <li>
+              <Link
+                href="/contact"
+                className="relative inline-flex items-center gap-2 px-6 py-[10px] text-sm font-medium
+                           border-2 border-accent-primary bg-accent-primary/5
+                           transition-colors duration-150 hover:bg-accent-primary/20
+                           active:scale-95 focus-visible:outline-none
+                           focus-visible:ring-2 focus-visible:ring-[var(--color-field-focus)]"
+              >
+                BOOK CALL
+                <Icon name="fi:FiArrowRight" size={16} />
+              </Link>
+            </li>
           </ul>
         </nav>
 
-        {/* ACTIONS */}
-        <div className="col-span-3 flex justify-end items-center gap-4">
-          {/* Font Selector with custom trigger */}
-          <div className="relative">
-            <FontSelector
-              variant="dropdown"
-              showPreview={false}
-              className="hover:scale-105 transition-transform"
-              customTrigger={
-                <button
-                  className="grid h-10 w-10 place-content-center rounded-full
-                           bg-surface-alt-2 hover:scale-105 transition-transform
-                           focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]"
-                  aria-label="Change font"
-                >
-                  <span className="text-xl font-semibold">T</span>
-                </button>
-              }
-            />
-          </div>
-
-          {/* Theme Selector */}
-          <ThemeSelector
+        {/* CONTROLS */}
+        <div className="flex items-center gap-3">
+          <FontSelector
             variant="dropdown"
-            showLabels={false}
-            size="sm"
-            className="hover:scale-105 transition-transform"
+            showPreview={false}
+            className="control-btn"
+            customTrigger={<button className="control-btn" aria-label="Change font"><span className="text-lg font-semibold">T</span></button>}
           />
 
-          {/* Light/Dark Mode Toggle */}
+          <ThemeSelector variant="dropdown" showLabels={false} size="sm" className="control-btn" />
+
           <button
             onClick={toggleMode}
             aria-label={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
             aria-pressed={mode === "dark"}
-            className="grid h-10 w-10 place-content-center rounded-full
-                       bg-surface-alt-2 hover:scale-105 transition-transform
-                       focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]"
+            className="control-btn"
           >
-            <Icon
-              name={mode === "light" ? "fi-moon" : "fi-sun"}
-              size={18}
-              className="text-text-primary"
-            />
+            <Icon name={mode === "light" ? "fi:FiMoon" : "fi:FiSun"} size={18} />
           </button>
-
-          {/* Contact Button */}
-          <Link
-            href="/contact"
-            className="btn-primary px-6 py-2 text-sm shadow-md hover:shadow-lg"
-          >
-            Book Call
-          </Link>
         </div>
       </div>
 
-      {/* measurement ticks (subtler, dashed) */}
+      {/* baseline ticks */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3">
-        <div className="border-t border-dashed border-divider-stroke/40 h-px w-full" />
+        <div className="w-full h-px border-t border-dashed border-divider/40" />
         {Array.from({ length: 12 }).map((_, i) => (
           <div
             key={i}
-            className="absolute bottom-0 w-px h-2 bg-divider-stroke/40"
+            className="absolute bottom-0 w-px h-2 bg-divider/40"
             style={{ left: `${(i * 100) / 12}%` }}
           />
         ))}
@@ -147,3 +131,12 @@ export default function DesktopHeader() {
     </motion.header>
   );
 }
+
+/* ---------- globals.css / @layer utilities ---------- */
+/*
+.control-btn {
+  @apply grid place-content-center h-10 w-10 rounded-md bg-surface-alt-2
+         backdrop-blur-sm transition-transform hover:scale-105 active:scale-95
+         focus-visible:ring-2 focus-visible:ring-[var(--color-field-focus)];
+}
+*/

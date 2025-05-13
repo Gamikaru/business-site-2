@@ -32,10 +32,76 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({
       secondary: "var(--blue-500)",
     },
     {
+      id: "blue",
+      name: "Blue",
+      primary: "#4d89e8", // Refined blue from blue theme
+      secondary: "#3ab0bf", // Complementary teal from blue theme
+    },
+    {
+      id: "concrete-jungle",
+      name: "Concrete",
+      primary: "#AF7D41", // Oxidized metal from concrete-jungle theme
+      secondary: "#699379", // Urban moss from concrete-jungle theme
+    },
+    {
+      id: "urban-splash",
+      name: "Urban Splash",
+      primary: "#ff2882", // Electric pink from urban-splash theme
+      secondary: "#00e6ff", // Electric blue from urban-splash theme
+    },
+    {
+      id: "forest-mist",
+      name: "Forest Mist",
+      primary: "#6abaa3", // Misty teal from forest-mist theme
+      secondary: "#7da5c6", // Misty blue from forest-mist theme
+    },
+    {
+      id: "modern-pro",
+      name: "Modern Pro",
+      primary: "#e94560", // Vibrant red from modern pro theme
+      secondary: "#0f3460", // Deep blue from modern pro theme
+    },
+    {
+      id: "duotone",
+      name: "Duotone",
+      primary: "#6923b0", // Rich purple from duotone theme
+      secondary: "#4ad8bb", // Balanced teal from duotone theme
+    },
+    {
+      id: "red",
+      name: "Red",
+      primary: "#BE2D44", // Refined deep crimson from red theme
+      secondary: "#345C80", // Deep oceanic blue from red theme
+    },
+    {
       id: "sunset-oasis",
       name: "Sunset Oasis",
       primary: "var(--sunset-500)",
       secondary: "var(--oasis-500)",
+    },
+    {
+      id: "cyber",
+      name: "Cyber",
+      primary: "#FF2B8C", // Neon magenta from cyber theme
+      secondary: "#00F2FF", // Neon cyan from cyber theme
+    },
+    {
+      id: "tropical-paradise",
+      name: "Tropical",
+      primary: "#00D1C6", // Vibrant teal from tropical theme
+      secondary: "#FF7E6B", // Sunset coral from tropical theme
+    },
+    {
+      id: "nostalgia-pastel",
+      name: "Nostalgia",
+      primary: "#8FCDFF", // Arcade blue from nostalgia theme
+      secondary: "#FFC178", // Retro orange from nostalgia theme
+    },
+    {
+      id: "quantum-nebula",
+      name: "Quantum",
+      primary: "#5D7AFF", // Quantum blue from quantum theme
+      secondary: "#00D4D0", // Nebula teal from quantum theme
     },
     {
       id: "cyber-punk-graffiti",

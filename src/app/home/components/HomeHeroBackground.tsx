@@ -142,20 +142,6 @@ const HomeHeroBackground: React.FC<HomeHeroBackgroundProps> = ({
         <div className="absolute inset-0 bg-dots-dense opacity-20 mix-blend-overlay"></div>
       </div>
 
-      {/* Technician viewport frame */}
-      <div className="absolute top-6 left-6 hidden lg:block">
-        <div className="border border-brand-primary/60 p-1 backdrop-blur-sm bg-black/30">
-          <div className="flex text-[10px] font-mono text-brand-primary/80 justify-between w-36">
-            <span>SYS/{randomData.systemLoad}%</span>
-            <span>MEM/ALLOC</span>
-          </div>
-          <div className="mt-1 border-t border-brand-primary/30 pt-1 text-[10px] font-mono text-white/60">
-            {terminalText}
-            <span className="inline-block w-2 h-3 ml-1 bg-brand-primary animate-pulse"></span>
-          </div>
-        </div>
-      </div>
-
       {/* Coordinate readout */}
       <div className="absolute bottom-20 right-6 hidden lg:block">
         <div className="border border-accent-oceanic/60 p-2 backdrop-blur-sm bg-black/30">

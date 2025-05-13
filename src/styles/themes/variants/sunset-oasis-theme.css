@@ -768,3 +768,15 @@
     scrollbar-width: thin;
     scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
 }
+
+/* Add missing variables to Sunset Oasis Dark theme */
+[data-theme="sunset-oasis-dark"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(239, 230, 217, 0.2);  /* Soft sand grid lines for dark theme */
+}
+
+/* Add missing variables to Sunset Oasis Light theme */
+[data-theme="sunset-oasis-light"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(234, 137, 85, 0.15);  /* Sunset orange grid lines for light theme */
+}

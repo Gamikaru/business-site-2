@@ -6,39 +6,38 @@ export const aboutContent = {
   },
 
   hero: {
-    headline: "Problem-solver with a technical mindset.",
-    subheadline: "Building practical software for real-world challenges",
+    headline: "Problem-solver with a <span class=\"text-emphasis\">technical mindset</span>.",
+    subheadline: "Building <strong>practical software</strong> for <em>real-world challenges</em>",
     imageSrc: "/images/profilepic.jpg",
     imageAlt: "Gavriel Rudolph, tech professional",
   },
 
   bio: {
     heading: "Background",
-    content: `I leverage over 5 years of development experience to build solutions that actually work. After graduating from CodeBoxx's Full Stack bootcamp, I focused on mastering the MERN stack while simultaneously developing expertise in Python-based AI applications.
+    content: `I leverage over <mark>5 years of development experience</mark> to build solutions that <strong>actually work</strong>. After graduating from CodeBoxx's <em>Full Stack bootcamp</em>, I focused on mastering the <span class="text-code">MERN stack</span> while simultaneously developing expertise in <span class="text-code">Python-based AI</span> applications.
 
-    When I'm not building client projects, I'm coaching new developers at CodeBoxx's AI bootcamp and deepening my knowledge through Open University's Data Science program. I believe deeply in practical education and hands-on mentorship.
+    <p>When I'm not building client projects, I'm <span class="highlight">coaching new developers</span> at CodeBoxx's AI bootcamp and deepening my knowledge through <span class="highlight">Open University's Data Science program</span>. I believe deeply in <strong>practical education</strong> and <strong>hands-on mentorship</strong>.</p>
 
-    My approach combines technical precision with clear communication. I build what's needed—nothing less, nothing more—and make sure clients understand what they're getting at every step.`,
+    <p>My approach combines <em>technical precision</em> with <em>clear communication</em>. I build what's needed—<strong>nothing less, nothing more</strong>—and make sure clients understand what they're getting at every step.</p>`,
     stats: [
       {
-        value: "5+",
-        label: "Years Development Experience",
+        value: "<span class=\"stat-highlight\">5+</span>",
+        label: "Years Development<br>Experience",
       },
       {
-        value: "24+",
-        label: "Completed Projects",
+        value: "<span class=\"stat-highlight\">24+</span>",
+        label: "Completed<br>Projects",
       },
       {
-        value: "3",
-        label: "Technical Specializations",
+        value: "<span class=\"stat-highlight\">3</span>",
+        label: "Technical<br>Specializations",
       },
     ],
   },
 
   skills: {
     heading: "Technical Capabilities",
-    introduction:
-      "My skillset spans web development, AI systems, and technical architecture—with practical experience in each area.",
+    introduction: "My skillset spans <strong>web development</strong>, <strong>AI systems</strong>, and <strong>technical architecture</strong>—with <em>practical experience</em> in each area.",
     categories: [
       {
         name: "Web Development",
@@ -81,82 +80,70 @@ export const aboutContent = {
 
   values: {
     heading: "Work Philosophy",
-    introduction:
-      "These principles guide my approach to every project and technical challenge.",
+    introduction: "These principles guide my approach to every project and technical challenge.",
     items: [
       {
         id: "value-1",
-        number: "01",
-        title: "Practical Solutions Over Complexity",
-        description:
-          "I build what works rather than what's trendy. Technology should solve real problems without introducing unnecessary complications.",
+        number: "<span class=\"value-number\">01</span>",
+        title: "<span class=\"gradient-text\">Practical Solutions Over Complexity</span>",
+        description: "I build what <strong>works</strong> rather than what's <em>trendy</em>. Technology should solve <span class=\"text-emphasis\">real problems</span> without introducing unnecessary complications.",
       },
       {
         id: "value-2",
-        number: "02",
-        title: "Communication as Important as Code",
-        description:
-          "The best technical solution is worthless if clients don't understand it. I prioritize clear explanations and documentation.",
+        number: "<span class=\"value-number\">02</span>",
+        title: "<span class=\"gradient-text\">Communication as Important as Code</span>",
+        description: "The best technical solution is worthless if clients don't <strong>understand</strong> it. I prioritize <span class=\"text-emphasis\">clear explanations</span> and <span class=\"text-emphasis\">documentation</span>.",
       },
       {
         id: "value-3",
-        number: "03",
-        title: "Continuous Learning",
-        description:
-          "The tech landscape never stops evolving, and neither do I. I dedicate time each week to exploring emerging tools and techniques.",
+        number: "<span class=\"value-number\">03</span>",
+        title: "<span class=\"gradient-text\">Continuous Learning</span>",
+        description: "The tech landscape never stops evolving, and neither do I. I dedicate time each week to <span class=\"text-emphasis\">exploring emerging tools</span> and <span class=\"text-emphasis\">techniques</span>.",
       },
       {
         id: "value-4",
-        number: "04",
-        title: "Quality Through Testing",
-        description:
-          "Rigorous testing isn't an extra step—it's an essential part of the development process that ensures reliable, maintainable code.",
+        number: "<span class=\"value-number\">04</span>",
+        title: "<span class=\"gradient-text\">Quality Through Testing</span>",
+        description: "<strong>Rigorous testing</strong> isn't an extra step—it's an <em>essential part</em> of the development process that ensures <span class=\"text-emphasis\">reliable, maintainable code</span>.",
       },
     ],
   },
 
   timeline: {
     heading: "Professional Journey",
-    introduction:
-      "The key milestones that have shaped my technical expertise and approach.",
+    introduction: "The key milestones that have shaped my technical expertise and approach.",
     events: [
       {
-        year: "2023",
-        title: "Technical Coach at CodeBoxx",
-        description:
-          "Began mentoring students in the AI/Machine Learning bootcamp, focusing on practical application of neural networks and NLP.",
+        year: "<span class=\"timeline-year\">2023</span>",
+        title: "<strong>Technical Coach at CodeBoxx</strong>",
+        description: "Began <span class=\"text-emphasis\">mentoring students</span> in the AI/Machine Learning bootcamp, focusing on practical application of neural networks and NLP.",
       },
       {
-        year: "2022",
-        title: "Data Science Studies",
-        description:
-          "Started formal Data Science education at Open University to deepen theoretical knowledge while maintaining practical client work.",
+        year: "<span class=\"timeline-year\">2022</span>",
+        title: "<strong>Data Science Studies</strong>",
+        description: "Started formal <span class=\"text-emphasis\">Data Science education</span> at Open University to deepen theoretical knowledge while maintaining practical client work.",
       },
       {
-        year: "2021",
-        title: "Expanded to AI Solutions",
-        description:
-          "Integrated machine learning components into web applications, creating hybrid solutions for process automation and data analysis.",
+        year: "<span class=\"timeline-year\">2021</span>",
+        title: "<strong>Expanded to AI Solutions</strong>",
+        description: "Integrated <span class=\"text-emphasis\">machine learning components</span> into web applications, creating hybrid solutions for process automation and data analysis.",
       },
       {
-        year: "2020",
-        title: "Full-stack Freelancing",
-        description:
-          "Launched independent consulting focused on MERN stack applications for small businesses and technical startups.",
+        year: "<span class=\"timeline-year\">2020</span>",
+        title: "<strong>Full-stack Freelancing</strong>",
+        description: "Launched <span class=\"text-emphasis\">independent consulting</span> focused on MERN stack applications for small businesses and technical startups.",
       },
       {
-        year: "2019",
-        title: "CodeBoxx Graduation",
-        description:
-          "Completed intensive full-stack bootcamp, specializing in JavaScript frameworks and API development.",
+        year: "<span class=\"timeline-year\">2019</span>",
+        title: "<strong>CodeBoxx Graduation</strong>",
+        description: "Completed intensive <span class=\"text-emphasis\">full-stack bootcamp</span>, specializing in JavaScript frameworks and API development.",
       },
     ],
   },
 
   cta: {
-    heading: "Let's build something that works",
-    content:
-      "Whether you need a complete web application, an AI-driven solution, or technical guidance for your team, I'm ready to help transform your ideas into practical, working software.",
+    heading: "Let's build something that <em>works</em>",
+    content: "Whether you need a <strong>complete web application</strong>, an <strong>AI-driven solution</strong>, or <strong>technical guidance</strong> for your team, I'm ready to help transform your ideas into <span class=\"text-emphasis\">practical, working software</span>.",
     ctaText: "Start a Conversation",
     ctaLink: "/contact",
   },

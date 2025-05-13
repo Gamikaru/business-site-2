@@ -10,6 +10,7 @@ import { Divider } from "@/components/common/Divider";
 import { Heading, Text } from "@/components/common/Typography";
 import { cn } from "@/utils/classNames";
 import Image from "next/image";
+import RichText from "@/components/common/Typography/RichText";
 
 interface ProjectItem {
   id: string;
@@ -203,7 +204,7 @@ const HomePortfolio: React.FC<HomePortfolioProps> = ({
         <div className="absolute inset-0 opacity-3 bg-circuit mix-blend-overlay"></div>
       </motion.div>
 
-      <div className="container mx-auto py-16 md:py-28 relative z-10">
+<div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         {/* Technical header with measurement details */}
         <motion.div
           ref={headingRef}
@@ -393,9 +394,7 @@ const HomePortfolio: React.FC<HomePortfolioProps> = ({
                           {project.title}
                         </Heading>
 
-                        <Text className="text-text-secondary">
-                          {project.description}
-                        </Text>
+                        <RichText content={project.description} className="text-text-secondary" />
 
                         {/* Animated call-to-action arrow */}
                         <div className="mt-4 flex justify-end">

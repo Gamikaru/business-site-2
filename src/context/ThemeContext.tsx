@@ -7,14 +7,16 @@ type ColorTheme =
   | "green"
   | "blue"
   | "aurora-borealis"
+  | "concrete-jungle"
   | "cyber-punk-graffiti"
   | "cyber"
   | "duotone"
   | "earth"
+  | "forest-mist"
   | "leather"
   | "modern-pro"
   | "monochrome"
-  | "mystic-forest" // Add the new theme here
+  | "mystic-forest"
   | "nostalgia-pastel"
   | "quantum-nebula"
   | "red"
@@ -22,6 +24,7 @@ type ColorTheme =
   | "silver"
   | "sunset-oasis"
   | "tropical-paradise"
+  | "urban-splash"
   | "winter"
   | "yellow";
 

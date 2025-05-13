@@ -34,6 +34,17 @@
     --letter-spacing-body: 0.025em;
     --letter-spacing-code: 0;
 
+    /* Word spacing - NEW */
+    --word-spacing-tight: -0.025em;
+    --word-spacing-normal: 0.025em;
+    --word-spacing-wide: 0.05em;
+    --word-spacing-wider: 0.1em;
+
+    /* Default word spacing for different text types - NEW */
+    --word-spacing-heading: var(--word-spacing-normal);
+    --word-spacing-body: var(--word-spacing-normal);
+    --word-spacing-code: var(--word-spacing-normal);
+
     /* Font features */
     --font-feature-settings-heading: 'kern', 'liga', 'calt', 'pnum';
     --font-feature-settings-body: 'kern', 'liga', 'calt', 'onum';
@@ -62,12 +73,25 @@
 
 /* Move typography styles to Tailwind layers */
 @layer base {
+    /* Base text styles for better spacing - NEW */
+    html, body {
+        word-spacing: var(--word-spacing-body);
+        word-break: normal;
+        overflow-wrap: break-word;
+    }
+
+    /* Ensure inline elements preserve spaces - NEW */
+    span, a, em, strong, code {
+        white-space: normal;
+    }
+
     /* Base heading styles */
     h1, .h1 {
         @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-heading mb-6;
         font-family: var(--font-heading);
         font-feature-settings: var(--font-feature-settings-heading);
         letter-spacing: var(--letter-spacing-heading);
+        word-spacing: var(--word-spacing-heading); /* NEW */
     }
 
     h2, .h2 {
@@ -75,6 +99,7 @@
         font-family: var(--font-heading);
         font-feature-settings: var(--font-feature-settings-heading);
         letter-spacing: var(--letter-spacing-heading);
+        word-spacing: var(--word-spacing-heading); /* NEW */
     }
 
     h3, .h3 {
@@ -82,6 +107,7 @@
         font-family: var(--font-heading);
         font-feature-settings: var(--font-feature-settings-heading);
         letter-spacing: var(--letter-spacing-heading);
+        word-spacing: var(--word-spacing-heading); /* NEW */
     }
 
     h4, .h4 {
@@ -89,6 +115,7 @@
         font-family: var(--font-heading);
         font-feature-settings: var(--font-feature-settings-heading);
         letter-spacing: var(--letter-spacing-heading);
+        word-spacing: var(--word-spacing-heading); /* NEW */
     }
 
     h5, .h5 {
@@ -96,6 +123,7 @@
         font-family: var(--font-heading);
         font-feature-settings: var(--font-feature-settings-heading);
         letter-spacing: var(--letter-spacing-heading);
+        word-spacing: var(--word-spacing-heading); /* NEW */
     }
 
     h6, .h6 {
@@ -103,6 +131,18 @@
         font-family: var(--font-heading);
         font-feature-settings: var(--font-feature-settings-heading);
         letter-spacing: var(--letter-spacing-heading);
+        word-spacing: var(--word-spacing-heading); /* NEW */
+    }
+
+    /* Paragraph styles - NEW */
+    p {
+        @apply mb-4 leading-relaxed;
+        font-family: var(--font-body);
+        font-feature-settings: var(--font-feature-settings-body);
+        letter-spacing: var(--letter-spacing-body);
+        word-spacing: var(--word-spacing-body);
+        word-break: normal;
+        overflow-wrap: break-word;
     }
 }
 
@@ -117,6 +157,8 @@
     --font-heading: 'Montserrat', var(--system-sans);
     --font-body: 'Inter', var(--system-sans);
     --font-code: 'JetBrains Mono', var(--system-mono);
+    --word-spacing-heading: var(--word-spacing-normal); /* NEW */
+    --word-spacing-body: var(--word-spacing-normal); /* NEW */
 }
 
 /* Elegant */
@@ -124,6 +166,8 @@
     --font-heading: 'Playfair Display', var(--system-serif);
     --font-body: 'Lato', var(--system-sans);
     --font-code: 'Fira Code', var(--system-mono);
+    --word-spacing-heading: var(--word-spacing-normal); /* NEW */
+    --word-spacing-body: var(--word-spacing-normal); /* NEW */
 }
 
 /* Technical */
@@ -131,6 +175,8 @@
     --font-heading: 'Roboto', var(--system-sans);
     --font-body: 'Source Sans Pro', var(--system-sans);
     --font-code: 'Inconsolata', var(--system-mono);
+    --word-spacing-heading: var(--word-spacing-normal); /* NEW */
+    --word-spacing-body: var(--word-spacing-normal); /* NEW */
 }
 
 /* Editorial - Blueprint Editorial style */
@@ -138,6 +184,8 @@
     --font-heading: 'Fraunces', var(--system-serif);
     --font-body: 'Libre Franklin', var(--system-sans);
     --font-code: 'IBM Plex Mono', var(--system-mono);
+    --word-spacing-heading: var(--word-spacing-wide); /* NEW - increased for Fraunces */
+    --word-spacing-body: var(--word-spacing-normal); /* NEW */
 }
 
 /* Neo Geometric */
@@ -145,6 +193,8 @@
     --font-heading: 'Space Grotesk', var(--system-sans);
     --font-body: 'DM Sans', var(--system-sans);
     --font-code: 'Recursive Mono', var(--system-mono);
+    --word-spacing-heading: var(--word-spacing-normal); /* NEW */
+    --word-spacing-body: var(--word-spacing-normal); /* NEW */
 }
 
 /* Cybervoid */
@@ -152,6 +202,8 @@
     --font-heading: 'Rajdhani', var(--system-sans);
     --font-body: 'Quantico', var(--system-sans);
     --font-code: 'VT323', var(--system-mono);
+    --word-spacing-heading: var(--word-spacing-wide); /* NEW - increased for better readability */
+    --word-spacing-body: var(--word-spacing-wide); /* NEW - increased for better readability */
 }
 
 /* System */
@@ -159,6 +211,8 @@
     --font-heading: var(--system-sans);
     --font-body: var(--system-sans);
     --font-code: var(--system-mono);
+    --word-spacing-heading: var(--word-spacing-normal); /* NEW */
+    --word-spacing-body: var(--word-spacing-normal); /* NEW */
 }
 
 /* Keep only the essential utility classes from the original file */
@@ -168,18 +222,21 @@
         font-family: var(--font-heading);
         font-feature-settings: var(--font-feature-settings-heading);
         letter-spacing: var(--letter-spacing-heading);
+        word-spacing: var(--word-spacing-heading); /* NEW */
     }
 
     .font-body {
         font-family: var(--font-body);
         font-feature-settings: var(--font-feature-settings-body);
         letter-spacing: var(--letter-spacing-body);
+        word-spacing: var(--word-spacing-body); /* NEW */
     }
 
     .font-code {
         font-family: var(--font-code);
         font-feature-settings: var(--font-feature-settings-code);
         letter-spacing: var(--letter-spacing-code);
+        word-spacing: var(--word-spacing-code); /* NEW */
     }
 
     /* Font loading optimization */
@@ -188,5 +245,82 @@
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* NEW - Word spacing utility classes */
+    .word-spacing-tight {
+        word-spacing: var(--word-spacing-tight);
+    }
+
+    .word-spacing-normal {
+        word-spacing: var(--word-spacing-normal);
+    }
+
+    .word-spacing-wide {
+        word-spacing: var(--word-spacing-wide);
+    }
+
+    .word-spacing-wider {
+        word-spacing: var(--word-spacing-wider);
+    }
+
+    /* NEW - Text spacing safeguards */
+    .preserve-whitespace {
+        white-space: pre-wrap;
+        word-break: normal;
+        overflow-wrap: break-word;
+    }
+
+    .text-readable {
+        letter-spacing: var(--letter-spacing-body);
+        word-spacing: var(--word-spacing-wide);
+        line-height: var(--line-height-normal);
+    }
+
+    /* Rich text styling */
+    .rich-text strong {
+        font-weight: 600;
+    }
+
+    .rich-text em {
+        font-style: italic;
+    }
+
+    .rich-text .text-emphasis {
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+
+    .rich-text .text-code {
+        font-family: monospace;
+        background-color: var(--color-bg-tertiary);
+        padding: 0.1em 0.3em;
+        border-radius: 3px;
+    }
+
+    .rich-text .accent-secondary {
+        color: var(--color-accent-secondary);
+    }
+
+    .rich-text .accent-warm {
+        color: var(--color-accent-warm);
+    }
+
+    .rich-text .accent-contrast {
+        color: var(--color-accent-contrast);
+    }
+
+    .rich-text .underline-accent {
+        text-decoration: underline;
+        text-decoration-color: var(--color-accent-secondary);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+    }
+
+    .rich-text .underline-warm {
+        text-decoration: underline;
+        text-decoration-color: var(--color-accent-warm);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
     }
 }

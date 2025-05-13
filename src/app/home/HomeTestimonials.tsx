@@ -2,10 +2,22 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ScrollReveal, TextReveal, AnimatedPath } from "@/components/core/Animations";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import {
+  ScrollReveal,
+  TextReveal,
+  AnimatedPath,
+} from "@/components/core/Animations";
 import { Divider } from "@/components/common/Divider";
 import { Heading } from "@/components/common/Typography";
+import { processQuoteIntoSegments } from "@/utils/textUtils";
+import RichText  from "@/components/common/Typography/RichText";
+
 import { cn } from "@/utils/classNames";
 
 interface TestimonialItem {
@@ -53,19 +65,26 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const opacityWave = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
+  const opacityWave = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.8, 1],
+    [0.6, 1, 1, 0.6]
+  );
 
   // Check if quote is in view
   useEffect(() => {
     if (!quoteRef.current) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setIsQuoteVisible(true);
-      } else {
-        setIsQuoteVisible(false);
-      }
-    }, { threshold: 0.5 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsQuoteVisible(true);
+        } else {
+          setIsQuoteVisible(false);
+        }
+      },
+      { threshold: 0.5 }
+    );
 
     observer.observe(quoteRef.current);
     return () => observer.disconnect();
@@ -78,7 +97,9 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
     // Get the current testimonial
     const testimonial = items[activeIndex];
     // Split quote into segments for highlighting
-    const segments = testimonial.quote.split(/\s*[,.]\s*/g).filter(segment => segment.trim().length > 0);
+    const segments = testimonial.quote
+      .split(/\s*[,.]\s*/g)
+      .filter((segment) => segment.trim().length > 0);
 
     // Set up cycling through segments
     let currentSegmentIndex = 0;
@@ -102,10 +123,20 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
   const testimonial = items[activeIndex];
 
   // Process quote for highlighting
+  // src/components/home/HomeTestimonials.tsx
+
+  // processQuote function - updated to preserve spaces between words
+  // Alternative simpler implementation
+  // Alternative simpler implementation
+  // Updated processQuote function for src/components/home/HomeTestimonials.tsx
+  // Add this import to the top of HomeTestimonials.tsx
+
+  // Then replace the processQuote function with this:
   const processQuote = () => {
     if (!testimonial) return null;
 
-    const segments = testimonial.quote.split(/\s*[,.]\s*/g).filter(segment => segment.trim().length > 0);
+    // Use the utility function to split the quote with proper spacing
+    const segments = processQuoteIntoSegments(testimonial.quote, 3);
 
     return (
       <>
@@ -114,8 +145,10 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
           <React.Fragment key={index}>
             <motion.span
               className={cn(
-                "inline-block transition-colors duration-300",
-                highlightedText === index ? "text-brand-primary font-semibold" : "text-text-primary"
+                "inline-block whitespace-normal preserve-whitespace",
+                highlightedText === index
+                  ? "text-brand-primary font-semibold word-spacing-wide"
+                  : "text-text-primary word-spacing-normal"
               )}
               animate={{
                 scale: highlightedText === index ? 1.05 : 1,
@@ -124,7 +157,10 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
             >
               {segment}
             </motion.span>
-            {index < segments.length - 1 && ", "}
+            {/* Explicit space between segments */}
+            {index < segments.length - 1 && (
+              <span className="inline-block whitespace-pre"> </span>
+            )}
           </React.Fragment>
         ))}
         <span className="text-4xl text-brand-primary">&quot;</span>
@@ -147,7 +183,7 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
           className="absolute inset-0"
           style={{
             y: backgroundY,
-            opacity: opacityWave
+            opacity: opacityWave,
           }}
         >
           {/* Multiple wave layers with animation */}
@@ -197,7 +233,7 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
                 strokeWidth={i % 5 === 0 ? "0.5" : "0.2"}
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 1.5, delay: 0.2 + (i * 0.05) }}
+                transition={{ duration: 1.5, delay: 0.2 + i * 0.05 }}
               />
             ))}
 
@@ -213,7 +249,7 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
                 strokeWidth={i % 5 === 0 ? "0.5" : "0.2"}
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 1.5, delay: 0.2 + (i * 0.05) }}
+                transition={{ duration: 1.5, delay: 0.2 + i * 0.05 }}
               />
             ))}
           </svg>
@@ -223,7 +259,7 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
         <div className="absolute inset-0 opacity-10 bg-dots-dense"></div>
       </div>
 
-      <div className="container mx-auto py-16 md:py-32 relative z-10">
+<div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         {/* Enhanced section header with technical styling */}
         <ScrollReveal
           direction="up"
@@ -309,7 +345,14 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
           >
             <div className="bg-bg-glass backdrop-blur-sm p-2 rounded-full border border-brand-primary/30">
               <div className="relative">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-primary)" strokeWidth="2">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="var(--color-brand-primary)"
+                  strokeWidth="2"
+                >
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                   <polyline points="22 4 12 14.01 9 11.01"></polyline>
                 </svg>
@@ -350,7 +393,7 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
               className="mb-8 text-center"
             >
               <div className="text-xl md:text-2xl lg:text-3xl font-heading italic leading-relaxed">
-                {processQuote()}
+                <RichText content={testimonial.quote} />
               </div>
             </TextReveal>
 
@@ -383,7 +426,12 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
                 style={{ transformOrigin: "right" }}
               >
                 <svg width="40" height="2" viewBox="0 0 40 2">
-                  <rect width="40" height="2" fill="var(--color-brand-primary)" opacity="0.3" />
+                  <rect
+                    width="40"
+                    height="2"
+                    fill="var(--color-brand-primary)"
+                    opacity="0.3"
+                  />
                 </svg>
               </motion.div>
 
@@ -395,7 +443,12 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
                 style={{ transformOrigin: "left" }}
               >
                 <svg width="40" height="2" viewBox="0 0 40 2">
-                  <rect width="40" height="2" fill="var(--color-brand-primary)" opacity="0.3" />
+                  <rect
+                    width="40"
+                    height="2"
+                    fill="var(--color-brand-primary)"
+                    opacity="0.3"
+                  />
                 </svg>
               </motion.div>
             </div>
@@ -412,7 +465,9 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              whileHover={{ boxShadow: "0 0 20px rgba(var(--color-brand-primary-rgb), 0.2)" }}
+              whileHover={{
+                boxShadow: "0 0 20px rgba(var(--color-brand-primary-rgb), 0.2)",
+              }}
             >
               {/* Technical corner details */}
               <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-brand-primary"></div>
@@ -422,7 +477,10 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
 
               <div className="relative z-10">
                 <p className="text-text-primary italic">
-                  <span className="text-brand-primary font-bold inline-block mr-2">↑</span> {testimonial.result}
+                  <span className="text-brand-primary font-bold inline-block mr-2">
+                    ↑
+                  </span>{" "}
+                  <RichText content={testimonial.result} />
                 </p>
               </div>
 
@@ -463,9 +521,17 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
 
         {/* Technical grid overlay on divider */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <svg className="absolute bottom-0 left-0 right-0 h-[80px] w-full" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none">
+          <svg
+            className="absolute bottom-0 left-0 right-0 h-[80px] w-full"
+            preserveAspectRatio="none"
+            viewBox="0 0 100 100"
+            fill="none"
+          >
             <motion.line
-              x1="20" y1="0" x2="60" y2="100"
+              x1="20"
+              y1="0"
+              x2="60"
+              y2="100"
               stroke="var(--color-brand-primary)"
               strokeWidth="0.5"
               strokeOpacity="0.3"
@@ -474,7 +540,10 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
               transition={{ duration: 1.5, delay: 0.2 }}
             />
             <motion.line
-              x1="80" y1="0" x2="40" y2="100"
+              x1="80"
+              y1="0"
+              x2="40"
+              y2="100"
               stroke="var(--color-accent-oceanic)"
               strokeWidth="0.5"
               strokeOpacity="0.3"
@@ -485,7 +554,8 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
             />
 
             <motion.text
-              x="10" y="30"
+              x="10"
+              y="30"
               fill="var(--color-accent-oceanic)"
               fontSize="3"
               fontFamily="monospace"

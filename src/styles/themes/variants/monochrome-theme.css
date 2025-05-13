@@ -745,3 +745,15 @@
     scrollbar-width: thin;
     scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
 }
+
+/* Add missing variables to Monochrome Dark theme */
+[data-theme="monochrome-dark"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(229, 229, 233, 0.15);  /* Silver grid lines for dark theme */
+}
+
+/* Add missing variables to Monochrome Light theme */
+[data-theme="monochrome-light"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(173, 173, 186, 0.12);  /* Subtle gray grid lines for light theme */
+}

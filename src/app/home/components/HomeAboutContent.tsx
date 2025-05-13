@@ -1,21 +1,29 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { staggerContainerVariants, staggerItemVariants } from "@/components/core/Animations";
+import { TextReveal, ScrollReveal } from "@/components/core/Animations";
 import { Button } from "@/components/common/Button";
-import { Heading } from "@/components/common/Typography";
+import { Heading, Text } from "@/components/common/Typography";
+import RichText from "@/components/common/Typography/RichText";
 
 interface HomeAboutContentProps {
   heading: string;
-  content: string;
+  content: React.ReactNode; // Accept ReactNode for rich text
   ctaText: string;
   ctaLink: string;
   isHeadingInView: boolean;
   techValues: {
     sectionRatio: number;
+    contentWidth: number;
+    imageScale: string;
   };
   mousePosition: {
     x: number;
     y: number;
+  };
+  accentColors: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
   };
 }
 
@@ -27,143 +35,117 @@ const HomeAboutContent: React.FC<HomeAboutContentProps> = ({
   isHeadingInView,
   techValues,
   mousePosition,
+  accentColors
 }) => {
-  // Format the content to handle paragraphs
-  const paragraphs = content.split("\n\n").filter((p) => p.trim() !== "");
-
   return (
-    <>
-      {/* Technical measurement line at top */}
-      <motion.div
-        className="absolute -top-6 left-0 right-0 flex justify-between items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHeadingInView ? 1 : 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="flex-1 h-px bg-accent-oceanic/50"></div>
-        <div className="px-4 text-[10px] font-mono text-accent-oceanic tracking-wider">
-          PROFILE_SECTION/{techValues.sectionRatio}
-        </div>
-        <div className="flex-1 h-px bg-accent-oceanic/50"></div>
-      </motion.div>
-
-      <motion.div
-        variants={staggerContainerVariants}
-        initial="hidden"
-        animate={isHeadingInView ? "visible" : "hidden"}
-        className="relative z-10"
-      >
-        {/* Enhanced heading with blueprint styling */}
-        <motion.div
-          variants={staggerItemVariants}
-          className="mb-6 relative"
+    <div>
+      {/* Technical measurement indicator */}
+      <div className="flex items-center mb-2 text-xs font-mono">
+        <div
+          className="w-2 h-2 rounded-full mr-2"
+          style={{ backgroundColor: accentColors.primary }}
+        ></div>
+        <span
+          className="text-text-tertiary"
+          style={{ color: accentColors.secondary }}
         >
-          <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-8 bg-brand-primary"></div>
-          <Heading
-            level={2}
-            className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading"
+          DATA/{techValues.sectionRatio}% WIDTH/{techValues.contentWidth}
+        </span>
+      </div>
+
+      {/* Section heading with enhanced styling */}
+      <TextReveal
+        direction="up"
+        delay={0.1}
+        splitBy="words"
+        staggerChildren={true}
+        className="mb-6"
+      >
+        <Heading
+          level={2}
+          className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl relative inline-block"
+        >
+          {heading}
+          <motion.div
+            className="absolute -bottom-3 left-0 right-0 h-[3px]"
+            initial={{ width: 0 }}
+            animate={{ width: isHeadingInView ? "100%" : "0%" }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <span className="relative">
-              {heading}
-              <motion.div
-                className="absolute -bottom-2 left-0 h-[3px] bg-brand-primary"
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              />
-            </span>
-          </Heading>
-        </motion.div>
+            <div
+              className="h-full"
+              style={{
+                background: `linear-gradient(to right, transparent, ${accentColors.primary}, transparent)`
+              }}
+            ></div>
+          </motion.div>
+        </Heading>
+      </TextReveal>
 
-        {/* Enhanced content paragraphs */}
-        <div className="space-y-6">
-          {paragraphs.map((paragraph, index) => (
-            <motion.div
-              key={index}
-              variants={staggerItemVariants}
-              className="relative bg-bg-primary/60 backdrop-blur-sm rounded p-4 border-l-2 border-brand-primary/70"
-            >
-              <p className="text-base md:text-lg text-text-primary leading-relaxed">{paragraph}</p>
+      {/* Content with rich text formatting */}
+      <ScrollReveal direction="up" delay={0.3} className="mb-8">
+        <div className="relative">
+          {/* Enhanced decorative elements */}
+          <div
+            className="absolute -left-4 top-0 h-full w-1"
+            style={{ background: `linear-gradient(to bottom, transparent, ${accentColors.secondary}, transparent)` }}
+          ></div>
 
-              {/* Add decorative elements to first paragraph */}
-              {index === 0 && (
-                <div className="absolute -right-2 -top-2 w-6 h-6">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <motion.path
-                      d="M2 22L22 2M12 2V6M6 2H2V6M22 18V22H18M22 12H18M2 12H6M12 22V18"
-                      stroke="var(--color-brand-primary)"
-                      strokeWidth="1"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 1.5, delay: 1 }}
-                    />
-                  </svg>
-                </div>
-              )}
-            </motion.div>
-          ))}
+          {/* Render rich text content */}
+          <div className="text-lg leading-relaxed text-text-primary">
+            {content}
+          </div>
         </div>
+      </ScrollReveal>
 
-        {/* Enhanced CTA button with technical styling */}
-        <motion.div
-          variants={staggerItemVariants}
-          className="mt-8 relative"
-        >
-          <div className="relative group">
-            <Button
-              intent="primary"
-              href={ctaLink}
-              icon={
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8 1L15 8L8 15"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M15 8H1"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              }
-              iconPosition="right"
-              className="relative z-10"
-            >
-              {ctaText}
-            </Button>
+      {/* Enhanced CTA button */}
+      <ScrollReveal direction="up" delay={0.5}>
+        <div className="relative group">
+          {/* Button glow effect */}
+          <div
+            className="absolute inset-0 -m-1 rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300"
+            style={{
+              background: `radial-gradient(circle, ${accentColors.secondary} 0%, transparent 70%)`
+            }}
+          ></div>
 
-            {/* Button animation effects */}
-            <motion.div
-              className="absolute inset-0 bg-accent-oceanic rounded opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-              animate={{
-                boxShadow: ["0 0 0px rgba(var(--color-accent-oceanic-rgb), 0)", "0 0 15px rgba(var(--color-accent-oceanic-rgb), 0.5)", "0 0 0px rgba(var(--color-accent-oceanic-rgb), 0)"]
-              }}
-              transition={{
-                duration: 2,
-                ease: "easeInOut",
-                repeat: Infinity
-              }}
-            />
-          </div>
-
-          {/* Technical coordinates */}
-          <div className="absolute -right-5 -bottom-5 text-xs font-mono text-accent-oceanic opacity-80">
-            {Math.round(mousePosition.x * 100)}/{Math.round(mousePosition.y * 100)}
-          </div>
-        </motion.div>
-      </motion.div>
-    </>
+          <Button
+            intent="outline"
+            size="lg"
+            href={ctaLink}
+            className="relative z-10"
+            style={{ borderColor: accentColors.primary }}
+            icon={
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 1L15 8L8 15"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M15 8H1"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            }
+            iconPosition="right"
+          >
+            {ctaText}
+          </Button>
+        </div>
+      </ScrollReveal>
+    </div>
   );
 };
 

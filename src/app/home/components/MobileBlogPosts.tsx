@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/common/Button";
 import { cn } from "@/utils/classNames";
+import { RichText } from "@/components/common/Typography";
 
 interface BlogPost {
   id: string;
@@ -58,7 +59,7 @@ const MobileBlogPosts: React.FC<MobileBlogPostsProps> = ({ posts, analyticsData 
                   {/* Reading time badge */}
                   <div className="absolute top-3 left-3 px-2 py-1 bg-black/60 backdrop-blur-sm rounded flex items-center space-x-1.5">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
+                      <circle cx="12" cx="12" r="10"></circle>
                       <path d="M12 6v6l4 2"></path>
                     </svg>
                     <span className="text-xs text-white font-medium">{post.readTime}</span>
@@ -77,9 +78,9 @@ const MobileBlogPosts: React.FC<MobileBlogPostsProps> = ({ posts, analyticsData 
                     {post.title}
                   </h3>
 
-                  <p className="text-sm text-text-secondary mb-3">
-                    {post.excerpt}
-                  </p>
+                  <div className="text-sm text-text-secondary mb-3">
+                    <RichText content={post.excerpt} />
+                  </div>
 
                   {/* Technical metrics */}
                   {analytics && (

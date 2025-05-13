@@ -48,13 +48,13 @@ const DesktopFooter: React.FC = () => {
   return (
     <footer className="bg-bg-primary pt-16 border-t border-divider">
       {/* Blueprint Grid Overlay */}
-      <div className="relative container mx-auto">
+      <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         <div
           className="absolute inset-0 opacity-20 pointer-events-none"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%2328B487' stroke-width='0.8'%3E%3Cpath d='M0 0 L100 0 L100 100 L0 100 Z'/%3E%3Cpath d='M25 0 L25 100 M50 0 L50 100 M75 0 L75 100'/%3E%3Cpath d='M0 25 L100 25 M0 50 L100 50 M0 75 L100 75'/%3E%3C/g%3E%3C/svg%3E")`,
             backgroundSize: "100px 100px",
-            backgroundRepeat: "repeat"
+            backgroundRepeat: "repeat",
           }}
         />
 
@@ -73,7 +73,9 @@ const DesktopFooter: React.FC = () => {
                     href={link.href}
                     className="text-text-secondary hover:text-heading transition-colors duration-200 inline-flex items-center group"
                   >
-                    <span className="mr-2 text-brand-primary opacity-80">•</span>
+                    <span className="mr-2 text-brand-primary opacity-80">
+                      •
+                    </span>
                     {link.label}
                   </Link>
                 </li>
@@ -94,7 +96,9 @@ const DesktopFooter: React.FC = () => {
                     href={link.href}
                     className="text-text-secondary hover:text-heading transition-colors duration-200 inline-flex items-center group"
                   >
-                    <span className="mr-2 text-brand-primary opacity-80">•</span>
+                    <span className="mr-2 text-brand-primary opacity-80">
+                      •
+                    </span>
                     {link.label}
                   </Link>
                 </li>
@@ -110,7 +114,9 @@ const DesktopFooter: React.FC = () => {
             </h3>
             <div className="mb-4">
               <h4 className="text-heading font-medium">Latest Post ▶</h4>
-              <p className="text-text-secondary text-sm mt-1">&quot;LLM Guardrails&quot;</p>
+              <p className="text-text-secondary text-sm mt-1">
+                &quot;LLM Guardrails&quot;
+              </p>
               <Link
                 href="/blog/llm-guardrails"
                 className="text-sm text-brand-primary mt-2 inline-flex items-center group hover:text-accent-oceanic transition-colors duration-200"
@@ -180,10 +186,17 @@ const DesktopFooter: React.FC = () => {
 
         {/* Newsletter Section */}
         <div className="relative py-8 border-t border-divider text-center">
-          <h3 className="text-xl font-heading font-semibold text-heading mb-4">Newsletter</h3>
+          <h3 className="text-xl font-heading font-semibold text-heading mb-4">
+            Newsletter
+          </h3>
           <div className="max-w-2xl mx-auto">
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-3">
-              <p className="text-text-secondary mr-2 whitespace-nowrap">Stay two steps ahead.</p>
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col sm:flex-row items-center gap-3"
+            >
+              <p className="text-text-secondary mr-2 whitespace-nowrap">
+                Stay two steps ahead.
+              </p>
               <div className="flex-1 relative">
                 <input
                   type="email"
@@ -214,7 +227,8 @@ const DesktopFooter: React.FC = () => {
                   "Subscribed!"
                 ) : (
                   <>
-                    Subscribe <Icon name="fi:FiSend" size={14} className="ml-2" />
+                    Subscribe{" "}
+                    <Icon name="fi:FiSend" size={14} className="ml-2" />
                   </>
                 )}
               </button>
@@ -225,7 +239,8 @@ const DesktopFooter: React.FC = () => {
 
       {/* Copyright Footer */}
       <div className="border-t border-divider py-4 text-text-tertiary">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
+        <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
+
           <div>© 2025 Gavriel Rudolph — Built with React & ☕ in Tampa</div>
         </div>
       </div>

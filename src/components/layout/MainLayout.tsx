@@ -24,7 +24,6 @@ export default function MainLayout({
 
       <main
         className={`
-          ${headerOffset ? "pt-16 md:pt-24" : ""}
           ${withPadding ? "py-8 px-4 md:px-6 lg:px-8" : ""}
           ${className}
         `}

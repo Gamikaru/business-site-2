@@ -10,6 +10,7 @@ import {
   staggerItemVariants,
 } from "@/components/core/Animations";
 import { Heading, Text } from "@/components/common/Typography";
+import RichText from "@/components/common/Typography/RichText";
 import { cn } from "@/utils/classNames";
 
 interface TimelineEvent {
@@ -174,7 +175,7 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
         </div>
       </div>
 
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         {/* Section heading with technical styling */}
         <div ref={headingRef} className="max-w-3xl mx-auto text-center mb-16">
           <TextReveal direction="up" delay={0.2} className="mb-6">
@@ -182,7 +183,7 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
               level={2}
               className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading relative inline-block"
             >
-              {heading}
+              <RichText content={heading} className="preserve-whitespace" />
               <motion.div
                 className="absolute -bottom-3 left-0 right-0 h-[3px]"
                 initial={{ width: 0 }}
@@ -196,7 +197,7 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
 
           <ScrollReveal direction="up" delay={0.3}>
             <Text className="text-center text-text-secondary text-lg md:text-xl">
-              {introduction}
+              <RichText content={introduction} className="preserve-whitespace" />
             </Text>
           </ScrollReveal>
 
@@ -263,7 +264,7 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
                     )}
                   >
                     <Text className="font-mono font-bold" weight="bold">
-                      {event.year}
+                      <RichText content={event.year} />
                     </Text>
                   </div>
 
@@ -313,11 +314,11 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
                       level={4}
                       className="mb-3 text-xl font-heading text-heading font-semibold"
                     >
-                      {event.title}
+                      <RichText content={event.title} className="preserve-whitespace" />
                     </Heading>
 
                     <Text className="text-text-primary">
-                      {event.description}
+                      <RichText content={event.description} className="preserve-whitespace" />
                     </Text>
 
                     {/* Technical data readout */}

@@ -115,6 +115,9 @@
     --color-bg-selection: rgba(65, 252, 3, 0.25);
     /* Text selection background - target marked */
 
+    /* Grid colors */
+    --color-grid-lines: rgba(240, 250, 246, 0.3);  /* Bright grid lines for dark cyberpunk theme */
+
     /* ════════════════════════════════════
      TEXT COLORS
      Typography hierarchy with precise contrast levels
@@ -468,6 +471,9 @@
     /* Dropdown menu background - option panel */
     --color-bg-selection: rgba(26, 200, 0, 0.2);
     /* Text selection background - data selection */
+
+    /* Grid colors */
+    --color-grid-lines: rgba(26, 47, 40, 0.25);  /* Darker grid lines for light cyberpunk theme */
 
     /* ════════════════════════════════════
      TEXT COLORS

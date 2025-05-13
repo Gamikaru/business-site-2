@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Heading } from "@/components/common/Typography";
+import { Heading, RichText } from "@/components/common/Typography";
 import { Button } from "@/components/common/Button";
 import { cn } from "@/utils/classNames";
 import { staggerItemVariants } from "@/components/core/Animations";
@@ -100,9 +100,9 @@ const SecondaryBlogPosts: React.FC<SecondaryBlogPostsProps> = ({
                   {post.title}
                 </Heading>
 
-                <p className="text-sm text-text-secondary mb-auto">
-                  {post.excerpt}
-                </p>
+                <div className="text-text-secondary mb-6 md:text-lg">
+                  <RichText content={post.excerpt} />
+                </div>
 
                 {/* Technical metrics */}
                 {analytics && (

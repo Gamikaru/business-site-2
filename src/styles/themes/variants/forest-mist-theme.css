@@ -1,0 +1,717 @@
+/* src/styles/themes/forest-mist-theme.css */
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   FOREST MIST THEME SYSTEM
+   A nature-inspired palette built around deep forest greens and misty blues,
+   creating a serene, organic experience with earthy tones and foggy accents.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   FOREST MIST DARK THEME (Default)
+   Deep forest background with misty accents and earthy highlights
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="forest-mist-dark"] {
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with clear progression
+     ════════════════════════════════════ */
+    --color-bg-primary: #162521;
+    /* Main application background - deep forest charcoal */
+    --color-bg-secondary: #1e302b;
+    /* Secondary containers, cards, sidebars - deep moss */
+    --color-bg-tertiary: #263b35;
+    /* Elevated surfaces, modals, popovers - forest shadow */
+    --color-bg-card: rgba(30, 48, 43, 0.97);
+    /* Card backgrounds with slight transparency - deep moss with transparency */
+    --color-bg-glass: rgba(236, 242, 240, 0.08);
+    /* Glass effect backgrounds - subtle foggy overlay */
+    --color-bg-code: rgba(22, 37, 33, 0.85);
+    /* Code block backgrounds - slightly lighter than primary */
+    --color-bg-input: rgba(38, 59, 53, 0.65);
+    /* Form element backgrounds with subtle contrast */
+    --color-bg-hover: rgba(106, 186, 163, 0.12);
+    /* Hover state background - subtle misty teal highlight */
+    --color-bg-active: rgba(106, 186, 163, 0.22);
+    /* Active/selected state background - stronger misty teal */
+    --color-bg-disabled: rgba(60, 75, 70, 0.35);
+    /* Disabled element background - muted moss */
+    --color-bg-tooltip: rgba(22, 37, 33, 0.97);
+    /* Tooltip background - nearly opaque dark forest */
+    --color-bg-dropdown: rgba(30, 48, 43, 0.98);
+    /* Dropdown menu background - deep moss with transparency */
+    --color-bg-selection: rgba(106, 186, 163, 0.25);
+    /* Text selection background - misty teal */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with precise contrast levels
+     ════════════════════════════════════ */
+    --color-text-primary: #e6edeb;
+    /* Main body text - foggy white for reduced eye strain */
+    --color-text-secondary: #b8c6c2;
+    /* Secondary/supporting text - misty gray */
+    --color-text-tertiary: rgba(184, 198, 194, 0.7);
+    /* De-emphasized text, subtitles, captions - faded mist */
+    --color-text-disabled: rgba(184, 198, 194, 0.5);
+    /* Disabled text - significantly reduced contrast */
+    --color-text-on-accent: #ffffff;
+    /* Text on accent-colored backgrounds - pure white */
+    --color-text-code: #a8d6c9;
+    /* Code and pre-formatted text - soft mint for readability */
+
+    /* Headings */
+    --color-heading: #cfe6e0;
+    /* Standard headings - foggy mint */
+    --color-heading-accent: #6abaa3;
+    /* Accented headings - misty teal */
+    --color-subheading: #b8c6c2;
+    /* Subheadings, section titles - misty gray */
+
+    /* Special text */
+    --color-text-emphasis: #6abaa3;
+    /* Emphasized text, highlights - misty teal */
+    --color-text-inverted: #e6edeb;
+    /* Inverted text (on light backgrounds) - foggy white */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with complementary relationship
+     ════════════════════════════════════ */
+    --color-brand-primary: #6abaa3;
+    /* Primary brand color - misty teal */
+    --color-brand-secondary: #4a9884;
+    /* Secondary brand color - deeper misty teal */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: #6abaa3;
+    /* Primary accent for main interactive elements - misty teal */
+    --color-accent-primary-hover: #559e8b;
+    /* Hover state for primary accent - deeper misty teal */
+    --color-accent-primary-active: #4a9884;
+    /* Active state for primary accent - even deeper misty teal */
+    --color-accent-secondary: #4a9884;
+    /* Secondary accent for visual variety - deeper misty teal */
+    --color-accent-tertiary: #91caba;
+    /* Tertiary accent for subtle highlights - lighter misty teal */
+    --color-accent-warm: #d2a76c;
+    /* Warm accent for attention-grabbing elements - autumn amber */
+    --color-accent-contrast: #a57fb8;
+    /* High-contrast accent for additional contrast - forest bloom purple */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with meaningful progression
+     ════════════════════════════════════ */
+    --color-interactive: #6abaa3;
+    /* Default interactive element color - misty teal */
+    --color-interactive-hover: #559e8b;
+    /* Hover state - deeper misty teal */
+    --color-interactive-active: #4a9884;
+    /* Active/pressed state - even deeper misty teal */
+    --color-interactive-focus: #6abaa3;
+    /* Focus state indicator - misty teal */
+    --color-interactive-disabled: rgba(106, 186, 163, 0.4);
+    /* Disabled state - faded misty teal */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: #7da5c6;
+    /* Secondary interactive elements - misty blue */
+    --color-interactive-secondary-hover: #6890b3;
+    /* Secondary hover state - deeper misty blue */
+    --color-interactive-secondary-active: #537ba0;
+    /* Secondary active state - even deeper misty blue */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(106, 186, 163, 0.5);
+    /* Form input borders - misty teal */
+    --color-field-placeholder: rgba(184, 198, 194, 0.6);
+    /* Placeholder text - faded mist */
+    --color-field-focus: #6abaa3;
+    /* Field focus indicator - misty teal */
+    --color-field-required: #91caba;
+    /* Required field indicator - lighter misty teal */
+    --color-field-invalid: #c9896b;
+    /* Invalid field indicator - autumn rust */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts
+     ════════════════════════════════════ */
+    --color-success: #75b798;
+    /* Success state - forest moss */
+    --color-success-subtle: rgba(117, 183, 152, 0.15);
+    /* Subtle success background */
+    --color-warning: #d2a76c;
+    /* Warning state - autumn amber */
+    --color-warning-subtle: rgba(210, 167, 108, 0.15);
+    /* Subtle warning background */
+    --color-error: #c9896b;
+    /* Error state - autumn rust */
+    --color-error-subtle: rgba(201, 137, 107, 0.15);
+    /* Subtle error background */
+    --color-info: #7da5c6;
+    /* Information state - misty blue */
+    --color-info-subtle: rgba(125, 165, 198, 0.15);
+    /* Subtle info background */
+    --color-neutral: #b8c6c2;
+    /* Neutral state - misty gray */
+    --color-neutral-subtle: rgba(184, 198, 194, 0.15);
+    /* Subtle neutral background */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with clear purpose
+     ════════════════════════════════════ */
+    --color-divider: rgba(106, 186, 163, 0.25);
+    /* Dividers and separators - subtle misty teal tint */
+    --color-divider-light: rgba(236, 242, 240, 0.08);
+    /* Lighter dividers for contrast on dark areas */
+    --color-border: rgba(106, 186, 163, 0.3);
+    /* Borders for containers, cards, etc - misty teal */
+    --color-border-focus: #6abaa3;
+    /* Focus state borders - misty teal */
+    --color-border-input: rgba(106, 186, 163, 0.35);
+    /* Form input borders - slightly stronger than regular */
+    --color-shadow: rgba(15, 25, 22, 0.4);
+    /* Shadows for elevation - deep forest shadow */
+    --color-shadow-light: rgba(15, 25, 22, 0.2);
+    /* Lighter shadows for subtle elevation */
+    --color-overlay: rgba(22, 37, 33, 0.85);
+    /* Modal/dialog overlays */
+    --color-notification-badge: #c9896b;
+    /* Notification badges - autumn rust */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(106, 186, 163, 0.5);
+    /* Scrollbar thumb - semi-transparent misty teal */
+    --color-scrollbar-track: rgba(22, 37, 33, 0.3);
+    /* Scrollbar track - subtle dark forest */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: #7da5c6;
+    /* Link text - misty blue */
+    --color-link-hover: #9ebcd8;
+    /* Link hover state - lighter misty blue */
+    --color-link-visited: #a57fb8;
+    /* Visited links - forest bloom purple */
+    --color-emphasis: #6abaa3;
+    /* Emphasized text - misty teal */
+    --color-success-text: #75b798;
+    /* Success messages - forest moss */
+    --color-warning-text: #d2a76c;
+    /* Warning messages - autumn amber */
+    --color-error-text: #c9896b;
+    /* Error messages - autumn rust */
+    --color-info-text: #7da5c6;
+    /* Information text - misty blue */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with clear hierarchy
+     ════════════════════════════════════ */
+    --color-icon-primary: #6abaa3;
+    /* Primary icons - misty teal */
+    --color-icon-secondary: rgba(125, 165, 198, 0.9);
+    /* Secondary icons - misty blue with high opacity */
+    --color-icon-tertiary: rgba(184, 198, 194, 0.7);
+    /* Tertiary icons - muted, similar to tertiary text */
+    --color-icon-on-accent: #ffffff;
+    /* Icons on accent-colored backgrounds - pure white */
+    --color-icon-bg: rgba(106, 186, 163, 0.12);
+    /* Icon backgrounds or containers - subtle misty teal */
+    --color-icon-disabled: rgba(184, 198, 194, 0.5);
+    /* Disabled icons - faded mist */
+
+    /* ════════════════════════════════════
+     OPACITY SYSTEM
+     For consistent transparency levels
+     ════════════════════════════════════ */
+    --opacity-faint: 0.08;
+    /* Very subtle effects, barely visible */
+    --opacity-light: 0.15;
+    /* Light effects, clearly visible but subtle */
+    --opacity-medium: 0.5;
+    /* Medium effects, semi-transparent */
+    --opacity-high: 0.85;
+    /* High opacity, nearly solid */
+    --opacity-disabled: 0.4;
+    /* Standard disabled state opacity */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(106, 186, 163, 0.2);
+    /* Skill item background */
+    --color-skill-item-hover: rgba(125, 165, 198, 0.2);
+    /* Skill item hover - misty blue accent */
+    --color-skill-item-active: rgba(125, 165, 198, 0.35);
+    /* Skill item active - stronger misty blue */
+    --color-selection-bg: rgba(106, 186, 163, 0.25);
+    /* Text selection background */
+    --color-tooltip-bg: rgba(22, 37, 33, 0.97);
+    /* Tooltip background - nearly opaque dark forest */
+    --color-dropdown-bg: rgba(30, 48, 43, 0.98);
+    /* Dropdown menu background - deep moss with transparency */
+
+    /* ════════════════════════════════════
+     CURSOR COLORS
+     For custom cursor effects
+     ════════════════════════════════════ */
+    --color-cursor-inner-rgb: 230, 237, 235;
+    /* Inner cursor ring RGB values - foggy white */
+    --color-cursor-outer-rgb: 106, 186, 163;
+    /* Outer cursor ring RGB values - misty teal */
+
+    /* ════════════════════════════════════
+     RGB VALUES
+     For custom opacity operations
+     ════════════════════════════════════ */
+    --color-accent-primary-rgb: 106, 186, 163;
+    /* RGB values for misty teal */
+    --color-accent-secondary-rgb: 74, 152, 132;
+    /* RGB values for deeper misty teal */
+    --color-accent-warm-rgb: 210, 167, 108;
+    /* RGB values for autumn amber */
+    --color-accent-contrast-rgb: 165, 127, 184;
+    /* RGB values for forest bloom purple */
+    --color-bg-primary-rgb: 22, 37, 33;
+    /* RGB values for main background */
+    --color-text-primary-rgb: 230, 237, 235;
+    /* RGB values for main text */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
+    /* Misty gradient - teal to deeper teal */
+    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
+    /* Interactive element gradient - misty teal gradient */
+    --gradient-teal: linear-gradient(45deg, #6abaa3, #559e8b);
+    /* Misty teal gradient */
+    --gradient-moss: linear-gradient(45deg, #4a9884, #3d7d6c);
+    /* Deep moss gradient */
+    --gradient-glass: linear-gradient(120deg, rgba(236, 242, 240, 0.08), rgba(236, 242, 240, 0.04));
+    /* Glass effect gradient - subtle foggy effect */
+    --gradient-overlay: linear-gradient(180deg, rgba(22, 37, 33, 0.8), rgba(22, 37, 33, 0.95));
+    /* Overlay gradient - forest shadow overlay */
+    --gradient-purple-teal: linear-gradient(45deg, #a57fb8, #6abaa3);
+    /* Forest bloom to misty teal */
+    --gradient-teal-blue: linear-gradient(45deg, #6abaa3, #7da5c6);
+    /* Misty teal to misty blue */
+    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
+    /* Button gradient */
+    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
+    /* Button hover gradient */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(15, 25, 22, 0.25);
+    /* Small shadow */
+    --shadow-md: 0 12px 25px -10px rgba(15, 25, 22, 0.35);
+    /* Medium shadow */
+    --shadow-lg: 0 25px 50px -12px rgba(15, 25, 22, 0.4);
+    /* Large shadow */
+    --shadow-inner: inset 0 2px 5px rgba(15, 25, 22, 0.15);
+    /* Inner shadow */
+    --shadow-focus: 0 0 0 3px rgba(106, 186, 163, 0.3);
+    /* Focus shadow - misty teal */
+    --shadow-button: 0 0 15px rgba(106, 186, 163, 0.25);
+    /* Button shadow - misty teal glow */
+
+    /* Wave-specific colors - white dominant for dark mode */
+    --wave-primary: #e6edeb;
+    /* Dominant foggy white */
+    --wave-secondary: #ffffff;
+    /* Pure white for contrast */
+    --wave-accent-1: #6abaa3;
+    /* Misty teal for contrast */
+    --wave-accent-2: #7da5c6;
+    /* Misty blue for variation */
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   FOREST MIST LIGHT THEME
+   Foggy, light background with forest accents and earthy highlights
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="forest-mist-light"] {
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with clear progression
+     ════════════════════════════════════ */
+    --color-bg-primary: #f2f7f5;
+    /* Main application background - foggy white */
+    --color-bg-secondary: #ffffff;
+    /* Secondary containers, cards, sidebars - pure white */
+    --color-bg-tertiary: #e6f0ec;
+    /* Elevated surfaces, modals, popovers - light mist */
+    --color-bg-card: #ffffff;
+    /* Card backgrounds - pure white */
+    --color-bg-glass: rgba(242, 247, 245, 0.92);
+    /* Glass effect backgrounds - foggy surfaces */
+    --color-bg-code: rgba(230, 240, 236, 0.8);
+    /* Code block backgrounds - light misty green */
+    --color-bg-input: rgba(230, 240, 236, 0.7);
+    /* Form element backgrounds - very light misty green */
+    --color-bg-hover: rgba(61, 142, 132, 0.08);
+    /* Hover state background - subtle forest green */
+    --color-bg-active: rgba(61, 142, 132, 0.15);
+    /* Active/selected state background - stronger forest green */
+    --color-bg-disabled: rgba(227, 235, 232, 0.7);
+    /* Disabled element background - light foggy gray */
+    --color-bg-tooltip: rgba(38, 56, 51, 0.95);
+    /* Tooltip background - nearly opaque dark forest */
+    --color-bg-dropdown: #ffffff;
+    /* Dropdown menu background - pure white */
+    --color-bg-selection: rgba(61, 142, 132, 0.2);
+    /* Text selection background - forest green */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with precise contrast levels
+     ════════════════════════════════════ */
+    --color-text-primary: #263833;
+    /* Main body text - deep forest */
+    --color-text-secondary: #445652;
+    /* Secondary/supporting text - forest gray */
+    --color-text-tertiary: rgba(68, 86, 82, 0.7);
+    /* De-emphasized text, subtitles, captions */
+    --color-text-disabled: rgba(68, 86, 82, 0.5);
+    /* Disabled text - significantly reduced contrast */
+    --color-text-on-accent: #ffffff;
+    /* Text on accent-colored backgrounds - pure white */
+    --color-text-code: #1e574d;
+    /* Code and pre-formatted text - deep forest green */
+
+    /* Headings */
+    --color-heading: #3d8e84;
+    /* Standard headings - forest green */
+    --color-heading-accent: #2e6d82;
+    /* Accented headings - deep misty blue */
+    --color-subheading: #445652;
+    /* Subheadings, section titles - forest gray */
+
+    /* Special text */
+    --color-text-emphasis: #3d8e84;
+    /* Emphasized text - forest green */
+    --color-text-inverted: #f2f7f5;
+    /* Inverted text (on dark backgrounds) - foggy white */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with complementary relationship
+     ════════════════════════════════════ */
+    --color-brand-primary: #3d8e84;
+    /* Primary brand color - forest green */
+    --color-brand-secondary: #2e6d65;
+    /* Secondary brand color - deeper forest green */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: #3d8e84;
+    /* Primary accent for interactive elements - forest green */
+    --color-accent-primary-hover: #347a71;
+    /* Hover state for primary accent - deeper forest green */
+    --color-accent-primary-active: #2e6d65;
+    /* Active state for primary accent - even deeper forest green */
+    --color-accent-secondary: #2e6d65;
+    /* Secondary accent - deeper forest green */
+    --color-accent-tertiary: #4ea89d;
+    /* Tertiary accent for subtle highlights - lighter forest green */
+    --color-accent-warm: #bd8c4c;
+    /* Warm accent for attention-grabbing elements - golden amber */
+    --color-accent-contrast: #8462a9;
+    /* High-contrast accent for additional contrast - lavender mist */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with meaningful progression
+     ════════════════════════════════════ */
+    --color-interactive: #3d8e84;
+    /* Default interactive element color - forest green */
+    --color-interactive-hover: #347a71;
+    /* Hover state - deeper forest green */
+    --color-interactive-active: #2e6d65;
+    /* Active/pressed state - even deeper forest green */
+    --color-interactive-focus: #3d8e84;
+    /* Focus state - forest green */
+    --color-interactive-disabled: rgba(61, 142, 132, 0.4);
+    /* Disabled state - faded forest green */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: #2e6d82;
+    /* Secondary interactive elements - misty blue */
+    --color-interactive-secondary-hover: #275c6e;
+    /* Secondary hover state - deeper misty blue */
+    --color-interactive-secondary-active: #1f4d5d;
+    /* Secondary active state - even deeper misty blue */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(61, 142, 132, 0.3);
+    /* Form input borders */
+    --color-field-placeholder: rgba(68, 86, 82, 0.6);
+    /* Placeholder text */
+    --color-field-focus: #3d8e84;
+    /* Field focus indicator */
+    --color-field-required: #2e6d65;
+    /* Required field indicator */
+    --color-field-invalid: #b06f4c;
+    /* Invalid field indicator */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts
+     ════════════════════════════════════ */
+    --color-success: #3a9070;
+    /* Success state - forest green */
+    --color-success-subtle: rgba(58, 144, 112, 0.12);
+    /* Subtle success background */
+    --color-warning: #bd8c4c;
+    /* Warning state - golden amber */
+    --color-warning-subtle: rgba(189, 140, 76, 0.12);
+    /* Subtle warning background */
+    --color-error: #b06f4c;
+    /* Error state - autumn copper */
+    --color-error-subtle: rgba(176, 111, 76, 0.12);
+    /* Subtle error background */
+    --color-info: #2e6d82;
+    /* Information state - misty blue */
+    --color-info-subtle: rgba(46, 109, 130, 0.12);
+    /* Subtle info background */
+    --color-neutral: #667873;
+    /* Neutral state - forest slate */
+    --color-neutral-subtle: rgba(102, 120, 115, 0.12);
+    /* Subtle neutral background */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with clear purpose
+     ════════════════════════════════════ */
+    --color-divider: rgba(61, 142, 132, 0.15);
+    /* Dividers and separators - subtle forest green tint */
+    --color-divider-light: rgba(0, 0, 0, 0.05);
+    /* Lighter dividers for contrast on light areas */
+    --color-border: rgba(61, 142, 132, 0.25);
+    /* Borders for containers, cards, etc */
+    --color-border-focus: #3d8e84;
+    /* Focus state borders - forest green */
+    --color-border-input: rgba(61, 142, 132, 0.3);
+    /* Form input borders - slightly stronger than regular */
+    --color-shadow: rgba(46, 60, 56, 0.15);
+    /* Shadows for elevation - forest shadow */
+    --color-shadow-light: rgba(46, 60, 56, 0.08);
+    /* Lighter shadows for subtle elevation */
+    --color-overlay: rgba(242, 247, 245, 0.85);
+    /* Modal/dialog overlays - foggy white overlay */
+    --color-notification-badge: #b06f4c;
+    /* Notification badges - autumn copper */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(61, 142, 132, 0.4);
+    /* Scrollbar thumb - semi-transparent forest green */
+    --color-scrollbar-track: rgba(230, 240, 236, 0.5);
+    /* Scrollbar track - light misty green */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: #2e6d82;
+    /* Link text - misty blue */
+    --color-link-hover: #1f4d5d;
+    /* Link hover state - deeper misty blue */
+    --color-link-visited: #8462a9;
+    /* Visited links - lavender mist */
+    --color-emphasis: #3d8e84;
+    /* Emphasized text - forest green */
+    --color-success-text: #3a9070;
+    /* Success messages - forest green */
+    --color-warning-text: #bd8c4c;
+    /* Warning messages - golden amber */
+    --color-error-text: #b06f4c;
+    /* Error messages - autumn copper */
+    --color-info-text: #2e6d82;
+    /* Information text - misty blue */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with clear hierarchy
+     ════════════════════════════════════ */
+    --color-icon-primary: #3d8e84;
+    /* Primary icons - forest green */
+    --color-icon-secondary: rgba(46, 109, 130, 0.9);
+    /* Secondary icons - misty blue with high opacity */
+    --color-icon-tertiary: rgba(68, 86, 82, 0.7);
+    /* Tertiary icons - muted, similar to tertiary text */
+    --color-icon-on-accent: #ffffff;
+    /* Icons on accent-colored backgrounds - pure white */
+    --color-icon-bg: rgba(61, 142, 132, 0.1);
+    /* Icon backgrounds or containers - subtle forest green */
+    --color-icon-disabled: rgba(68, 86, 82, 0.5);
+    /* Disabled icons */
+
+    /* ════════════════════════════════════
+     OPACITY SYSTEM
+     For consistent transparency levels
+     ════════════════════════════════════ */
+    --opacity-faint: 0.05;
+    /* Very subtle effects, barely visible */
+    --opacity-light: 0.12;
+    /* Light effects, clearly visible but subtle */
+    --opacity-medium: 0.5;
+    /* Medium effects, semi-transparent */
+    --opacity-high: 0.85;
+    /* High opacity, nearly solid */
+    --opacity-disabled: 0.4;
+    /* Standard disabled state opacity */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(61, 142, 132, 0.15);
+    /* Skill item background */
+    --color-skill-item-hover: rgba(46, 109, 130, 0.15);
+    /* Skill item hover - misty blue accent */
+    --color-skill-item-active: rgba(46, 109, 130, 0.25);
+    /* Skill item active - stronger misty blue */
+    --color-selection-bg: rgba(61, 142, 132, 0.2);
+    /* Text selection background */
+    --color-tooltip-bg: rgba(38, 56, 51, 0.95);
+    /* Tooltip background - nearly opaque dark forest */
+    --color-dropdown-bg: #ffffff;
+    /* Dropdown menu background - pure white */
+
+    /* ════════════════════════════════════
+     CURSOR COLORS
+     For custom cursor effects
+     ════════════════════════════════════ */
+    --color-cursor-inner-rgb: 38, 56, 51;
+    /* Inner cursor ring RGB values - deep forest */
+    --color-cursor-outer-rgb: 61, 142, 132;
+    /* Outer cursor ring RGB values - forest green */
+
+    /* ════════════════════════════════════
+     RGB VALUES
+     For custom opacity operations
+     ════════════════════════════════════ */
+    --color-accent-primary-rgb: 61, 142, 132;
+    /* RGB values for forest green */
+    --color-accent-secondary-rgb: 46, 109, 101;
+    /* RGB values for deeper forest green */
+    --color-accent-warm-rgb: 189, 140, 76;
+    /* RGB values for golden amber */
+    --color-accent-contrast-rgb: 132, 98, 169;
+    /* RGB values for lavender mist */
+    --color-bg-primary-rgb: 242, 247, 245;
+    /* RGB values for main background */
+    --color-text-primary-rgb: 38, 56, 51;
+    /* RGB values for main text */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
+    /* Forest gradient - forest green to deeper forest green */
+    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
+    /* Interactive element gradient */
+    --gradient-forest: linear-gradient(45deg, #3d8e84, #347a71);
+    /* Forest green gradient */
+    --gradient-moss: linear-gradient(45deg, #2e6d65, #24554f);
+    /* Deep moss gradient */
+    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+    /* Glass effect gradient for light mode */
+    --gradient-overlay: linear-gradient(180deg, rgba(242, 247, 245, 0.85), rgba(242, 247, 245, 0.95));
+    /* Overlay gradient for light mode */
+    --gradient-lavender-forest: linear-gradient(45deg, #8462a9, #3d8e84);
+    /* Lavender mist to forest green */
+    --gradient-forest-blue: linear-gradient(45deg, #3d8e84, #2e6d82);
+    /* Forest green to misty blue */
+    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
+    /* Button gradient */
+    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
+    /* Button hover gradient */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(46, 60, 56, 0.08);
+    /* Small shadow */
+    --shadow-md: 0 12px 25px -10px rgba(46, 60, 56, 0.12);
+    /* Medium shadow */
+    --shadow-lg: 0 25px 50px -12px rgba(46, 60, 56, 0.15);
+    /* Large shadow */
+    --shadow-inner: inset 0 2px 5px rgba(46, 60, 56, 0.05);
+    /* Inner shadow */
+    --shadow-focus: 0 0 0 3px rgba(61, 142, 132, 0.25);
+    /* Focus shadow */
+    --shadow-button: 0 4px 14px rgba(46, 60, 56, 0.15);
+    /* Button shadow */
+
+    /* Wave-specific colors - dark dominant for light mode */
+    --wave-primary: #162521;
+    /* Dominant deep forest charcoal */
+    --wave-secondary: #1e302b;
+    /* Deep moss */
+    --wave-accent-1: #6abaa3;
+    /* Dark theme misty teal */
+    --wave-accent-2: #7da5c6;
+    /* Dark theme misty blue */
+}
+
+/* Set color-scheme for the theme */
+[data-theme="forest-mist-dark"] {
+    color-scheme: dark;
+}
+
+[data-theme="forest-mist-light"] {
+    color-scheme: light;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+ * Custom scrollbar styling for Forest Mist theme
+ * ────────────────────────────────────────────────────────────────────────── */
+[data-theme^="forest-mist"] .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+[data-theme^="forest-mist"] .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track);
+    border-radius: 4px;
+}
+
+[data-theme^="forest-mist"] .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar-thumb);
+    border-radius: 4px;
+}
+
+[data-theme^="forest-mist"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-interactive);
+}
+
+/* Firefox scrollbar support */
+[data-theme^="forest-mist"] .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+}
+/* Add missing variables to Forest Mist Dark theme */
+[data-theme="forest-mist-dark"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(230, 237, 235, 0.15);  /* Foggy white grid lines for dark theme */
+}
+
+/* Add missing variables to Forest Mist Light theme */
+[data-theme="forest-mist-light"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(106, 186, 163, 0.15);  /* Misty teal grid lines for light theme */
+}

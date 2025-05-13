@@ -10,6 +10,7 @@ import {
   staggerItemVariants,
 } from "@/components/core/Animations";
 import { Heading, Text } from "@/components/common/Typography";
+import RichText from "@/components/common/Typography/RichText";
 import { Divider } from "@/components/common/Divider";
 import { cn } from "@/utils/classNames";
 
@@ -167,7 +168,7 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
 
       {/* Technical status bar */}
       <div className="absolute top-0 left-0 right-0 h-8 border-b border-divider bg-bg-tertiary/30 backdrop-blur-sm hidden md:block">
-        <div className="container mx-auto h-full flex items-center justify-between px-4">
+        <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
           <div className="flex items-center space-x-6">
             <div className="flex items-center">
               <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse mr-2"></div>
@@ -196,7 +197,7 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
               level={2}
               className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading"
             >
-              {heading}
+              <RichText content={heading} className="preserve-whitespace" />
               <motion.div
                 className="absolute -bottom-3 left-0 right-0 h-[3px] mx-auto w-20"
                 initial={{ scaleX: 0 }}
@@ -213,7 +214,7 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
               size="xl"
               className="text-center text-text-secondary relative"
             >
-              {introduction}
+              <RichText content={introduction} className="preserve-whitespace" />
             </Text>
 
             {/* Technical decorative elements */}
@@ -291,7 +292,7 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
                         : "bg-brand-primary/70"
                     )}
                   ></div>
-                  <span>{category.name}</span>
+                  <span><RichText content={category.name} /></span>
                 </div>
 
                 {/* Technical counter */}
@@ -314,7 +315,7 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
             <div className="border-b border-divider pb-4 mb-8">
               <div className="flex flex-wrap items-center justify-between">
                 <Text className="text-lg md:text-xl font-heading font-bold text-brand-primary">
-                  {categories[activeCategory]?.name}
+                  <RichText content={categories[activeCategory]?.name} />
                 </Text>
                 <div className="flex items-center text-xs font-mono text-text-tertiary">
                   <div className="w-2 h-2 rounded-full bg-brand-primary mr-2 animate-pulse"></div>
@@ -331,7 +332,7 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
                   <div className="flex justify-between mb-2">
                     <div className="flex items-center">
                       <div className="h-4 w-1 bg-brand-primary mr-2"></div>
-                      <Text weight="medium">{skill.name}</Text>
+                      <Text weight="medium"><RichText content={skill.name} /></Text>
                     </div>
                     <Text className="text-brand-primary font-mono">
                       {skill.level}%

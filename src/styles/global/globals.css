@@ -5,11 +5,21 @@
 @import '../utilities/patterns.css';
 @import '../utilities/accessibility.css';
 @import '../utilities/theme.css';
-@import '../themes/variants/sunset-oasis-theme.css'; /* Add the new theme import */
-@import '../themes/variants/cyber-punk-graffiti-theme.css'; /* Add the new theme import */
+@import '../themes/variants/sunset-oasis-theme.css';
+@import '../themes/variants/cyber-punk-graffiti-theme.css';
 @import '../themes/variants/monochrome-theme.css';
-@import '../themes/variants/mystic-forest-theme.css'; /* Add the new mystic forest theme import */
-
+@import '../themes/variants/mystic-forest-theme.css';
+@import '../themes/variants/cyber-theme.css';
+@import '../themes/variants/tropical-paradise-theme.css';
+@import '../themes/variants/nostalgia-pastel-theme.css';
+@import '../themes/variants/quantum-nebula-theme.css';
+@import '../themes/variants/blue-theme.css';
+@import '../themes/variants/modern-pro-theme.css';
+@import '../themes/variants/duotone-theme.css';
+@import '../themes/variants/red-theme.css';
+@import '../themes/variants/forest-mist-theme.css';
+@import '../themes/variants/concrete-jungle-theme.css'; /* Add the Concrete Jungle theme import */
+@import '../themes/variants/urban-splash-theme.css';
 
 @import '../utilities/animations.css';
 @import '../utilities/designer-utilties.css';
@@ -58,6 +68,42 @@
 
     a:hover {
         color: var(--color-link-hover);
+    }
+
+    /* Word spacing global fixes */
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span,
+    div,
+    button,
+    a,
+    li {
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* Fix for components that use string manipulation */
+    .preserve-whitespace {
+        white-space: pre-wrap !important;
+        word-break: normal !important;
+        word-spacing: var(--word-spacing-normal) !important;
+    }
+
+    /* Fix for components that might be using flex or grid layouts */
+    .flex>*,
+    .grid>* {
+        word-spacing: inherit;
+    }
+
+    /* Ensure inline elements maintain spacing */
+    .inline,
+    .inline-block {
+        white-space: normal;
     }
 }
 
@@ -155,6 +201,21 @@
         width: 1px;
         background-color: var(--color-accent-oceanic);
         opacity: 0.7;
+    }
+
+    /* Blueprint grid classes */
+    .blueprint-grid {
+        background-size: 60px 60px;
+        background-position: center;
+        background-repeat: repeat;
+    }
+
+    /* This ensures the class is backwards compatible with tailwind's bg-blueprint-grid if needed */
+    .bg-blueprint-grid {
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='currentColor' stroke-opacity='0.2' stroke-width='0.5'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M30 0v60M0 30h60M15 0v60M45 0v60M0 15h60M0 45h60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-size: 60px 60px;
+        background-position: center;
+        background-repeat: repeat;
     }
 
     /* Swiss-Editorial structure components */

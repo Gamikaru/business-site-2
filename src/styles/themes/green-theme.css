@@ -110,6 +110,9 @@
     --color-bg-selection: rgba(40, 180, 135, 0.25);
     /* Text selection background */
 
+    /* Grid colors */
+    --color-grid-lines: rgba(240, 250, 246, 0.2);  /* Offwhite for dark mode grids */
+
     /* ════════════════════════════════════
      TEXT COLORS
      Typography hierarchy with precise contrast levels
@@ -444,6 +447,9 @@
     /* Dropdown menu background */
     --color-bg-selection: rgba(26, 154, 101, 0.2);
     /* Text selection background */
+
+    /* Grid colors */
+    --color-grid-lines: rgba(26, 47, 40, 0.15);  /* Charcoal for light mode grids */
 
     /* ════════════════════════════════════
      TEXT COLORS

@@ -14,6 +14,7 @@ import { Divider } from "@/components/common/Divider";
 import { Heading, Text } from "@/components/common/Typography";
 import { cn } from "@/utils/classNames";
 import Image from "next/image";
+import  RichText from "@/components/common/Typography/RichText";
 
 interface ServiceItem {
   id: string;
@@ -66,6 +67,18 @@ const HomeServices: React.FC<HomeServicesProps> = ({
 
   // State for active service (hover effect)
   const [activeService, setActiveService] = useState<string | null>(null);
+
+  // Function to get a color based on index for more variety
+  const getColorByIndex = (index: number) => {
+    const colors = ['brand-primary', 'accent-secondary', 'accent-warm', 'accent-contrast'];
+    return colors[index % colors.length];
+  };
+
+  // Function to get status indicator color
+  const getStatusColor = (index: number) => {
+    const colors = ['success', 'accent-warm', 'accent-secondary', 'accent-contrast'];
+    return colors[index % colors.length];
+  };
 
   // Simulate periodic data updates
   useEffect(() => {
@@ -136,7 +149,7 @@ const HomeServices: React.FC<HomeServicesProps> = ({
         </div>
       </div>
 
-      <div className="container mx-auto py-16 md:py-28 relative z-10">
+<div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         {/* Technical status bar */}
         <div className="hidden md:flex justify-between items-center mb-8 text-xs font-mono">
           <div className="flex items-center space-x-4 text-accent-oceanic">
@@ -145,11 +158,11 @@ const HomeServices: React.FC<HomeServicesProps> = ({
               <span>SYS.STATUS/ACTIVE</span>
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-brand-primary mr-2"></div>
+              <div className="w-2 h-2 rounded-full bg-accent-secondary mr-2"></div>
               <span>EFFICIENCY/{serviceMetrics.efficiency}%</span>
             </div>
           </div>
-          <div className="text-accent-primary">
+          <div className="text-accent-warm">
             UPTIME/{serviceMetrics.uptime}%
           </div>
         </div>
@@ -166,13 +179,13 @@ const HomeServices: React.FC<HomeServicesProps> = ({
             <svg width="50" height="80" viewBox="0 0 50 80" fill="none">
               <AnimatedPath
                 d="M50 40H30L10 10M10 70L30 40"
-                stroke="var(--color-brand-primary)"
+                stroke="var(--color-accent-secondary)"
                 strokeWidth="1"
                 strokeDasharray="4 2"
               />
               <AnimatedPath
                 d="M0 40H10"
-                stroke="var(--color-brand-primary)"
+                stroke="var(--color-accent-contrast)"
                 strokeWidth="1"
               />
               <AnimatedPath
@@ -193,13 +206,13 @@ const HomeServices: React.FC<HomeServicesProps> = ({
             <svg width="50" height="80" viewBox="0 0 50 80" fill="none">
               <AnimatedPath
                 d="M0 40H20L40 10M40 70L20 40"
-                stroke="var(--color-brand-primary)"
+                stroke="var(--color-accent-warm)"
                 strokeWidth="1"
                 strokeDasharray="4 2"
               />
               <AnimatedPath
                 d="M50 40H40"
-                stroke="var(--color-brand-primary)"
+                stroke="var(--color-accent-contrast)"
                 strokeWidth="1"
               />
               <AnimatedPath
@@ -222,14 +235,14 @@ const HomeServices: React.FC<HomeServicesProps> = ({
               level={2}
               className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading uppercase relative inline-block"
             >
-              {heading}
+              <RichText content={heading} />
               <motion.div
                 className="absolute -bottom-3 left-0 right-0 h-[3px]"
                 initial={{ width: 0 }}
                 animate={{ width: isHeadingInView ? "100%" : "0%" }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                <div className="h-full bg-gradient-to-r from-transparent via-brand-primary to-transparent"></div>
+                <div className="h-full bg-gradient-to-r from-transparent via-accent-secondary to-transparent"></div>
               </motion.div>
             </Heading>
           </TextReveal>
@@ -237,20 +250,20 @@ const HomeServices: React.FC<HomeServicesProps> = ({
           <ScrollReveal direction="up" delay={0.3} className="relative">
             <div className="backdrop-blur-sm bg-bg-secondary/50 p-6 rounded-sm relative">
               {/* Technical corner details */}
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-brand-primary"></div>
-              <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-brand-primary"></div>
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-brand-primary"></div>
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-brand-primary"></div>
+              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent-secondary"></div>
+              <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-accent-warm"></div>
+              <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-accent-warm"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent-secondary"></div>
 
               <Text size="xl" className="text-text-secondary">
-                {introduction}
+                <RichText content={introduction} />
               </Text>
             </div>
           </ScrollReveal>
 
           {/* Data metrics */}
           <motion.div
-            className="absolute -bottom-8 right-0 text-xs font-mono text-accent-oceanic hidden md:block"
+            className="absolute -bottom-8 right-0 text-xs font-mono text-accent-warm hidden md:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: isHeadingInView ? 1 : 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
@@ -281,7 +294,7 @@ const HomeServices: React.FC<HomeServicesProps> = ({
                   className={cn(
                     "relative h-full border rounded-lg overflow-hidden transition-all duration-300",
                     activeService === service.id
-                      ? "border-brand-primary bg-bg-glass"
+                      ? `border-${getColorByIndex(index)} bg-bg-glass`
                       : "border-divider bg-bg-card/80"
                   )}
                   data-service-status={service.id}
@@ -291,9 +304,9 @@ const HomeServices: React.FC<HomeServicesProps> = ({
                     {service.number}
                   </div>
 
-                  {/* Status indicator */}
+                  {/* Status indicator - varied colors */}
                   <div className="absolute top-4 right-4 flex items-center">
-                    <div className="status-indicator w-2 h-2 rounded-full bg-brand-primary mr-2 transition-opacity"></div>
+                    <div className={`status-indicator w-2 h-2 rounded-full bg-${getStatusColor(index)} mr-2 transition-opacity`}></div>
                     <span className="text-xs font-mono text-text-secondary">READY</span>
                   </div>
 
@@ -302,7 +315,7 @@ const HomeServices: React.FC<HomeServicesProps> = ({
                     <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
                       <AnimatedPath
                         d="M64 0L64 16M64 0L48 0"
-                        stroke="var(--color-accent-oceanic)"
+                        stroke={`var(--color-${getColorByIndex(index + 1)})`}
                         strokeWidth="1"
                         strokeOpacity="0.5"
                       />
@@ -321,7 +334,7 @@ const HomeServices: React.FC<HomeServicesProps> = ({
                               : "opacity-10"
                           )}
                           style={{
-                            background: "radial-gradient(circle, var(--color-brand-primary) 0%, transparent 70%)"
+                            background: `radial-gradient(circle, var(--color-${getColorByIndex(index)}) 0%, transparent 70%)`
                           }}
                         />
 
@@ -334,10 +347,10 @@ const HomeServices: React.FC<HomeServicesProps> = ({
                         />
                       </div>
 
-                      {/* Technical scan line on hover */}
+                      {/* Technical scan line on hover - varied colors */}
                       {activeService === service.id && (
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/30 to-transparent"
+                          className={`absolute inset-0 bg-gradient-to-b from-transparent via-${getColorByIndex(index)}/30 to-transparent`}
                           style={{
                             height: "200%",
                             top: "-50%"
@@ -356,15 +369,13 @@ const HomeServices: React.FC<HomeServicesProps> = ({
 
                     {/* Service title */}
                     <Heading level={3} className="mb-4 text-xl font-heading font-semibold">
-                      {service.title}
+                      <RichText content={service.title} />
                     </Heading>
 
                     {/* Service description */}
-                    <Text className="mb-6 text-text-secondary">
-                      {service.description}
-                    </Text>
+                    <RichText content={service.description} className="text-text-secondary" />
 
-                    {/* Learn more link */}
+                    {/* Learn more link with varied colors */}
                     <div className="mt-auto">
                       <Button
                         intent="text"
@@ -372,7 +383,7 @@ const HomeServices: React.FC<HomeServicesProps> = ({
                         className={cn(
                           "px-0 font-medium transition-colors",
                           activeService === service.id
-                            ? "text-brand-primary"
+                            ? `text-${getColorByIndex(index)}`
                             : "text-accent-cosmic"
                         )}
                         icon={
@@ -387,10 +398,10 @@ const HomeServices: React.FC<HomeServicesProps> = ({
                     </div>
                   </div>
 
-                  {/* Bottom progress bar - random width for visual interest */}
+                  {/* Bottom progress bar with varied colors */}
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-bg-tertiary overflow-hidden">
                     <motion.div
-                      className="h-full bg-accent-primary"
+                      className={`h-full bg-${getColorByIndex(index)}`}
                       initial={{ width: "0%" }}
                       animate={{ width: `${30 + Math.random() * 70}%` }}
                       transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
@@ -406,9 +417,9 @@ const HomeServices: React.FC<HomeServicesProps> = ({
         <div className="flex justify-center relative">
           <ScrollReveal direction="up" delay={0.5}>
             <div className="relative group perspective-effect">
-              {/* Button glow effect */}
+              {/* Button glow effect - changed to accent-secondary */}
               <div className="absolute inset-0 -m-1 rounded-lg transition-opacity opacity-0 group-hover:opacity-100 duration-300 blur-md" style={{
-                background: "radial-gradient(circle, var(--color-accent-primary) 0%, transparent 70%)"
+                background: "radial-gradient(circle, var(--color-accent-secondary) 0%, transparent 70%)"
               }}></div>
 
               <div className="relative z-10">
@@ -446,18 +457,18 @@ const HomeServices: React.FC<HomeServicesProps> = ({
                 </Button>
               </div>
 
-              {/* Target indicator */}
+              {/* Target indicator - using accent-warm */}
               <div className="absolute -left-6 -bottom-6 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                   <AnimatedPath
                     d="M24 12V0M24 48V36M12 24H0M48 24H36"
-                    stroke="var(--color-accent-oceanic)"
+                    stroke="var(--color-accent-warm)"
                     strokeWidth="1"
                     strokeDasharray="2 2"
                   />
                   <AnimatedPath
                     d="M24 28C26.2091 28 28 26.2091 28 24C28 21.7909 26.2091 20 24 20C21.7909 20 20 21.7909 20 24C20 26.2091 21.7909 28 24 28Z"
-                    stroke="var(--color-accent-oceanic)"
+                    stroke="var(--color-accent-secondary)"
                     strokeWidth="1"
                   />
                 </svg>
@@ -497,19 +508,19 @@ const HomeServices: React.FC<HomeServicesProps> = ({
           </motion.div>
         </div>
 
-        {/* Technical data matrix */}
+        {/* Technical data matrix - using varied colors */}
         <motion.div
           className="absolute bottom-16 left-6 font-mono text-[10px] hidden lg:block"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ duration: 0.5, delay: 1.2 }}
         >
-          <div className="grid grid-cols-3 gap-x-6 gap-y-1 text-accent-oceanic">
+          <div className="grid grid-cols-3 gap-x-6 gap-y-1">
             {Array.from({ length: 6 }).map((_, i) => (
               <React.Fragment key={i}>
-                <div>{`M${i+1}:${Math.floor(Math.random() * 999)}`}</div>
-                <div>{`F${i+1}:${(Math.random() * 10).toFixed(2)}`}</div>
-                <div>{`S${i+1}:${Math.floor(Math.random() * 99)}%`}</div>
+                <div className={`text-${getColorByIndex(i)}`}>{`M${i+1}:${Math.floor(Math.random() * 999)}`}</div>
+                <div className="text-accent-oceanic">{`F${i+1}:${(Math.random() * 10).toFixed(2)}`}</div>
+                <div className={`text-${getStatusColor(i)}`}>{`S${i+1}:${Math.floor(Math.random() * 99)}%`}</div>
               </React.Fragment>
             ))}
           </div>
@@ -525,12 +536,12 @@ const HomeServices: React.FC<HomeServicesProps> = ({
           className="z-10"
         />
 
-        {/* Technical grid overlay on divider */}
+        {/* Technical grid overlay on divider - varied colors */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <svg className="absolute bottom-0 left-0 right-0 h-[120px] w-full" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none">
             <motion.line
               x1="30" y1="0" x2="70" y2="100"
-              stroke="var(--color-accent-primary)"
+              stroke="var(--color-accent-secondary)"
               strokeWidth="0.3"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
@@ -538,7 +549,7 @@ const HomeServices: React.FC<HomeServicesProps> = ({
             />
             <motion.line
               x1="60" y1="0" x2="40" y2="100"
-              stroke="var(--color-brand-primary)"
+              stroke="var(--color-accent-warm)"
               strokeWidth="0.2"
               strokeDasharray="4 2"
               initial={{ pathLength: 0 }}
@@ -571,6 +582,24 @@ const HomeServices: React.FC<HomeServicesProps> = ({
           transform-style: preserve-3d;
           perspective: 1000px;
         }
+
+        /* Dynamic color classes for the component */
+        .bg-brand-primary { background-color: var(--color-brand-primary); }
+        .bg-accent-secondary { background-color: var(--color-accent-secondary); }
+        .bg-accent-warm { background-color: var(--color-accent-warm); }
+        .bg-accent-contrast { background-color: var(--color-accent-contrast); }
+        .bg-success { background-color: var(--color-success); }
+
+        .text-brand-primary { color: var(--color-brand-primary); }
+        .text-accent-secondary { color: var(--color-accent-secondary); }
+        .text-accent-warm { color: var(--color-accent-warm); }
+        .text-accent-contrast { color: var(--color-accent-contrast); }
+        .text-success { color: var(--color-success); }
+
+        .border-brand-primary { border-color: var(--color-brand-primary); }
+        .border-accent-secondary { border-color: var(--color-accent-secondary); }
+        .border-accent-warm { border-color: var(--color-accent-warm); }
+        .border-accent-contrast { border-color: var(--color-accent-contrast); }
       `}</style>
     </motion.section>
   );

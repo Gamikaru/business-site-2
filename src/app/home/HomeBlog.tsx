@@ -216,7 +216,7 @@ const HomeBlog: React.FC<HomeBlogProps> = ({
         <div className="absolute inset-0 bg-dots-dense opacity-[0.07]"></div>
       </div>
 
-      <div className="container mx-auto py-16 md:py-24 lg:py-32 relative z-10">
+<div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         {/* Header Section */}
         <HomeBlogHeader
           heading={heading}

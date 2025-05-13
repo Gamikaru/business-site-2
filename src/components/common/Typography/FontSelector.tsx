@@ -1,8 +1,10 @@
+// src/components/common/Typography/FontSelector.tsx
 "use client";
 
 import React, { useState } from "react";
 import { useFontContext } from "@/context/FontContext";
 import { cn } from "@/utils/classNames";
+import Icon from "@/components/common/Icons/Icon";
 
 interface FontSelectorProps {
   className?: string;
@@ -10,7 +12,7 @@ interface FontSelectorProps {
   showPreview?: boolean;
   align?: "left" | "center" | "right";
   maxItems?: number;
-  customTrigger?: React.ReactNode; // Add customTrigger prop
+  customTrigger?: React.ReactNode;
 }
 
 const FontSelector: React.FC<FontSelectorProps> = ({
@@ -19,7 +21,7 @@ const FontSelector: React.FC<FontSelectorProps> = ({
   showPreview = true,
   align = "left",
   maxItems = 4,
-  customTrigger = null, // Default to null
+  customTrigger = null,
 }) => {
   const { fontSystem, changeFontSystem, FONT_SYSTEMS, currentSystemData } =
     useFontContext();
@@ -63,7 +65,7 @@ const FontSelector: React.FC<FontSelectorProps> = ({
             aria-expanded={isOpen}
             aria-haspopup="listbox"
           >
-            <span>{currentFontName}</span>
+            <span className="whitespace-normal">{currentFontName}</span>
             <Icon name={isOpen ? "fi:FiChevronUp" : "fi:FiChevronDown"} size={16} />
           </button>
         )}
@@ -84,22 +86,22 @@ const FontSelector: React.FC<FontSelectorProps> = ({
                   aria-selected={fontSystem === font.id}
                   onClick={() => handleFontSelect(font.id)}
                   className={cn(
-                    "px-4 py-2 cursor-pointer hover:bg-bg-hover",
+                    "px-4 py-2 cursor-pointer hover:bg-bg-hover whitespace-normal",
                     fontSystem === font.id && "bg-bg-active"
                   )}
-                  // Apply the actual font to each option
+                  // Apply the actual font to each option using the correct property paths
                   style={{
-                    fontFamily: font.headingFont || font.bodyFont,
+                    fontFamily: font.heading?.family || font.body?.family,
                     fontWeight: font.id === fontSystem ? 600 : 400
                   }}
                 >
                   {font.name}
 
                   {showPreview && (
-                    <div className="mt-1 text-xs opacity-70">
-                      <span style={{ fontFamily: font.headingFont }}>Heading</span>
+                    <div className="mt-1 text-xs opacity-70 whitespace-normal">
+                      <span style={{ fontFamily: font.heading?.family }}>Heading</span>
                       {" + "}
-                      <span style={{ fontFamily: font.bodyFont }}>Body</span>
+                      <span style={{ fontFamily: font.body?.family }}>Body</span>
                     </div>
                   )}
                 </li>
@@ -122,19 +124,19 @@ const FontSelector: React.FC<FontSelectorProps> = ({
             key={font.id}
             onClick={() => changeFontSystem(font.id)}
             className={cn(
-              "px-3 py-2 rounded-md border",
+              "px-3 py-2 rounded-md border whitespace-normal",
               fontSystem === font.id
                 ? "bg-bg-active border-accent-primary"
                 : "bg-bg-tertiary border-border hover:bg-bg-hover"
             )}
-            style={{ fontFamily: font.headingFont || font.bodyFont }}
+            style={{ fontFamily: font.heading?.family || font.body?.family }}
           >
             {font.name}
           </button>
         ))}
 
         {fontSystems.length > maxItems && (
-          <button className="px-3 py-2 rounded-md bg-bg-tertiary border border-border hover:bg-bg-hover">
+          <button className="px-3 py-2 rounded-md bg-bg-tertiary border border-border hover:bg-bg-hover whitespace-normal">
             +{fontSystems.length - maxItems} more
           </button>
         )}
@@ -148,13 +150,13 @@ const FontSelector: React.FC<FontSelectorProps> = ({
       <select
         value={fontSystem}
         onChange={(e) => changeFontSystem(e.target.value)}
-        className="px-2 py-1 text-sm rounded-md bg-bg-tertiary border border-border focus:outline-none focus:ring-2 focus:ring-accent-primary"
+        className="px-2 py-1 text-sm rounded-md bg-bg-tertiary border border-border focus:outline-none focus:ring-2 focus:ring-accent-primary whitespace-normal"
       >
         {fontSystems.map((font) => (
           <option
             key={font.id}
             value={font.id}
-            style={{ fontFamily: font.bodyFont }}
+            style={{ fontFamily: font.body?.family }}
           >
             {font.name}
           </option>

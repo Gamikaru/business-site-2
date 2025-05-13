@@ -9,6 +9,7 @@ import {
   AnimatedPath,
 } from "@/components/core/Animations";
 import { Heading, Text } from "@/components/common/Typography";
+import RichText from "@/components/common/Typography/RichText";
 import { cn } from "@/utils/classNames";
 
 interface AboutCTAProps {
@@ -180,7 +181,7 @@ const AboutCTA: React.FC<AboutCTAProps> = ({
 
       {/* Technical system status bar */}
       <div className="absolute top-0 left-0 right-0 h-8 border-b border-divider bg-bg-tertiary/50 backdrop-blur-sm hidden md:block">
-        <div className="container mx-auto h-full flex items-center justify-between px-4">
+        <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
           <div className="flex items-center space-x-6">
             <div className="flex items-center">
               <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse mr-2"></div>
@@ -223,22 +224,19 @@ const AboutCTA: React.FC<AboutCTAProps> = ({
             />
 
             {/* Content with animated reveals */}
-            <div
-              ref={headingRef}
-              className="text-center mb-8"
-            >
+            <div ref={headingRef} className="text-center mb-8">
               <TextReveal direction="up" delay={0.2} className="mb-6">
                 <Heading
                   level={2}
                   className="text-[clamp(2rem,3.5vw+1rem,3rem)] font-heading font-bold text-heading"
                 >
-                  {heading}
+                  <RichText content={heading} className="preserve-whitespace" />
                 </Heading>
               </TextReveal>
 
               <ScrollReveal direction="up" delay={0.4}>
                 <Text className="text-xl md:text-2xl text-text-secondary max-w-2xl mx-auto">
-                  {content}
+                  <RichText content={content} className="preserve-whitespace" />
                 </Text>
               </ScrollReveal>
             </div>
@@ -272,9 +270,7 @@ const AboutCTA: React.FC<AboutCTAProps> = ({
                       className="absolute inset-0 bg-white rounded-sm"
                       initial={{ opacity: 0 }}
                       animate={{
-                        opacity: isButtonHovered
-                          ? [0, 0.1, 0]
-                          : 0,
+                        opacity: isButtonHovered ? [0, 0.1, 0] : 0,
                       }}
                       transition={{
                         duration: 1.5,
@@ -285,7 +281,7 @@ const AboutCTA: React.FC<AboutCTAProps> = ({
 
                     {/* Button text */}
                     <span className="relative text-white font-medium">
-                      {ctaText}
+                      <RichText content={ctaText} />
                     </span>
 
                     {/* Technical arrow indicator */}

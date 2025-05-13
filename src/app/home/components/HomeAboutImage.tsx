@@ -1,6 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import { motion, MotionValue } from "framer-motion";
+import Image from "next/image";
 
 interface HomeAboutImageProps {
   imageSrc: string;
@@ -10,7 +10,13 @@ interface HomeAboutImageProps {
   rotateValue: MotionValue<number>;
   techValues: {
     imageScale: string;
+    sectionRatio: number;
     contentWidth: number;
+  };
+  accentColors: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
   };
 }
 
@@ -21,83 +27,97 @@ const HomeAboutImage: React.FC<HomeAboutImageProps> = ({
   imageTranslateY,
   rotateValue,
   techValues,
+  accentColors
 }) => {
   return (
-    <motion.div
-      className="relative rounded-lg overflow-hidden"
-      style={{
-        y: isImageInView ? imageTranslateY : 0,
-        rotate: isImageInView ? rotateValue : 0
-      }}
-    >
-      {/* Advanced image container with blueprint corner styles */}
-      <div className="relative">
-        {/* Blueprint corner markers */}
-        <div className="absolute -top-1 -left-1 w-5 h-5 border-t-2 border-l-2 border-brand-primary"></div>
-        <div className="absolute -top-1 -right-1 w-5 h-5 border-t-2 border-r-2 border-brand-primary"></div>
-        <div className="absolute -bottom-1 -left-1 w-5 h-5 border-b-2 border-l-2 border-brand-primary"></div>
-        <div className="absolute -bottom-1 -right-1 w-5 h-5 border-b-2 border-r-2 border-brand-primary"></div>
+    <>
+      {/* Technical metadata display */}
+      <div className="absolute -top-4 left-4 text-[10px] font-mono opacity-70 hidden md:block"
+        style={{ color: accentColors.secondary }}
+      >
+        SCALE/{techValues.imageScale} • OPTIMIZED
+      </div>
 
-        {/* Measurement grid overlay */}
-        <motion.div
-          className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.3 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <div className="w-full h-full bg-blueprint-grid"></div>
-        </motion.div>
+      {/* Image container with decorative elements */}
+      <motion.div
+        className="relative"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: isImageInView ? 1 : 0, y: isImageInView ? 0 : 20 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        style={{ y: imageTranslateY, rotate: rotateValue }}
+      >
+        {/* Decorative frame */}
+        <div className="absolute -inset-4 border border-dashed rounded-lg z-0 opacity-50"
+          style={{ borderColor: accentColors.primary }}
+        ></div>
 
-        {/* Image with animated mask reveal */}
-        <motion.div
-          className="relative w-full h-0 pb-[125%] bg-bg-card overflow-hidden"
-          initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
-          animate={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
-          transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-        >
+        {/* Corner accents with varied colors */}
+        <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 rounded-tl-md"
+          style={{ borderColor: accentColors.primary }}
+        ></div>
+        <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 rounded-tr-md"
+          style={{ borderColor: accentColors.secondary }}
+        ></div>
+        <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 rounded-bl-md"
+          style={{ borderColor: accentColors.tertiary }}
+        ></div>
+        <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 rounded-br-md"
+          style={{ borderColor: accentColors.secondary }}
+        ></div>
+
+        {/* Technical measurement lines */}
+        <div className="absolute -left-8 top-0 h-full flex flex-col justify-between py-4 opacity-60 hidden md:flex">
+          {[0, 1, 2].map((i) => (
+            <div key={i} className="flex items-center">
+              <div
+                className="w-3 h-px"
+                style={{ backgroundColor: i % 2 === 0 ? accentColors.primary : accentColors.secondary }}
+              ></div>
+              <span
+                className="ml-1 text-[8px] font-mono"
+                style={{ color: i % 2 === 0 ? accentColors.primary : accentColors.secondary }}
+              >
+                {i * 50}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Image with overlay effects */}
+        <div className="relative overflow-hidden rounded-md">
           <Image
             src={imageSrc}
             alt={imageAlt}
-            fill
-            sizes="(max-width: 768px) 100vw, 40vw"
-            className="object-cover scale-105 hover:scale-110 transition-transform duration-700"
+            width={600}
+            height={700}
+            className="object-cover w-full aspect-[4/5]"
             priority
           />
 
-          {/* Scan line effect */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/20 to-transparent"
+          {/* Gradient overlay with multi-color scheme */}
+          <div className="absolute inset-0 opacity-30"
             style={{
-              height: "200%",
-              top: "-50%"
+              background: `linear-gradient(135deg,
+                ${accentColors.primary}33 0%,
+                transparent 40%,
+                ${accentColors.secondary}33 100%)`
             }}
-            animate={{
-              top: ["0%", "100%"],
-            }}
+          ></div>
+
+          {/* Scan line effect on hover */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-b from-transparent via-white to-transparent opacity-10"
+            initial={{ y: "-100%" }}
+            animate={{ y: "200%" }}
             transition={{
               repeat: Infinity,
-              duration: 2,
+              duration: 3,
               ease: "linear"
             }}
-          />
-        </motion.div>
-      </div>
-
-      {/* Technical data indicators */}
-      <div className="absolute top-3 left-3 flex items-center bg-black/50 backdrop-blur-sm px-2 py-1 rounded">
-        <div className="h-2 w-2 rounded-full bg-brand-primary mr-2 animate-pulse"></div>
-        <span className="text-xs font-mono text-brand-primary">CAPTURE.{techValues.imageScale}</span>
-      </div>
-
-      <div className="absolute bottom-3 right-3 text-xs font-mono text-accent-cosmic bg-black/50 backdrop-blur-sm px-2 py-1 rounded">
-        <motion.span
-          animate={{ opacity: [1, 0.5, 1] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
-          DIM/{techValues.contentWidth}x{Math.round(techValues.contentWidth * 1.25)}
-        </motion.span>
-      </div>
-    </motion.div>
+          ></motion.div>
+        </div>
+      </motion.div>
+    </>
   );
 };
 

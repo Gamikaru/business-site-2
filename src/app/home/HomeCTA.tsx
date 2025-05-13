@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/common/Button";
 import { Heading, Text } from "@/components/common/Typography";
 import { cn } from "@/utils/classNames";
+import  RichText  from "@/components/common/Typography/RichText";
 
 interface HomeCTAProps {
   heading: string;
@@ -217,7 +218,7 @@ const HomeCTA: React.FC<HomeCTAProps> = ({
         </div>
       </div>
 
-      <div className="container mx-auto py-16 md:py-28 relative z-10">
+<div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
           {/* Left column - Main CTA */}
           <div ref={leftColRef}>
@@ -266,7 +267,7 @@ const HomeCTA: React.FC<HomeCTAProps> = ({
               <motion.div variants={staggerItemVariants} className="relative mb-8">
                 <div className="relative bg-bg-tertiary/10 backdrop-blur-sm rounded-sm p-6 border-l-2 border-brand-primary/50">
                   <Text className="text-lg text-text-primary leading-relaxed">
-                    {content}
+                    <RichText content={content} />
                   </Text>
 
                   {/* Corner details */}
@@ -346,25 +347,7 @@ const HomeCTA: React.FC<HomeCTAProps> = ({
               {/* Availability note with technical styling */}
               <motion.div variants={staggerItemVariants} className="mt-8">
                 <div className="relative">
-                  <p className="text-text-secondary text-sm pl-6 border-l border-accent-oceanic/30">
-                    {availability}
-                  </p>
-
-                  {/* Technical status indicator */}
-                  <motion.div
-                    className="absolute left-0 top-1/2 -translate-y-1/2"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.7, 1, 0.7]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatType: "reverse"
-                    }}
-                  >
-                    <div className="w-2 h-2 rounded-full bg-accent-oceanic"></div>
-                  </motion.div>
+                  <RichText content={availability} />
                 </div>
               </motion.div>
             </motion.div>

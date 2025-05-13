@@ -1,14 +1,17 @@
+// src/components/common/Typography/Prose.tsx
 import React from "react";
 import { cn } from "@/utils/classNames";
 
 interface ProseProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: "sm" | "base" | "lg" | "xl";
   className?: string;
+  preserveSpacing?: boolean; // Add this option
 }
 
 const Prose: React.FC<ProseProps> = ({
   size = "base",
   className,
+  preserveSpacing = true, // Default to true
   children,
   ...props
 }) => {
@@ -19,6 +22,11 @@ const Prose: React.FC<ProseProps> = ({
     lg: "prose-lg",
     xl: "prose-xl",
   };
+
+  // Add spacing classes if preserveSpacing is true
+  const spacingClasses = preserveSpacing
+    ? "prose-p:whitespace-normal prose-p:word-break-normal prose-p:word-spacing-normal prose-headings:whitespace-normal prose-headings:word-spacing-normal"
+    : "";
 
   return (
     <div
@@ -33,8 +41,12 @@ const Prose: React.FC<ProseProps> = ({
         "prose-blockquote:border-l-accent-primary prose-blockquote:font-body prose-blockquote:not-italic",
         "prose-img:rounded-md prose-img:shadow-md",
         "dark:prose-invert",
+        spacingClasses, // Add spacing classes
         className
       )}
+      style={{
+        '--prose-word-spacing': 'var(--word-spacing-body)', // Add custom property
+      } as React.CSSProperties}
       {...props}
     >
       {children}

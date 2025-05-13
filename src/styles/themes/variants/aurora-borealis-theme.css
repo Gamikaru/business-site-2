@@ -1,0 +1,11 @@
+/* Add missing variables to Aurora Borealis Dark theme */
+[data-theme="aurora-borealis-dark"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(164, 218, 255, 0.2);  /* Aurora blue grid lines for dark theme */
+}
+
+/* Add missing variables to Aurora Borealis Light theme */
+[data-theme="aurora-borealis-light"] {
+    /* Grid colors */
+    --color-grid-lines: rgba(75, 115, 180, 0.15);  /* Subtle aurora blue grid lines for light theme */
+}
