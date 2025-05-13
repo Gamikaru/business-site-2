@@ -1,31 +1,40 @@
-"use client";
-
-import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import { motion } from 'framer-motion';
-import { pageTransitionVariants } from '@/components/common/Animations/variants';
+// src/components/layout/MainLayout.tsx
+import React from "react";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 
 interface MainLayoutProps {
   children: React.ReactNode;
+  className?: string;
+  fullWidth?: boolean;
+  withPadding?: boolean;
+  headerOffset?: boolean; // new prop
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+export default function MainLayout({
+  children,
+  className = "",
+  fullWidth = false,
+  withPadding = true,
+  headerOffset = true, // default true
+}: MainLayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="min-h-screen bg-bg-primary">
       <Header />
-      <motion.main
-        className="flex-grow"
-        variants={pageTransitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
+
+      <main
+        className={`
+          ${headerOffset ? "pt-16 md:pt-24" : ""}
+          ${withPadding ? "py-8 px-4 md:px-6 lg:px-8" : ""}
+          ${className}
+        `}
       >
-        {children}
-      </motion.main>
+        <div className={fullWidth ? "w-full" : "max-w-7xl mx-auto"}>
+          {children}
+        </div>
+      </main>
+
       <Footer />
     </div>
   );
-};
-
-export default MainLayout;
+}

@@ -1,0 +1,754 @@
+/* src/styles/themes/cyberpunk-graffiti-theme.css */
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   CYBERPUNK-GRAFFITI THEME SYSTEM
+
+   A high-contrast, industrial tech palette built around urban decay backgrounds,
+   toxic neon accents, and street-tech elements for a gritty, masculine interface.
+
+   ORGANIZATION:
+   - Color palette variables (dark & light modes)
+   - Functional/semantic color assignments
+   - Color relationships and hierarchies
+   - Specialized component colors
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   CYBERPUNK-GRAFFITI DARK THEME (StreetJack Edition)
+   High-contrast urban tech with toxic green accents
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="cyber-punk-graffiti-dark"] {
+    /*** PRIMARY PALETTE - Raw color values ***/
+    /* Toxic Green spectrum */
+    --cyber-50: #E3FFD9;
+    --cyber-100: #C7FFB3;
+    --cyber-200: #A2FF80;
+    --cyber-300: #7EFF4D;
+    --cyber-400: #6EFF3D;
+    --cyber-500: #41FC03;
+    /* Primary toxic green */
+    --cyber-600: #35D002;
+    --cyber-700: #2AAD00;
+    --cyber-800: #198000;
+    --cyber-900: #0F5500;
+
+    /* Tech Cyan spectrum */
+    --cyan-50: #DBFFF9;
+    --cyan-100: #B7FFF4;
+    --cyan-200: #93FFEE;
+    --cyan-300: #6FFEE8;
+    --cyan-400: #4BFEE2;
+    --cyan-500: #03FCDA;
+    /* Tech cyan */
+    --cyan-600: #02D7B9;
+    --cyan-700: #01B097;
+    --cyan-800: #018975;
+    --cyan-900: #01594D;
+
+    /* Urban Night spectrum */
+    --night-50: #E6E6E8;
+    --night-100: #A2A4B4;
+    --night-200: #616272;
+    --night-300: #414252;
+    --night-400: #292933;
+    --night-500: #1E1E24;
+    --night-600: #151518;
+    --night-700: #10101A;
+    --night-800: #0A0A0C;
+    /* Urban midnight */
+    --night-900: #050506;
+
+    /* Accent colors */
+    --hazard-500: #FC4103;
+    /* Hazard orange */
+    --caution-500: #FCBB03;
+    /* Caution orange */
+    --info-500: #03ADFC;
+    /* Steel blue */
+    --purple-500: #7E4FFC;
+    /* Street purple */
+
+    /* Base neutrals */
+    --black: #000000;
+    --white: #FFFFFF;
+
+    /*** RGB VALUES - For opacity operations ***/
+    --cyber-500-rgb: 65, 252, 3;
+    --cyber-600-rgb: 53, 208, 2;
+    --cyan-500-rgb: 3, 252, 218;
+    --hazard-500-rgb: 252, 65, 3;
+    --purple-500-rgb: 126, 79, 252;
+    --night-800-rgb: 10, 10, 12;
+    --night-50-rgb: 230, 230, 232;
+    --white-rgb: 255, 255, 255;
+    --black-rgb: 0, 0, 0;
+
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with clear progression
+     ════════════════════════════════════ */
+    --color-bg-primary: var(--night-800);
+    /* Main application background - urban midnight */
+    --color-bg-secondary: var(--night-600);
+    /* Secondary containers, cards, sidebars - concrete gray */
+    --color-bg-tertiary: var(--night-500);
+    /* Elevated surfaces, modals, popovers - industrial metal */
+    --color-bg-card: rgba(21, 21, 24, 0.97);
+    /* Card backgrounds with slight transparency - tactical display */
+    --color-bg-glass: rgba(65, 252, 3, 0.08);
+    /* Glass effect backgrounds - toxic green overlay */
+    --color-bg-code: rgba(10, 10, 12, 0.85);
+    /* Code block backgrounds - terminal */
+    --color-bg-input: rgba(21, 21, 24, 0.65);
+    /* Form element backgrounds - command console */
+    --color-bg-hover: rgba(65, 252, 3, 0.2);
+    /* Hover state background - toxic green highlight */
+    --color-bg-active: rgba(65, 252, 3, 0.3);
+    /* Active/selected state background - stronger toxic green */
+    --color-bg-disabled: rgba(40, 40, 50, 0.35);
+    /* Disabled element background - blackout */
+    --color-bg-tooltip: rgba(10, 10, 12, 0.97);
+    /* Tooltip background - intel brief */
+    --color-bg-dropdown: rgba(21, 21, 24, 0.98);
+    /* Dropdown menu background - tactical options */
+    --color-bg-selection: rgba(65, 252, 3, 0.25);
+    /* Text selection background - target marked */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with precise contrast levels
+     ════════════════════════════════════ */
+    --color-text-primary: var(--night-50);
+    /* Main body text - street light */
+    --color-text-secondary: var(--night-100);
+    /* Secondary/supporting text - steel gray */
+    --color-text-tertiary: rgba(162, 164, 180, 0.7);
+    /* De-emphasized text, subtitles, captions - faded tag */
+    --color-text-disabled: rgba(162, 164, 180, 0.5);
+    /* Disabled text - ghosted text */
+    --color-text-on-accent: var(--night-800);
+    /* Text on accent-colored backgrounds - shadow text */
+    --color-text-code: var(--cyber-500);
+    /* Code and pre-formatted text - hacker text */
+
+    /* Headings */
+    --color-heading: var(--cyber-500);
+    /* Standard headings - toxic green */
+    --color-heading-accent: var(--hazard-500);
+    /* Accented headings - hazard orange */
+    --color-subheading: var(--night-100);
+    /* Subheadings, section titles */
+
+    /* Special text */
+    --color-text-emphasis: var(--hazard-500);
+    /* Emphasized text, highlights */
+    --color-text-inverted: var(--night-50);
+    /* Inverted text (on light backgrounds) */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with street tech aesthetic
+     ════════════════════════════════════ */
+    --color-brand-primary: var(--cyber-500);
+    /* Primary brand color - toxic green */
+    --color-brand-secondary: var(--cyan-500);
+    /* Secondary brand color - tech cyan */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: var(--cyber-500);
+    /* Primary accent for main interactive elements - toxic green */
+    --color-accent-primary-hover: var(--cyber-600);
+    /* Hover state for primary accent - deeper toxic green */
+    --color-accent-primary-active: var(--cyber-700);
+    /* Active state for primary accent - even deeper toxic green */
+    --color-accent-secondary: var(--cyan-500);
+    /* Secondary accent for visual variety - tech cyan */
+    --color-accent-tertiary: var(--cyber-300);
+    /* Tertiary accent for subtle highlights - acid green */
+    --color-accent-warm: var(--hazard-500);
+    /* Warm accent for attention-grabbing elements - hazard orange */
+    --color-accent-contrast: var(--purple-500);
+    /* High-contrast accent for important elements - street purple */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with meaningful progression
+     ════════════════════════════════════ */
+    --color-interactive: var(--cyber-500);
+    /* Default interactive element color - toxic green */
+    --color-interactive-hover: var(--cyber-600);
+    /* Hover state - deeper toxic green */
+    --color-interactive-active: var(--cyber-700);
+    /* Active/pressed state - even deeper toxic green */
+    --color-interactive-focus: var(--cyber-500);
+    /* Focus state indicator - target acquired */
+    --color-interactive-disabled: rgba(65, 252, 3, 0.4);
+    /* Disabled state - system offline */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: var(--cyan-500);
+    /* Secondary interactive elements - tech cyan */
+    --color-interactive-secondary-hover: var(--cyan-600);
+    /* Secondary hover state - deeper tech cyan */
+    --color-interactive-secondary-active: var(--cyan-700);
+    /* Secondary active state - even deeper tech cyan */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(65, 252, 3, 0.5);
+    /* Form input borders - combat interface */
+    --color-field-placeholder: rgba(162, 164, 180, 0.6);
+    /* Placeholder text */
+    --color-field-focus: var(--cyber-500);
+    /* Field focus indicator */
+    --color-field-required: var(--cyber-400);
+    /* Required field indicator */
+    --color-field-invalid: var(--hazard-500);
+    /* Invalid field indicator */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts with street tech themes
+     ════════════════════════════════════ */
+    --color-success: var(--cyber-500);
+    /* Success state - toxic green (hack successful) */
+    --color-success-subtle: rgba(65, 252, 3, 0.15);
+    /* Subtle success background - system breach */
+    --color-warning: var(--caution-500);
+    /* Warning state - caution orange (threat detected) */
+    --color-warning-subtle: rgba(252, 187, 3, 0.15);
+    /* Subtle warning background - security alert */
+    --color-error: var(--hazard-500);
+    /* Error state - hazard orange (system breach) */
+    --color-error-subtle: rgba(252, 65, 3, 0.15);
+    /* Subtle error background - firewall breach */
+    --color-info: var(--info-500);
+    /* Information state - steel blue (intel received) */
+    --color-info-subtle: rgba(3, 173, 252, 0.15);
+    /* Subtle info background - data stream */
+    --color-neutral: var(--night-100);
+    /* Neutral state - steel gray (standby mode) */
+    --color-neutral-subtle: rgba(162, 164, 180, 0.15);
+    /* Subtle neutral background - idle system */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with street tech visuals
+     ════════════════════════════════════ */
+    --color-divider: rgba(65, 252, 3, 0.3);
+    /* Dividers and separators - graffiti lines */
+    --color-divider-light: rgba(255, 255, 255, 0.08);
+    /* Lighter dividers for contrast on dark areas - street divisions */
+    --color-border: rgba(65, 252, 3, 0.4);
+    /* Borders for containers, cards, etc - territory markers */
+    --color-border-focus: var(--hazard-500);
+    /* Focus state borders - target lock */
+    --color-border-input: rgba(65, 252, 3, 0.5);
+    /* Form input borders - combat interface */
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    /* Shadows for elevation - urban shadow */
+    --color-shadow-light: rgba(0, 0, 0, 0.3);
+    /* Lighter shadows for subtle elevation - city glow */
+    --color-overlay: rgba(10, 10, 12, 0.8);
+    /* Modal/dialog overlays - tactical visor */
+    --color-notification-badge: var(--hazard-500);
+    /* Notification badges - threat alert */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(65, 252, 3, 0.5);
+    /* Scrollbar thumb - data scanner */
+    --color-scrollbar-track: rgba(10, 10, 12, 0.3);
+    /* Scrollbar track - track guide */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: var(--cyan-500);
+    /* Link text - network link */
+    --color-link-hover: var(--cyan-300);
+    /* Link hover state - active connection */
+    --color-link-visited: var(--purple-500);
+    /* Visited links - accessed node */
+    --color-emphasis: var(--hazard-500);
+    /* Emphasized text - critical data */
+    --color-success-text: var(--cyber-400);
+    /* Success messages - mission complete text */
+    --color-warning-text: #FFD54A;
+    /* Warning messages - security alert text */
+    --color-error-text: #FF704A;
+    /* Error messages - system failure text */
+    --color-info-text: #4DC5FF;
+    /* Information text - intel stream */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with clear hierarchy
+     ════════════════════════════════════ */
+    --color-icon-primary: var(--cyber-500);
+    /* Primary icons - main controls */
+    --color-icon-secondary: rgba(3, 252, 218, 0.9);
+    /* Secondary icons - tactical tools */
+    --color-icon-tertiary: rgba(162, 164, 180, 0.7);
+    /* Tertiary icons - background systems */
+    --color-icon-on-accent: var(--night-800);
+    /* Icons on accent-colored backgrounds - shadow icons */
+    --color-icon-bg: rgba(65, 252, 3, 0.1);
+    /* Icon backgrounds or containers - icon zones */
+    --color-icon-disabled: rgba(162, 164, 180, 0.5);
+    /* Disabled icons - offline tech */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(65, 252, 3, 0.2);
+    /* Skill item background - street skills */
+    --color-skill-item-hover: rgba(3, 252, 218, 0.3);
+    /* Skill item hover - skill activation */
+    --color-skill-item-active: rgba(3, 252, 218, 0.4);
+    /* Skill item active - skill deployment */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects with street tech aesthetic
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--cyber-500), var(--cyan-500));
+    /* Brand accent gradient - hazardous blend */
+    --gradient-interactive: linear-gradient(45deg, var(--cyber-500), var(--cyber-600));
+    /* Interactive element gradient - tactical action */
+    --gradient-toxic: linear-gradient(45deg, var(--cyber-500), var(--cyber-600));
+    /* Toxic gradient - nuclear waste */
+    --gradient-tech: linear-gradient(45deg, var(--cyan-500), var(--cyan-600));
+    /* Tech gradient - circuit trace */
+    --gradient-glass: linear-gradient(120deg, rgba(65, 252, 3, 0.08), rgba(65, 252, 3, 0.04));
+    /* Glass effect gradient - tactical visor */
+    --gradient-overlay: linear-gradient(180deg, rgba(10, 10, 12, 0.8), rgba(10, 10, 12, 0.95));
+    /* Overlay gradient - shadow ops filter */
+    --gradient-purple-green: linear-gradient(45deg, var(--purple-500), var(--cyber-500));
+    /* Purple to green gradient - street spectrum */
+    --gradient-cyan-blue: linear-gradient(45deg, var(--cyan-500), var(--info-500));
+    /* Cyan to blue gradient - urban ice */
+    --gradient-glitch: linear-gradient(0deg, var(--night-800), var(--night-500) 25%, var(--night-800) 50%, var(--night-500) 75%, var(--night-800) 100%);
+    /* Glitch gradient - system corruption */
+    --gradient-button: linear-gradient(to right, var(--cyber-500), var(--cyber-600));
+    /* Button gradient */
+    --gradient-button-hover: linear-gradient(to right, var(--cyber-600), var(--cyber-700));
+    /* Button hover gradient */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects with street tech feel
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
+    /* Small shadow - urban grime */
+    --shadow-md: 0 12px 25px -10px rgba(0, 0, 0, 0.4);
+    /* Medium shadow - concrete shadow */
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    /* Large shadow - industrial fallout */
+    --shadow-inner: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Inner shadow - spray paint depth */
+    --shadow-focus: 0 0 0 3px rgba(65, 252, 3, 0.3);
+    /* Focus shadow - targeting system */
+    --shadow-button: 0 0 15px rgba(65, 252, 3, 0.25);
+    /* Button shadow - toxic glow */
+    --shadow-neon: 0 0 10px rgba(65, 252, 3, 0.5), 0 0 20px rgba(65, 252, 3, 0.3), 0 0 30px rgba(65, 252, 3, 0.1);
+    /* Toxic neon glow shadow - radioactive aura */
+
+    /* Wave-specific colors - white dominant for dark mode */
+    --wave-primary: var(--white);
+    /* Dominant light color */
+    --wave-secondary: #F2F2F2;
+    /* Secondary light color */
+    --wave-accent-1: var(--cyber-500);
+    /* Toxic green for contrast */
+    --wave-accent-2: var(--cyan-500);
+    /* Tech cyan for variation */
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   CYBERPUNK-GRAFFITI LIGHT THEME (UrbanTech Edition)
+   Clean, bright background with tech green accents
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="cyber-punk-graffiti-light"] {
+    /*** PRIMARY PALETTE - Raw color values ***/
+    /* Tech Green spectrum */
+    --cyber-50: #EBFCE6;
+    --cyber-100: #D3F9CC;
+    --cyber-200: #A8F199;
+    --cyber-300: #7DE866;
+    --cyber-400: #52DB33;
+    --cyber-500: #1AC800;
+    /* Primary tech green */
+    --cyber-600: #14A400;
+    --cyber-700: #0F8F00;
+    --cyber-800: #0A6500;
+    --cyber-900: #064000;
+
+    /* Street Cyan spectrum */
+    --cyan-50: #E5F9F7;
+    --cyan-100: #CCF3EF;
+    --cyan-200: #99E7DE;
+    --cyan-300: #66DCCE;
+    --cyan-400: #33D0BD;
+    --cyan-500: #00C8A4;
+    /* Street cyan */
+    --cyan-600: #00A487;
+    --cyan-700: #008A70;
+    --cyan-800: #005F4D;
+    --cyan-900: #00352C;
+
+    /* Urban White spectrum */
+    --urbwht-50: #F2F2F2;
+    /* Concrete white */
+    --urbwht-100: #EBEBEB;
+    --urbwht-200: #DEDEDE;
+    --urbwht-300: #CCCCCC;
+    --urbwht-400: #BCBCBC;
+    --urbwht-500: #A6A6A6;
+    --urbwht-600: #808080;
+    --urbwht-700: #666666;
+    --urbwht-800: #404040;
+    --urbwht-900: #151518;
+    /* Urban black */
+
+    /* Accent colors */
+    --hazard-500: #D63600;
+    /* Urban rust */
+    --caution-500: #E39100;
+    /* Caution amber */
+    --info-500: #007DC8;
+    /* Urban blue */
+    --purple-500: #5F3FC2;
+    /* Urban violet */
+
+    /* Base neutrals */
+    --black: #000000;
+    --white: #FFFFFF;
+
+    /*** RGB VALUES - For opacity operations ***/
+    --cyber-500-rgb: 26, 200, 0;
+    --cyber-600-rgb: 20, 164, 0;
+    --cyan-500-rgb: 0, 200, 164;
+    --hazard-500-rgb: 214, 54, 0;
+    --purple-500-rgb: 95, 63, 194;
+    --urbwht-50-rgb: 242, 242, 242;
+    --urbwht-900-rgb: 21, 21, 24;
+    --white-rgb: 255, 255, 255;
+    --black-rgb: 0, 0, 0;
+
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with clear progression
+     ════════════════════════════════════ */
+    --color-bg-primary: var(--urbwht-50);
+    /* Main application background - concrete white */
+    --color-bg-secondary: var(--white);
+    /* Secondary containers, cards, sidebars - pure white */
+    --color-bg-tertiary: var(--urbwht-100);
+    /* Elevated surfaces, modals, popovers - urban steel */
+    --color-bg-card: var(--white);
+    /* Card backgrounds - urban canvas */
+    --color-bg-glass: rgba(255, 255, 255, 0.92);
+    /* Glass effect backgrounds - urban glass */
+    --color-bg-code: rgba(230, 230, 232, 0.8);
+    /* Code block backgrounds - tech readout */
+    --color-bg-input: rgba(242, 242, 242, 0.7);
+    /* Form element backgrounds - input field */
+    --color-bg-hover: rgba(26, 200, 0, 0.08);
+    /* Hover state background - subtle tech green highlight */
+    --color-bg-active: rgba(26, 200, 0, 0.15);
+    /* Active/selected state background - stronger tech green */
+    --color-bg-disabled: rgba(220, 220, 225, 0.7);
+    /* Disabled element background - offline mode */
+    --color-bg-tooltip: rgba(21, 21, 24, 0.95);
+    /* Tooltip background - info readout */
+    --color-bg-dropdown: var(--white);
+    /* Dropdown menu background - option panel */
+    --color-bg-selection: rgba(26, 200, 0, 0.2);
+    /* Text selection background - data selection */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with precise contrast levels
+     ════════════════════════════════════ */
+    --color-text-primary: var(--urbwht-900);
+    /* Main body text - urban black */
+    --color-text-secondary: #2A2A33;
+    /* Secondary/supporting text - steel black */
+    --color-text-tertiary: rgba(42, 42, 51, 0.7);
+    /* De-emphasized text, subtitles, captions - faded urban */
+    --color-text-disabled: rgba(42, 42, 51, 0.5);
+    /* Disabled text - ghost urban */
+    --color-text-on-accent: var(--white);
+    /* Text on accent-colored backgrounds - pure white */
+    --color-text-code: #1A6300;
+    /* Code and pre-formatted text - dark tech green */
+
+    /* Headings */
+    --color-heading: var(--cyber-500);
+    /* Standard headings - tech green */
+    --color-heading-accent: var(--hazard-500);
+    /* Accented headings - urban rust */
+    --color-subheading: #2A2A33;
+    /* Subheadings, section titles */
+
+    /* Special text */
+    --color-text-emphasis: var(--hazard-500);
+    /* Emphasized text - alert text */
+    --color-text-inverted: var(--urbwht-50);
+    /* Inverted text (on dark backgrounds) */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with urban tech aesthetic
+     ════════════════════════════════════ */
+    --color-brand-primary: var(--cyber-500);
+    /* Primary brand color - tech green */
+    --color-brand-secondary: var(--cyan-500);
+    /* Secondary brand color - street cyan */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: var(--cyber-500);
+    /* Primary accent for main interactive elements - tech green */
+    --color-accent-primary-hover: var(--cyber-600);
+    /* Hover state for primary accent - deeper tech green */
+    --color-accent-primary-active: var(--cyber-700);
+    /* Active state for primary accent - even deeper tech green */
+    --color-accent-secondary: var(--cyan-500);
+    /* Secondary accent for visual variety - street cyan */
+    --color-accent-tertiary: var(--cyber-700);
+    /* Tertiary accent for subtle highlights - deeper tech green */
+    --color-accent-warm: var(--hazard-500);
+    /* Warm accent for attention-grabbing elements - urban rust */
+    --color-accent-contrast: var(--purple-500);
+    /* High-contrast accent for important elements - urban violet */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with meaningful progression
+     ════════════════════════════════════ */
+    --color-interactive: var(--cyber-500);
+    /* Default interactive element color - tech green */
+    --color-interactive-hover: var(--cyber-600);
+    /* Hover state - deeper tech green */
+    --color-interactive-active: var(--cyber-700);
+    /* Active/pressed state - even deeper tech green */
+    --color-interactive-focus: var(--cyber-500);
+    /* Focus state indicator - system focus */
+    --color-interactive-disabled: rgba(26, 200, 0, 0.4);
+    /* Disabled state - system offline */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: var(--cyan-500);
+    /* Secondary interactive elements - street cyan */
+    --color-interactive-secondary-hover: var(--cyan-600);
+    /* Secondary hover state - deeper street cyan */
+    --color-interactive-secondary-active: var(--cyan-700);
+    /* Secondary active state - even deeper street cyan */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(26, 200, 0, 0.35);
+    /* Form input borders - input frame */
+    --color-field-placeholder: rgba(42, 42, 51, 0.6);
+    /* Placeholder text */
+    --color-field-focus: var(--cyber-500);
+    /* Field focus indicator */
+    --color-field-required: var(--cyber-600);
+    /* Required field indicator */
+    --color-field-invalid: var(--hazard-500);
+    /* Invalid field indicator */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts with urban tech themes
+     ════════════════════════════════════ */
+    --color-success: var(--cyber-500);
+    /* Success state - tech green (system clear) */
+    --color-success-subtle: rgba(26, 200, 0, 0.12);
+    /* Subtle success background - system operational */
+    --color-warning: var(--caution-500);
+    /* Warning state - caution amber (alert status) */
+    --color-warning-subtle: rgba(227, 145, 0, 0.12);
+    /* Subtle warning background - system warning */
+    --color-error: var(--hazard-500);
+    /* Error state - urban rust (system critical) */
+    --color-error-subtle: rgba(214, 54, 0, 0.12);
+    /* Subtle error background - system breach */
+    --color-info: var(--info-500);
+    /* Information state - urban blue (system info) */
+    --color-info-subtle: rgba(0, 125, 200, 0.12);
+    /* Subtle info background - system message */
+    --color-neutral: #6D6D7A;
+    /* Neutral state - urban gray (system neutral) */
+    --color-neutral-subtle: rgba(109, 109, 122, 0.12);
+    /* Subtle neutral background - system standby */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with urban tech visuals
+     ════════════════════════════════════ */
+    --color-divider: rgba(26, 200, 0, 0.25);
+    /* Dividers and separators - tech divisions */
+    --color-divider-light: rgba(0, 0, 0, 0.05);
+    /* Lighter dividers for contrast on light areas - subtle division */
+    --color-border: rgba(26, 200, 0, 0.3);
+    /* Borders for containers, cards, etc - tech borders */
+    --color-border-focus: var(--hazard-500);
+    /* Focus state borders - system highlight */
+    --color-border-input: rgba(26, 200, 0, 0.35);
+    /* Form input borders - input frame */
+    --color-shadow: rgba(21, 21, 24, 0.15);
+    /* Shadows for elevation - urban shadow */
+    --color-shadow-light: rgba(21, 21, 24, 0.05);
+    /* Lighter shadows for subtle elevation - tech shadow */
+    --color-overlay: rgba(242, 242, 242, 0.85);
+    /* Modal/dialog overlays - system overlay */
+    --color-notification-badge: var(--hazard-500);
+    /* Notification badges - alert indicator */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(26, 200, 0, 0.4);
+    /* Scrollbar thumb - data slider */
+    --color-scrollbar-track: rgba(230, 230, 232, 0.5);
+    /* Scrollbar track - slider track */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: var(--info-500);
+    /* Link text - system link */
+    --color-link-hover: #005E96;
+    /* Link hover state - active link */
+    --color-link-visited: var(--purple-500);
+    /* Visited links - accessed link */
+    --color-emphasis: var(--hazard-500);
+    /* Emphasized text - alert text */
+    --color-success-text: #128C00;
+    /* Success messages - status clear */
+    --color-warning-text: #BF7800;
+    /* Warning messages - alert status */
+    --color-error-text: #B32E00;
+    /* Error messages - critical status */
+    --color-info-text: #006AAA;
+    /* Information text - info status */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with clear hierarchy
+     ════════════════════════════════════ */
+    --color-icon-primary: var(--cyber-500);
+    /* Primary icons - main system icons */
+    --color-icon-secondary: rgba(0, 200, 164, 0.9);
+    /* Secondary icons - supplementary system icons */
+    --color-icon-tertiary: rgba(42, 42, 51, 0.7);
+    /* Tertiary icons - background system elements */
+    --color-icon-on-accent: var(--white);
+    /* Icons on accent-colored backgrounds - contrast icons */
+    --color-icon-bg: rgba(26, 200, 0, 0.1);
+    /* Icon backgrounds or containers - icon platforms */
+    --color-icon-disabled: rgba(42, 42, 51, 0.5);
+    /* Disabled icons - offline systems */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(26, 200, 0, 0.15);
+    /* Skill item background - tech specs */
+    --color-skill-item-hover: rgba(0, 200, 164, 0.15);
+    /* Skill item hover - spec highlight */
+    --color-skill-item-active: rgba(0, 200, 164, 0.25);
+    /* Skill item active - spec active */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects with urban tech aesthetic
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--cyber-500), var(--cyan-500));
+    /* Brand accent gradient - urban spectrum */
+    --gradient-interactive: linear-gradient(45deg, var(--cyber-500), var(--cyber-600));
+    /* Interactive element gradient - system engagement */
+    --gradient-tech: linear-gradient(45deg, var(--cyber-500), var(--cyber-600));
+    /* Tech gradient - system power */
+    --gradient-street: linear-gradient(45deg, var(--cyan-500), var(--cyan-600));
+    /* Street gradient - urban flow */
+    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+    /* Glass effect gradient - urban glass */
+    --gradient-overlay: linear-gradient(180deg, rgba(242, 242, 242, 0.85), rgba(242, 242, 242, 0.95));
+    /* Overlay gradient - system filter */
+    --gradient-violet-green: linear-gradient(45deg, var(--purple-500), var(--cyber-500));
+    /* Violet to green gradient - urban contrast */
+    --gradient-cyan-blue: linear-gradient(45deg, var(--cyan-500), var(--info-500));
+    /* Cyan to blue gradient - street flow */
+    --gradient-tech-lines: linear-gradient(0deg, var(--urbwht-50), var(--urbwht-100) 25%, var(--urbwht-50) 50%, var(--urbwht-100) 75%, var(--urbwht-50) 100%);
+    /* Tech lines gradient - system pattern */
+    --gradient-button: linear-gradient(to right, var(--cyber-500), var(--cyber-600));
+    /* Button gradient */
+    --gradient-button-hover: linear-gradient(to right, var(--cyber-600), var(--cyber-700));
+    /* Button hover gradient */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects with urban tech feel
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(21, 21, 24, 0.05);
+    /* Small shadow - tech elevation */
+    --shadow-md: 0 12px 25px -10px rgba(21, 21, 24, 0.1);
+    /* Medium shadow - city shadow */
+    --shadow-lg: 0 25px 50px -12px rgba(21, 21, 24, 0.15);
+    /* Large shadow - urban shadow */
+    --shadow-inner: inset 0 2px 5px rgba(21, 21, 24, 0.03);
+    /* Inner shadow - inset detail */
+    --shadow-focus: 0 0 0 3px rgba(26, 200, 0, 0.25);
+    /* Focus shadow - system focus */
+    --shadow-button: 0 4px 14px rgba(21, 21, 24, 0.15);
+    /* Button shadow */
+    --shadow-neon: 0 0 10px rgba(26, 200, 0, 0.4), 0 0 20px rgba(26, 200, 0, 0.2), 0 0 30px rgba(26, 200, 0, 0.1);
+    /* Tech neon glow shadow - system highlight */
+
+    /* Wave-specific colors - dark dominant for light mode */
+    --wave-primary: var(--urbwht-900);     /* Dominant dark color */
+    --wave-secondary: var(--urbwht-800);   /* Secondary dark color */
+    --wave-accent-1: var(--cyber-500);    /* Tech green for contrast */
+    --wave-accent-2: var(--cyan-500);    /* Street cyan for variation */
+}
+
+/* Set color-scheme for the theme */
+[data-theme="cyber-punk-graffiti-dark"] {
+    color-scheme: dark;
+}
+
+[data-theme="cyber-punk-graffiti-light"] {
+    color-scheme: light;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+ * Custom scrollbar styling for Cyberpunk-Graffiti theme
+ * ────────────────────────────────────────────────────────────────────────── */
+[data-theme^="cyber-punk-graffiti"] .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+[data-theme^="cyber-punk-graffiti"] .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track);
+    border-radius: 4px;
+}
+
+[data-theme^="cyber-punk-graffiti"] .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar-thumb);
+    border-radius: 4px;
+}
+
+[data-theme^="cyber-punk-graffiti"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-interactive);
+}
+
+/* Firefox scrollbar support */
+[data-theme^="cyber-punk-graffiti"] .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+}

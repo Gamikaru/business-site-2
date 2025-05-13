@@ -4,10 +4,7 @@
 import React from "react";
 import ImagePlaceholder from "../../core/ImagePlaceholder";
 import { motion } from "framer-motion";
-import {
-  staggerContainerVariants,
-  staggerItemVariants,
-} from "../Animations/variants";
+import { staggerContainerVariants, staggerItemVariants } from "../../core/Animations";
 
 interface ImageShowcaseProps {
   className?: string;

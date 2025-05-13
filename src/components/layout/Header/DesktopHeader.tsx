@@ -1,114 +1,149 @@
-// src/components/layout/Header/DesktopHeader.tsx
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { mainNavItems, ctaButton, brandInfo } from '@/content/config/navigation';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Icon from "@/components/common/Icons/Icon";
+import { useTheme } from "@/context/ThemeContext";
+import { cn } from "@/utils/classNames";
+import ThemeSelector from "@/components/core/ThemeSelector";
+import { FontSelector } from "@/components/common/Typography"; // Import FontSelector
 
-const DesktopHeader: React.FC = () => {
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
+const nav = [
+  { n: "01", label: "Home",     href: "/" },
+  { n: "02", label: "About",    href: "/about" },
+  { n: "03", label: "Services", href: "/services" },
+  { n: "04", label: "Work",     href: "/portfolio" },
+  { n: "05", label: "Blog",     href: "/blog" },
+];
 
-  // Track scroll position for header styling
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+export default function DesktopHeader() {
+  const path = usePathname();
+  const { mode, toggleMode } = useTheme();
+  const { scrollY } = useScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  /* glass & shrink */
+  const h      = useTransform(scrollY, [0,120], [96,64]);
+  const yPad   = useTransform(scrollY, [0,120], ["1.5rem","0.75rem"]);
+  const bgOpa  = useTransform(scrollY, [0,120], [0,0.85]);
+  const blur   = useTransform(scrollY, [0,120], ["blur(0)","blur(8px)"]);
 
   return (
-    <motion.header
-      className={`fixed top-0 left-0 right-0 z-[var(--z-header)] hidden md:block transition-all duration-500 ${
-        scrolled ? 'py-3 bg-white shadow-sm' : 'py-6 bg-transparent'
-      }`}
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-12 items-center">
-          {/* Logo Area - Editorial placement */}
-          <div className="col-span-3 col-start-1">
-            <Link href="/" aria-label={`${brandInfo.name} - Home`}>
-              <div className={`relative ${scrolled ? 'h-16 w-48' : 'h-20 w-56'} transition-all duration-500`}>
-                <Image
-                  src="/images/copy_social_logo.png"
-                  alt={brandInfo.name}
-                  fill
-                  priority
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 200px"
-                />
-              </div>
-            </Link>
+    <motion.header style={{height: h, paddingTop: yPad, paddingBottom: yPad}}
+      className="fixed inset-x-0 top-0 z-50">
+
+      {/* glass surface */}
+      <motion.div style={{opacity:bgOpa, backdropFilter:blur}}
+        className="absolute inset-0 bg-transparent" /* <-- changed from bg-surface-primary */
+      />
+
+      <div className="relative z-10 container mx-auto grid grid-cols-12 items-center gap-6">
+        {/* LEFT spacer for logo (kept bare per request) */}
+        <div className="col-span-2" />
+
+        {/* NAVIGATION */}
+        <nav className="col-span-7">
+          <ul className="flex items-center gap-8">
+            {nav.map(({ n, label, href }) => {
+              const active = path === href;
+              return (
+                <li key={href} className="relative">
+                  <Link
+                    href={href}
+                    className={cn(
+                      "group flex items-baseline gap-1 px-2 py-1",
+                      active
+                        ? "text-text-heading font-medium"
+                        : "text-text-secondary hover:text-text-heading"
+                    )}
+                  >
+                    {/* numeric index */}
+                    <span className="font-mono text-xs tracking-wider opacity-50 group-hover:opacity-80 transition-opacity">
+                      {n}
+                    </span>
+                    {label}
+                  </Link>
+
+                  {/* shared animated underline */}
+                  {active && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-1 left-0 h-[2px] w-full rounded-md bg-brand-primary"
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* ACTIONS */}
+        <div className="col-span-3 flex justify-end items-center gap-4">
+          {/* Font Selector with custom trigger */}
+          <div className="relative">
+            <FontSelector
+              variant="dropdown"
+              showPreview={false}
+              className="hover:scale-105 transition-transform"
+              customTrigger={
+                <button
+                  className="grid h-10 w-10 place-content-center rounded-full
+                           bg-surface-alt-2 hover:scale-105 transition-transform
+                           focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]"
+                  aria-label="Change font"
+                >
+                  <span className="text-xl font-semibold">T</span>
+                </button>
+              }
+            />
           </div>
 
-          {/* Main Navigation - Editorial styling */}
-          <nav className="col-span-9 col-start-4 flex justify-end items-center">
-            <ul className="flex items-center">
-              {mainNavItems.map((item: { label: string; path: string; isButton?: boolean }) => {
-                const isActive = pathname === item.path;
+          {/* Theme Selector */}
+          <ThemeSelector
+            variant="dropdown"
+            showLabels={false}
+            size="sm"
+            className="hover:scale-105 transition-transform"
+          />
 
-                return (
-                  <li key={item.path} className="relative mx-6 first:ml-0 last:mr-0">
-                    <Link
-                      href={item.path}
-                      className={`text-xs uppercase tracking-[0.2em] font-light py-3 transition-colors duration-300 ${
-                        isActive
-                          ? 'text-[var(--color-accent-mauve)]'
-                          : 'text-black hover:text-[var(--color-accent-mauve)]'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
+          {/* Light/Dark Mode Toggle */}
+          <button
+            onClick={toggleMode}
+            aria-label={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
+            aria-pressed={mode === "dark"}
+            className="grid h-10 w-10 place-content-center rounded-full
+                       bg-surface-alt-2 hover:scale-105 transition-transform
+                       focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]"
+          >
+            <Icon
+              name={mode === "light" ? "fi-moon" : "fi-sun"}
+              size={18}
+              className="text-text-primary"
+            />
+          </button>
 
-                    {/* Active indicator - editorial line accent */}
-                    {isActive && (
-                      <motion.div
-                        className="absolute -bottom-2 left-0 h-px w-full bg-[var(--color-accent-mauve)]"
-                        layoutId="navIndicator"
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                      />
-                    )}
-                  </li>
-                );
-              })}
-
-              {/* Editorial separator before CTA */}
-              <div className="h-6 w-px bg-black/10 mx-8"></div>
-
-              {/* CTA Button with editorial styling */}
-              <li>
-                <Link
-                  href={ctaButton.path}
-                  className="inline-flex group items-center"
-                >
-                  <span className="text-xs uppercase tracking-[0.2em] text-[var(--color-accent-navy)] mr-3 font-medium">
-                    {ctaButton.label}
-                  </span>
-                  <span className="h-px w-6 bg-[var(--color-accent-navy)] transition-all duration-300 group-hover:w-10"></span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          {/* Contact Button */}
+          <Link
+            href="/contact"
+            className="btn-primary px-6 py-2 text-sm shadow-md hover:shadow-lg"
+          >
+            Book Call
+          </Link>
         </div>
+      </div>
 
-        {/* Editorial bottom line */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-px bg-black/5"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        />
+      {/* measurement ticks (subtler, dashed) */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3">
+        <div className="border-t border-dashed border-divider-stroke/40 h-px w-full" />
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute bottom-0 w-px h-2 bg-divider-stroke/40"
+            style={{ left: `${(i * 100) / 12}%` }}
+          />
+        ))}
       </div>
     </motion.header>
   );
-};
-
-export default DesktopHeader;
+}

@@ -1,0 +1,561 @@
+/* src/styles/utilities/accessibility.css */
+
+/*******************************************************************************
+ * ACCESSIBILITY UTILITIES
+ *
+ * Enhanced accessibility features for an inclusive user experience.
+ * Follows WCAG 2.1 AA standards and best practices.
+ *
+ * CONTENTS:
+ * - Focus Styles & Indicators
+ * - Screen Reader Utilities
+ * - Keyboard Navigation
+ * - Reduced Motion Support
+ * - High Contrast Mode
+ * - Link & Interactive Element Enhancements
+ * - Form Accessibility
+ * - Skip Navigation
+ * - ARIA State Indicators
+ *******************************************************************************/
+
+/*==============================================================================
+ * FOCUS STYLES & INDICATORS
+ * Clear visual indicators for focused elements - optimized for Tailwind
+ *============================================================================*/
+
+/* Base focus style - Use Tailwind's focus-visible:outline-* instead */
+@layer base {
+  /* Default focus visible styles that complement Tailwind */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline outline-interactive;
+  }
+}
+
+/* Dark theme custom focus styles */
+[data-theme="green-dark"] .focus-visible,
+[data-theme="green-dark"] :focus-visible {
+  outline-color: var(--color-interactive-focus);
+  box-shadow: 0 0 0 4px rgba(var(--color-interactive-rgb), 0.25);
+}
+
+/* Enhanced focus styles for different component types */
+.focus-visible-inset:focus-visible {
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 2px var(--color-interactive-focus);
+}
+
+.focus-visible-large:focus-visible {
+  outline-width: 3px;
+  outline-offset: 4px;
+}
+
+/* Subtle focus style for low-contrast elements */
+.focus-visible-subtle:focus-visible {
+  outline-width: 1px;
+  outline-style: dashed;
+  box-shadow: none;
+}
+
+/* Animated focus style for increased visibility */
+.focus-visible-animated:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-interactive-focus);
+  animation: pulse-focus 1.5s infinite;
+}
+
+@keyframes pulse-focus {
+  0%, 100% { box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-interactive-focus); }
+  50% { box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 6px var(--color-interactive-focus); }
+}
+
+/* Disable focus styles for mouse users but keep for keyboard navigation */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/*==============================================================================
+ * SCREEN READER UTILITIES
+ * Utilities for assistive technology compatibility
+ *============================================================================*/
+
+/* Hide content visually but keep available for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Hide content from all users including screen reader users */
+.hidden-all {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Make visually hidden content visible on focus - for skip links */
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Visually hide but make available for screen readers (alternate technique) */
+.sr-only-alt {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+/* Announce content change to screen readers */
+.sr-announce {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Live announcements for screen readers */
+.sr-live-region {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*==============================================================================
+ * KEYBOARD NAVIGATION
+ * Enhanced focus styles and keyboard interaction improvements
+ *============================================================================*/
+
+/* Apply to body when users are navigating with keyboard */
+.keyboard-nav {
+  --focus-outline-color: var(--color-interactive-focus);
+  --focus-outline-style: solid;
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 3px;
+}
+
+/* Show outlines only during keyboard navigation */
+.keyboard-nav :focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+.keyboard-nav :focus-visible {
+  outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: 0 0 0 4px rgba(var(--color-interactive-rgb), 0.2);
+  z-index: 1;
+}
+
+/* Enhanced tab-index visualization for debugging */
+.debug-focus [tabindex]:not([tabindex="-1"])::after {
+  content: attr(tabindex);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--color-warning);
+  color: var(--color-text-on-accent);
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 2px;
+  z-index: 1000;
+}
+
+/*==============================================================================
+ * REDUCED MOTION SUPPORT
+ * Respect user preferences for reduced motion
+ *============================================================================*/
+
+/* Base reduced motion handling */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+  }
+
+  .animate-none-on-reduce {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Apply these when prefers-reduced-motion is active */
+@media (prefers-reduced-motion: reduce) {
+  .reduced-motion-smooth {
+    transition-duration: 0.2s !important;
+    animation-duration: 0.2s !important;
+  }
+
+  .reduced-motion-instant {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .reduced-motion-no-transform {
+    transform: none !important;
+  }
+
+  .reduced-motion-fade {
+    transition: opacity 0.2s ease !important;
+  }
+}
+
+/* JavaScript-toggled class for motion preferences */
+.js-reduced-motion *,
+.js-reduced-motion ::before,
+.js-reduced-motion ::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/*==============================================================================
+ * HIGH CONTRAST MODE
+ * Adjustments for high contrast mode and forced colors
+ *============================================================================*/
+
+@media (forced-colors: active) {
+  /* Ensure interactive elements have visible borders */
+  button,
+  a[role="button"],
+  input,
+  select,
+  textarea,
+  [role="checkbox"],
+  [role="radio"],
+  [role="switch"],
+  .interactive-element {
+    border: 1px solid CanvasText !important;
+    forced-color-adjust: none;
+  }
+
+  /* Ensure icons are visible */
+  svg,
+  img[role="img"],
+  [aria-hidden="true"] {
+    forced-color-adjust: auto;
+  }
+
+  /* Ensure focus indicators are visible */
+  :focus {
+    outline: 2px solid Highlight !important;
+    outline-offset: 2px !important;
+    forced-color-adjust: none;
+  }
+
+  /* Override transparent backgrounds */
+  [class*="bg-transparent"],
+  [style*="background: transparent"],
+  [style*="background-color: transparent"] {
+    background-color: Canvas !important;
+    forced-color-adjust: none;
+  }
+
+  /* Ensure proper text contrast */
+  [class*="text-"],
+  [style*="color:"] {
+    color: CanvasText !important;
+    forced-color-adjust: none;
+  }
+
+  /* Proper rendering of links */
+  a:link,
+  a:visited {
+    color: LinkText !important;
+    forced-color-adjust: none;
+  }
+}
+
+/*==============================================================================
+ * LINK & INTERACTIVE ELEMENT ENHANCEMENTS
+ * Better interaction cues and states
+ *============================================================================*/
+
+/* Enhanced accessible link styles */
+.link-accessible {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: text-decoration-thickness 0.2s ease, text-underline-offset 0.2s ease;
+}
+
+.link-accessible:hover,
+.link-accessible:focus {
+  color: var(--color-link-hover);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.link-accessible:active {
+  text-decoration-thickness: 3px;
+  text-underline-offset: 1px;
+}
+
+.link-accessible:visited {
+  color: var(--color-link-visited);
+}
+
+/* Interactive element - clear states */
+.interactive {
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.interactive::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: background-color 0.15s ease;
+}
+
+.interactive:hover::after {
+  background-color: var(--color-bg-hover);
+}
+
+.interactive:active::after {
+  background-color: var(--color-bg-active);
+}
+
+/* Enhanced semantic button states */
+[role="button"],
+button:not([disabled]),
+.button {
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+/* Disabled states */
+[disabled],
+.disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+/*==============================================================================
+ * FORM ACCESSIBILITY
+ * Improved form controls for better accessibility
+ *============================================================================*/
+
+/* Form group consistent spacing */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Label styles */
+.form-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* Required field indicator */
+.form-label.required::after {
+  content: "*";
+  color: var(--color-field-required);
+  margin-left: 0.25rem;
+}
+
+/* Input description text */
+.form-helper-text {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Error state */
+.form-error-text {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--color-error);
+  font-weight: 500;
+}
+
+/* ARIA state indicators */
+[aria-invalid="true"] {
+  border-color: var(--color-error) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8 15A7 7 0 108 1a7 7 0 000 14zM7 4h2v5H7V4zm0 6h2v2H7v-2z' fill='%23EA4E6A'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+[aria-invalid="true"] ~ .form-error-text {
+  display: block;
+}
+
+/* Success state */
+[aria-valid="true"] {
+  border-color: var(--color-success) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8 15A7 7 0 108 1a7 7 0 000 14zm-1.07-4.5l-3-3 1.06-1.06L7 8.439l4.01-4.02 1.06 1.06-5.07 5.08-1.07-1.06z' fill='%232D9D78'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+/*==============================================================================
+ * SKIP NAVIGATION
+ * Enhanced skip links for keyboard users
+ *============================================================================*/
+
+/* Skip navigation link - appears when focused */
+.skip-to-content {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-interactive);
+  color: var(--color-text-on-accent);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 12px 25px -10px rgba(0, 10, 8, 0.35);
+  transition: top 0.2s ease;
+  white-space: nowrap;
+}
+
+.skip-to-content:focus {
+  top: 0;
+  outline: none;
+}
+
+/* Multiple skip links */
+.skip-navigation {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+}
+
+.skip-navigation a {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  margin: 0;
+  background-color: var(--color-interactive);
+  color: var(--color-text-on-accent);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0 0 4px 4px;
+  white-space: nowrap;
+  box-shadow: 0 12px 25px -10px rgba(0, 10, 8, 0.35);
+  transition: top 0.2s ease;
+}
+
+.skip-navigation a:focus {
+  top: 0;
+  outline: none;
+}
+
+/*==============================================================================
+ * ARIA STATE INDICATORS
+ * Visual styles that reflect ARIA states
+ *============================================================================*/
+
+/* ARIA expanded states */
+[aria-expanded="true"] .collapse-icon {
+  transform: rotate(180deg);
+}
+
+/* Button pressed state */
+[aria-pressed="true"] {
+  background-color: var(--color-bg-active);
+  box-shadow: var(--shadow-inner);
+}
+
+/* Selected state */
+[aria-selected="true"] {
+  background-color: var(--color-bg-active);
+  font-weight: 500;
+}
+
+/* Current page indicator */
+[aria-current="page"] {
+  font-weight: 600;
+  position: relative;
+}
+
+/* Checked state */
+[aria-checked="true"] .checkmark,
+[aria-checked="mixed"] .checkmark {
+  opacity: 1;
+}
+
+[aria-checked="mixed"] .checkmark {
+  transform: scale(0.8);
+}
+
+/* Alert role styling */
+[role="alert"] {
+  color: var(--color-text-primary);
+  background-color: var(--color-warning-subtle);
+  border: 1px solid var(--color-warning);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Status role styling */
+[role="status"] {
+  color: var(--color-text-primary);
+  background-color: var(--color-info-subtle);
+  border: 1px solid var(--color-info);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}

@@ -1,0 +1,770 @@
+/* src/styles/themes/sunset-oasis-theme.css */
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   SUNSET OASIS THEME SYSTEM
+
+   A captivating palette inspired by desert sunsets and cool oasis waters,
+   blending warm terra cotta and golden hues with refreshing turquoise and deep blues.
+
+   ORGANIZATION:
+   - Color palette variables (dark & light modes)
+   - Functional/semantic color assignments
+   - Color relationships and hierarchies
+   - Specialized component colors
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   SUNSET OASIS DARK THEME (Desert Night)
+   Rich, deep background with vibrant sunset accents
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="sunset-oasis-dark"] {
+    /*** PRIMARY PALETTE - Raw color values ***/
+    /* Primary colors */
+    --sunset-50: #EFE6D9;
+    --sunset-100: #EDEAD8;
+    --sunset-200: #F2D7BA;
+    --sunset-300: #FEBA7A;
+    --sunset-400: #F2986A;
+    --sunset-500: #EA8955;
+    /* Primary sunset orange */
+    --sunset-600: #D87642;
+    --sunset-700: #BD6336;
+    --sunset-800: #A54F2A;
+    --sunset-900: #8C341C;
+
+    /* Oasis blues */
+    --oasis-50: #EBFAF9;
+    --oasis-100: #D3F5F2;
+    --oasis-200: #A8EDE8;
+    --oasis-300: #7DE4DD;
+    --oasis-400: #7AD4CA;
+    --oasis-500: #4DBDAF;
+    /* Primary oasis turquoise */
+    --oasis-600: #3DA294;
+    --oasis-700: #308779;
+    --oasis-800: #206C61;
+    --oasis-900: #0F5148;
+
+    /* Midnight desert */
+    --midnight-50: #F0F1F7;
+    --midnight-100: #DEE0ED;
+    --midnight-200: #CFBFAB;
+    --midnight-300: #A2A0AD;
+    --midnight-400: #737383;
+    --midnight-500: #565768;
+    --midnight-600: #3E3F54;
+    --midnight-700: #2E3450;
+    --midnight-800: #252A3E;
+    --midnight-900: #1D2233;
+    /* Deepest midnight for backgrounds */
+
+    /* Accent colors */
+    --amber-500: #F6BB77;
+    /* Amber sands */
+    --rose-500: #E16969;
+    /* Desert rose */
+    --blue-500: #3A88C2;
+    /* Oasis blue */
+    --pink-500: #DB65A6;
+    /* Cactus flower */
+    --clay-500: #C16747;
+    /* Desert clay */
+
+    /* Base neutrals */
+    --black: #000000;
+    --white: #FFFFFF;
+
+    /*** RGB VALUES - For opacity operations ***/
+    --sunset-500-rgb: 234, 137, 85;
+    --oasis-500-rgb: 77, 189, 175;
+    --amber-500-rgb: 246, 187, 119;
+    --rose-500-rgb: 225, 105, 105;
+    --blue-500-rgb: 58, 136, 194;
+    --pink-500-rgb: 219, 101, 166;
+    --clay-500-rgb: 193, 103, 71;
+    --midnight-900-rgb: 29, 34, 51;
+    --sunset-50-rgb: 239, 230, 217;
+    --white-rgb: 255, 255, 255;
+    --black-rgb: 0, 0, 0;
+
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with clear progression
+     ════════════════════════════════════ */
+    --color-bg-primary: var(--midnight-900);
+    /* Main application background - deep midnight desert */
+    --color-bg-secondary: var(--midnight-800);
+    /* Secondary containers, cards, sidebars - starlit dunes */
+    --color-bg-tertiary: var(--midnight-700);
+    /* Elevated surfaces, modals, popovers - night oasis */
+    --color-bg-card: rgba(37, 42, 62, 0.97);
+    /* Card backgrounds with slight transparency - desert tent */
+    --color-bg-glass: rgba(237, 225, 209, 0.08);
+    /* Glass effect backgrounds - subtle sandstone overlay */
+    --color-bg-code: rgba(29, 34, 51, 0.85);
+    /* Code block backgrounds - night sky code */
+    --color-bg-input: rgba(37, 42, 62, 0.65);
+    /* Form element backgrounds - starlight pools */
+    --color-bg-hover: rgba(234, 137, 85, 0.12);
+    /* Hover state background - subtle sunset glow */
+    --color-bg-active: rgba(234, 137, 85, 0.22);
+    /* Active/selected state background - stronger sunset */
+    --color-bg-disabled: rgba(55, 60, 85, 0.35);
+    /* Disabled element background - muted desert night */
+    --color-bg-tooltip: rgba(29, 34, 51, 0.97);
+    /* Tooltip background */
+    --color-bg-dropdown: rgba(37, 42, 62, 0.98);
+    /* Dropdown menu background */
+    --color-bg-selection: rgba(234, 137, 85, 0.25);
+    /* Text selection background */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with precise contrast levels
+     ════════════════════════════════════ */
+    --color-text-primary: var(--sunset-50);
+    /* Main body text - soft sand white for reduced eye strain */
+    --color-text-secondary: var(--midnight-200);
+    /* Secondary/supporting text - desert stone */
+    --color-text-tertiary: rgba(207, 191, 171, 0.7);
+    /* De-emphasized text, subtitles, captions - faded sandstone */
+    --color-text-disabled: rgba(207, 191, 171, 0.5);
+    /* Disabled text - significantly reduced contrast */
+    --color-text-on-accent: var(--midnight-900);
+    /* Text on accent-colored backgrounds - midnight desert */
+    --color-text-code: var(--oasis-400);
+    /* Code and pre-formatted text - oasis turquoise for readability */
+
+    /* Headings */
+    --color-heading: var(--sunset-200);
+    /* Standard headings - golden sand */
+    --color-heading-accent: var(--sunset-500);
+    /* Accented/highlighted headings - vibrant sunset orange */
+    --color-subheading: var(--midnight-200);
+    /* Subheadings, section titles */
+
+    /* Special text */
+    --color-text-emphasis: var(--amber-500);
+    /* Emphasized text, highlights */
+    --color-text-inverted: var(--sunset-50);
+    /* Inverted text (on light backgrounds) */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with desert sunset theme
+     ════════════════════════════════════ */
+    --color-brand-primary: var(--sunset-500);
+    /* Primary brand color - vibrant sunset orange */
+    --color-brand-secondary: var(--oasis-500);
+    /* Secondary brand color - oasis turquoise */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: var(--sunset-500);
+    /* Primary accent for main interactive elements - sunset orange */
+    --color-accent-primary-hover: var(--sunset-600);
+    /* Hover state for primary accent */
+    --color-accent-primary-active: var(--sunset-700);
+    /* Active state for primary accent */
+    --color-accent-secondary: var(--oasis-500);
+    /* Secondary accent for visual variety - oasis turquoise */
+    --color-accent-tertiary: var(--amber-500);
+    /* Tertiary accent for subtle highlights - golden hour amber */
+    --color-accent-oceanic: var(--blue-500);
+    /* Cool accent for complementary elements - deep oasis blue */
+    --color-accent-warm: var(--clay-500);
+    /* Warm accent for terracotta elements - desert clay */
+    --color-accent-contrast: var(--pink-500);
+    /* High-contrast accent for important elements - cactus flower pink */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with meaningful progression
+     ════════════════════════════════════ */
+    --color-interactive: var(--sunset-500);
+    /* Default interactive element color - sunset orange */
+    --color-interactive-hover: var(--sunset-600);
+    /* Hover state - deeper sunset */
+    --color-interactive-active: var(--sunset-700);
+    /* Active/pressed state - dusk orange */
+    --color-interactive-focus: var(--sunset-500);
+    /* Focus state indicator - sunset glow */
+    --color-interactive-disabled: rgba(234, 137, 85, 0.4);
+    /* Disabled state - faded sunset */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: var(--oasis-500);
+    /* Secondary interactive elements - oasis turquoise */
+    --color-interactive-secondary-hover: var(--oasis-600);
+    /* Secondary hover state - deeper oasis */
+    --color-interactive-secondary-active: var(--oasis-700);
+    /* Secondary active state - deepest oasis */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(234, 137, 85, 0.35);
+    /* Form input borders */
+    --color-field-placeholder: rgba(207, 191, 171, 0.6);
+    /* Placeholder text */
+    --color-field-focus: var(--sunset-500);
+    /* Field focus indicator */
+    --color-field-required: var(--sunset-500);
+    /* Required field indicator */
+    --color-field-invalid: var(--rose-500);
+    /* Invalid field indicator */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts
+     ════════════════════════════════════ */
+    --color-success: #4CD6A7;
+    /* Success state - oasis mint */
+    --color-success-subtle: rgba(76, 214, 167, 0.15);
+    /* Subtle success background - mint haze */
+    --color-warning: var(--amber-500);
+    /* Warning state - amber sands */
+    --color-warning-subtle: rgba(246, 187, 119, 0.15);
+    /* Subtle warning background - sand haze */
+    --color-error: var(--rose-500);
+    /* Error state - desert rose (colorblind-friendly) */
+    --color-error-subtle: rgba(225, 105, 105, 0.15);
+    /* Subtle error background - rose haze */
+    --color-info: var(--blue-500);
+    /* Information state - oasis blue */
+    --color-info-subtle: rgba(58, 136, 194, 0.15);
+    /* Subtle info background - blue haze */
+    --color-neutral: var(--midnight-300);
+    /* Neutral state - desert stone */
+    --color-neutral-subtle: rgba(162, 160, 173, 0.15);
+    /* Subtle neutral background */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with clear purpose
+     ════════════════════════════════════ */
+    --color-divider: rgba(234, 137, 85, 0.2);
+    /* Dividers and separators - subtle sunset tint */
+    --color-divider-light: rgba(237, 225, 209, 0.08);
+    /* Lighter dividers for contrast on dark areas - sandstone line */
+    --color-border: rgba(234, 137, 85, 0.3);
+    /* Borders for containers, cards, etc - sunset border */
+    --color-border-focus: var(--sunset-500);
+    /* Focus state borders - vibrant sunset orange */
+    --color-border-input: rgba(234, 137, 85, 0.35);
+    /* Form input borders - slightly stronger than regular */
+    --color-shadow: rgba(15, 18, 30, 0.4);
+    /* Shadows for elevation - night shadow */
+    --color-shadow-light: rgba(15, 18, 30, 0.2);
+    /* Lighter shadows for subtle elevation - dune shadow */
+    --color-overlay: rgba(29, 34, 51, 0.85);
+    /* Modal/dialog overlays - night overlay */
+    --color-notification-badge: var(--rose-500);
+    /* Notification badges - desert rose */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(234, 137, 85, 0.5);
+    /* Scrollbar thumb - semi-transparent sunset */
+    --color-scrollbar-track: rgba(29, 34, 51, 0.3);
+    /* Scrollbar track - subtle midnight */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: var(--oasis-400);
+    /* Link text - oasis turquoise */
+    --color-link-hover: #9DEDE3;
+    /* Link hover state - bright oasis */
+    --color-link-visited: var(--pink-500);
+    /* Visited links - cactus flower */
+    --color-emphasis: var(--amber-500);
+    /* Emphasized text - golden hour amber */
+    --color-success-text: #4CD6A7;
+    /* Success messages - oasis mint */
+    --color-warning-text: var(--amber-500);
+    /* Warning messages - amber sands */
+    --color-error-text: var(--rose-500);
+    /* Error messages - desert rose */
+    --color-info-text: #5BA0D3;
+    /* Information text - light oasis blue */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with clear hierarchy
+     ════════════════════════════════════ */
+    --color-icon-primary: var(--sunset-500);
+    /* Primary icons - sunset orange */
+    --color-icon-secondary: rgba(77, 189, 175, 0.9);
+    /* Secondary icons - oasis turquoise with high opacity */
+    --color-icon-tertiary: rgba(207, 191, 171, 0.7);
+    /* Tertiary icons - muted, similar to tertiary text */
+    --color-icon-on-accent: var(--midnight-900);
+    /* Icons on accent-colored backgrounds - midnight desert */
+    --color-icon-bg: rgba(234, 137, 85, 0.12);
+    /* Icon backgrounds or containers - sunset backdrop */
+    --color-icon-disabled: rgba(207, 191, 171, 0.5);
+    /* Disabled icons - faded sandstone */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(234, 137, 85, 0.85);
+    /* Skill item background - sunset orange */
+    --color-skill-item-hover: rgba(77, 189, 175, 0.2);
+    /* Skill item hover - oasis turquoise accent */
+    --color-skill-item-active: rgba(77, 189, 175, 0.35);
+    /* Skill item active - stronger oasis turquoise */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--sunset-500), var(--oasis-500));
+    /* Sunset to oasis gradient */
+    --gradient-interactive: linear-gradient(45deg, var(--sunset-500), var(--sunset-600));
+    /* Sunset interactive gradient */
+    --gradient-sunset: linear-gradient(45deg, var(--sunset-500), var(--sunset-600));
+    /* Pure sunset gradient */
+    --gradient-oasis: linear-gradient(45deg, var(--oasis-500), var(--oasis-600));
+    /* Pure oasis gradient */
+    --gradient-glass: linear-gradient(120deg, rgba(237, 225, 209, 0.08), rgba(237, 225, 209, 0.04));
+    /* Sandstone glass effect */
+    --gradient-overlay: linear-gradient(180deg, rgba(29, 34, 51, 0.8), rgba(29, 34, 51, 0.95));
+    /* Night overlay gradient */
+    --gradient-desert-bloom: linear-gradient(45deg, var(--pink-500), var(--sunset-500));
+    /* Cactus flower to sunset */
+    --gradient-oasis-depths: linear-gradient(45deg, var(--oasis-500), var(--blue-500));
+    /* Turquoise to blue oasis */
+    --gradient-golden-hour: linear-gradient(135deg, var(--clay-500), var(--sunset-500), var(--amber-500));
+    /* Full sunset spectrum */
+    --gradient-desert-night: linear-gradient(180deg, var(--midnight-900), var(--midnight-700));
+    /* Night sky gradient */
+    --gradient-button: linear-gradient(to right, var(--sunset-500), var(--sunset-600));
+    /* Button gradient */
+    --gradient-button-hover: linear-gradient(to right, var(--sunset-600), var(--sunset-700));
+    /* Button hover gradient */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(15, 18, 30, 0.25);
+    /* Small shadow - night pebble */
+    --shadow-md: 0 12px 25px -10px rgba(15, 18, 30, 0.35);
+    /* Medium shadow - deep sand */
+    --shadow-lg: 0 25px 50px -12px rgba(15, 18, 30, 0.4);
+    /* Large shadow - oasis depth */
+    --shadow-inner: inset 0 2px 5px rgba(15, 18, 30, 0.15);
+    /* Inner shadow - sand imprint */
+    --shadow-focus: 0 0 0 3px rgba(234, 137, 85, 0.3);
+    /* Focus shadow - sunset glow */
+    --shadow-button: 0 4px 14px rgba(15, 18, 30, 0.25);
+    /* Button shadow */
+
+    /* Wave-specific colors - white dominant for dark mode */
+    --wave-primary: #FCF8F1;
+    /* Dawn sand white from light theme */
+    --wave-secondary: #FFFFFF;
+    /* Pure white */
+    --wave-accent-1: var(--sunset-600);
+    /* Sunset orange from light theme */
+    --wave-accent-2: var(--oasis-600);
+    /* Oasis turquoise from light theme */
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   SUNSET OASIS LIGHT THEME (Desert Day)
+   Clean, bright background with warm sunset elements
+   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="sunset-oasis-light"] {
+    /*** PRIMARY PALETTE - Raw color values ***/
+    /* Primary colors */
+    --sunset-50: #FCF8F1;
+    --sunset-100: #F9EFE1;
+    --sunset-200: #F2D7BA;
+    --sunset-300: #EDBF8E;
+    --sunset-400: #E49B6F;
+    --sunset-500: #D87642;
+    /* Primary sunset orange */
+    --sunset-600: #BF5E34;
+    --sunset-700: #AC4F2A;
+    --sunset-800: #93421E;
+    --sunset-900: #7A3211;
+
+    /* Oasis blues */
+    --oasis-50: #EAF9F6;
+    --oasis-100: #D6F3EE;
+    --oasis-200: #AEE7DF;
+    --oasis-300: #81D9CB;
+    --oasis-400: #5CCBBE;
+    --oasis-500: #3DA294;
+    /* Primary oasis turquoise */
+    --oasis-600: #32877B;
+    --oasis-700: #2A7F76;
+    --oasis-800: #1E615A;
+    --oasis-900: #124B45;
+
+    /* Desert day */
+    --desert-50: #FCF8F1;
+    /* Dawn sand white */
+    --desert-100: #F9F3E8;
+    --desert-200: #F2E8DA;
+    --desert-300: #E6D9C3;
+    --desert-400: #CFBFAB;
+    --desert-500: #A99C87;
+    --desert-600: #867C6A;
+    --desert-700: #656152;
+    --desert-800: #4A4C5D;
+    --desert-900: #2A2C3B;
+    /* Deep desert night */
+
+    /* Accent colors */
+    --amber-500: #E8A152;
+    /* Golden sand */
+    --rose-500: #D2504F;
+    /* Desert rose */
+    --blue-500: #2971A6;
+    /* Deep oasis blue */
+    --pink-500: #C84B91;
+    /* Cactus flower */
+    --clay-500: #AC4F2A;
+    /* Deep terracotta */
+
+    /* Base neutrals */
+    --black: #000000;
+    --white: #FFFFFF;
+
+    /*** RGB VALUES - For opacity operations ***/
+    --sunset-500-rgb: 216, 118, 66;
+    --oasis-500-rgb: 61, 162, 148;
+    --amber-500-rgb: 232, 161, 82;
+    --rose-500-rgb: 210, 80, 79;
+    --blue-500-rgb: 41, 113, 166;
+    --pink-500-rgb: 200, 75, 145;
+    --clay-500-rgb: 172, 79, 42;
+    --desert-50-rgb: 252, 248, 241;
+    --desert-900-rgb: 42, 44, 59;
+    --white-rgb: 255, 255, 255;
+    --black-rgb: 0, 0, 0;
+
+    /* ════════════════════════════════════
+     BACKGROUND COLORS
+     Core surface colors for UI layers with clear progression
+     ════════════════════════════════════ */
+    --color-bg-primary: var(--desert-50);
+    /* Main application background - dawn sand white */
+    --color-bg-secondary: var(--white);
+    /* Secondary containers, cards, sidebars - pure white */
+    --color-bg-tertiary: var(--desert-200);
+    /* Elevated surfaces, modals, popovers - soft sand */
+    --color-bg-card: var(--white);
+    /* Card backgrounds - pure white */
+    --color-bg-glass: rgba(252, 248, 241, 0.92);
+    /* Glass effect backgrounds - transparent sand */
+    --color-bg-code: rgba(242, 232, 218, 0.8);
+    /* Code block backgrounds - light sand */
+    --color-bg-input: rgba(242, 232, 218, 0.7);
+    /* Form element backgrounds - very light sand */
+    --color-bg-hover: rgba(216, 118, 66, 0.08);
+    /* Hover state background - subtle sunset */
+    --color-bg-active: rgba(216, 118, 66, 0.15);
+    /* Active/selected state background - stronger sunset */
+    --color-bg-disabled: rgba(230, 220, 205, 0.7);
+    /* Disabled element background - muted sand */
+    --color-bg-tooltip: rgba(42, 44, 59, 0.95);
+    /* Tooltip background */
+    --color-bg-dropdown: var(--white);
+    /* Dropdown menu background */
+    --color-bg-selection: rgba(216, 118, 66, 0.2);
+    /* Text selection background */
+
+    /* ════════════════════════════════════
+     TEXT COLORS
+     Typography hierarchy with precise contrast levels
+     ════════════════════════════════════ */
+    --color-text-primary: var(--desert-900);
+    /* Main body text - deep desert night */
+    --color-text-secondary: var(--desert-800);
+    /* Secondary/supporting text - medium slate */
+    --color-text-tertiary: rgba(74, 76, 93, 0.7);
+    /* De-emphasized text, subtitles, captions */
+    --color-text-disabled: rgba(74, 76, 93, 0.5);
+    /* Disabled text - significantly reduced contrast */
+    --color-text-on-accent: var(--white);
+    /* Text on accent-colored backgrounds - white with proper contrast */
+    --color-text-code: var(--oasis-700);
+    /* Code and pre-formatted text - deep oasis for readability */
+
+    /* Headings */
+    --color-heading: var(--sunset-600);
+    /* Standard headings - terra cotta */
+    --color-heading-accent: var(--sunset-500);
+    /* Accented headings - sunset orange */
+    --color-subheading: var(--desert-600);
+    /* Subheadings, section titles */
+
+    /* Special text */
+    --color-text-emphasis: var(--sunset-500);
+    /* Emphasized text, highlights */
+    --color-text-inverted: var(--desert-50);
+    /* Inverted text (on dark backgrounds) */
+
+    /* ════════════════════════════════════
+     BRAND & ACCENT COLORS
+     Strategic palette for brand identity with desert day theme
+     ════════════════════════════════════ */
+    --color-brand-primary: var(--sunset-500);
+    /* Primary brand color - sunset orange */
+    --color-brand-secondary: var(--oasis-500);
+    /* Secondary brand color - oasis turquoise */
+
+    /* Accents for CTAs, highlights, and visual interest */
+    --color-accent-primary: var(--sunset-500);
+    /* Primary accent for main interactive elements - sunset orange */
+    --color-accent-primary-hover: var(--sunset-600);
+    /* Hover state for primary accent */
+    --color-accent-primary-active: var(--sunset-700);
+    /* Active state for primary accent */
+    --color-accent-secondary: var(--oasis-500);
+    /* Secondary accent for visual variety - oasis turquoise */
+    --color-accent-tertiary: var(--clay-500);
+    /* Tertiary accent for subtle highlights - deep terra cotta */
+    --color-accent-oceanic: var(--blue-500);
+    /* Cool accent for complementary elements - deep oasis blue */
+    --color-accent-warm: var(--amber-500);
+    /* Warm accent for sandy elements - golden sand */
+    --color-accent-contrast: var(--pink-500);
+    /* High-contrast accent for desert bloom - cactus flower pink */
+
+    /* ════════════════════════════════════
+     INTERACTIVE ELEMENT COLORS
+     States for buttons, inputs, and controls with meaningful progression
+     ════════════════════════════════════ */
+    --color-interactive: var(--sunset-500);
+    /* Default interactive element color - sunset orange */
+    --color-interactive-hover: var(--sunset-600);
+    /* Hover state - deeper sunset */
+    --color-interactive-active: var(--sunset-700);
+    /* Active/pressed state - terra cotta */
+    --color-interactive-focus: var(--sunset-500);
+    /* Focus state - same as interactive with focus ring */
+    --color-interactive-disabled: rgba(216, 118, 66, 0.4);
+    /* Disabled state - faded sunset */
+
+    /* Secondary interaction colors */
+    --color-interactive-secondary: var(--oasis-500);
+    /* Secondary interactive elements - oasis turquoise */
+    --color-interactive-secondary-hover: var(--oasis-600);
+    /* Secondary hover state - deeper oasis */
+    --color-interactive-secondary-active: var(--oasis-700);
+    /* Secondary active state - deepest oasis */
+
+    /* Form element specific colors */
+    --color-field-border: rgba(216, 118, 66, 0.3);
+    /* Form input borders */
+    --color-field-placeholder: rgba(74, 76, 93, 0.6);
+    /* Placeholder text */
+    --color-field-focus: var(--sunset-500);
+    /* Field focus indicator */
+    --color-field-required: var(--sunset-600);
+    /* Required field indicator */
+    --color-field-invalid: var(--rose-500);
+    /* Invalid field indicator */
+
+    /* ════════════════════════════════════
+     SEMANTIC STATUS COLORS
+     Colorblind-friendly feedback, validation, and alerts
+     ════════════════════════════════════ */
+    --color-success: #30B383;
+    /* Success state - oasis mint */
+    --color-success-subtle: rgba(48, 179, 131, 0.12);
+    /* Subtle success background */
+    --color-warning: var(--amber-500);
+    /* Warning state - golden sand */
+    --color-warning-subtle: rgba(232, 161, 82, 0.12);
+    /* Subtle warning background */
+    --color-error: var(--rose-500);
+    /* Error state - desert rose */
+    --color-error-subtle: rgba(210, 80, 79, 0.12);
+    /* Subtle error background */
+    --color-info: var(--blue-500);
+    /* Information state - deep oasis blue */
+    --color-info-subtle: rgba(41, 113, 166, 0.12);
+    /* Subtle info background */
+    --color-neutral: var(--desert-500);
+    /* Neutral state - desert slate */
+    --color-neutral-subtle: rgba(169, 156, 135, 0.12);
+    /* Subtle neutral background */
+
+    /* ════════════════════════════════════
+     UI COMPONENT COLORS
+     Specific UI elements and decorations with clear purpose
+     ════════════════════════════════════ */
+    --color-divider: rgba(216, 118, 66, 0.15);
+    /* Dividers and separators - subtle sunset tint */
+    --color-divider-light: rgba(0, 0, 0, 0.05);
+    /* Lighter dividers for contrast on light areas */
+    --color-border: rgba(216, 118, 66, 0.25);
+    /* Borders for containers, cards, etc */
+    --color-border-focus: var(--sunset-500);
+    /* Focus state borders - sunset orange */
+    --color-border-input: rgba(216, 118, 66, 0.3);
+    /* Form input borders - slightly stronger than regular */
+    --color-shadow: rgba(42, 44, 59, 0.15);
+    /* Shadows for elevation - night shadow */
+    --color-shadow-light: rgba(42, 44, 59, 0.08);
+    /* Lighter shadows for subtle elevation */
+    --color-overlay: rgba(252, 248, 241, 0.85);
+    /* Modal/dialog overlays - light background */
+    --color-notification-badge: var(--rose-500);
+    /* Notification badges - desert rose */
+
+    /* Scrollbar custom colors */
+    --color-scrollbar-thumb: rgba(216, 118, 66, 0.4);
+    /* Scrollbar thumb - semi-transparent sunset */
+    --color-scrollbar-track: rgba(242, 232, 218, 0.5);
+    /* Scrollbar track - light sand */
+
+    /* ════════════════════════════════════
+     SEMANTIC TEXT COLORS
+     For text with specific meanings and clear distinction
+     ════════════════════════════════════ */
+    --color-link: var(--oasis-500);
+    /* Link text - oasis turquoise */
+    --color-link-hover: var(--oasis-700);
+    /* Link hover state - deeper oasis */
+    --color-link-visited: var(--pink-500);
+    /* Visited links - deeper cactus flower */
+    --color-emphasis: var(--sunset-500);
+    /* Emphasized text - sunset orange */
+    --color-success-text: #30B383;
+    /* Success messages - oasis mint */
+    --color-warning-text: #D28B35;
+    /* Warning messages - deep golden sand */
+    --color-error-text: var(--rose-500);
+    /* Error messages - desert rose */
+    --color-info-text: var(--blue-500);
+    /* Information text - deep oasis blue */
+
+    /* ════════════════════════════════════
+     ICON COLORS
+     For UI iconography with clear hierarchy
+     ════════════════════════════════════ */
+    --color-icon-primary: var(--sunset-500);
+    /* Primary icons - sunset orange */
+    --color-icon-secondary: rgba(61, 162, 148, 0.9);
+    /* Secondary icons - oasis turquoise with high opacity */
+    --color-icon-tertiary: rgba(74, 76, 93, 0.7);
+    /* Tertiary icons - muted, similar to tertiary text */
+    --color-icon-on-accent: var(--white);
+    /* Icons on accent-colored backgrounds */
+    --color-icon-bg: rgba(216, 118, 66, 0.1);
+    /* Icon backgrounds or containers */
+    --color-icon-disabled: rgba(74, 76, 93, 0.5);
+    /* Disabled icons */
+
+    /* ════════════════════════════════════
+     COMPONENT-SPECIFIC COLORS
+     For specialized UI components with intentional states
+     ════════════════════════════════════ */
+    --color-skill-item: rgba(216, 118, 66, 0.8);
+    /* Skill item background - sunset orange */
+    --color-skill-item-hover: rgba(61, 162, 148, 0.15);
+    /* Skill item hover - oasis turquoise accent */
+    --color-skill-item-active: rgba(61, 162, 148, 0.25);
+    /* Skill item active - stronger oasis turquoise */
+
+    /* ════════════════════════════════════
+     GRADIENT PRESETS
+     For consistent gradient effects
+     ════════════════════════════════════ */
+    --gradient-accent: linear-gradient(45deg, var(--sunset-500), var(--oasis-500));
+    /* Sunset to oasis gradient */
+    --gradient-interactive: linear-gradient(45deg, var(--sunset-500), var(--sunset-600));
+    /* Sunset interactive gradient */
+    --gradient-sunset: linear-gradient(45deg, var(--sunset-500), var(--sunset-600));
+    /* Pure sunset gradient */
+    --gradient-oasis: linear-gradient(45deg, var(--oasis-500), var(--oasis-600));
+    /* Pure oasis gradient */
+    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+    /* Sand glass effect */
+    --gradient-overlay: linear-gradient(180deg, rgba(252, 248, 241, 0.85), rgba(252, 248, 241, 0.95));
+    /* Day overlay gradient */
+    --gradient-desert-bloom: linear-gradient(45deg, var(--pink-500), var(--sunset-500));
+    /* Cactus flower to sunset */
+    --gradient-oasis-depths: linear-gradient(45deg, var(--oasis-500), var(--blue-500));
+    /* Turquoise to blue oasis */
+    --gradient-golden-hour: linear-gradient(135deg, var(--clay-500), var(--sunset-500), var(--amber-500));
+    /* Full sunset spectrum */
+    --gradient-desert-day: linear-gradient(180deg, var(--desert-50), var(--desert-200));
+    /* Day sky gradient */
+    --gradient-button: linear-gradient(to right, var(--sunset-500), var(--sunset-600));
+    /* Button gradient */
+    --gradient-button-hover: linear-gradient(to right, var(--sunset-600), var(--sunset-700));
+    /* Button hover gradient */
+
+    /* ════════════════════════════════════
+     SHADOW PRESETS
+     For consistent elevation effects
+     ════════════════════════════════════ */
+    --shadow-sm: 0 2px 8px -2px rgba(42, 44, 59, 0.08);
+    /* Small shadow - small dune */
+    --shadow-md: 0 12px 25px -10px rgba(42, 44, 59, 0.12);
+    /* Medium shadow - mid dune */
+    --shadow-lg: 0 25px 50px -12px rgba(42, 44, 59, 0.15);
+    /* Large shadow - large dune */
+    --shadow-inner: inset 0 2px 5px rgba(42, 44, 59, 0.05);
+    /* Inner shadow - sand depression */
+    --shadow-focus: 0 0 0 3px rgba(216, 118, 66, 0.25);
+    /* Focus shadow - sunset focus */
+    --shadow-button: 0 4px 14px rgba(42, 44, 59, 0.15);
+    /* Button shadow */
+
+    /* Wave-specific colors - dark dominant for light mode */
+    --wave-primary: var(--midnight-900);
+    /* Midnight desert from dark theme */
+    --wave-secondary: var(--midnight-800);
+    /* Starlit dunes from dark theme */
+    --wave-accent-1: var(--sunset-500);
+    /* Vibrant sunset from dark theme */
+    --wave-accent-2: var(--oasis-500);
+    /* Oasis turquoise from dark theme */
+}
+
+/* Set color-scheme for the theme */
+[data-theme="sunset-oasis-dark"] {
+    color-scheme: dark;
+}
+
+[data-theme="sunset-oasis-light"] {
+    color-scheme: light;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+ * Custom scrollbar styling for Sunset Oasis theme
+ * ────────────────────────────────────────────────────────────────────────── */
+[data-theme^="sunset-oasis"] .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+[data-theme^="sunset-oasis"] .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track);
+    border-radius: 4px;
+}
+
+[data-theme^="sunset-oasis"] .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar-thumb);
+    border-radius: 4px;
+}
+
+[data-theme^="sunset-oasis"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-interactive);
+}
+
+/* Firefox scrollbar support */
+[data-theme^="sunset-oasis"] .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+}

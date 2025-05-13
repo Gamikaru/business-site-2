@@ -1,0 +1,223 @@
+# Services - Common Content Document
+
+## Image Assets
+
+### Standard Images
+- **Custom Design Image:** customDesignImg (assets/images/custom-design.jpg)
+- **Mobile Development Image:** mobileDevImg (assets/images/mobile-dev.jpg)
+- **System Optimization Image:** systemOptimizationImg (assets/images/devops-maint.jpg)
+- **AI Automation Image:** aiAutomationImg (assets/images/ai.jpg)
+- **Tech Consulting Image:** techConsultingImg (assets/images/lightbulb-holding.jpg)
+
+### Dark Theme Images
+- **Custom Design Dark Image:** customDesignImgDark (assets/images/future_tunnel.jpg)
+- **Mobile Development Dark Image:** mobileDevImgDark (assets/images/cool_tunnel.jpg)
+- **System Optimization Dark Image:** systemOptimizationImgDark (assets/images/robot_futuristic.jpg)
+- **AI Automation Dark Image:** aiAutomationImgDark (assets/images/data-graphic.jpg)
+- **Tech Consulting Dark Image:** techConsultingImgDark (assets/images/consultingstrat.jpg)
+
+# SERVICES PAGE CONTENT
+
+## SERVICES OVERVIEW
+
+**Headline**
+"Practical digital solutions for real business challenges"
+
+**Introduction**
+I provide focused services that address specific business needs—whether you're looking to build something new, improve what you have, or leverage technology more effectively. Each service is tailored to deliver tangible results without unnecessary complexity.
+
+## AI INTEGRATION & AUTOMATION
+
+**Heading**
+"AI-Powered Business Automation"
+
+**Introduction**
+Put practical AI to work solving your everyday business problems. No buzzwords or empty promises—just targeted solutions that save time, reduce errors, and help you make better decisions with your data.
+
+**What You Get**
+
+- **Task Automation** — Turn repetitive, manual processes into automated workflows that free up your team for more valuable work.
+- **Customer Interactions** — Create more personalized experiences with AI-powered recommendations and assistance.
+- **Data Insights** — Transform raw information into actionable business intelligence that guides better decisions.
+- **Accessible Implementation** — Implement AI solutions without enterprise-level complexity or cost.
+
+**How It Works**
+
+1. **Opportunity Discovery** — We identify where AI can deliver the biggest impact for your specific business.
+2. **Solution Design** — I create AI solutions that align with your goals and work within your existing systems.
+3. **Implementation** — Building and training AI systems using your unique data and processes.
+4. **Integration** — Embedding AI into your workflows with minimal disruption to your team.
+
+**Example Project**
+A Tampa logistics company was spending hours manually generating reports. I built a lightweight AI assistant that automated the process, resulting in 30% fewer manual tickets and an 18% improvement in delivery times. The entire solution was implemented within 48 hours.
+
+**Pricing Starts At**
+$1,500 — AI Opportunity Assessment
+$5,000 — Custom AI Solution Implementation
+
+[Let's Discuss Your AI Project →]
+
+## WEB DEVELOPMENT
+
+**Heading**
+"Custom Business Websites & Web Apps"
+
+**Introduction**
+I build websites and web applications that work as hard as you do. Every element is designed to engage your visitors, showcase your value, and convert browsers into buyers—all while integrating smoothly with your existing business operations.
+
+**What You Get**
+
+- **Purpose-Built Design** — Websites tailored to your specific business goals and user needs.
+- **Business Integration** — Tools that connect directly to your workflow, from booking systems to customer portals.
+- **Practical Automation** — Save time with automated inquiries, scheduling, and data handling.
+- **Growth-Ready Foundation** — Built to scale and adapt as your business evolves.
+
+**How It Works**
+
+1. **Discovery** — We define goals, audience, and features that will make your website effective.
+2. **Design & Development** — I build a high-performance website or application focused on results.
+3. **Testing & Launch** — Thorough testing ensures everything works as expected before going live.
+4. **Support & Growth** — Ongoing improvements to maximize long-term impact.
+
+**Example Project**
+A local service business was losing leads because their website wasn't mobile-friendly and lacked online booking. I rebuilt their site with responsive design and an integrated scheduling system, resulting in 40% more appointments and significantly reduced phone time for their staff.
+
+**Pricing Starts At**
+$600 — Basic Website
+$1,500 — Business Website with E-commerce or Booking
+
+[Start Your Web Project →]
+
+## SYSTEM OPTIMIZATION
+
+**Heading**
+"Performance-Driven System Optimization"
+
+**Introduction**
+Slow websites and inefficient systems cost you customers, revenue, and credibility. I identify and fix the bottlenecks, security vulnerabilities, and usability issues that are holding your digital platforms back.
+
+**What You Get**
+
+- **Speed Improvements** — Pages that load quickly, keeping visitors engaged instead of leaving.
+- **Search Visibility** — Performance improvements that help boost your search engine ranking.
+- **User Retention** — Smooth, responsive experiences that encourage customers to return.
+- **Security Enhancements** — Protection for your data and your reputation.
+
+**How It Works**
+
+1. **Performance Audit** — I identify what's slowing you down and where vulnerabilities exist.
+2. **Optimization Plan** — We create a prioritized roadmap for improvements with the highest impact.
+3. **Implementation** — Executing changes with minimal disruption to your operations.
+4. **Ongoing Monitoring** — Regular analysis to maintain peak performance.
+
+**Example Project**
+An e-commerce site was losing sales because pages took over 8 seconds to load. After optimization, load times dropped to under 2 seconds, leading to a 25% decrease in abandoned carts and a 15% increase in conversion rate.
+
+**Pricing Starts At**
+$499 — Performance Audit
+$1,200 — Complete Performance Optimization
+
+[Improve Your Digital Performance →]
+
+## TECH STRATEGY & CONSULTING
+
+**Heading**
+"Tech Strategy & Consulting"
+
+**Introduction**
+Making the right technology decisions is challenging. I help you cut through the noise and choose solutions that align with your business goals—preventing costly mistakes and positioning you for long-term success.
+
+**What You Get**
+
+- **Clear Direction** — Straightforward technology recommendations without unnecessary jargon.
+- **Smarter Investment** — Informed decisions about where to focus your technology budget.
+- **Risk Reduction** — Identify and address potential issues before they impact your business.
+- **Future-Proofing** — Build systems that adapt to changing business needs and technologies.
+
+**How It Works**
+
+1. **Business Analysis** — Understanding your goals, challenges, and current technology setup.
+2. **Strategy Development** — Creating a technology approach aligned with your business vision.
+3. **Decision Support** — Guiding technology choices with clear pros, cons, and recommendations.
+4. **Implementation Planning** — Mapping out execution steps that maximize impact and minimize disruption.
+
+**Example Project**
+A healthcare provider was struggling to choose between three competing software platforms. I evaluated each option against their specific needs and workflows, helping them select and implement the right solution—avoiding a potential six-figure mistake.
+
+**Pricing Starts At**
+$750 — Strategy Session
+$3,000 — Comprehensive Technology Roadmap
+
+[Get Strategic Guidance →]
+
+## MOBILE APP DEVELOPMENT
+
+**Heading**
+"Mobile App Development"
+
+**Introduction**
+Extend your reach and deepen customer engagement with intuitive, feature-rich mobile applications. I build apps that create meaningful connections with your customers, whether on iOS, Android, or both platforms.
+
+**What You Get**
+
+- **User-Focused Design** — Interfaces that feel natural and are enjoyable to use.
+- **Engagement Features** — Tools like push notifications that keep users coming back.
+- **Monetization Options** — In-app purchases and subscription models done right.
+- **Complete Service** — Everything from concept to app store submission and marketing.
+
+**How It Works**
+
+1. **Planning** — We define your app vision, user journeys, and business goals.
+2. **Design** — Creating intuitive interfaces that users will enjoy engaging with.
+3. **Development** — Coding and testing across devices for reliability and polish.
+4. **Launch & Growth** — App store publication and ongoing improvement.
+
+**Example Project**
+A restaurant group wanted to increase repeat business and reduce third-party delivery fees. Their custom ordering app now drives 35% of their delivery business directly, eliminating commission fees and improving customer retention.
+
+**Pricing Starts At**
+$3,500 — Single Platform App (iOS or Android)
+$7,500 — Cross-Platform App
+
+[Discuss Your Mobile App →]
+
+## WORKING PROCESS
+
+**Heading**
+"How I Work"
+
+**Introduction**
+I believe in a straightforward, transparent approach focused on delivering real value. Here's what you can expect when working with me:
+
+1. **Initial Consultation** — We discuss your needs, challenges, and goals to determine if we're a good fit.
+2. **Proposal & Planning** — I provide a clear proposal including scope, timeline, and cost estimates.
+3. **Regular Updates** — Ongoing communication throughout the project with no surprises.
+4. **Delivery & Support** — Thorough testing, documentation, and training where needed.
+
+**Principles I Work By**
+
+- **No Unnecessary Complexity** — I won't overengineer solutions or add features you don't need.
+- **Practical Over Perfect** — I focus on delivering working solutions that solve real problems, not theoretical perfection.
+- **Direct Communication** — Clear, honest discussions about what's possible, what makes sense, and what to expect.
+- **Long-Term Thinking** — Building with future maintenance and growth in mind, not just immediate needs.
+
+## CALL TO ACTION
+
+**Heading**
+"Ready to get started?"
+
+**Content**
+Let's talk about your project and how I can help. Whether you have a specific need in mind or just want to explore possibilities, I'm happy to have a no-pressure conversation about your options.
+
+**Primary CTA**
+[Schedule a Free Consultation →]
+
+**Secondary CTA**
+[View My Portfolio →]
+
+**Availability Note**
+Currently booking new projects for June 2025 onward. Limited consulting slots available immediately.
+
+---
+
+This services page maintains the established down-to-earth, professional tone while providing comprehensive information about each service offering. The content focuses on practical benefits rather than technical jargon and includes example projects to illustrate real-world impact. Each service section includes clear information about what clients can expect, how the process works, and pricing starting points for transparency.

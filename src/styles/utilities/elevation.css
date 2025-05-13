@@ -1,0 +1,25 @@
+/* src/styles/utilities/elevation.css */
+
+@layer components {
+    .surface-elevation-0 {
+        background-color: var(--color-bg-primary);
+        box-shadow: none;
+    }
+
+    .surface-elevation-1 {
+        background-color: var(--color-bg-secondary);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .surface-elevation-2 {
+        background-color: var(--color-bg-tertiary);
+        box-shadow: var(--shadow-md);
+        border: 1px solid rgba(var(--color-accent-primary-rgb), 0.1);
+    }
+
+    .surface-elevation-3 {
+        background-color: var(--color-bg-card);
+        box-shadow: var(--shadow-lg);
+        border: 1px solid rgba(var(--color-accent-primary-rgb), 0.15);
+    }
+}

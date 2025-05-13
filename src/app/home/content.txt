@@ -1,0 +1,144 @@
+# HOME PAGE CONTENT - REVISED
+
+## HERO SECTION
+
+**Primary Headline**
+"Problem solver. Code writer. AI enthusiast."
+
+**Secondary Headline**
+"Building digital solutions that actually work"
+
+**Introduction**
+Hey, I'm Gav — London-born, now calling Tampa home. I build websites, apps, and automation tools that help businesses run better. Full-stack developer by trade, AI tinkerer by night, and always learning something new.
+
+**Call-to-Action**
+[Let's Talk →]
+
+## ABOUT SNAPSHOT
+
+**Heading**
+What I'm about
+
+**Content**
+I enjoy turning complex problems into simple, elegant solutions. After completing CodeBoxx Academy's Full Stack program, I started building tools that make a real difference for clients. When I'm not coding for work, I'm studying Data Science at Open University or coaching new developers at CodeBoxx's AI bootcamp.
+
+My approach? Understand the actual problem first, then build something that solves it without unnecessary complications.
+
+**Secondary CTA**
+[More About Me →]
+
+## SERVICES PREVIEW
+
+**Section Heading**
+"How I can help"
+
+**Introduction**
+I offer services in development, automation, and tech strategy. Nothing fancy—just solid work that delivers what you need.
+
+**Featured Services**
+
+1. **AI & Automation**
+   Let's put AI to work on your actual business problems. No buzzwords or empty promises—just practical tools that automate repetitive tasks and help you make better decisions with your data.
+
+2. **Websites & Web Apps**
+   I build websites that do more than look pretty. Whether you need e-commerce, booking systems, or custom tools, I focus on what brings value to your business and your customers.
+
+3. **Performance Improvements**
+   Got a slow website or clunky system? I'll find what's causing the issues and fix them. Better performance means happier users and better business results.
+
+**Services CTA**
+[See All Services →]
+
+## PORTFOLIO PREVIEW
+
+**Section Heading**
+"Some recent work"
+
+**Introduction**
+Here are a few projects I've worked on lately. Each one started with a specific problem that needed solving.
+
+**Featured Projects**
+
+1. **Prodai - Productivity App**
+   Helps teams stay organized with smart task recommendations. Built with React, FastAPI, and some clever AI bits to make workflow management less painful.
+
+2. **Clinical Trials Dashboard**
+   Turns complicated medical data into clear visuals that healthcare teams can actually use. No more spreadsheet headaches.
+
+3. **Rocket Food Delivery App**
+   A mobile app that makes ordering and tracking food deliveries straightforward for both customers and restaurants.
+
+**Portfolio CTA**
+[See More Projects →]
+
+## BLOG PREVIEW
+
+**Section Heading**
+"Things I've learned along the way"
+
+**Introduction**
+Occasional writings about tech, development, and AI based on real projects and problems I've tackled.
+
+**Featured Articles**
+
+1. **Practical AI for Small Businesses (Without Breaking the Bank)**
+   Ways smaller companies can use AI tools without needing enterprise-level budgets or expertise.
+   [7 min read]
+
+2. **Building Components That Don't Fall Apart Later**
+   Lessons from building reusable code that still works when projects grow bigger than expected.
+   [9 min read]
+
+3. **Making Sense of Your Data (And Actually Using It)**
+   A straightforward guide to setting up analytics and turning numbers into actions.
+   [11 min read]
+
+**Blog CTA**
+[Read More →]
+
+## TESTIMONIAL SECTION
+
+**Heading**
+"What clients say"
+
+**Featured Testimonial**
+"Gavriel understood what we needed and built exactly that, without overcomplicating things. He explained technical concepts in ways that made sense to our team, and the dashboard he created has become something we use every day."
+— Sarah, Operations Director
+
+**Testimonial Result**
+"Their team now processes reports in hours instead of days, with fewer errors and better insights."
+
+## NEWSLETTER SIGNUP
+
+**Heading**
+"The Digital Edge Newsletter"
+
+**Description**
+Monthly tech and development insights without the fluff. Practical tips you can actually use.
+
+**Form Fields**
+- Email Address
+- [Sign Up] button
+
+**Privacy Note**
+I don't share your email with anyone. Unsubscribe anytime.
+
+## FINAL CTA SECTION
+
+**Heading**
+"Let's work together"
+
+**Content**
+Have a project in mind? I'm straightforward to work with—clear communication, honest feedback, and focused on getting results. Whether you need something built from scratch or want to improve what you have, let's start with a conversation.
+
+**Primary CTA**
+[Get in Touch →]
+
+**Availability Status**
+Available for new projects starting June 2025.
+
+## FOOTER MICRO-COPY
+
+"Working from Tampa, helping clients worldwide"
+
+"Got a problem that needs solving? Send me a message and I'll get back to you within a day."

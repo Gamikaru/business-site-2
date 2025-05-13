@@ -1,0 +1,230 @@
+# Services - Development Content Document
+
+## Web Development Service
+
+### Preview Content
+**Title:** Web Development
+**Tagline:** Digital experiences that convert visitors into customers
+**Description:** Custom websites that blend stunning design with powerful functionality to create memorable experiences that drive real business outcomes. Perfect for businesses ready to stand out and grow online.
+**Features:**
+- Conversion-focused design
+- Performance optimized
+- Growth-ready architecture
+**Status:** Popular
+
+### Front Card Content
+**Title:** Custom Business Websites & Web Apps
+**Short Title:** Web Development
+**Short Description:** Web solutions that drive business growth.
+**Status:** Popular
+**Stats Values:**
+- Blazing Fast
+- Rock-Solid Security
+- Built for Growth
+
+### Back Card Content
+**Description:** I create websites that work as hard as you do. Every pixel and line of code is crafted to engage your visitors, showcase your value, and convert browsers into buyers. Whether you need eCommerce, booking systems, or bespoke web apps, I build solutions that connect with your audience and grow with your business.
+
+**Highlight:** Your website should be your most efficient team member—always on, always converting, always representing your best.
+
+**Key Points:**
+1. **Tailored Design:** Custom experiences that reflect your brand and drive action.
+2. **Business Integration:** Seamless tools that connect to your existing workflow.
+3. **Smart Automation:** Save time with automated inquiries, scheduling, and data handling.
+4. **Future-Ready:** Built to grow and adapt as your business evolves.
+
+**Process:**
+1. **Discovery & Strategy:** We'll define goals, audience, and features for your roadmap.
+2. **Design & Development:** I'll build a high-performance website optimized for growth.
+3. **Testing & Launch:** Thorough testing ensures a smooth, successful launch.
+4. **Support & Growth:** Ongoing improvements to maximize long-term impact.
+
+### Overview
+**Title:** Custom Business Websites & Web Apps
+**Description:** I craft websites that deliver results, not just designs. With a focus on performance, user experience, and built-in business tools, your digital presence becomes a true asset that generates leads, closes sales, and builds customer loyalty.
+
+**Features:**
+- Strategic Design — Every element serves your business goals.
+- Revenue Generators — Tools that directly boost your bottom line.
+- Time-Savers — Automated processes that free you to focus elsewhere.
+- Future-Proof — Scalable foundations that grow with your success.
+
+**CTA Text:** Let's Build Your Digital Engine
+
+### Pricing
+**Title:** Website Solutions That Fit Your Goals
+**Description:** Options designed to align with different business needs and growth stages.
+
+**Packages:**
+1. **Core Website:**
+   - Price: starting at $600
+   - Features:
+     - Fully responsive custom design
+     - Content management system
+     - SEO fundamentals
+     - Analytics and performance tracking
+
+2. **Business Website:**
+   - Price: starting at $1500
+   - Badge: Most Popular
+   - Features:
+     - Everything in Core Website
+     - Advanced conversion optimization
+     - eCommerce or booking system
+     - Customer journey automation
+
+3. **Custom Solution:**
+   - Price: Custom quote
+   - Features:
+     - Tailored functionality
+     - Custom web application
+     - Third-party integrations
+     - Comprehensive analytics dashboard
+
+**Note:** All websites include mobile optimization, basic SEO, and performance tuning.
+**Contact:** Let's discuss how to make your website a business-driving machine.
+
+### Process
+**Title:** Website Development Process
+**Description:** A proven approach that delivers websites built for performance and results.
+
+**Steps:**
+1. **Discovery & Strategy:**
+   - Description: We'll clarify your goals and map out the path to success.
+   - Details: Audience analysis, Competitive review, Feature planning
+   - Time Estimate: 1-2 weeks
+
+2. **Design & Development:**
+   - Description: I'll craft your site with both aesthetics and functionality in mind.
+   - Details: Visual design, Responsive coding, CMS setup
+   - Time Estimate: 2-6 weeks
+
+3. **Testing & Optimization:**
+   - Description: Rigorous testing ensures everything works flawlessly.
+   - Details: Cross-device testing, Speed optimization, Security checks
+   - Time Estimate: 1-2 weeks
+
+4. **Launch & Growth:**
+   - Description: Your site goes live with support for continued success.
+   - Details: Go-live support, Analytics setup, Growth recommendations
+   - Time Estimate: Ongoing
+
+**CTA Text:** Start Your Web Project
+**Note:** Your website will continue to evolve with your business. I'm here to guide that growth.
+
+## Mobile App Development Service
+
+### Preview Content
+**Title:** Mobile Apps
+**Tagline:** Take your business everywhere your customers go
+**Description:** Custom mobile applications that extend your reach and deepen customer engagement through intuitive, feature-rich experiences. Ideal for businesses looking to create new revenue streams or enhance customer loyalty.
+**Features:**
+- Cross-platform reach
+- Offline functionality
+- Seamless user experience
+**Status:** Available
+
+### Front Card Content
+**Title:** Mobile App Development
+**Short Title:** Mobile Apps
+**Short Description:** Apps that strengthen customer connection.
+**Status:** Available
+**Stats Values:**
+- Cross-Platform
+- Responsive
+- High Quality
+
+### Back Card Content
+**Description:** I build mobile apps that create meaningful connections with your customers. Whether for iOS, Android, or both, your app will be intuitive, responsive, and designed to achieve real business objectives—from boosting sales to improving customer retention.
+
+**Highlight:** A thoughtfully designed app becomes a direct line to your customers, available in their pocket 24/7.
+
+**Key Points:**
+1. **Seamless Experience:** Intuitive interfaces that feel natural on any device.
+2. **Engagement Tools:** Push notifications and features that keep users coming back.
+3. **Revenue Generation:** In-app purchases and subscription options done right.
+4. **Full Service:** Everything from concept to app store submission and marketing.
+
+**Process:**
+1. **Discovery & Planning:** We'll define your app vision, user journeys, and business goals.
+2. **UI/UX Design:** I'll design intuitive interfaces that users love to engage with.
+3. **Development & Testing:** Coding and testing across devices for stability and polish.
+4. **Launch & Growth:** App store publication and continuous improvement strategy.
+
+### Overview
+**Title:** Mobile App Development
+**Description:** I create apps that forge lasting connections with your customers. From initial concept to store launch, each app is built to engage users, simplify processes, and open new revenue streams for your business.
+
+**Features:**
+- User-Centered Design — Interfaces people actually enjoy using.
+- Customer Retention — Features that build lasting loyalty.
+- Revenue Generation — Multiple monetization options.
+- Technical Excellence — Performance and reliability built-in.
+
+**CTA Text:** Create Your Mobile Experience
+
+### Pricing
+**Title:** Mobile App Packages
+**Description:** Solutions that fit your vision and budget requirements.
+
+**Packages:**
+1. **Starter App:**
+   - Price: starting at $3500
+   - Features:
+     - Single platform (iOS or Android)
+     - Core functionality
+     - Essential user features
+     - App store submission support
+
+2. **Professional App:**
+   - Price: starting at $7500
+   - Badge: Recommended
+   - Features:
+     - Cross-platform deployment
+     - Advanced features & animations
+     - User engagement tools
+     - Analytics and performance tracking
+
+3. **Custom Solution:**
+   - Price: Custom quote
+   - Features:
+     - Enterprise-grade architecture
+     - API integrations
+     - Advanced security features
+     - Scalable infrastructure
+
+**Note:** All apps include user testing, app store optimization, and launch support.
+**Contact:** Let's discuss creating a mobile experience your customers will love.
+
+### Process
+**Title:** App Development Journey
+**Description:** A thoughtful approach that delivers apps users actually use.
+
+**Steps:**
+1. **Discovery & Planning:**
+   - Description: We'll map out your app's purpose and technical requirements.
+   - Details: User research, Feature prioritization, Technical scoping
+   - Time Estimate: 2–3 weeks
+
+2. **Design & Prototyping:**
+   - Description: I'll create intuitive interfaces and interactive prototypes.
+   - Details: User interface design, User flow mapping, Interactive mockups
+   - Time Estimate: 3–4 weeks
+
+3. **Development & Testing:**
+   - Description: Your app will be built with quality and performance in mind.
+   - Details: Iterative development, Cross-device testing, User feedback integration
+   - Time Estimate: 8–12 weeks
+
+4. **Launch & Optimization:**
+   - Description: Your app goes live with a plan for continued improvement.
+   - Details: Store submission, Launch strategy, Growth planning
+   - Time Estimate: 2–3 weeks
+
+**CTA Text:** Begin App Development
+**Note:** The most successful apps continue to evolve after launch based on real user feedback.
+
+## How to iterate further:
+1. Include case studies or success stories for each service type to provide social proof
+2. Add technical specifications or technology stacks used for each service type
+3. Consider adding FAQ sections addressing common client questions for each service

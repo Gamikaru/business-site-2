@@ -1,0 +1,196 @@
+# CONTACT PAGE CONTENT
+
+## MAIN SECTION
+
+**Headline**
+"Let's Build Something Together"
+
+**Subheading**
+"Have a project in mind? Send me a message and let's make it happen."
+
+## BASIC CONTACT INFORMATION
+
+**Email**
+gavriel@gamikaru.dev
+
+**Phone**
+US: +1 813-534-2532
+UK: +44 787 523 5328
+
+**Work Hours**
+Monday-Friday: 9AM - 5PM (EST)
+
+**Location**
+Remote / Worldwide
+
+## AVAILABILITY STATUS
+
+**Current Status**
+Limited availability
+
+**Next Available Slots**
+Mid-May 2025
+
+**Booking Info**
+Currently accepting projects starting from June 2025
+
+**Priority Projects**
+AI implementations, web application development, and technical consulting
+
+## CONTACT FORM STRUCTURE
+
+### Step 1: Project Type
+
+**Question**
+What would you like to create?
+
+**Fields**
+- **Project Type**
+  - Web Application
+  - Mobile App
+  - AI/ML Solution
+  - Data Visualization
+  - Integration/API
+  - Other (please specify)
+
+- **Budget**
+  - Enter an amount
+
+- **Timeframe**
+  - Exploratory (no fixed date)
+  - Within 3 months
+  - Within 1 month
+  - ASAP (urgent)
+
+### Step 2: Project Details
+
+**Question**
+Tell me more about your project
+
+**Field**
+- Project Details: Share your vision, goals, or any specific requirements...
+
+### Step 3: Contact Information
+
+**Question**
+How can I reach you?
+
+**Fields**
+- Name: Your full name
+- Email: your.email@example.com
+- Phone (optional): +1 (123) 456-7890
+- Preferred Communication:
+  - Email
+  - Phone
+  - Video Call
+
+**Submit Button**
+Send Message
+
+## CONTACT PREFERENCES
+
+**Preferred Initial Contact**
+Email or contact form
+
+**Response Time**
+Within 24 hours on business days
+
+**Consultation Info**
+30-minute discovery calls available by appointment
+
+**Time Zones**
+Available for meetings between 8AM - 6PM EST (1PM - 11PM GMT)
+
+## SOCIAL MEDIA PROFILES
+
+### Primary Platforms
+
+**GitHub**
+github.com/Gamikaru
+- Explore my code repositories, open-source contributions, and development projects.
+- [View My Code]
+
+**LinkedIn**
+linkedin.com/in/gavrielrudolph
+- Connect professionally for opportunities, collaborations, and industry networking.
+- [Let's Connect]
+
+**Medium**
+medium.com/@gavrielrudolph
+- Read my articles on web development, AI, and technology strategy.
+- [Read My Articles]
+
+### Secondary Platforms
+
+**Twitter**
+twitter.com/gavrielmiharu
+- Technology insights, industry news, and development tips.
+- [Follow Me]
+
+**YouTube**
+youtube.com/channel/gavrielmiharu
+- Video tutorials, project walkthroughs, and coding sessions.
+- [Subscribe]
+
+**Dev.to**
+dev.to/gavrielmiharu
+- Technical articles and community engagement for developers.
+- [Join the Discussion]
+
+## NETWORKING & COLLABORATION
+
+**Open To**
+- Speaking engagements
+- Guest blog contributions
+- Podcast appearances
+- Teaching/workshop opportunities
+- Project collaborations
+
+**Topics of Expertise**
+- Web development best practices
+- AI implementation for business
+- Data-driven decision making
+- Technology selection strategies
+
+## FAQ SECTION
+
+**Heading**
+"Common Questions"
+
+**Questions & Answers**
+
+**Q: How do you typically work with clients?**
+A: I start with a conversation to understand your needs, then provide a clear proposal with scope, timeline, and costs. During the project, I keep you updated regularly and deliver work in stages for feedback. My goal is a straightforward process with no surprises.
+
+**Q: Do you work with clients outside of Tampa?**
+A: Absolutely. While I'm based in Tampa, I work with clients worldwide. Most communication happens through video calls, email, and collaborative tools, making location largely irrelevant to a successful project.
+
+**Q: What information do you need to provide an estimate?**
+A: The more detail you can provide about your goals, timeline, and specific requirements, the more accurate my estimate will be. Even a rough idea is a good starting point—we can refine the details during our initial conversation.
+
+**Q: How do you handle revisions and feedback?**
+A: Feedback is built into my process. Each project includes dedicated review phases where you can provide input. My proposals clearly outline the number of revision rounds included, though I'm always flexible for reasonable adjustments.
+
+**Q: Do you offer maintenance and support after launching?**
+A: Yes. I offer various support options once your project is live, from hourly assistance to monthly maintenance packages. We'll discuss what makes sense for your specific needs.
+
+## FINAL CALLOUT
+
+**Heading**
+"Not ready to start a project yet?"
+
+**Content**
+If you're just exploring options or have questions about what might be possible, I'm happy to have a no-pressure conversation. Sometimes the best projects start with a simple discussion about challenges you're facing.
+
+**CTA Button**
+[Schedule a Quick Chat →]
+
+## TESTIMONIAL
+
+**Content**
+"From our first call, Gavriel was refreshingly straightforward. He asked smart questions about our business needs rather than jumping straight to technical solutions. The entire process was smooth, and we got exactly what we needed without unnecessary complications."
+— Jennifer K., Marketing Director
+
+---
+
+This contact page provides comprehensive information while maintaining an approachable, professional tone. It makes it easy for potential clients to understand how to work with Gavriel, what to expect, and multiple ways to get in touch based on their preferences. The multi-step contact form helps qualify leads while gathering the necessary information to provide meaningful responses. The FAQ section addresses common questions upfront, reducing barriers to initial contact.

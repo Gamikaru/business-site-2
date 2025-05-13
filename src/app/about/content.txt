@@ -1,0 +1,115 @@
+# ABOUT PAGE CONTENT
+
+## PERSONAL INTRODUCTION
+
+**Headline**
+"The human behind the code"
+
+**Intro Paragraph**
+Hey there, I'm Gavriel—a London-born tech enthusiast now based in Tampa. My journey in technology started with a curiosity about how things work and evolved into a career building digital solutions that make a difference. I bring a global perspective paired with hands-on technical skills, always focusing on the practical impact of what I build.
+
+## MY STORY
+
+**Heading**
+"How I got here"
+
+**Content**
+My path wasn't the typical computer science degree route. After exploring various fields and realizing my passion for problem-solving through technology, I jumped into CodeBoxx Academy's intensive Full Stack Development program. What followed was a deep dive into building real-world applications and discovering how much I enjoy turning complicated problems into straightforward solutions.
+
+Today, I split my time between client projects, teaching at CodeBoxx's AI bootcamp, and pursuing a Data Science degree at the Open University. This mix keeps me learning constantly and helps me bring fresh perspectives to everything I work on.
+
+The most satisfying part of what I do? When someone uses something I've built and says, "This just makes sense." That's always the goal—technology that feels intuitive and genuinely helps people work better.
+
+## MY APPROACH
+
+**Heading**
+"How I think about problems"
+
+**Introduction**
+I've found that effective solutions rarely start with code—they start with understanding.
+
+**Key Points**
+
+1. **What's the real problem we're solving?**
+   I look beyond the surface symptoms to understand the core challenges. It's easy to build something flashy that misses the point entirely—I'd rather build something simple that actually solves your problem.
+
+2. **What's the smartest path to a solution?**
+   I believe in solutions that are streamlined and scalable. More features don't always mean better results, and sometimes the simplest approach works best. I focus on building things that are easy to maintain and adapt as your needs change.
+
+3. **How will this drive value for you?**
+   Everything I build is aligned with your goals. The best technical solution is worthless if it doesn't move your business forward or make life easier for your users. I keep this perspective throughout the entire process.
+
+**Conclusion**
+This mindset shapes every project I take on. Whether it's a website, application, or automation process, I aim to deliver solutions that work seamlessly, reliably, and effectively for the people who use them.
+
+## WHAT SETS ME APART
+
+**Heading**
+"My working style"
+
+**Introduction**
+In a field full of developers, I bring a combination of technical knowledge, practical thinking, and communication skills that help projects succeed.
+
+**Strengths**
+
+1. **Problem-Solver First, Coder Second**
+   I don't just build apps—I engineer solutions to specific problems. Technology is just the tool; understanding your challenges and designing the right approach is where the real value begins.
+
+2. **Balancing Logic and Creativity**
+   My best work happens where analytical thinking meets creative problem-solving. I enjoy finding those unexpected solutions that elegantly address complex requirements.
+
+3. **Plain Language, Clear Communication**
+   I translate technical concepts into terms anyone can understand. No unnecessary jargon or tech-speak—just clear explanations and honest discussions about what's possible, what's practical, and what makes sense for your situation.
+
+**Perspective**
+For me, successful technology isn't about following trends or using the newest framework. It's about building reliable systems that solve real problems for real people—and making sure those systems are maintainable and adaptable as needs change.
+
+## EDUCATION & EXPERIENCE
+
+**Heading**
+"Background & Training"
+
+**Formal Education**
+- Currently pursuing BSc in Data Science, The Open University (2023-present)
+- Full Stack Development Certification, CodeBoxx Academy (2022)
+
+**Professional Experience**
+- AI Bootcamp Coach, CodeBoxx Academy (2023-present)
+- Freelance Developer & Consultant (2022-present)
+- Previous experience in [relevant previous industry/role]
+
+**Continuing Education**
+I'm always learning something new, whether through formal courses, hands-on projects, or collaboration with other developers. Technology changes quickly, and staying current is both a professional necessity and a personal passion.
+
+## OUTSIDE WORK
+
+**Heading**
+"When I'm not coding"
+
+**Content**
+Life isn't all about technology. When I'm away from the keyboard, you might find me [add 2-3 personal interests or hobbies that humanize you without oversharing]. These pursuits help me maintain perspective and often inspire creative approaches to technical challenges.
+
+## WORKING TOGETHER
+
+**Heading**
+"Let's build something worthwhile"
+
+**Content**
+I believe in straightforward communication, honest feedback, and collaborative momentum. If you're looking for someone who values quality work and practical solutions over flashy presentations, we'll probably work well together.
+
+Every project begins with understanding your goals and challenges. From there, we can explore whether my skills and approach are the right fit for what you need.
+
+**Call-to-Action Buttons**
+- Primary: Start a Conversation (links to #contact)
+- Secondary: View My Resume (links to resume PDF)
+- Tertiary: See My Work (links to portfolio section)
+
+## TESTIMONIAL
+
+**Content**
+"Working with Gav was refreshingly straightforward. He asked the right questions, helped us clarify what we actually needed, and then delivered a solution that worked exactly as promised. No fuss, no unnecessary complications—just solid work that solved our problem."
+— [Client Name], [Position] at [Company]
+
+---
+
+The About page maintains a conversational, authentic tone while providing more depth about my background, approach, and working style. It balances professionalism with personality, giving potential clients insight into both my technical capabilities and how I approach projects and client relationships.
