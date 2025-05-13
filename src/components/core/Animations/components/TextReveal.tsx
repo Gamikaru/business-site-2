@@ -1,7 +1,6 @@
-// src/components/common/Animations/components/TextReveal.tsx
 "use client";
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState, useEffect } from "react";
 import { motion, HTMLMotionProps, Variants } from "framer-motion";
 import { useAnimationPreferences } from "../hooks/useAnimationPreferences";
 
@@ -16,6 +15,7 @@ interface TextRevealProps extends Omit<HTMLMotionProps<"div">, "variants"> {
   className?: string;
   as?: React.ElementType;
   onAnimationComplete?: () => void;
+  once?: boolean; // Add option to control if animation happens only once
 }
 
 const TextReveal: React.FC<TextRevealProps> = ({
@@ -29,11 +29,13 @@ const TextReveal: React.FC<TextRevealProps> = ({
   className = "",
   as = "div",
   onAnimationComplete,
+  once = true, // Default to true to prevent disappearing
   ...motionProps
 }) => {
   const { shouldAnimate, getTransitionSettings, getIntensity } =
     useAnimationPreferences();
   const Component = as;
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   // Get transition settings
   const { duration: calculatedDuration, ease } = getTransitionSettings(
@@ -46,6 +48,11 @@ const TextReveal: React.FC<TextRevealProps> = ({
 
   // If animations are disabled, just render children
   if (!shouldAnimate()) {
+    return <Component className={className}>{children}</Component>;
+  }
+
+  // If already animated and once is true, show the final state
+  if (once && hasAnimated) {
     return <Component className={className}>{children}</Component>;
   }
 
@@ -152,7 +159,10 @@ const TextReveal: React.FC<TextRevealProps> = ({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      onAnimationComplete={onAnimationComplete}
+      onAnimationComplete={() => {
+        if (onAnimationComplete) onAnimationComplete();
+        setHasAnimated(true);
+      }}
       {...motionProps}
     >
       <Component>

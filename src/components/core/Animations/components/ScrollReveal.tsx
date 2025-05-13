@@ -1,7 +1,6 @@
-// src/components/common/Animations/components/ScrollReveal.tsx
 "use client";
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import { motion, MotionProps } from 'framer-motion';
 import { useAnimationPreferences } from '../hooks/useAnimationPreferences';
 
@@ -14,6 +13,7 @@ interface ScrollRevealProps extends Omit<MotionProps, 'transition' | 'initial' |
   once?: boolean;
   className?: string;
   threshold?: number;
+  resetOnScrollOut?: boolean; // Add new prop to control reset behavior
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({
@@ -22,12 +22,14 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   duration,
   direction = 'up',
   distance = 50,
-  once = true,
+  once = true, // Change default to true to prevent disappearing
   className = "",
   threshold = 0.2,
+  resetOnScrollOut = false, // Default to false to maintain visibility
   ...motionProps
 }) => {
   const { shouldAnimate, getTransitionSettings, getIntensity } = useAnimationPreferences();
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
 
   // Apply intensity to distance
   const effectiveDistance = distance * getIntensity();
@@ -68,17 +70,29 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
       break;
   }
 
+  // Calculate a more generous margin for viewport
+  const viewportMargin = `${Math.round((1 - threshold) * 100)}px`;
+
   return (
     <motion.div
       className={className}
       initial={initial}
       whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-      viewport={{ once, margin: `-${Math.round(threshold * 100)}px` }}
+      viewport={{
+        once,
+        margin: `-${viewportMargin}`,
+        amount: threshold
+      }}
       transition={{
         duration: calculatedDuration,
         delay,
         ease
       }}
+      onViewportEnter={() => {
+        setHasBeenVisible(true);
+      }}
+      // For already viewed items, maintain their visible state with higher CSS priority
+      style={once && hasBeenVisible ? { opacity: 1, transform: 'none', visibility: 'visible' } : {}}
       {...motionProps}
     >
       {children}

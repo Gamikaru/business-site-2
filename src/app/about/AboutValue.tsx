@@ -36,9 +36,11 @@ const AboutValues: React.FC<AboutValuesProps> = ({
   // Refs for scroll and animation tracking
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+
+  // Improve inView with once:true and more generous margins
   const isHeadingInView = useInView(headingRef, {
-    once: false,
-    margin: "-10% 0px",
+    once: true,
+    margin: "-15% 0px -15% 0px",
   });
 
   // Active value item tracking
@@ -78,6 +80,19 @@ const AboutValues: React.FC<AboutValuesProps> = ({
     const y = (e.clientY - rect.top) / rect.height;
 
     setMousePosition({ x, y });
+  };
+
+  // Custom stagger variants for better coordination
+  const customStaggerVariants = {
+    ...staggerContainerVariants,
+    visible: {
+      ...staggerContainerVariants.visible,
+      transition: {
+        ...staggerContainerVariants.visible.transition,
+        delayChildren: 0.4, // Add delay for better coordination with heading
+        staggerChildren: 0.15, // Slightly slower staggering
+      }
+    }
   };
 
   return (
@@ -178,7 +193,7 @@ const AboutValues: React.FC<AboutValuesProps> = ({
       <div className="container mx-auto relative z-10">
         {/* Section header with technical styling */}
         <div ref={headingRef} className="max-w-3xl mx-auto text-center mb-16">
-          <TextReveal direction="up" delay={0.2} className="mb-6">
+          <TextReveal direction="up" delay={0.2} className="mb-6" once={true}>
             <Heading
               level={2}
               className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading relative inline-block"
@@ -195,7 +210,7 @@ const AboutValues: React.FC<AboutValuesProps> = ({
             </Heading>
           </TextReveal>
 
-          <ScrollReveal direction="up" delay={0.3}>
+          <ScrollReveal direction="up" delay={0.3} once={true}>
             <Text className="text-center text-text-secondary text-lg md:text-xl">
               <RichText content={introduction} className="preserve-whitespace" />
             </Text>
@@ -224,7 +239,7 @@ const AboutValues: React.FC<AboutValuesProps> = ({
           {/* Values sidebar - navigation with selected indicator */}
           <div className="lg:col-span-4 flex flex-col order-2 lg:order-1">
             <motion.div
-              variants={staggerContainerVariants}
+              variants={customStaggerVariants}
               initial="hidden"
               animate={isHeadingInView ? "visible" : "hidden"}
               className="bg-bg-card/40 backdrop-blur-sm border border-divider rounded-lg p-6 relative"
@@ -267,7 +282,7 @@ const AboutValues: React.FC<AboutValuesProps> = ({
                     {/* Technical value item structure */}
                     <div className="flex items-start">
                       <div className="text-brand-primary font-mono text-xl font-bold mr-3">
-                        {item.number}
+                        <RichText content={item.number} />
                       </div>
                       <div>
                         <Text
@@ -278,7 +293,7 @@ const AboutValues: React.FC<AboutValuesProps> = ({
                               : "text-text-primary"
                           )}
                         >
-                          {item.title}
+                          <RichText content={item.title} />
                         </Text>
                         <div
                           className={cn(

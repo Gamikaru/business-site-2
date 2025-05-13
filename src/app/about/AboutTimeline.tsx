@@ -35,9 +35,11 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
   // Refs for animation and scroll tracking
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+
+  // Use once:true to keep animations visible
   const isHeadingInView = useInView(headingRef, {
-    once: false,
-    margin: "-10% 0px",
+    once: true,
+    margin: "-15% 0px -15% 0px", // More generous margins
   });
 
   // Selected event tracking
@@ -79,6 +81,19 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
     const y = (e.clientY - rect.top) / rect.height;
 
     setMousePosition({ x, y });
+  };
+
+  // Custom stagger variants for timeline
+  const timelineStaggerVariants = {
+    ...staggerContainerVariants,
+    visible: {
+      ...staggerContainerVariants.visible,
+      transition: {
+        ...staggerContainerVariants.visible.transition,
+        delayChildren: 0.4,
+        staggerChildren: 0.2, // More pronounced staggering for timeline events
+      }
+    }
   };
 
   return (
@@ -178,7 +193,7 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
       <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         {/* Section heading with technical styling */}
         <div ref={headingRef} className="max-w-3xl mx-auto text-center mb-16">
-          <TextReveal direction="up" delay={0.2} className="mb-6">
+          <TextReveal direction="up" delay={0.2} className="mb-6" once={true}>
             <Heading
               level={2}
               className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading relative inline-block"
@@ -195,7 +210,7 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
             </Heading>
           </TextReveal>
 
-          <ScrollReveal direction="up" delay={0.3}>
+          <ScrollReveal direction="up" delay={0.3} once={true}>
             <Text className="text-center text-text-secondary text-lg md:text-xl">
               <RichText content={introduction} className="preserve-whitespace" />
             </Text>
@@ -222,7 +237,7 @@ const AboutTimeline: React.FC<AboutTimelineProps> = ({
         {/* Timeline display with technical styling */}
         <div className="max-w-4xl mx-auto">
           <motion.div
-            variants={staggerContainerVariants}
+            variants={timelineStaggerVariants}
             initial="hidden"
             animate={isHeadingInView ? "visible" : "hidden"}
             className="relative"

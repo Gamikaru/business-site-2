@@ -40,9 +40,11 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
   // Refs for animation and scroll tracking
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+
+  // Use once: true to keep elements visible after appearing
   const isHeadingInView = useInView(headingRef, {
-    once: false,
-    margin: "-10% 0px",
+    once: true,
+    margin: "-10% 0px -10% 0px", // More generous margins
   });
 
   // State for active category
@@ -90,6 +92,19 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
     const y = (e.clientY - rect.top) / rect.height;
 
     setMousePosition({ x, y });
+  };
+
+  // Custom stagger variants with better timing
+  const customStaggerVariants = {
+    ...staggerContainerVariants,
+    visible: {
+      ...staggerContainerVariants.visible,
+      transition: {
+        ...staggerContainerVariants.visible.transition,
+        delayChildren: 0.2,
+        staggerChildren: 0.12,
+      }
+    }
   };
 
   return (
@@ -192,7 +207,7 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
           ref={headingRef}
           className="max-w-3xl mx-auto text-center mb-12 md:mb-20"
         >
-          <TextReveal direction="up" delay={0.2} className="mb-8">
+          <TextReveal direction="up" delay={0.2} className="mb-8" once={true}>
             <Heading
               level={2}
               className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading"
@@ -209,7 +224,7 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
             </Heading>
           </TextReveal>
 
-          <ScrollReveal direction="up" delay={0.3}>
+          <ScrollReveal direction="up" delay={0.3} once={true}>
             <Text
               size="xl"
               className="text-center text-text-secondary relative"
@@ -255,7 +270,7 @@ const AboutSkills: React.FC<AboutSkillsProps> = ({
         {/* Skill category tabs with technical styling */}
         <div className="max-w-5xl mx-auto mb-12">
           <motion.div
-            variants={staggerContainerVariants}
+            variants={customStaggerVariants}
             initial="hidden"
             animate={isHeadingInView ? "visible" : "hidden"}
             className="flex flex-wrap justify-center gap-3 mb-10"

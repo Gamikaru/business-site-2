@@ -31,14 +31,14 @@ const AboutHero: React.FC<AboutHeroProps> = ({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Scroll-driven animations
+  // Scroll-driven animations with gentler fade
   const { scrollYProgress } = useScroll();
-  const backgroundY = useTransform(scrollYProgress, [0, 0.5], ["0%", "50%"]);
-  const headerY = useTransform(scrollYProgress, [0, 0.3], ["0%", "-20%"]);
+  const backgroundY = useTransform(scrollYProgress, [0, 0.8], ["0%", "50%"]); // Extend the range
+  const headerY = useTransform(scrollYProgress, [0, 0.6], ["0%", "-20%"]); // Make header persist longer
   const headerOpacity = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.4],
-    [1, 0.8, 0]
+    [0, 0.6, 0.8], // Slow down the fade out
+    [1, 0.9, 0.7] // Keep more opacity for longer
   );
 
   // Technical display values
@@ -135,6 +135,8 @@ const AboutHero: React.FC<AboutHeroProps> = ({
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           style={{ y: headerY, opacity: headerOpacity }}
+          // Add this to ensure it persists with scroll
+          transition={{ type: "tween" }}
         >
           {/* Left column - Text content with technical styling */}
           <div className="lg:col-span-7 relative">

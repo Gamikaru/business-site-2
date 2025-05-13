@@ -30,9 +30,11 @@ const AboutCTA: React.FC<AboutCTAProps> = ({
   // Refs for animation and scroll tracking
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+
+  // Use once:true and more generous margins
   const isHeadingInView = useInView(headingRef, {
-    once: false,
-    margin: "-10% 0px",
+    once: true,
+    margin: "-20% 0px -20% 0px",
   });
 
   // Technical data display
@@ -225,7 +227,7 @@ const AboutCTA: React.FC<AboutCTAProps> = ({
 
             {/* Content with animated reveals */}
             <div ref={headingRef} className="text-center mb-8">
-              <TextReveal direction="up" delay={0.2} className="mb-6">
+              <TextReveal direction="up" delay={0.2} className="mb-6" once={true}>
                 <Heading
                   level={2}
                   className="text-[clamp(2rem,3.5vw+1rem,3rem)] font-heading font-bold text-heading"
@@ -234,7 +236,7 @@ const AboutCTA: React.FC<AboutCTAProps> = ({
                 </Heading>
               </TextReveal>
 
-              <ScrollReveal direction="up" delay={0.4}>
+              <ScrollReveal direction="up" delay={0.4} once={true}>
                 <Text className="text-xl md:text-2xl text-text-secondary max-w-2xl mx-auto">
                   <RichText content={content} className="preserve-whitespace" />
                 </Text>
@@ -257,6 +259,10 @@ const AboutCTA: React.FC<AboutCTAProps> = ({
                   whileTap={{ scale: 0.98 }}
                   onHoverStart={() => setIsButtonHovered(true)}
                   onHoverEnd={() => setIsButtonHovered(false)}
+                  // Keep button visible
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.4 }}
                 >
                   <Link
                     href={ctaLink}

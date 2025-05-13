@@ -37,9 +37,11 @@ const AboutBio: React.FC<AboutBioProps> = ({
   // Refs for animations and scroll tracking
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+
+  // Improve inView detection with more generous margins and make it not reset
   const isHeadingInView = useInView(headingRef, {
-    once: false,
-    margin: "-10% 0px",
+    once: true, // Once it's visible, keep the state
+    margin: "-20% 0px -20% 0px", // More generous margins
   });
 
   // Mouse tracking for interactive elements
@@ -76,6 +78,19 @@ const AboutBio: React.FC<AboutBioProps> = ({
     const y = (e.clientY - rect.top) / rect.height;
 
     setMousePosition({ x, y });
+  };
+
+  // Modify staggerContainerVariants for better coordination
+  const customStaggerVariants = {
+    ...staggerContainerVariants,
+    visible: {
+      ...staggerContainerVariants.visible,
+      transition: {
+        ...staggerContainerVariants.visible.transition,
+        delayChildren: 0.3, // Add a delay for better coordination with heading
+        staggerChildren: 0.15, // Slightly increase stagger time
+      }
+    }
   };
 
   return (
@@ -190,7 +205,7 @@ const AboutBio: React.FC<AboutBioProps> = ({
             style={{ transformOrigin: "right" }}
           />
 
-          <TextReveal direction="up" delay={0.2} className="relative">
+          <TextReveal direction="up" delay={0.2} className="relative" once={true}>
             <Heading
               level={2}
               className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading relative inline-block"
@@ -232,7 +247,7 @@ const AboutBio: React.FC<AboutBioProps> = ({
           {/* Content column with technical styling */}
           <div className="lg:col-span-8 relative">
             <motion.div
-              variants={staggerContainerVariants}
+              variants={customStaggerVariants}
               initial="hidden"
               animate={isHeadingInView ? "visible" : "hidden"}
               className="space-y-6"
@@ -302,7 +317,7 @@ const AboutBio: React.FC<AboutBioProps> = ({
 
           {/* Stats column with technical styling */}
           <div className="lg:col-span-4 relative">
-            <ScrollReveal direction="up" delay={0.3}>
+            <ScrollReveal direction="up" delay={0.3} once={true} threshold={0.1}>
               <div className="bg-bg-tertiary/30 border border-divider backdrop-blur-sm rounded-lg p-6 relative">
                 {/* Technical corner details */}
                 <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-brand-primary"></div>

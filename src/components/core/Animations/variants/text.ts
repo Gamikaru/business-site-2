@@ -20,7 +20,8 @@ export const textRevealVariants: Variants = {
         y: 10,
         transition: {
             duration: 0.4,
-            ease: [0.4, 0, 0.2, 1]
+            ease: [0.4, 0, 0.2, 1],
+            delay: 0.2 // Add delay to prevent abrupt exit
         }
     }
 };
