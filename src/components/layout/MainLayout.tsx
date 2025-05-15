@@ -8,7 +8,7 @@ interface MainLayoutProps {
   className?: string;
   fullWidth?: boolean;
   withPadding?: boolean;
-  headerOffset?: boolean; // new prop
+  headerOffset?: boolean; // prop for header spacing
 }
 
 export default function MainLayout({
@@ -16,7 +16,7 @@ export default function MainLayout({
   className = "",
   fullWidth = false,
   withPadding = true,
-  headerOffset = true, // default true
+  headerOffset = false, // Changed default to false
 }: MainLayoutProps) {
   return (
     <div className="min-h-screen bg-bg-primary">
@@ -25,6 +25,7 @@ export default function MainLayout({
       <main
         className={`
           ${withPadding ? "py-8 px-4 md:px-6 lg:px-8" : ""}
+          ${headerOffset ? "pt-24 md:pt-28" : ""}
           ${className}
         `}
       >

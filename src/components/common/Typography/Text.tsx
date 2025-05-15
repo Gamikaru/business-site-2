@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/utils/classNames';
 
 // Define variants for the Text component using class-variance-authority
-const textVariants = cva('text-text-primary whitespace-normal', { // Added whitespace-normal
+const textVariants = cva('text-text-primary whitespace-normal', {
   variants: {
     variant: {
       default: 'text-text-primary',
@@ -79,7 +79,6 @@ const textVariants = cva('text-text-primary whitespace-normal', { // Added white
       underline: 'underline',
       lineThrough: 'line-through',
     },
-    // Add word spacing variant
     wordSpacing: {
       normal: 'word-spacing-normal',
       wide: 'word-spacing-wide',
@@ -93,7 +92,7 @@ const textVariants = cva('text-text-primary whitespace-normal', { // Added white
     family: 'body',
     leading: 'normal',
     align: 'left',
-    wordSpacing: 'normal', // Default to normal word spacing
+    wordSpacing: 'normal',
   },
 });
 
@@ -106,7 +105,7 @@ export interface TextProps
     VariantProps<typeof textVariants> {
   as?: ElementType;
   truncate?: boolean;
-  preserveSpacing?: boolean; // Add this option
+  preserveSpacing?: boolean;
 }
 
 // Create a more specific type for the ref based on the element type
@@ -125,14 +124,13 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
     decoration,
     wordSpacing,
     truncate,
-    preserveSpacing = true, // Default to preserve spacing
+    preserveSpacing = true,
     className,
     children,
     ...props
   }, ref) => {
-    // Combine all classes using the utility function
-    // If preserveSpacing is true, add an additional class to ensure spacing
-    const spacingClass = preserveSpacing && !wrap ? 'whitespace-normal word-break-normal preserve-whitespace' : '';
+    // Add additional spacing class if preserveSpacing is true and wrap is not set
+    const spacingClass = preserveSpacing && !wrap ? 'preserve-whitespace' : '';
 
     const combinedClasses = cn(
       textVariants({
@@ -153,17 +151,6 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
       className
     );
 
-    // Add inline style with word-spacing based on font family
-    const inlineStyle = {
-      wordSpacing: family === 'heading'
-        ? 'var(--word-spacing-heading)'
-        : family === 'body'
-          ? 'var(--word-spacing-body)'
-          : family === 'code'
-            ? 'var(--word-spacing-code)'
-            : 'var(--word-spacing-normal)'
-    };
-
     // Render the appropriate element based on the 'as' prop
     switch (as) {
       case 'p':
@@ -171,7 +158,6 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
           <p
             ref={ref as React.ForwardedRef<HTMLParagraphElement>}
             className={combinedClasses}
-            style={inlineStyle}
             {...props}
           >
             {children}
@@ -182,7 +168,6 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
           <span
             ref={ref as React.ForwardedRef<HTMLSpanElement>}
             className={combinedClasses}
-            style={inlineStyle}
             {...props}
           >
             {children}
@@ -193,7 +178,6 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
           <div
             ref={ref as React.ForwardedRef<HTMLDivElement>}
             className={combinedClasses}
-            style={inlineStyle}
             {...props}
           >
             {children}
@@ -204,7 +188,6 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
           <label
             ref={ref as React.ForwardedRef<HTMLLabelElement>}
             className={combinedClasses}
-            style={inlineStyle}
             {...props}
           >
             {children}
@@ -215,7 +198,6 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
           <p
             ref={ref as React.ForwardedRef<HTMLParagraphElement>}
             className={combinedClasses}
-            style={inlineStyle}
             {...props}
           >
             {children}

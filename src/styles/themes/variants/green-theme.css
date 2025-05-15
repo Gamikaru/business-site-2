@@ -1,0 +1,253 @@
+/* src/styles/themes/green-theme.css
+   ──────────────────────────────────────────────────────────────
+   Canonicalised GREEN THEME (Dark + Light)
+   • All semantic tokens use the canonical form: --color-*-bg,
+     --color-*-text, --color-brand-*, etc.
+   • Legacy aliases (--color-bg-*, --color-text-*) are retained
+     at the end to avoid breaking old components.
+   ────────────────────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   DARK MODE
+   ════════════════════════════════════════════════════════════ */
+[data-theme="green-dark"] {
+  /* ---------- RAW PALETTE ---------- */
+  --green-50:  #EBFDF7;
+  --green-100: #D3F9EC;
+  --green-200: #A8F4DA;
+  --green-300: #7FDFC2;
+  --green-400: #4DC8A4;
+  --green-500: #28B487;  /* primary */
+  --green-600: #1A8865;
+  --green-700: #146E51;
+  --green-800: #0F5940;
+  --green-900: #0F2620;
+
+  --gray-50:  #E6F2ED;
+  --gray-100: #D1E6DE;
+  --gray-200: #BECFCA;
+  --gray-300: #A4B9B3;
+  --gray-400: #7F8C8D;
+  --gray-500: #5E6E70;
+  --gray-600: #415354;
+  --gray-700: #313F40;
+  --gray-800: #253032;
+  --gray-900: #1A2322;
+
+  /* Additional color values for accents */
+  --amber-500: #F39C12;
+  --coral-500: #E57E57;
+  --purple-500: #8E44AD;
+  --teal-500: #16A085;
+
+  /* ---------- SEMANTIC BG ---------- */
+  --color-primary-bg:      var(--green-900);
+  --color-secondary-bg:    #143830;
+  --color-tertiary-bg:     #194A40;
+  --color-card-bg:         rgba(20 56 48 / .97);
+  --color-glass-bg:        rgba(240 250 246 / .08);
+  --color-code-bg:         rgba(15 38 32 / .85);
+  --color-input-bg:        rgba(25 60 52 / .65);
+  --color-hover-bg:        rgba(40 180 135 / .12);
+  --color-active-bg:       rgba(40 180 135 / .22);
+  --color-disabled-bg:     rgba(40 70 60 / .35);
+  --color-tooltip-bg:      rgba(10 28 25 / .97);
+  --color-dropdown-bg:     rgba(15 56 48 / .98);
+  --color-selection-bg:    rgba(40 180 135 / .25);
+
+  /* ---------- SEMANTIC TEXT ---------- */
+  --color-primary-text:    var(--gray-50);
+  --color-secondary-text:  var(--gray-300);
+  --color-tertiary-text:   rgba(179 217 202 / .70);
+  --color-disabled-text:   rgba(179 217 202 / .50);
+  --color-text-on-accent:  #FFFFFF;
+  --color-code-text:       var(--green-300);
+  --color-heading:         var(--gray-50);
+  --color-heading-accent:  var(--green-500);
+  --color-subheading:      var(--gray-200);
+  --color-text-emphasis:   var(--green-400);
+  --color-text-inverted:   var(--green-900);
+
+  /* ---------- BRAND & ACCENT ---------- */
+  --color-brand-primary:   var(--green-500);
+  --color-brand-secondary: var(--green-600);
+  --color-accent-primary:  var(--green-500);
+  --color-accent-primary-hover:  var(--green-600);
+  --color-accent-primary-active: var(--green-700);
+  --color-accent-secondary: var(--teal-500);
+  --color-accent-tertiary:  var(--green-400);
+  --color-accent-warm:     var(--amber-500);
+  --color-accent-contrast: var(--coral-500);
+  --color-accent-cosmic:   var(--purple-500);
+
+  /* ---------- STATUS ---------- */
+  --color-success:         var(--green-500);
+  --color-success-subtle:  rgba(40 180 135 / .15);
+  --color-warning:         var(--amber-500);
+  --color-warning-subtle:  rgba(243 156 18 / .15);
+  --color-error:           var(--coral-500);
+  --color-error-subtle:    rgba(229 126 87 / .15);
+  --color-info:            #3498DB;
+  --color-info-subtle:     rgba(52 152 219 / .15);
+  --color-neutral:         var(--gray-400);
+  --color-neutral-subtle:  rgba(127 140 141 / .15);
+
+  /* ---------- BORDERS ---------- */
+  --color-border:         rgba(40 180 135 / .30);
+  --color-border-focus:   var(--green-500);
+  --color-border-input:   rgba(40 180 135 / .35);
+  --color-divider:        rgba(40 180 135 / .25);
+  --color-divider-light:  rgba(240 250 246 / .08);
+
+  /* ---------- SUPPORT ---------- */
+  --color-grid-lines:      rgba(240 250 246 / .20);
+  --shadow-sm:             0 2px 8px -2px rgba(0 10 8 / .25);
+  --shadow-md:             0 12px 25px -10px rgba(0 10 8 / .35);
+  --shadow-lg:             0 25px 50px -12px rgba(0 10 8 / .40);
+  --shadow-focus:          0 0 0 3px rgba(40 180 135 / .30);
+
+  --wave-primary:          var(--gray-50);
+  --wave-secondary:        #FFFFFF;
+  --wave-accent-1:         var(--green-600);
+  --wave-accent-2:         var(--green-700);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT MODE
+   ════════════════════════════════════════════════════════════ */
+[data-theme="green-light"] {
+  /* ---------- RAW PALETTE ---------- */
+  --green-50:  #EBFDF7;
+  --green-100: #D3F9EC;
+  --green-200: #A8F4DA;
+  --green-300: #7FDFC2;
+  --green-400: #4DC8A4;
+  --green-500: #1A9A65;  /* primary */
+  --green-600: #0C6E50;
+  --green-700: #08453A;
+  --green-800: #0B3830;
+  --green-900: #0A2920;
+
+  --gray-50:  #F7F9F8;
+  --gray-100: #EBF0EE;
+  --gray-200: #DFE6E3;
+  --gray-300: #C5D1CD;
+  --gray-400: #97ABA5;
+  --gray-500: #718A83;
+  --gray-600: #5C6F6A;
+  --gray-700: #445652;
+  --gray-800: #36423F;
+  --gray-900: #1A2F28;
+
+  /* Additional color values for accents */
+  --amber-500: #F39C12;
+  --coral-500: #E57E57;
+  --purple-500: #8E44AD;
+  --teal-500: #16A085;
+
+  /* ---------- SEMANTIC BG ---------- */
+  --color-primary-bg:      var(--gray-50);
+  --color-secondary-bg:    #FFFFFF;
+  --color-tertiary-bg:     var(--green-50);
+  --color-card-bg:         #FFFFFF;
+  --color-glass-bg:        rgba(247 249 248 / .92);
+  --color-code-bg:         rgba(232 244 240 / .80);
+  --color-input-bg:        rgba(232 244 240 / .70);
+  --color-hover-bg:        rgba(26 154 101 / .08);
+  --color-active-bg:       rgba(26 154 101 / .15);
+  --color-disabled-bg:     rgba(223 235 230 / .70);
+  --color-tooltip-bg:      rgba(26 47 40 / .95);
+  --color-dropdown-bg:     #FFFFFF;
+  --color-selection-bg:    rgba(26 154 101 / .20);
+
+  /* ---------- SEMANTIC TEXT ---------- */
+  --color-primary-text:    var(--gray-900);
+  --color-secondary-text:  var(--gray-700);
+  --color-tertiary-text:   rgba(56 88 83 / .70);
+  --color-disabled-text:   rgba(56 88 83 / .50);
+  --color-text-on-accent:  #FFFFFF;
+  --color-code-text:       var(--green-700);
+  --color-heading:         var(--green-600);
+  --color-heading-accent:  var(--teal-500);
+  --color-subheading:      var(--gray-600);
+  --color-text-emphasis:   var(--green-500);
+  --color-text-inverted:   var(--gray-50);
+
+  /* ---------- BRAND & ACCENT ---------- */
+  --color-brand-primary:   var(--green-500);
+  --color-brand-secondary: var(--green-600);
+  --color-accent-primary:  var(--green-500);
+  --color-accent-primary-hover:  var(--green-600);
+  --color-accent-primary-active:  var(--green-700);
+  --color-accent-secondary: var(--teal-500);
+  --color-accent-tertiary:  var(--green-400);
+  --color-accent-warm:     var(--amber-500);
+  --color-accent-contrast: var(--coral-500);
+  --color-accent-cosmic:   var(--purple-500);
+
+  /* ---------- STATUS ---------- */
+  --color-success:         var(--green-500);
+  --color-success-subtle:  rgba(26 154 101 / .12);
+  --color-warning:         var(--amber-500);
+  --color-warning-subtle:  rgba(243 156 18 / .12);
+  --color-error:           var(--coral-500);
+  --color-error-subtle:    rgba(229 126 87 / .12);
+  --color-info:            #3498DB;
+  --color-info-subtle:     rgba(52 152 219 / .12);
+  --color-neutral:         var(--gray-500);
+  --color-neutral-subtle:  rgba(113 138 131 / .12);
+
+  /* ---------- BORDERS ---------- */
+  --color-border:         rgba(26 154 101 / .25);
+  --color-border-focus:   var(--green-500);
+  --color-border-input:   rgba(26 154 101 / .30);
+  --color-divider:        rgba(26 154 101 / .20);
+  --color-divider-light:  rgba(26 47 40 / .05);
+
+  /* ---------- SUPPORT ---------- */
+  --color-grid-lines:      rgba(26 47 40 / .15);
+  --shadow-sm:             0 2px 8px -2px rgba(0 10 8 / .15);
+  --shadow-md:             0 12px 25px -10px rgba(0 10 8 / .25);
+  --shadow-lg:             0 25px 50px -12px rgba(0 10 8 / .30);
+  --shadow-focus:          0 0 0 3px rgba(26 154 101 / .30);
+
+  --wave-primary:          var(--gray-50);
+  --wave-secondary:        #FFFFFF;
+  --wave-accent-1:         var(--green-600);
+  --wave-accent-2:         var(--green-700);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   COLOR-SCHEME HINT
+   ════════════════════════════════════════════════════════════ */
+[data-theme="green-dark"]  { color-scheme: dark; }
+[data-theme="green-light"] { color-scheme: light; }
+
+/* ══════════════════════════════════════════════════════════════
+   LEGACY ALIAS BLOCK
+   Keeps older components running (do NOT use in new code)
+   ════════════════════════════════════════════════════════════ */
+:root {
+  /* Background */
+  --color-bg-primary:      var(--color-primary-bg);
+  --color-bg-secondary:    var(--color-secondary-bg);
+  --color-bg-tertiary:     var(--color-tertiary-bg);
+  --color-bg-card:         var(--color-card-bg);
+  --color-bg-glass:        var(--color-glass-bg);
+  --color-bg-code:         var(--color-code-bg);
+  --color-bg-input:        var(--color-input-bg);
+  --color-bg-hover:        var(--color-hover-bg);
+  --color-bg-active:       var(--color-active-bg);
+  --color-bg-disabled:     var(--color-disabled-bg);
+  --color-bg-tooltip:      var(--color-tooltip-bg);
+  --color-bg-dropdown:     var(--color-dropdown-bg);
+  --color-bg-selection:    var(--color-selection-bg);
+
+  /* Text */
+  --color-text-primary:    var(--color-primary-text);
+  --color-text-secondary:  var(--color-secondary-text);
+  --color-text-tertiary:   var(--color-tertiary-text);
+  --color-text-disabled:   var(--color-disabled-text);
+}
+
+/* End of green-theme.css */

@@ -72,12 +72,12 @@ const SecondaryBlogPosts: React.FC<SecondaryBlogPostsProps> = ({
                 />
 
                 {/* Reading time badge */}
-                <div className="absolute top-2 left-2 px-2 py-1 bg-black/60 backdrop-blur-sm rounded flex items-center space-x-1">
+                <div className="absolute top-2 left-2 px-2 py-1 bg-code-bg backdrop-blur-sm rounded flex items-center space-x-1">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <path d="M12 6v6l4 2"></path>
                   </svg>
-                  <span className="text-[10px] text-white">{post.readTime}</span>
+                  <span className="text-[10px] text-primary-text">{post.readTime}</span>
                 </div>
 
                 {/* Technical scan line on hover */}
@@ -108,7 +108,7 @@ const SecondaryBlogPosts: React.FC<SecondaryBlogPostsProps> = ({
                 {analytics && (
                   <div className="flex justify-between items-center text-[10px] font-mono text-text-tertiary border-t border-divider mt-3 pt-3">
                     <div className="flex items-center space-x-1">
-                      <div className="data-point w-1.5 h-1.5 rounded-full bg-accent-oceanic"></div>
+                      <div className="data-point w-1.5 h-1.5 rounded-full bg-accent-secondary"></div>
                       <span>REL/{analytics.relevance}%</span>
                     </div>
                     <Button
@@ -131,7 +131,8 @@ const SecondaryBlogPosts: React.FC<SecondaryBlogPostsProps> = ({
                 {/* Reading progress animated bar */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden">
                   <motion.div
-                    className="h-full bg-gradient-to-r from-brand-primary to-accent-oceanic"
+                    className="h-full"
+                    style={{ background: "var(--gradient-accent)" }}
                     initial={{ width: "0%" }}
                     animate={{ width: activeCard === post.id ? "100%" : `${analytics?.completionRate || 0}%` }}
                     transition={{ duration: 1.2, ease: "easeInOut" }}

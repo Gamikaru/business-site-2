@@ -200,7 +200,7 @@ const HomeBlog: React.FC<HomeBlogProps> = ({
 
           <motion.path
             d={`M0,${80 - mousePosition.y * 10} Q${50 + mousePosition.x * 20},${20 + mousePosition.y * 60},100,${70 - mousePosition.y * 20}`}
-            stroke="var(--color-accent-oceanic)"
+            stroke="var(--color-accent-secondary)"
             strokeWidth="0.5"
             strokeOpacity="0.1"
             strokeDasharray="5 3"
@@ -260,7 +260,7 @@ const HomeBlog: React.FC<HomeBlogProps> = ({
             <div className="relative group perspective-effect">
               {/* Technical measurement frame */}
               <motion.div
-                className="absolute -inset-6 border border-dashed border-accent-oceanic/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute -inset-6 border border-dashed border-accent-secondary/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 0 }}
                 transition={{ duration: 0.5 }}
@@ -305,7 +305,7 @@ const HomeBlog: React.FC<HomeBlogProps> = ({
                 <svg width="48" height="24" viewBox="0 0 48 24" fill="none">
                   <AnimatedPath
                     d="M0,12 L40,12 M40,12 L30,6 M40,12 L30,18"
-                    stroke="var(--color-accent-oceanic)"
+                    stroke="var(--color-accent-secondary)"
                     strokeWidth="1"
                     strokeDasharray="2 2"
                   />
@@ -317,7 +317,7 @@ const HomeBlog: React.FC<HomeBlogProps> = ({
 
         {/* Technical reading metrics display */}
         <motion.div
-          className="absolute bottom-16 right-8 text-xs font-mono text-accent-oceanic/70 hidden lg:block"
+          className="absolute bottom-16 right-8 text-xs font-mono text-text-tertiary hidden lg:block"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ duration: 0.5, delay: 1.2 }}
@@ -348,7 +348,7 @@ const HomeBlog: React.FC<HomeBlogProps> = ({
               <motion.path
                 key={`data-viz-${i}`}
                 d={`M0,${20 + i * 30} C${20 + i * 10},${40 + i * 5} ${50 - i * 10},${15 + i * 20} 100,${30 + i * 10}`}
-                stroke={i === 1 ? "var(--color-brand-primary)" : "var(--color-accent-oceanic)"}
+                stroke={i === 1 ? "var(--color-brand-primary)" : "var(--color-accent-secondary)"}
                 strokeWidth={i === 1 ? "1" : "0.5"}
                 strokeOpacity={i === 1 ? "0.3" : "0.2"}
                 strokeDasharray={i === 1 ? "" : "2 2"}
@@ -361,7 +361,7 @@ const HomeBlog: React.FC<HomeBlogProps> = ({
 
             <motion.text
               x="85" y="30"
-              fill="var(--color-accent-oceanic)"
+              fill="var(--color-accent-secondary)"
               fontSize="3"
               fontFamily="monospace"
               initial={{ opacity: 0 }}

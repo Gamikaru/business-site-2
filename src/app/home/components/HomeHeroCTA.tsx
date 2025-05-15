@@ -1,108 +1,159 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/common/Button";
+// src/app/home/components/HomeHeroCTA.tsx
+"use client";
 
-interface HomeHeroCTAProps {
-  ctaText: string;
+import React, { memo, useState, useEffect, useRef } from "react";
+import { motion, useAnimation, useMotionValue, useTransform } from "framer-motion";
+import CTAButton from "./cta/CTAButton";
+import CTADecoration from "./cta/CTADecoration";
+
+export interface AccentColors {
+  primary: string;
+  secondary: string;
+  tertiary: string;
+  warm?: string;
+  contrast?: string;
+  oceanic?: string;
+  cosmic?: string;
+  brand: string;
+}
+
+export interface HomeHeroCTAProps {
+  initialText?: string;
+  hoverText?: string;
   ctaLink: string;
-  accentColors?: {
-    primary: string;
-    secondary: string;
-    tertiary: string;
-    brand: string;
-    oceanic: string;
-  };
+  accentColors: AccentColors;
+  as?: "a" | "button";
+  buttonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  heroAnimationComplete?: boolean;
 }
 
 const HomeHeroCTA: React.FC<HomeHeroCTAProps> = ({
-  ctaText,
+  initialText = "Curious?",
+  hoverText = "Let's Talk",
   ctaLink,
-  accentColors
+  accentColors,
+  as = "a",
+  buttonProps,
+  heroAnimationComplete = false
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const glowControls = useAnimation();
+  const [energyLevel, setEnergyLevel] = useState(0);
+
+  // Track the mouse position for interactive effects
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Create derived motion values for parallax effects
+  const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
+
+  useEffect(() => {
+    if (heroAnimationComplete && !isAnimated) {
+      const timer = setTimeout(() => {
+        setIsAnimated(true);
+        // Start ambient energy pulse
+        setEnergyLevel(20);
+        glowControls.start({
+          opacity: [0.4, 0.7, 0.4],
+          scale: [1, 1.05, 1],
+          filter: ["blur(8px)", "blur(12px)", "blur(8px)"],
+          transition: { duration: 5, repeat: Infinity, repeatType: "reverse" }
+        });
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [heroAnimationComplete, isAnimated, glowControls]);
+
+  // Handle mouse movement for 3D effect
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!buttonRef.current) return;
+
+    const rect = buttonRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
+
+  const handleHoverStart = () => {
+    setIsHovered(true);
+    setEnergyLevel(100);
+
+    // Intensify all effects
+    glowControls.start({
+      opacity: 0.9,
+      scale: 1.12,
+      filter: "blur(15px)",
+      transition: { duration: 0.5, ease: "easeOut" }
+    });
+  };
+
+  const handleHoverEnd = () => {
+    setIsHovered(false);
+    setEnergyLevel(20);
+
+    // Return to ambient animations
+    glowControls.start({
+      opacity: [0.4, 0.7, 0.4],
+      scale: [1, 1.05, 1],
+      filter: ["blur(8px)", "blur(12px)", "blur(8px)"],
+      transition: { duration: 5, repeat: Infinity, repeatType: "reverse" }
+    });
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 1.6 }}
-      className="flex flex-col gap-4 transform -rotate-1"
+      ref={buttonRef}
+      variants={{
+        initial: { opacity: 0, y: 30, x: 15 },
+        animate: {
+          opacity: 1,
+          y: 0,
+          x: 0,
+          transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
+            delay: 0.3,
+          },
+        }
+      }}
+      initial="initial"
+      animate={isAnimated ? "animate" : "initial"}
+      className="relative"
+      onMouseMove={handleMouseMove}
     >
-      {/* Extremely styled CTA button */}
-      <div className="relative">
-        {/* Button technical frame */}
-        <motion.div
-          className="absolute -left-3 -top-3 w-12 h-12 border-l-2 border-t-2"
-          style={{ borderColor: "rgba(255, 255, 255, 0.7)" }}
-          initial={{ opacity: 0, rotate: -20 }}
-          animate={{ opacity: 1, rotate: 0 }}
-          transition={{ delay: 1.8 }}
+      <div className="relative perspective-distant">
+        {/* Decorative elements */}
+        <CTADecoration
+          accentColors={accentColors}
+          isAnimated={isAnimated}
+          isHovered={isHovered}
+          energyLevel={energyLevel}
+          glowControls={glowControls}
         />
 
-        <Button
-          intent="gradient"
-          size="lg"
-          href={ctaLink}
-          className="text-lg group relative overflow-hidden border-2 transition-all z-10"
-          style={{ borderColor: accentColors?.secondary || "var(--color-brand-primary)" }}
-          icon={
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 2L18 10L10 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M18 10H2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          }
-          iconPosition="right"
-        >
-          {/* Text with glitch hover effect */}
-          <span className="relative z-10 glitch-hover">{ctaText}</span>
-          <span
-            className="absolute inset-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"
-            style={{ background: accentColors?.secondary || "var(--color-accent-contrast)" }}
-          ></span>
-        </Button>
-
-        {/* Cross target indicator */}
-        <motion.div
-          className="absolute -right-4 -bottom-3 pointer-events-none"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2, duration: 0.5 }}
-        >
-          <div className="flex flex-col items-center justify-center">
-            <div
-              className="w-6 h-px"
-              style={{ backgroundColor: accentColors?.tertiary || "var(--color-accent-primary)" }}
-            ></div>
-            <div
-              className="w-px h-6"
-              style={{ backgroundColor: accentColors?.tertiary || "var(--color-accent-primary)" }}
-            ></div>
-            <div className="absolute h-1 w-1 bg-white rounded-full"></div>
-            <div
-              className="absolute top-3 text-[8px] font-mono"
-              style={{ color: accentColors?.tertiary || "var(--color-accent-primary)" }}
-            >01</div>
-          </div>
-        </motion.div>
+        {/* Main CTA button */}
+        <CTAButton
+          initialText={initialText}
+          hoverText={hoverText}
+          ctaLink={ctaLink}
+          accentColors={accentColors}
+          as={as}
+          isHovered={isHovered}
+          rotateX={rotateX}
+          rotateY={rotateY}
+          onHoverStart={handleHoverStart}
+          onHoverEnd={handleHoverEnd}
+          buttonProps={buttonProps}
+        />
       </div>
-
-      {/* Terminal-style readout */}
-      <motion.div
-        className="flex items-center gap-2 text-sm text-white/70 font-mono ml-4 flex-wrap"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.2 }}
-      >
-        <span
-          className="h-4 w-px animate-pulse"
-          style={{ backgroundColor: accentColors?.secondary || "var(--color-brand-primary)" }}
-        ></span>
-        <span>CMD://</span>
-        <span style={{ color: accentColors?.secondary || "var(--color-brand-primary)" }}>initialize_project</span>
-        <span className="text-xs bg-black/50 px-1 py-0.5 ml-auto">
-          READY
-        </span>
-      </motion.div>
     </motion.div>
   );
 };
 
-export default HomeHeroCTA;
+export default memo(HomeHeroCTA);

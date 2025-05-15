@@ -11,7 +11,7 @@ interface ProvidersProps {
   children: ReactNode;
 }
 
-export default function Providers({ children }: ProvidersProps) {
+const Providers: React.FC<ProvidersProps> = ({ children }) => {
   return (
     <ThemeProvider>
       <DeviceProvider>
@@ -23,4 +23,6 @@ export default function Providers({ children }: ProvidersProps) {
       </DeviceProvider>
     </ThemeProvider>
   );
-}
+};
+
+export default Providers;

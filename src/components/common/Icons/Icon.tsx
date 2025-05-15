@@ -33,13 +33,17 @@ interface IconProps extends Omit<IconBaseProps, "size"> {
 
 const Icon: React.FC<IconProps> = ({ name, size = 20, className = "", ...props }) => {
   // Parse icon name to determine library and specific icon
-  // Support both formats: "fi-chevron-right" or "fi:FiChevronRight"
+  // Support both formats: "fi-arrow-right" or "fi:FiChevronRight"
   let libraryPrefix, iconName;
 
-  if (name.includes('-')) {
-    [libraryPrefix, iconName] = name.split("-");
-  } else if (name.includes(':')) {
+  if (name.includes(':')) {
+    // Format: "fi:FiChevronRight"
     [libraryPrefix, iconName] = name.split(":");
+  } else if (name.includes('-')) {
+    // Format: "fi-arrow-right" - Only split on first hyphen to get the library prefix
+    const firstHyphenIndex = name.indexOf('-');
+    libraryPrefix = name.substring(0, firstHyphenIndex);
+    iconName = name.substring(firstHyphenIndex + 1);  // Keep the rest as the icon name
   } else {
     console.warn(`Invalid icon name format: ${name}. Expected format: "prefix-iconName" or "prefix:IconName"`);
     return null;

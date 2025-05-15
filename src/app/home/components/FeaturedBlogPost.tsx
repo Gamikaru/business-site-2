@@ -44,9 +44,17 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
       className={cn(
         "group relative h-full border rounded-lg overflow-hidden transition-all duration-300",
         activeCard === post.id
-          ? "border-brand-primary shadow-lg"
+          ? ""
           : "border-divider bg-bg-card/70"
       )}
+      style={{
+        border: activeCard === post.id
+          ? "1.5px solid var(--color-accent-primary)"
+          : undefined,
+        boxShadow: activeCard === post.id
+          ? "0 4px 24px 0 var(--color-active-bg)"
+          : undefined
+      }}
       onMouseEnter={() => setActiveCard(post.id)}
       onMouseLeave={() => setActiveCard(null)}
     >
@@ -83,9 +91,8 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
                 y1={`${(i + 1) * 16.67}%`}
                 x2="100%"
                 y2={`${(i + 1) * 16.67}%`}
-                stroke="var(--color-accent-oceanic)"
+                stroke="var(--color-grid-lines)"
                 strokeWidth="0.5"
-                strokeOpacity="0.3"
                 strokeDasharray="5 5"
               />
             ))}
@@ -96,9 +103,8 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
                 y1="0"
                 x2={`${(i + 1) * 16.67}%`}
                 y2="100%"
-                stroke="var(--color-accent-oceanic)"
+                stroke="var(--color-grid-lines)"
                 strokeWidth="0.5"
-                strokeOpacity="0.3"
                 strokeDasharray="5 5"
               />
             ))}
@@ -106,23 +112,35 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
         </div>
 
         {/* Reading time badge */}
-        <div className="absolute top-4 left-4 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-sm border border-accent-oceanic/30 flex items-center space-x-2 z-10">
+        <div
+          className="absolute top-4 left-4 px-3 py-1.5 backdrop-blur-sm rounded-sm flex items-center space-x-2 z-10"
+          style={{
+            background: "var(--color-code-bg)",
+            border: "1px solid var(--color-divider)"
+          }}
+        >
           <div className="flex items-center space-x-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <path d="M12 6v6l4 2"></path>
             </svg>
-            <span className="text-xs text-white font-medium">{post.readTime}</span>
+            <span className="text-xs text-primary-text font-medium">{post.readTime}</span>
           </div>
         </div>
 
         {/* Featured badge */}
-        <div className="absolute top-4 right-4 px-3 py-1.5 bg-brand-primary/85 backdrop-blur-sm rounded-sm border border-brand-primary z-10">
+        <div
+          className="absolute top-4 right-4 px-3 py-1.5 backdrop-blur-sm rounded-sm z-10"
+          style={{
+            background: "var(--color-accent-primary)",
+            border: "1px solid var(--color-accent-primary)"
+          }}
+        >
           <div className="flex items-center space-x-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-on-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <span className="text-xs text-white font-semibold">FEATURED</span>
+            <span className="text-xs text-text-on-accent font-semibold">FEATURED</span>
           </div>
         </div>
       </div>
@@ -130,10 +148,34 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
       {/* Content area with enhanced technical styling */}
       <div className="p-6 md:p-8 relative">
         {/* Technical frame corners */}
-        <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-brand-primary/40 pointer-events-none"></div>
-        <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-brand-primary/40 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-brand-primary/40 pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-brand-primary/40 pointer-events-none"></div>
+        <div
+          className="absolute top-0 left-0 w-4 h-4 pointer-events-none"
+          style={{
+            borderTop: "1px solid var(--color-divider)",
+            borderLeft: "1px solid var(--color-divider)"
+          }}
+        ></div>
+        <div
+          className="absolute top-0 right-0 w-4 h-4 pointer-events-none"
+          style={{
+            borderTop: "1px solid var(--color-divider)",
+            borderRight: "1px solid var(--color-divider)"
+          }}
+        ></div>
+        <div
+          className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none"
+          style={{
+            borderBottom: "1px solid var(--color-divider)",
+            borderLeft: "1px solid var(--color-divider)"
+          }}
+        ></div>
+        <div
+          className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none"
+          style={{
+            borderBottom: "1px solid var(--color-divider)",
+            borderRight: "1px solid var(--color-divider)"
+          }}
+        ></div>
 
         {/* Post title with technical measurement line */}
         <div className="mb-4 relative">
@@ -141,7 +183,8 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
             {post.title}
           </Heading>
           <motion.div
-            className="absolute -left-4 top-0 bottom-0 w-px bg-accent-oceanic/50"
+            className="absolute -left-4 top-0 bottom-0 w-px"
+            style={{ background: "var(--color-divider)" }}
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1 }}
             transition={{ duration: 0.4, delay: 0.3 }}
@@ -157,10 +200,15 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
         <div className="border-t border-divider pt-4 mt-4">
           <div className="flex justify-between items-center text-xs font-mono text-text-tertiary mb-3">
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></div>
+              <div
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{ background: "var(--color-accent-primary)" }}
+              ></div>
               <span>METRICS/LIVE</span>
             </div>
-            <span className="text-accent-cosmic">
+            <span
+              style={{ color: "var(--color-accent-contrast)" }}
+            >
               {new Date(analytics.lastUpdated).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
             </span>
           </div>
@@ -169,22 +217,28 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
           <div className="h-8 bg-bg-tertiary/20 rounded-sm overflow-hidden mb-4">
             <div className="h-full w-full flex">
               <motion.div
-                className="h-full bg-gradient-to-r from-brand-primary/90 to-brand-primary/70 flex items-center justify-end px-2"
+                className="h-full flex items-center justify-end px-2"
+                style={{
+                  background: "var(--color-accent-primary)"
+                }}
                 initial={{ width: "0%" }}
                 animate={{ width: `${analytics.popularity}%` }}
                 transition={{ duration: 1, delay: 0.5 }}
               >
-                <span className="text-[10px] font-mono text-white">
+                <span className="text-[10px] font-mono text-text-on-accent">
                   POP/{analytics.popularity}%
                 </span>
               </motion.div>
               <motion.div
-                className="h-full bg-gradient-to-r from-accent-cosmic/70 to-accent-cosmic/90 flex items-center justify-end px-2"
+                className="h-full flex items-center justify-end px-2"
+                style={{
+                  background: "var(--color-accent-contrast)"
+                }}
                 initial={{ width: "0%" }}
                 animate={{ width: `${100 - analytics.popularity}%` }}
                 transition={{ duration: 1, delay: 0.5 }}
               >
-                <span className="text-[10px] font-mono text-white">
+                <span className="text-[10px] font-mono text-text-on-accent">
                   REL/{analytics.relevance}%
                 </span>
               </motion.div>
@@ -194,8 +248,11 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
             {Array.from({ length: 5 }).map((_, i) => (
               <motion.div
                 key={`metric-${i}`}
-                className="absolute top-0 bottom-0 w-px bg-white/40"
-                style={{ left: `${(i + 1) * 16.67}%` }}
+                className="absolute top-0 bottom-0 w-px"
+                style={{
+                  left: `${(i + 1) * 16.67}%`,
+                  background: "var(--color-divider-light)"
+                }}
                 initial={{ scaleY: 0 }}
                 animate={{ scaleY: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 + (i * 0.1) }}
@@ -208,7 +265,9 @@ const FeaturedBlogPost: React.FC<FeaturedBlogPostProps> = ({
             <div className="text-text-tertiary">
               WORDS/{analytics.wordCount}
             </div>
-            <div className="text-accent-oceanic">
+            <div
+              style={{ color: "var(--color-accent-secondary)" }}
+            >
               TIME/{analytics.readTime}min
             </div>
           </div>

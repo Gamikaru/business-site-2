@@ -1,0 +1,239 @@
+/* src/styles/themes/winter-theme.css
+   Winter Whisper — v1 • 2025‑05‑14
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   WINTER WHISPER — DARK (Polar Night)
+   ═══════════════════════════════════════ */
+[data-theme="winter-dark"] {
+    /* ========== ATOMIC PALETTE ========== */
+    /* Depths */
+    --depth-900: #060E15;
+    --depth-800: #0A1A26;
+    /* bg‑primary */
+    --depth-700: #0F2433;
+    --depth-600: #163447;
+    --depth-500: #1E4560;
+
+    /* Frost chain */
+    --frost-300: #A9E4FF;
+    --frost-400: #7FD1FF;
+    --frost-500: #4CBFFF;
+    /* brand / accent */
+    --frost-600: #27A3E0;
+    --frost-700: #1685B9;
+
+    /* Complements */
+    --aurora-500: #B8A3FF;
+    --spruce-500: #5EB89C;
+    --amber-500: #D8A869;
+    /* pale polar dawn */
+
+    /* ========== SURFACES ========== */
+    --color-primary-bg: var(--depth-800);
+    --color-secondary-bg: var(--depth-700);
+    --color-tertiary-bg: var(--depth-600);
+    --color-card-bg: rgb(15 32 45 / .96);
+    --color-glass-bg: rgb(255 255 255 / .08);
+    --color-code-bg: rgb(6 14 21 / .85);
+    --color-input-bg: rgb(15 32 45 / .65);
+    --color-hover-bg: rgb(76 191 255 / .12);
+    --color-active-bg: rgb(76 191 255 / .22);
+    --color-disabled-bg: rgb(40 62 79 / .35);
+    --color-tooltip-bg: rgb(6 14 21 / .97);
+    --color-dropdown-bg: rgb(15 32 45 / .98);
+    --color-selection-bg: rgb(76 191 255 / .25);
+
+    --color-grid-lines: rgb(248 251 253 / .15);
+
+    /* ========== TYPE ========== */
+    --color-primary-text: #F0F7FA;
+    --color-secondary-text: #C9DAE2;
+    --color-tertiary-text: rgb(201 218 226 / .70);
+    --color-disabled-text: rgb(201 218 226 / .50);
+    --color-text-on-accent: #041018;
+    --color-code-text: #7FD1FF;
+
+    --color-heading: #E2F3FA;
+    --color-heading-accent: var(--frost-500);
+    --color-subheading: #C9DAE2;
+    --color-text-emphasis: var(--aurora-500);
+    --color-text-inverted: #F0F7FA;
+
+    /* ========== BRAND / ACCENT ========== */
+    --color-brand-primary: var(--frost-500);
+    --color-brand-secondary: var(--frost-700);
+
+    --color-accent-primary: var(--frost-500);
+    --color-accent-primary-hover: var(--frost-600);
+    --color-accent-primary-active: var(--frost-700);
+    --color-accent-secondary: var(--aurora-500);
+    --color-accent-tertiary: var(--spruce-500);
+    --color-accent-contrast: var(--amber-500);
+
+    /* ========== STATUS ========== */
+    --color-success: var(--spruce-500);
+    --color-success-subtle: rgb(94 184 156 / .15);
+    --color-warning: var(--amber-500);
+    --color-warning-subtle: rgb(216 168 105 / .15);
+    --color-error: #FF6E7F;
+    --color-error-subtle: rgb(255 110 127 / .15);
+    --color-info: var(--frost-500);
+    --color-info-subtle: rgb(76 191 255 / .15);
+    --color-neutral: #8CA0AD;
+    --color-neutral-subtle: rgb(140 160 173 / .15);
+
+    /* ========== SUPPORT ========== */
+    --color-border: rgb(76 191 255 / .30);
+    --color-border-focus: var(--frost-500);
+    --color-border-input: rgb(76 191 255 / .35);
+    --color-divider: rgb(76 191 255 / .20);
+    --color-divider-light: rgb(255 255 255 / .08);
+
+    --shadow-sm: 0 2px 8px -2px rgb(4 8 12 / .25);
+    --shadow-md: 0 12px 25px -10px rgb(4 8 12 / .35);
+    --shadow-lg: 0 25px 50px -12px rgb(4 8 12 / .40);
+    --shadow-focus: 0 0 0 3px rgb(76 191 255 / .30);
+
+    --color-scrollbar-thumb: rgb(76 191 255 / .50);
+    --color-scrollbar-track: rgb(6 14 21 / .30);
+
+    /* ========== DECOR ========== */
+    --wave-primary: #F8FBFD;
+    --wave-secondary: #FFFFFF;
+    --wave-accent-1: var(--frost-600);
+    --wave-accent-2: var(--aurora-500);
+
+    --gradient-accent: linear-gradient(45deg, var(--frost-500), var(--frost-600));
+    --gradient-interactive: linear-gradient(45deg, var(--frost-500), var(--frost-600));
+    --gradient-button: linear-gradient(to right, var(--frost-500), var(--frost-600));
+    --gradient-button-hover: linear-gradient(to right, var(--frost-600), var(--frost-700));
+    --gradient-aurora: linear-gradient(45deg, var(--aurora-500), var(--frost-500));
+    --gradient-frost-spruce: linear-gradient(45deg, var(--frost-500), var(--spruce-500));
+    --gradient-overlay: linear-gradient(180deg, rgb(6 14 21 / .80), rgb(6 14 21 / .95));
+
+    color-scheme: dark;
+}
+
+/* ═══════════════════════════════════════
+   WINTER WHISPER — LIGHT (Snow Dawn)
+   ═══════════════════════════════════════ */
+[data-theme="winter-light"] {
+    /* ========== SURFACES ========== */
+    --color-primary-bg: #F8FBFD;
+    --color-secondary-bg: #FFFFFF;
+    --color-tertiary-bg: #E3EFF5;
+    --color-card-bg: #FFFFFF;
+    --color-glass-bg: rgb(248 251 253 / .92);
+    --color-code-bg: rgb(227 239 245 / .80);
+    --color-input-bg: rgb(227 239 245 / .70);
+    --color-hover-bg: rgb(76 191 255 / .08);
+    --color-active-bg: rgb(76 191 255 / .15);
+    --color-disabled-bg: rgb(222 234 240 / .70);
+    --color-tooltip-bg: rgb(15 36 52 / .95);
+    --color-dropdown-bg: #FFFFFF;
+    --color-selection-bg: rgb(76 191 255 / .20);
+
+    --color-grid-lines: rgb(76 191 255 / .12);
+
+    /* ========== TYPE ========== */
+    --color-primary-text: #0E273A;
+    --color-secondary-text: #1F3D57;
+    --color-tertiary-text: rgb(31 61 87 / .70);
+    --color-disabled-text: rgb(31 61 87 / .50);
+    --color-text-on-accent: #FFFFFF;
+    --color-code-text: #1685B9;
+
+    --color-heading: var(--frost-700);
+    --color-heading-accent: var(--aurora-500);
+    --color-subheading: #1F3D57;
+    --color-text-emphasis: var(--aurora-500);
+    --color-text-inverted: #F8FBFD;
+
+    /* ========== BRAND / ACCENT ========== */
+    --color-brand-primary: var(--frost-700);
+    --color-brand-secondary: var(--frost-600);
+
+    --color-accent-primary: var(--frost-700);
+    --color-accent-primary-hover: var(--frost-600);
+    --color-accent-primary-active: var(--frost-500);
+    --color-accent-secondary: var(--aurora-500);
+    --color-accent-tertiary: var(--spruce-500);
+    --color-accent-contrast: var(--amber-500);
+
+    /* ========== STATUS ========== */
+    --color-success: #2F8E72;
+    --color-success-subtle: rgb(47 142 114 / .12);
+    --color-warning: #C79A56;
+    --color-warning-subtle: rgb(199 154 86 / .12);
+    --color-error: #C84F6A;
+    --color-error-subtle: rgb(200 79 106 / .12);
+    --color-info: var(--frost-600);
+    --color-info-subtle: rgb(39 163 224 / .12);
+    --color-neutral: #6A7F8C;
+    --color-neutral-subtle: rgb(106 127 140 / .12);
+
+    /* ========== SUPPORT ========== */
+    --color-border: rgb(76 191 255 / .25);
+    --color-border-focus: var(--frost-700);
+    --color-border-input: rgb(76 191 255 / .30);
+    --color-divider: rgb(76 191 255 / .15);
+    --color-divider-light: rgb(0 0 0 / .05);
+
+    --shadow-sm: 0 2px 8px -2px rgb(15 36 52 / .08);
+    --shadow-md: 0 12px 25px -10px rgb(15 36 52 / .12);
+    --shadow-lg: 0 25px 50px -12px rgb(15 36 52 / .15);
+    --shadow-focus: 0 0 0 3px rgb(76 191 255 / .25);
+
+    --color-scrollbar-thumb: rgb(76 191 255 / .40);
+    --color-scrollbar-track: rgb(222 234 240 / .50);
+
+    /* ========== DECOR ========== */
+    --wave-primary: var(--depth-800);
+    --wave-secondary: var(--depth-700);
+    --wave-accent-1: var(--frost-500);
+    --wave-accent-2: var(--aurora-500);
+
+    --gradient-accent: linear-gradient(45deg, var(--frost-700), var(--frost-600));
+    --gradient-interactive: linear-gradient(45deg, var(--frost-700), var(--frost-600));
+    --gradient-button: linear-gradient(to right, var(--frost-700), var(--frost-600));
+    --gradient-button-hover: linear-gradient(to right, var(--frost-600), var(--frost-500));
+    --gradient-aurora: linear-gradient(45deg, var(--aurora-500), var(--frost-600));
+    --gradient-frost-spruce: linear-gradient(45deg, var(--frost-600), var(--spruce-500));
+    --gradient-overlay: linear-gradient(180deg, rgb(248 251 253 / .85), rgb(248 251 253 / .95));
+
+    color-scheme: light;
+}
+
+/* ════════════════════════════════
+   LEGACY TOKEN SHIM (optional)
+   ════════════════════════════════ */
+:root {
+    --color-bg-primary: var(--color-primary-bg);
+    --color-text-primary: var(--color-primary-text);
+}
+
+/* ── Scrollbar (shared) ── */
+[data-theme^="winter"] .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px
+}
+
+[data-theme^="winter"] .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track);
+    border-radius: 4px
+}
+
+[data-theme^="winter"] .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar-thumb);
+    border-radius: 4px
+}
+
+[data-theme^="winter"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-interactive)
+}
+
+[data-theme^="winter"] .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track)
+}

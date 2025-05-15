@@ -1,320 +1,226 @@
-/* ══════════════════════════════════════════════════════════════════════════════
-   DUOTONE THEME VARIANT
+/* src/styles/themes/duotone-theme.css
+   Canonical token version • 2025‑05‑14
+   Palette: Teal + Indigo (duotone) — dark & light variants
+   ─────────────────────────────────────────────────────────── */
 
-   A two-color theme system that creates a striking visual effect by using
-   a limited palette. This creates a focused, cohesive visual style that's
-   ideal for highlighting content without distraction.
-
-   Available in both dark and light modes.
-   ══════════════════════════════════════════════════════════════════════════════ */
-
-/* ──────────────────────────────────────────────────────────────────────────────
-   DUOTONE DARK
-   A high-contrast dark theme with two dominant colors
-   ────────────────────────────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════
+   DUOTONE — DARK
+   ═══════════════════════════════════════════════════════ */
 [data-theme="duotone-dark"] {
-    /* Core colors - limit to two main colors plus supporting neutrals */
-    --primary-color: #3BBDAA;  /* Teal */
-    --primary-dark: #2A8C80;
-    --primary-light: #64D2C3;
-    --primary-pale: #A7E3DB;
-    --primary-rgb: 59, 189, 170;
+  /* ---------- CORE PALETTE ---------- */
+  --teal-500:    #3BBDAA;
+  --teal-600:    #2A8C80;
+  --teal-400:    #64D2C3;
 
-    --secondary-color: #5B56E0;  /* Indigo */
-    --secondary-dark: #4540AD;
-    --secondary-light: #7E7AE5;
-    --secondary-pale: #B2B0F0;
-    --secondary-rgb: 91, 86, 224;
+  --indigo-500:  #5B56E0;
+  --indigo-600:  #4540AD;
+  --indigo-400:  #7E7AE5;
 
-    /* Dark neutrals */
-    --neutral-900: #10151E;
-    --neutral-800: #161D28;
-    --neutral-700: #1E2736;
-    --neutral-600: #2A3446;
-    --neutral-500: #3B485D;
-    --neutral-400: #58697E;
-    --neutral-300: #8A99AA;
-    --neutral-200: #B9C2CC;
-    --neutral-100: #D9DEE5;
-    --neutral-50: #F6F8FA;
+  --gray-900: #10151E;
+  --gray-800: #161D28;
+  --gray-700: #1E2736;
+  --gray-50:  #F6F8FA;
 
-    /* Assign to semantic variables */
-    --color-bg-primary: var(--neutral-900);
-    --color-bg-secondary: var(--neutral-800);
-    --color-bg-tertiary: var(--neutral-700);
-    --color-bg-card: var(--neutral-800);
-    --color-bg-glass: rgba(22, 29, 40, 0.85);
-    --color-bg-code: rgba(16, 21, 30, 0.9);
-    --color-bg-input: rgba(42, 52, 70, 0.7);
-    --color-bg-hover: rgba(59, 189, 170, 0.1);
-    --color-bg-active: rgba(59, 189, 170, 0.2);
-    --color-bg-disabled: rgba(58, 69, 94, 0.5);
-    --color-bg-tooltip: rgba(16, 21, 30, 0.95);
-    --color-bg-dropdown: rgba(16, 21, 30, 0.95);
-    --color-bg-selection: rgba(59, 189, 170, 0.3);
+  /* ---------- SEMANTIC BG ---------- */
+  --color-primary-bg:      var(--gray-900);
+  --color-secondary-bg:    var(--gray-800);
+  --color-tertiary-bg:     var(--gray-700);
+  --color-card-bg:         rgba(22 29 40 / .97);
+  --color-glass-bg:        rgba(22 29 40 / .85);
+  --color-code-bg:         rgba(16 21 30 / .90);
+  --color-input-bg:        rgba(42 52 70 / .70);
+  --color-hover-bg:        rgba(59 189 170 / .10);
+  --color-active-bg:       rgba(59 189 170 / .20);
+  --color-disabled-bg:     rgba(58 69 94 / .50);
+  --color-tooltip-bg:      rgba(16 21 30 / .95);
+  --color-dropdown-bg:     rgba(16 21 30 / .95);
+  --color-selection-bg:    rgba(59 189 170 / .30);
 
-    --color-text-primary: var(--neutral-100);
-    --color-text-secondary: var(--neutral-300);
-    --color-text-tertiary: var(--neutral-400);
-    --color-text-disabled: var(--neutral-500);
-    --color-text-on-accent: var(--neutral-900);
-    --color-text-code: var(--primary-light);
-    --color-text-emphasis: var(--primary-color);
-    --color-text-inverted: var(--neutral-900);
+  /* ---------- GRID ---------- */
+  --color-grid-lines:      rgba(246 248 250 / .15);
 
-    --color-heading: var(--neutral-50);
-    --color-heading-accent: var(--primary-color);
-    --color-subheading: var(--neutral-200);
+  /* ---------- SEMANTIC TEXT ---------- */
+  --color-primary-text:    #D9DEE5;
+  --color-secondary-text:  #8A99AA;
+  --color-tertiary-text:   rgba(138 153 170 / .70);
+  --color-disabled-text:   rgba(138 153 170 / .50);
+  --color-text-on-accent:  var(--gray-900);
+  --color-code-text:       var(--teal-400);
+  --color-heading:         var(--gray-50);
+  --color-heading-accent:  var(--teal-500);
+  --color-subheading:      #B9C2CC;
+  --color-text-emphasis:   var(--teal-500);
+  --color-text-inverted:   var(--gray-900);
 
-    /* Brand and accent colors */
-    --color-brand-primary: var(--primary-color);
-    --color-brand-secondary: var(--secondary-color);
+  /* ---------- BRAND & ACCENT ---------- */
+  --color-brand-primary:   var(--teal-500);
+  --color-brand-secondary: var(--indigo-500);
 
-    --color-accent-primary: var(--primary-color);
-    --color-accent-primary-hover: var(--primary-light);
-    --color-accent-primary-active: var(--primary-dark);
-    --color-accent-secondary: var(--secondary-color);
-    --color-accent-tertiary: var(--primary-dark);
-    --color-accent-oceanic: var(--secondary-light);
-    --color-accent-cosmic: var(--secondary-dark);
-    --color-accent-contrast: var(--secondary-color);
-    --color-accent-warm: var(--primary-light);
+  --color-accent-primary:          var(--teal-500);
+  --color-accent-primary-hover:    var(--teal-400);
+  --color-accent-primary-active:   var(--teal-600);
+  --color-accent-secondary:        var(--indigo-500);
+  --color-accent-tertiary:         var(--teal-600);
 
-    /* Interactive elements */
-    --color-interactive: var(--primary-color);
-    --color-interactive-hover: var(--primary-light);
-    --color-interactive-active: var(--primary-dark);
-    --color-interactive-focus: var(--primary-color);
-    --color-interactive-disabled: rgba(59, 189, 170, 0.4);
+  /* ---------- STATUS ---------- */
+  --color-success:         var(--teal-500);
+  --color-success-subtle:  rgba(59 189 170 / .15);
+  --color-warning:         #E0A030;
+  --color-warning-subtle:  rgba(224 160 48 / .15);
+  --color-error:           #E04F4F;
+  --color-error-subtle:    rgba(224 79 79 / .15);
+  --color-info:            var(--indigo-500);
+  --color-info-subtle:     rgba(91 86 224 / .15);
+  --color-neutral:         #58697E;
+  --color-neutral-subtle:  rgba(88 105 126 / .15);
 
-    --color-interactive-secondary: var(--secondary-color);
-    --color-interactive-secondary-hover: var(--secondary-light);
-    --color-interactive-secondary-active: var(--secondary-dark);
+  /* ---------- SUPPORT ---------- */
+  --shadow-sm:    0 2px 8px -2px rgba(0 0 0 / .40);
+  --shadow-md:    0 12px 25px -10px rgba(0 0 0 / .50);
+  --shadow-lg:    0 25px 50px -12px rgba(0 0 0 / .60);
+  --shadow-focus: 0 0 0 3px rgba(59 189 170 / .30);
 
-    /* Status colors */
-    --color-success: var(--primary-color);
-    --color-success-subtle: rgba(59, 189, 170, 0.15);
-    --color-success-text: var(--primary-light);
+  --color-border:            rgba(59 189 170 / .30);
+  --color-border-focus:      var(--teal-500);
+  --color-border-input:      rgba(59 189 170 / .25);
+  --color-divider:           rgba(59 189 170 / .20);
+  --color-divider-light:     rgba(185 194 204 / .10);
 
-    --color-warning: #E0A030;
-    --color-warning-subtle: rgba(224, 160, 48, 0.15);
-    --color-warning-text: #F5BB45;
+  --color-scrollbar-thumb:   rgba(59 189 170 / .50);
+  --color-scrollbar-track:   rgba(16 21 30 / .30);
 
-    --color-error: #E04F4F;
-    --color-error-subtle: rgba(224, 79, 79, 0.15);
-    --color-error-text: #F57878;
+  --wave-primary:   #F6F8FA;
+  --wave-secondary: #E8EEF3;
+  --wave-accent-1:  var(--teal-500);
+  --wave-accent-2:  var(--indigo-500);
 
-    --color-info: var(--secondary-color);
-    --color-info-subtle: rgba(91, 86, 224, 0.15);
-    --color-info-text: var(--secondary-light);
+  --gradient-accent:      linear-gradient(135deg,var(--teal-500),var(--indigo-500));
+  --gradient-interactive: linear-gradient(135deg,var(--teal-500),var(--teal-400));
+  --gradient-button:      linear-gradient(to right,var(--teal-500),var(--teal-600));
+  --gradient-button-hover:linear-gradient(to right,var(--teal-400),var(--teal-500));
 
-    --color-neutral: var(--neutral-400);
-    --color-neutral-subtle: rgba(88, 105, 126, 0.15);
-
-    /* UI elements */
-    --color-border: rgba(59, 189, 170, 0.3);
-    --color-border-focus: var(--primary-color);
-    --color-border-input: rgba(59, 189, 170, 0.25);
-    --color-divider: rgba(59, 189, 170, 0.2);
-    --color-divider-light: rgba(185, 194, 204, 0.1);
-
-    /* Links */
-    --color-link: var(--secondary-light);
-    --color-link-hover: var(--secondary-pale);
-    --color-link-visited: var(--secondary-color);
-    --color-emphasis: var(--primary-color);
-
-    /* Icons */
-    --color-icon-primary: var(--primary-color);
-    --color-icon-secondary: var(--secondary-color);
-    --color-icon-tertiary: var(--neutral-300);
-    --color-icon-on-accent: var(--neutral-900);
-    --color-icon-bg: rgba(59, 189, 170, 0.1);
-    --color-icon-disabled: var(--neutral-500);
-
-    /* Shadows */
-    --color-shadow: rgba(0, 0, 0, 0.5);
-    --color-shadow-light: rgba(0, 0, 0, 0.25);
-    --color-overlay: rgba(16, 21, 30, 0.8);
-
-    /* Components */
-    --color-skill-item: rgba(59, 189, 170, 0.8);
-    --color-skill-item-hover: rgba(91, 86, 224, 0.2);
-    --color-skill-item-active: rgba(91, 86, 224, 0.3);
-    --color-notification-badge: var(--secondary-color);
-    --color-tooltip-bg: var(--color-bg-tooltip);
-    --color-dropdown-bg: var(--color-bg-dropdown);
-
-    /* Set color scheme for browser */
-    color-scheme: dark;
-
-    /* Gradients */
-    --gradient-accent: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --gradient-interactive: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-    --gradient-cosmic-green: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    --gradient-button: linear-gradient(to right, var(--primary-color), var(--primary-dark));
-    --gradient-button-hover: linear-gradient(to right, var(--primary-light), var(--primary-color));
+  color-scheme: dark;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   DUOTONE LIGHT
-   A clean light theme with two dominant colors
-   ────────────────────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   DUOTONE — LIGHT
+   ═══════════════════════════════════════════════════════ */
 [data-theme="duotone-light"] {
-    /* Core colors - limit to two main colors plus supporting neutrals */
-    --primary-color: #208D82;  /* Teal */
-    --primary-dark: #17635B;
-    --primary-light: #30B6A7;
-    --primary-pale: #A7E3DB;
-    --primary-rgb: 32, 141, 130;
+  /* ---------- CORE PALETTE ---------- */
+  --teal-500:    #208D82;
+  --teal-600:    #17635B;
+  --teal-400:    #30B6A7;
 
-    --secondary-color: #4A45C2;  /* Indigo */
-    --secondary-dark: #36328C;
-    --secondary-light: #6A65E5;
-    --secondary-pale: #BDBCF8;
-    --secondary-rgb: 74, 69, 194;
+  --indigo-500:  #4A45C2;
+  --indigo-600:  #36328C;
+  --indigo-400:  #6A65E5;
 
-    /* Light neutrals */
-    --neutral-50: #F8FAFB;
-    --neutral-100: #EEF1F5;
-    --neutral-200: #DEE3EA;
-    --neutral-300: #BDC5D1;
-    --neutral-400: #99A4B4;
-    --neutral-500: #767F8F;
-    --neutral-600: #5A6475;
-    --neutral-700: #424A5A;
-    --neutral-800: #2C3241;
-    --neutral-900: #191E2B;
+  --gray-50:  #F8FAFB;
+  --gray-100: #EEF1F5;
+  --gray-900: #191E2B;
 
-    /* Assign to semantic variables */
-    --color-bg-primary: var(--neutral-50);
-    --color-bg-secondary: var(--neutral-100);
-    --color-bg-tertiary: var(--white);
-    --color-bg-card: var(--white);
-    --color-bg-glass: rgba(255, 255, 255, 0.85);
-    --color-bg-code: rgba(222, 227, 234, 0.6);
-    --color-bg-input: rgba(248, 250, 251, 0.8);
-    --color-bg-hover: rgba(32, 141, 130, 0.08);
-    --color-bg-active: rgba(32, 141, 130, 0.15);
-    --color-bg-disabled: rgba(189, 197, 209, 0.5);
-    --color-bg-tooltip: rgba(25, 30, 43, 0.95);
-    --color-bg-dropdown: rgba(255, 255, 255, 0.98);
-    --color-bg-selection: rgba(32, 141, 130, 0.2);
+  /* ---------- SEMANTIC BG ---------- */
+  --color-primary-bg:      var(--gray-50);
+  --color-secondary-bg:    var(--gray-100);
+  --color-tertiary-bg:     #FFFFFF;
+  --color-card-bg:         #FFFFFF;
+  --color-glass-bg:        rgba(255 255 255 / .85);
+  --color-code-bg:         rgba(222 227 234 / .60);
+  --color-input-bg:        rgba(248 250 251 / .80);
+  --color-hover-bg:        rgba(32 141 130 / .08);
+  --color-active-bg:       rgba(32 141 130 / .15);
+  --color-disabled-bg:     rgba(189 197 209 / .50);
+  --color-tooltip-bg:      rgba(25 30 43 / .95);
+  --color-dropdown-bg:     rgba(255 255 255 / .98);
+  --color-selection-bg:    rgba(32 141 130 / .20);
 
-    --color-text-primary: var(--neutral-900);
-    --color-text-secondary: var(--neutral-700);
-    --color-text-tertiary: var(--neutral-600);
-    --color-text-disabled: var(--neutral-500);
-    --color-text-on-accent: var(--white);
-    --color-text-code: var(--primary-dark);
-    --color-text-emphasis: var(--primary-color);
-    --color-text-inverted: var(--white);
+  --color-grid-lines:      rgba(74 69 194 / .10);
 
-    --color-heading: var(--primary-dark);
-    --color-heading-accent: var(--secondary-dark);
-    --color-subheading: var(--neutral-700);
+  /* ---------- TEXT ---------- */
+  --color-primary-text:    var(--gray-900);
+  --color-secondary-text:  #424A5A;
+  --color-tertiary-text:   #5A6475;
+  --color-disabled-text:   #767F8F;
+  --color-text-on-accent:  #FFFFFF;
+  --color-code-text:       var(--teal-600);
+  --color-heading:         var(--teal-600);
+  --color-heading-accent:  var(--indigo-600);
+  --color-subheading:      #424A5A;
+  --color-text-emphasis:   var(--teal-500);
+  --color-text-inverted:   var(--gray-50);
 
-    /* Brand and accent colors */
-    --color-brand-primary: var(--primary-color);
-    --color-brand-secondary: var(--secondary-color);
+  /* ---------- BRAND & ACCENT ---------- */
+  --color-brand-primary:   var(--teal-500);
+  --color-brand-secondary: var(--indigo-500);
 
-    --color-accent-primary: var(--primary-color);
-    --color-accent-primary-hover: var(--primary-dark);
-    --color-accent-primary-active: var(--primary-dark);
-    --color-accent-secondary: var(--secondary-color);
-    --color-accent-tertiary: var(--primary-light);
-    --color-accent-oceanic: var(--secondary-dark);
-    --color-accent-cosmic: var(--secondary-light);
-    --color-accent-contrast: var(--secondary-color);
-    --color-accent-warm: var(--primary-light);
+  --color-accent-primary:          var(--teal-500);
+  --color-accent-primary-hover:    var(--teal-600);
+  --color-accent-primary-active:   var(--teal-600);
+  --color-accent-secondary:        var(--indigo-500);
+  --color-accent-tertiary:         var(--teal-400);
 
-    /* Interactive elements */
-    --color-interactive: var(--primary-color);
-    --color-interactive-hover: var(--primary-dark);
-    --color-interactive-active: var(--primary-dark);
-    --color-interactive-focus: var(--primary-color);
-    --color-interactive-disabled: rgba(32, 141, 130, 0.4);
+  /* ---------- STATUS ---------- */
+  --color-success:         #1E9D6A;
+  --color-success-subtle:  rgba(30 157 106 / .12);
+  --color-warning:         #C78D29;
+  --color-warning-subtle:  rgba(199 141 41 / .12);
+  --color-error:           #D04747;
+  --color-error-subtle:    rgba(208 71 71 / .12);
+  --color-info:            var(--indigo-500);
+  --color-info-subtle:     rgba(74 69 194 / .12);
+  --color-neutral:         #5A6475;
+  --color-neutral-subtle:  rgba(90 100 117 / .12);
 
-    --color-interactive-secondary: var(--secondary-color);
-    --color-interactive-secondary-hover: var(--secondary-dark);
-    --color-interactive-secondary-active: var(--secondary-dark);
+  /* ---------- SUPPORT ---------- */
+  --shadow-sm:    0 2px 8px -2px rgba(25 30 43 / .08);
+  --shadow-md:    0 12px 25px -10px rgba(25 30 43 / .15);
+  --shadow-lg:    0 25px 50px -12px rgba(25 30 43 / .20);
+  --shadow-focus: 0 0 0 3px rgba(32 141 130 / .25);
 
-    /* Status colors */
-    --color-success: #1E9D6A;
-    --color-success-subtle: rgba(30, 157, 106, 0.12);
-    --color-success-text: #17754F;
+  --color-border:            rgba(32 141 130 / .25);
+  --color-border-focus:      var(--teal-500);
+  --color-border-input:      rgba(32 141 130 / .20);
+  --color-divider:           rgba(32 141 130 / .15);
+  --color-divider-light:     rgba(0 0 0 / .05);
 
-    --color-warning: #C78D29;
-    --color-warning-subtle: rgba(199, 141, 41, 0.12);
-    --color-warning-text: #A06C14;
+  --color-scrollbar-thumb:   rgba(32 141 130 / .40);
+  --color-scrollbar-track:   rgba(222 227 234 / .50);
 
-    --color-error: #D04747;
-    --color-error-subtle: rgba(208, 71, 71, 0.12);
-    --color-error-text: #B23939;
+  --wave-primary:   var(--gray-900);
+  --wave-secondary: #2C3241;
+  --wave-accent-1:  var(--teal-500);
+  --wave-accent-2:  var(--indigo-500);
 
-    --color-info: var(--secondary-color);
-    --color-info-subtle: rgba(74, 69, 194, 0.12);
-    --color-info-text: var(--secondary-dark);
+  --gradient-accent:      linear-gradient(135deg,var(--teal-500),var(--indigo-500));
+  --gradient-interactive: linear-gradient(135deg,var(--teal-500),var(--teal-600));
+  --gradient-button:      linear-gradient(to right,var(--teal-500),var(--teal-600));
+  --gradient-button-hover:linear-gradient(to right,var(--teal-600),var(--teal-500));
 
-    --color-neutral: var(--neutral-600);
-    --color-neutral-subtle: rgba(90, 100, 117, 0.12);
-
-    /* UI elements */
-    --color-border: rgba(32, 141, 130, 0.25);
-    --color-border-focus: var(--primary-color);
-    --color-border-input: rgba(32, 141, 130, 0.2);
-    --color-divider: rgba(32, 141, 130, 0.15);
-    --color-divider-light: rgba(0, 0, 0, 0.05);
-
-    /* Links */
-    --color-link: var(--secondary-color);
-    --color-link-hover: var(--secondary-dark);
-    --color-link-visited: var(--secondary-dark);
-    --color-emphasis: var(--primary-color);
-
-    /* Icons */
-    --color-icon-primary: var(--primary-color);
-    --color-icon-secondary: var(--secondary-color);
-    --color-icon-tertiary: var(--neutral-600);
-    --color-icon-on-accent: var(--white);
-    --color-icon-bg: rgba(32, 141, 130, 0.1);
-    --color-icon-disabled: var(--neutral-500);
-
-    /* Shadows */
-    --color-shadow: rgba(25, 30, 43, 0.15);
-    --color-shadow-light: rgba(25, 30, 43, 0.08);
-    --color-overlay: rgba(248, 250, 251, 0.85);
-
-    /* Components */
-    --color-skill-item: rgba(32, 141, 130, 0.8);
-    --color-skill-item-hover: rgba(74, 69, 194, 0.15);
-    --color-skill-item-active: rgba(74, 69, 194, 0.25);
-    --color-notification-badge: var(--secondary-color);
-    --color-tooltip-bg: var(--color-bg-tooltip);
-    --color-dropdown-bg: var(--color-bg-dropdown);
-
-    /* Set color scheme for browser */
-    color-scheme: light;
-
-    /* White & black */
-    --white: #FFFFFF;
-    --black: #000000;
-
-    /* Gradients */
-    --gradient-accent: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --gradient-interactive: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    --gradient-cosmic-green: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    --gradient-button: linear-gradient(to right, var(--primary-color), var(--primary-dark));
-    --gradient-button-hover: linear-gradient(to right, var(--primary-dark), var(--primary-color));
-}
-/* Add missing variables to Duotone Dark theme */
-[data-theme="duotone-dark"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(240, 242, 248, 0.15);  /* Light grid lines for duotone dark theme */
+  color-scheme: light;
 }
 
-/* Add missing variables to Duotone Light theme */
-[data-theme="duotone-light"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(105, 35, 176, 0.1);  /* Purple grid lines for light theme */
+/* ═══════════════════════════════════════════════════════
+   LEGACY VARIABLE ALIASES  (keep until all components migrate)
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --color-bg-primary:      var(--color-primary-bg);
+  --color-bg-secondary:    var(--color-secondary-bg);
+  --color-bg-tertiary:     var(--color-tertiary-bg);
+  --color-bg-card:         var(--color-card-bg);
+  --color-bg-glass:        var(--color-glass-bg);
+  --color-bg-code:         var(--color-code-bg);
+  --color-bg-input:        var(--color-input-bg);
+  --color-bg-hover:        var(--color-hover-bg);
+  --color-bg-active:       var(--color-active-bg);
+  --color-bg-disabled:     var(--color-disabled-bg);
+  --color-bg-tooltip:      var(--color-tooltip-bg);
+  --color-bg-dropdown:     var(--color-dropdown-bg);
+  --color-bg-selection:    var(--color-selection-bg);
+
+  --color-text-primary:    var(--color-primary-text);
+  --color-text-secondary:  var(--color-secondary-text);
+  --color-text-tertiary:   var(--color-tertiary-text);
+  --color-text-disabled:   var(--color-disabled-text);
 }
+
+/* End duotone theme */

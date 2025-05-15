@@ -1,785 +1,230 @@
-/* src/styles/themes/mystic-forest-theme.css */
+/* src/styles/themes/mystic-forest-theme.css
+   v2 — 2025‑05‑14
+   ───────────────────────────────────────── */
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   MYSTIC FOREST THEME SYSTEM
+/* ═══════════════════════════════════════
+   MYSTIC FOREST — DARK (Enchanted Night)
+   ═══════════════════════════════════════ */
+[data-theme="mystic-forest-dark"]{
+  /* =====  ATOMS  ===== */
+  --depth-900:#06100A;
+  --depth-800:#0A120F;
+  --depth-700:#102017;
+  --depth-600:#172925;
+  --depth-500:#243B31;
 
-   A mysterious, enchanted palette inspired by ancient woodlands and bioluminescent
-   elements, featuring deep moss greens, magical purples, and firefly glow accents.
+  --glow-300:#84F7C7;
+  --glow-400:#6BDEB8;
+  --glow-500:#53D4A8;
+  --glow-600:#3FB38A;
 
-   ORGANIZATION:
-   - Color palette variables (dark & light modes)
-   - Functional/semantic color assignments
-   - Color relationships and hierarchies
-   - Specialized component colors
-   ══════════════════════════════════════════════════════════════════════════════ */
+  --bloom-300:#B19FFF;
+  --bloom-400:#9885F5;
+  --bloom-500:#8F7FDB;
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   MYSTIC FOREST DARK THEME (Enchanted Night)
-   Deep, mysterious backgrounds with bioluminescent accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
-[data-theme="mystic-forest-dark"] {
-    /*** PRIMARY PALETTE - Raw color values ***/
-    /* Mushroom spectrum */
-    --mushroom-50: #E5FCF3;
-    --mushroom-100: #C8F9E5;
-    --mushroom-200: #A5FAD9;
-    --mushroom-300: #84F7C7;
-    /* Primary bioluminescent */
-    --mushroom-400: #6BDEB8;
-    --mushroom-500: #53D4A8;
-    --mushroom-600: #3FB38A;
-    --mushroom-700: #2A926F;
-    --mushroom-800: #1A7156;
-    --mushroom-900: #0F5148;
+  --firefly:#FFC876;
+  --berry:#FF6B97;
+  --spring:#6DB4FF;
 
-    /* Wildflower spectrum */
-    --wildflower-50: #EAE7FF;
-    --wildflower-100: #D5D0FF;
-    --wildflower-200: #C3BBFF;
-    --wildflower-300: #B19FFF;
-    /* Primary enchanted */
-    --wildflower-400: #9885F5;
-    --wildflower-500: #8F7FDB;
-    --wildflower-600: #7262C0;
-    --wildflower-700: #5A4DA6;
-    --wildflower-800: #45398C;
-    --wildflower-900: #2F2660;
+  /* =====  SURFACES  ===== */
+  --color-primary-bg:   var(--depth-800);
+  --color-secondary-bg: var(--depth-700);
+  --color-tertiary-bg:  var(--depth-600);
+  --color-card-bg:      rgb(36 59 49 / .97);
+  --color-glass-bg:     rgb(132 247 199 / .08);
+  --color-code-bg:      rgb(16 32 23 / .85);
+  --color-input-bg:     rgb(36 59 49 / .65);
+  --color-hover-bg:     rgb(132 247 199 / .12);
+  --color-active-bg:    rgb(132 247 199 / .22);
+  --color-disabled-bg:  rgb(45 65 60 / .35);
+  --color-tooltip-bg:   rgb(16 32 23 / .97);
+  --color-dropdown-bg:  rgb(23 41 37 / .98);
+  --color-selection-bg: rgb(132 247 199 / .25);
 
-    /* Forest depths spectrum */
-    --depths-50: #E6F2EB;
-    --depths-100: #B4D0C5;
-    --depths-200: #7BACA0;
-    --depths-300: #45736A;
-    --depths-400: #2D4840;
-    --depths-500: #1D3331;
-    --depths-600: #162725;
-    --depths-700: #0F1A17;
-    /* Primary forest depth */
-    --depths-800: #0A120F;
-    --depths-900: #050A08;
+  --color-grid-lines:   rgb(230 242 235 / .15);
 
-    /* Accent colors */
-    --firefly-500: #FFC876;
-    /* Firefly glow */
-    --berry-500: #FF6B97;
-    /* Wild berry */
-    --spring-500: #6DB4FF;
-    /* Forest spring */
-    --mint-500: #4CD6A7;
-    /* Oasis mint */
+  /* =====  TYPE  ===== */
+  --color-primary-text:#E6F2EB;
+  --color-secondary-text:#B4D0C5;
+  --color-tertiary-text:rgb(180 208 197 / .70);
+  --color-disabled-text:rgb(180 208 197 / .50);
+  --color-text-on-accent:var(--depth-700);
+  --color-code-text:#6BDEB8;
 
-    /* Base neutrals */
-    --black: #000000;
-    --white: #FFFFFF;
+  --color-heading:var(--glow-300);
+  --color-heading-accent:var(--bloom-300);
+  --color-subheading:#B4D0C5;
+  --color-text-emphasis:var(--firefly);
+  --color-text-inverted:#E6F2EB;
 
-    /*** RGB VALUES - For opacity operations ***/
-    --mushroom-300-rgb: 132, 247, 199;
-    --wildflower-300-rgb: 177, 159, 255;
-    --mushroom-500-rgb: 83, 212, 168;
-    --firefly-500-rgb: 255, 200, 118;
-    --berry-500-rgb: 255, 107, 151;
-    --spring-500-rgb: 109, 180, 255;
-    --mint-500-rgb: 76, 214, 167;
-    --depths-700-rgb: 15, 26, 23;
-    --depths-50-rgb: 230, 242, 235;
-    --white-rgb: 255, 255, 255;
-    --black-rgb: 0, 0, 0;
+  /* =====  BRAND / ACCENT  ===== */
+  --color-brand-primary:var(--glow-300);
+  --color-brand-secondary:var(--bloom-300);
 
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: var(--depths-700);
-    /* Main application background - mysterious forest depth */
-    --color-bg-secondary: var(--depths-600);
-    /* Secondary containers, cards, sidebars - shadowed foliage */
-    --color-bg-tertiary: var(--depths-500);
-    /* Elevated surfaces, modals, popovers - forest canopy */
-    --color-bg-card: rgba(29, 51, 49, 0.97);
-    /* Card backgrounds with slight transparency - woodland clarity */
-    --color-bg-glass: rgba(132, 247, 199, 0.08);
-    /* Glass effect backgrounds - subtle glow mushroom mist */
-    --color-bg-code: rgba(15, 26, 23, 0.85);
-    /* Code block backgrounds - forest floor code */
-    --color-bg-input: rgba(29, 51, 49, 0.65);
-    /* Form element backgrounds - moss-covered input */
-    --color-bg-hover: rgba(132, 247, 199, 0.12);
-    /* Hover state background - subtle mushroom glow */
-    --color-bg-active: rgba(132, 247, 199, 0.22);
-    /* Active/selected state background - stronger mushroom glow */
-    --color-bg-disabled: rgba(45, 65, 60, 0.35);
-    /* Disabled element background - muted forest shadow */
-    --color-bg-tooltip: rgba(15, 26, 23, 0.97);
-    /* Tooltip background - forest depth */
-    --color-bg-dropdown: rgba(22, 39, 37, 0.98);
-    /* Dropdown menu background - shadowed foliage */
-    --color-bg-selection: rgba(132, 247, 199, 0.25);
-    /* Text selection background - mushroom selection */
+  --color-accent-primary:        var(--glow-300);
+  --color-accent-primary-hover:  var(--glow-500);
+  --color-accent-primary-active: var(--glow-600);
+  --color-accent-secondary:      var(--bloom-300);
+  --color-accent-tertiary:       var(--glow-500);
+  --color-accent-warm:           var(--firefly);
+  --color-accent-contrast:       var(--berry);
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: var(--depths-50);
-    /* Main body text - forest mist white (17:1 contrast) */
-    --color-text-secondary: var(--depths-100);
-    /* Secondary/supporting text - muted sage (9.5:1 contrast) */
-    --color-text-tertiary: rgba(180, 208, 197, 0.7);
-    /* De-emphasized text, subtitles, captions - distant leaf (6.7:1 contrast) */
-    --color-text-disabled: rgba(180, 208, 197, 0.5);
-    /* Disabled text - faded leaf (4.8:1 contrast) */
-    --color-text-on-accent: var(--depths-700);
-    /* Text on accent-colored backgrounds - forest depth (4.5:1+ on all accents) */
-    --color-text-code: var(--mushroom-400);
-    /* Code and pre-formatted text - glowing moss code (7.5:1 contrast) */
+  /* =====  STATUS  ===== */
+  --color-success:var(--glow-500);               --color-success-subtle:rgb(83 212 168 / .15);
+  --color-warning:var(--firefly);                --color-warning-subtle:rgb(255 200 118 / .15);
+  --color-error:var(--berry);                    --color-error-subtle:rgb(255 107 151 / .15);
+  --color-info:var(--spring);                    --color-info-subtle:rgb(109 180 255 / .15);
+  --color-neutral:#7BAC9F;                       --color-neutral-subtle:rgb(180 208 197 / .15);
 
-    /* Headings */
-    --color-heading: var(--mushroom-300);
-    /* Standard headings - bioluminescent mushroom (8.2:1 contrast) */
-    --color-heading-accent: var(--wildflower-300);
-    /* Accented headings - enchanted wildflower (6.3:1 contrast) */
-    --color-subheading: var(--depths-100);
-    /* Subheadings, section titles - muted sage */
+  /* =====  SUPPORT  ===== */
+  --color-border:         rgb(132 247 199 / .30);
+  --color-border-focus:   var(--glow-300);
+  --color-border-input:   rgb(132 247 199 / .35);
+  --color-divider:        rgb(132 247 199 / .25);
+  --color-divider-light:  rgb(230 242 235 / .08);
 
-    /* Special text */
-    --color-text-emphasis: var(--firefly-500);
-    /* Emphasized text, highlights - firefly glow */
-    --color-text-inverted: var(--depths-50);
-    /* Inverted text (on light backgrounds) - forest mist white */
+  --shadow-sm:0 2px 8px -2px  rgb(10 16 14 / .25);
+  --shadow-md:0 12px 25px -10px rgb(10 16 14 / .35);
+  --shadow-lg:0 25px 50px -12px rgb(10 16 14 / .45);
+  --shadow-focus:0 0 0 3px rgb(132 247 199 / .30);
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with mystical forest aesthetic
-     ════════════════════════════════════ */
-    --color-brand-primary: var(--mushroom-300);
-    /* Primary brand color - bioluminescent mushroom */
-    --color-brand-secondary: var(--wildflower-300);
-    /* Secondary brand color - enchanted wildflower */
+  --color-scrollbar-thumb:rgb(132 247 199 / .50);
+  --color-scrollbar-track:rgb(16 32 23 / .30);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: var(--mushroom-300);
-    /* Primary accent for main interactive elements - bioluminescent mushroom */
-    --color-accent-primary-hover: var(--mushroom-500);
-    /* Hover state for primary accent - deeper mushroom */
-    --color-accent-primary-active: var(--mushroom-600);
-    /* Active state for primary accent - even deeper mushroom */
-    --color-accent-secondary: var(--wildflower-300);
-    /* Secondary accent for visual variety - enchanted wildflower */
-    --color-accent-tertiary: var(--mushroom-500);
-    /* Tertiary accent for subtle highlights - forest moss */
-    --color-accent-warm: var(--firefly-500);
-    /* Warm accent for attention-grabbing elements - firefly glow */
-    --color-accent-contrast: var(--berry-500);
-    /* High-contrast accent for important elements - wild berry */
+  /* =====  DECOR  ===== */
+  --wave-primary:#EDFBF5;
+  --wave-secondary:#FFFFFF;
+  --wave-accent-1:var(--glow-500);
+  --wave-accent-2:var(--bloom-500);
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: var(--mushroom-300);
-    /* Default interactive element color - bioluminescent mushroom */
-    --color-interactive-hover: var(--mushroom-500);
-    /* Hover state - deeper mushroom (1.3:1 from default) */
-    --color-interactive-active: var(--mushroom-600);
-    /* Active/pressed state - even deeper mushroom (1.6:1 from default) */
-    --color-interactive-focus: var(--mushroom-300);
-    /* Focus state indicator - enchanted focus */
-    --color-interactive-disabled: rgba(132, 247, 199, 0.4);
-    /* Disabled state - faded mushroom */
+  --gradient-accent:      linear-gradient(45deg,var(--glow-300),var(--bloom-300));
+  --gradient-interactive: linear-gradient(45deg,var(--glow-300),var(--glow-500));
+  --gradient-button:      linear-gradient(to right,var(--glow-300),var(--glow-500));
+  --gradient-button-hover:linear-gradient(to right,var(--glow-500),var(--glow-600));
+  --gradient-forest-night:linear-gradient(180deg,var(--depth-800),var(--depth-600));
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: var(--wildflower-300);
-    /* Secondary interactive elements - enchanted wildflower */
-    --color-interactive-secondary-hover: var(--wildflower-500);
-    /* Secondary hover state - deeper wildflower */
-    --color-interactive-secondary-active: var(--wildflower-600);
-    /* Secondary active state - even deeper wildflower */
-
-    /* Form element specific colors */
-    --color-field-border: rgba(132, 247, 199, 0.35);
-    /* Form input borders - glowing input field */
-    --color-field-placeholder: rgba(180, 208, 197, 0.6);
-    /* Placeholder text - faded leaf */
-    --color-field-focus: var(--mushroom-300);
-    /* Field focus indicator - bioluminescent focus */
-    --color-field-required: var(--mushroom-400);
-    /* Required field indicator - glowing moss */
-    --color-field-invalid: var(--berry-500);
-    /* Invalid field indicator - wild berry */
-
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts with forest themes
-     ════════════════════════════════════ */
-    --color-success: var(--mushroom-500);
-    /* Success state - forest moss (6.2:1 contrast) */
-    --color-success-subtle: rgba(83, 212, 168, 0.15);
-    /* Subtle success background - moss glow */
-    --color-warning: var(--firefly-500);
-    /* Warning state - firefly glow (8.5:1 contrast) */
-    --color-warning-subtle: rgba(255, 200, 118, 0.15);
-    /* Subtle warning background - firefly haze */
-    --color-error: var(--berry-500);
-    /* Error state - wild berry (5.9:1 contrast) */
-    --color-error-subtle: rgba(255, 107, 151, 0.15);
-    /* Subtle error background - berry juice */
-    --color-info: var(--spring-500);
-    /* Information state - forest spring (6.1:1 contrast) */
-    --color-info-subtle: rgba(109, 180, 255, 0.15);
-    /* Subtle info background - spring water */
-    --color-neutral: var(--depths-100);
-    /* Neutral state - muted sage (9.5:1 contrast) */
-    --color-neutral-subtle: rgba(180, 208, 197, 0.15);
-    /* Subtle neutral background - sage whisper */
-
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with enchanted forest visuals
-     ════════════════════════════════════ */
-    --color-divider: rgba(132, 247, 199, 0.25);
-    /* Dividers and separators - subtle mushroom glow */
-    --color-divider-light: rgba(230, 242, 235, 0.08);
-    /* Lighter dividers for contrast on dark areas - forest path */
-    --color-border: rgba(132, 247, 199, 0.3);
-    /* Borders for containers, cards, etc - mushroom border */
-    --color-border-focus: var(--mushroom-300);
-    /* Focus state borders - bioluminescent focus */
-    --color-border-input: rgba(132, 247, 199, 0.35);
-    /* Form input borders - glowing input field */
-    --color-shadow: rgba(10, 16, 14, 0.45);
-    /* Shadows for elevation - forest shadow */
-    --color-shadow-light: rgba(10, 16, 14, 0.25);
-    /* Lighter shadows for subtle elevation - canopy shadow */
-    --color-overlay: rgba(15, 26, 23, 0.85);
-    /* Modal/dialog overlays - forest veil */
-    --color-notification-badge: var(--berry-500);
-    /* Notification badges - wild berry alert */
-
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(132, 247, 199, 0.5);
-    /* Scrollbar thumb - semi-transparent mushroom */
-    --color-scrollbar-track: rgba(15, 26, 23, 0.3);
-    /* Scrollbar track - subtle forest floor */
-
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: var(--mushroom-300);
-    /* Link text - bioluminescent path (8.2:1 contrast) */
-    --color-link-hover: var(--mushroom-200);
-    /* Link hover state - brighter mushroom (11.6:1 contrast) */
-    --color-link-visited: var(--wildflower-300);
-    /* Visited links - enchanted wildflower (6.3:1 contrast) */
-    --color-emphasis: var(--firefly-500);
-    /* Emphasized text - firefly glow (8.5:1 contrast) */
-    --color-success-text: var(--mushroom-400);
-    /* Success messages - brighter moss (7.8:1 contrast) */
-    --color-warning-text: #FFD494;
-    /* Warning messages - bright firefly (10.2:1 contrast) */
-    --color-error-text: #FF8CAD;
-    /* Error messages - bright berry (7.1:1 contrast) */
-    --color-info-text: #8FC5FF;
-    /* Information text - bright spring (7.8:1 contrast) */
-
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with enchanted forest hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: var(--mushroom-300);
-    /* Primary icons - bioluminescent icon */
-    --color-icon-secondary: rgba(177, 159, 255, 0.9);
-    /* Secondary icons - enchanted wildflower with high opacity */
-    --color-icon-tertiary: rgba(180, 208, 197, 0.7);
-    /* Tertiary icons - muted sage leaves */
-    --color-icon-on-accent: var(--depths-700);
-    /* Icons on accent-colored backgrounds - forest depth */
-    --color-icon-bg: rgba(132, 247, 199, 0.12);
-    /* Icon backgrounds or containers - subtle glow backdrop */
-    --color-icon-disabled: rgba(180, 208, 197, 0.5);
-    /* Disabled icons - faded leaf */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with enchanted forest states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(132, 247, 199, 0.2);
-    /* Skill item background - mushroom ability */
-    --color-skill-item-hover: rgba(177, 159, 255, 0.3);
-    /* Skill item hover - wildflower magic */
-    --color-skill-item-active: rgba(177, 159, 255, 0.4);
-    /* Skill item active - stronger wildflower magic */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects with enchanted forest aesthetic
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--mushroom-300), var(--wildflower-300));
-    /* Brand accent gradient - enchanted forest blend */
-    --gradient-interactive: linear-gradient(45deg, var(--mushroom-300), var(--mushroom-500));
-    /* Interactive element gradient - mushroom path */
-    --gradient-moss: linear-gradient(45deg, var(--mushroom-300), var(--mushroom-500));
-    /* Moss gradient - glowing forest floor */
-    --gradient-enchanted: linear-gradient(45deg, var(--wildflower-300), var(--wildflower-500));
-    /* Enchanted gradient - wildflower magic */
-    --gradient-glass: linear-gradient(120deg, rgba(132, 247, 199, 0.08), rgba(132, 247, 199, 0.04));
-    /* Glass effect gradient - mushroom mist */
-    --gradient-overlay: linear-gradient(180deg, rgba(15, 26, 23, 0.8), rgba(15, 26, 23, 0.95));
-    /* Overlay gradient - forest canopy */
-    --gradient-wildflower-mushroom: linear-gradient(45deg, var(--wildflower-300), var(--mushroom-300));
-    /* Wildflower to mushroom gradient - magical evolution */
-    --gradient-firefly-moss: linear-gradient(45deg, var(--firefly-500), var(--mushroom-500));
-    /* Firefly to moss gradient - forest illumination */
-    --gradient-mystic-evening: linear-gradient(135deg, var(--depths-500), var(--mushroom-300), var(--wildflower-300));
-    /* Mystic evening gradient - enchanted twilight */
-    --gradient-forest-depths: linear-gradient(180deg, var(--depths-700), var(--depths-600));
-    /* Forest depths gradient - woodland layers */
-    --gradient-button: linear-gradient(to right, var(--mushroom-300), var(--mushroom-500));
-    /* Button gradient - mushroom path */
-    --gradient-button-hover: linear-gradient(to right, var(--mushroom-500), var(--mushroom-600));
-    /* Button hover gradient - deeper mushroom path */
-    --gradient-bioluminescence: radial-gradient(circle at center, rgba(132, 247, 199, 0.15) 0%, rgba(132, 247, 199, 0) 70%);
-    /* Bioluminescent gradient - mushroom aura */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects with enchanted forest feel
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(10, 16, 14, 0.25);
-    /* Small shadow - leaf shadow */
-    --shadow-md: 0 12px 25px -10px rgba(10, 16, 14, 0.35);
-    /* Medium shadow - branch shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(10, 16, 14, 0.45);
-    /* Large shadow - tree shadow */
-    --shadow-inner: inset 0 2px 5px rgba(10, 16, 14, 0.15);
-    /* Inner shadow - hollow log */
-    --shadow-focus: 0 0 0 3px rgba(132, 247, 199, 0.3);
-    /* Focus shadow - mushroom focus */
-    --shadow-button: 0 0 15px rgba(132, 247, 199, 0.25);
-    /* Button shadow - mushroom glow */
-    --shadow-glow: 0 0 15px rgba(132, 247, 199, 0.25), 0 0 30px rgba(132, 247, 199, 0.15);
-    /* Mushroom glow shadow - bioluminescent aura */
-    --shadow-magic: 0 0 15px rgba(177, 159, 255, 0.25), 0 0 30px rgba(177, 159, 255, 0.15);
-    /* Magic shadow - enchantment aura */
-
-    /* Wave-specific colors - light dominant for dark mode */
-    --wave-primary: #EDFBF5;
-    /* Morning forest mist from light theme */
-    --wave-secondary: #FFFFFF;
-    /* Pure white */
-    --wave-accent-1: #36B88F;
-    /* Forest moss from light theme */
-    --wave-accent-2: #7D6AD5;
-    /* Enchanted bloom from light theme */
+  color-scheme:dark;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   MYSTIC FOREST LIGHT THEME (Enchanted Day)
-   Clean, bright background with subtle forest elements
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
-[data-theme="mystic-forest-light"] {
-    /*** PRIMARY PALETTE - Raw color values ***/
-    /* Forest Moss spectrum */
-    --moss-50: #EDFBF5;
-    --moss-100: #DAEEE5;
-    --moss-200: #B8E6D7;
-    --moss-300: #6ED6B5;
-    --moss-400: #36B88F;
-    /* Primary forest moss */
-    --moss-500: #2C9C79;
-    --moss-600: #1F8D6A;
-    --moss-700: #0F634D;
-    --moss-800: #0B4E3C;
-    --moss-900: #083528;
+/* ═══════════════════════════════════════
+   MYSTIC FOREST — LIGHT (Enchanted Day)
+   ═══════════════════════════════════════ */
+[data-theme="mystic-forest-light"]{
+  /* =====  ATOMS  ===== */
+  --mist-100:#EDFBF5;
+  --mist-200:#DAEEE5;
+  --mist-400:#AAD0C0;
+  --forest-900:#0F2920;
+  --forest-700:#0F634D;
 
-    /* Enchanted Bloom spectrum */
-    --bloom-50: #F4F2FC;
-    --bloom-100: #E8E5F9;
-    --bloom-200: #D2CDF4;
-    --bloom-300: #B6ADE9;
-    --bloom-400: #937ED8;
-    --bloom-500: #7D6AD5;
-    /* Primary enchanted bloom */
-    --bloom-600: #6857B3;
-    --bloom-700: #544591;
-    --bloom-800: #3D3270;
-    --bloom-900: #2F2660;
+  --moss-400:#36B88F;
+  --moss-500:#2C9C79;
+  --moss-600:#1F8D6A;
 
-    /* Forest Light spectrum */
-    --light-50: #FFFFFF;
-    --light-100: #EDFBF5;
-    /* Morning forest mist */
-    --light-200: #DAEEE5;
-    --light-300: #CDEADD;
-    --light-400: #BFDFCF;
-    --light-500: #AAD0C0;
-    --light-600: #88B0A1;
-    --light-700: #6E9A8A;
-    --light-800: #4A4C5D;
-    --light-900: #0F2920;
-    /* Deep forest */
+  --bloom-500:#7D6AD5;
+  --bloom-600:#6857B3;
 
-    /* Accent colors */
-    --amber-500: #E9A64B;
-    /* Amber sunlight */
-    --berry-500: #D14F77;
-    /* Forest berry */
-    --spring-500: #4B96DB;
-    /* Forest spring */
-    --mint-500: #30B383;
-    /* Oasis mint */
+  --sun:#E9A64B;
+  --berry:#D14F77;
+  --spring:#4B96DB;
 
-    /* Base neutrals */
-    --black: #000000;
-    --white: #FFFFFF;
+  /* =====  SURFACES  ===== */
+  --color-primary-bg:   var(--mist-100);
+  --color-secondary-bg: #FFFFFF;
+  --color-tertiary-bg:  var(--mist-200);
+  --color-card-bg:      #FFFFFF;
+  --color-glass-bg:     rgb(237 251 245 / .92);
+  --color-code-bg:      rgb(218 238 229 / .80);
+  --color-input-bg:     rgb(218 238 229 / .70);
+  --color-hover-bg:     rgb(54 184 143 / .08);
+  --color-active-bg:    rgb(54 184 143 / .15);
+  --color-disabled-bg:  rgb(205 230 220 / .70);
+  --color-tooltip-bg:   rgb(15 41 32 / .95);
+  --color-dropdown-bg:  #FFFFFF;
+  --color-selection-bg: rgb(54 184 143 / .20);
 
-    /*** RGB VALUES - For opacity operations ***/
-    --moss-400-rgb: 54, 184, 143;
-    --bloom-500-rgb: 125, 106, 213;
-    --moss-700-rgb: 15, 99, 77;
-    --amber-500-rgb: 233, 166, 75;
-    --berry-500-rgb: 209, 79, 119;
-    --spring-500-rgb: 75, 150, 219;
-    --mint-500-rgb: 48, 179, 131;
-    --light-100-rgb: 237, 251, 245;
-    --light-900-rgb: 15, 41, 32;
-    --white-rgb: 255, 255, 255;
-    --black-rgb: 0, 0, 0;
+  --color-grid-lines:   rgb(132 247 199 / .15);
 
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: var(--light-100);
-    /* Main application background - morning forest mist */
-    --color-bg-secondary: var(--light-50);
-    /* Secondary containers, cards, sidebars - sunlit clearing */
-    --color-bg-tertiary: var(--light-200);
-    /* Elevated surfaces, modals, popovers - dewy leaf */
-    --color-bg-card: var(--light-50);
-    /* Card backgrounds - sunlit clearing */
-    --color-bg-glass: rgba(237, 251, 245, 0.92);
-    /* Glass effect backgrounds - transparent dew */
-    --color-bg-code: rgba(218, 238, 229, 0.8);
-    /* Code block backgrounds - light moss code */
-    --color-bg-input: rgba(218, 238, 229, 0.7);
-    /* Form element backgrounds - very light moss */
-    --color-bg-hover: rgba(54, 184, 143, 0.08);
-    /* Hover state background - subtle forest moss */
-    --color-bg-active: rgba(54, 184, 143, 0.15);
-    /* Active/selected state background - stronger forest moss */
-    --color-bg-disabled: rgba(205, 230, 220, 0.7);
-    /* Disabled element background - faded leaf */
-    --color-bg-tooltip: rgba(15, 41, 32, 0.95);
-    /* Tooltip background - nearly opaque forest depth */
-    --color-bg-dropdown: var(--light-50);
-    /* Dropdown menu background - sunlit clearing */
-    --color-bg-selection: rgba(54, 184, 143, 0.2);
-    /* Text selection background - moss selection */
+  /* =====  TYPE  ===== */
+  --color-primary-text:var(--forest-900);
+  --color-secondary-text:#1B4A3C;
+  --color-tertiary-text:rgb(27 74 60 / .70);
+  --color-disabled-text:rgb(27 74 60 / .50);
+  --color-text-on-accent:#FFFFFF;
+  --color-code-text:var(--forest-700);
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: var(--light-900);
-    /* Main body text - deep forest (21:1 contrast) */
-    --color-text-secondary: #1B4A3C;
-    /* Secondary/supporting text - forest depth (15:1 contrast) */
-    --color-text-tertiary: rgba(27, 74, 60, 0.7);
-    /* De-emphasized text, subtitles, captions (10.5:1 contrast) */
-    --color-text-disabled: rgba(27, 74, 60, 0.5);
-    /* Disabled text - faded forest (7.5:1 contrast) */
-    --color-text-on-accent: var(--light-50);
-    /* Text on accent-colored backgrounds - white (4.5:1+ on all accents) */
-    --color-text-code: var(--moss-700);
-    /* Code and pre-formatted text - moss shadow (10:1 contrast) */
+  --color-heading:var(--forest-700);
+  --color-heading-accent:var(--moss-400);
+  --color-subheading:#6E9A8A;
+  --color-text-emphasis:var(--sun);
+  --color-text-inverted:var(--mist-100);
 
-    /* Headings */
-    --color-heading: var(--moss-700);
-    /* Standard headings - moss shadow (10:1 contrast) */
-    --color-heading-accent: var(--moss-400);
-    /* Accented headings - forest moss (5:1 contrast) */
-    --color-subheading: var(--light-700);
-    /* Subheadings, section titles - forest gray */
+  /* =====  BRAND / ACCENT  ===== */
+  --color-brand-primary:var(--moss-400);
+  --color-brand-secondary:var(--bloom-500);
 
-    /* Special text */
-    --color-text-emphasis: var(--amber-500);
-    /* Emphasized text, highlights - amber sunlight */
-    --color-text-inverted: var(--light-100);
-    /* Inverted text (on dark backgrounds) - morning forest mist */
+  --color-accent-primary:        var(--moss-400);
+  --color-accent-primary-hover:  var(--moss-500);
+  --color-accent-primary-active: var(--moss-600);
+  --color-accent-secondary:      var(--bloom-500);
+  --color-accent-tertiary:       var(--forest-700);
+  --color-accent-warm:           var(--sun);
+  --color-accent-contrast:       var(--berry);
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with enchanted forest aesthetic
-     ════════════════════════════════════ */
-    --color-brand-primary: var(--moss-400);
-    /* Primary brand color - forest moss */
-    --color-brand-secondary: var(--bloom-500);
-    /* Secondary brand color - enchanted bloom */
+  /* =====  STATUS  ===== */
+  --color-success:#30B383;                       --color-success-subtle:rgb(48 179 131 / .12);
+  --color-warning:var(--sun);                    --color-warning-subtle:rgb(233 166 75 / .12);
+  --color-error:var(--berry);                    --color-error-subtle:rgb(209 79 119 / .12);
+  --color-info:var(--spring);                    --color-info-subtle:rgb(75 150 219 / .12);
+  --color-neutral:#6E9A8A;                       --color-neutral-subtle:rgb(110 154 138 / .12);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: var(--moss-400);
-    /* Primary accent for main interactive elements - forest moss */
-    --color-accent-primary-hover: var(--moss-500);
-    /* Hover state for primary accent - deeper moss */
-    --color-accent-primary-active: var(--moss-600);
-    /* Active state for primary accent - even deeper moss */
-    --color-accent-secondary: var(--bloom-500);
-    /* Secondary accent for visual variety - enchanted bloom */
-    --color-accent-tertiary: var(--moss-700);
-    /* Tertiary accent for subtle highlights - moss shadow */
-    --color-accent-warm: var(--amber-500);
-    /* Warm accent for attention-grabbing elements - amber sunlight */
-    --color-accent-contrast: var(--berry-500);
-    /* High-contrast accent for important elements - forest berry */
+  /* =====  SUPPORT  ===== */
+  --color-border:         rgb(54 184 143 / .25);
+  --color-border-focus:   var(--moss-400);
+  --color-border-input:   rgb(54 184 143 / .30);
+  --color-divider:        rgb(54 184 143 / .15);
+  --color-divider-light:  rgb(0 0 0 / .05);
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: var(--moss-400);
-    /* Default interactive element color - forest moss */
-    --color-interactive-hover: var(--moss-500);
-    /* Hover state - deeper moss (1.2:1 from default) */
-    --color-interactive-active: var(--moss-600);
-    /* Active/pressed state - even deeper moss (1.5:1 from default) */
-    --color-interactive-focus: var(--moss-400);
-    /* Focus state - same as interactive with focus ring */
-    --color-interactive-disabled: rgba(54, 184, 143, 0.4);
-    /* Disabled state - faded moss */
+  --shadow-sm:0 2px 8px -2px  rgb(15 41 32 / .05);
+  --shadow-md:0 12px 25px -10px rgb(15 41 32 / .10);
+  --shadow-lg:0 25px 50px -12px rgb(15 41 32 / .15);
+  --shadow-focus:0 0 0 3px rgb(54 184 143 / .25);
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: var(--bloom-500);
-    /* Secondary interactive elements - enchanted bloom */
-    --color-interactive-secondary-hover: var(--bloom-600);
-    /* Secondary hover state - deeper bloom */
-    --color-interactive-secondary-active: var(--bloom-700);
-    /* Secondary active state - even deeper bloom */
+  --color-scrollbar-thumb:rgb(54 184 143 / .40);
+  --color-scrollbar-track:rgb(218 238 229 / .50);
 
-    /* Form element specific colors */
-    --color-field-border: rgba(54, 184, 143, 0.3);
-    /* Form input borders - moss border */
-    --color-field-placeholder: rgba(27, 74, 60, 0.6);
-    /* Placeholder text - faded forest */
-    --color-field-focus: var(--moss-400);
-    /* Field focus indicator - forest moss */
-    --color-field-required: var(--moss-500);
-    /* Required field indicator - deeper moss */
-    --color-field-invalid: var(--berry-500);
-    /* Invalid field indicator - forest berry */
+  /* =====  DECOR  ===== */
+  --wave-primary:var(--depth-800);
+  --wave-secondary:var(--depth-600);
+  --wave-accent-1:var(--glow-300);
+  --wave-accent-2:var(--bloom-300);
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts with forest themes
-     ════════════════════════════════════ */
-    --color-success: var(--mint-500);
-    /* Success state - oasis mint (5:1 contrast) */
-    --color-success-subtle: rgba(48, 179, 131, 0.12);
-    /* Subtle success background - mint whisper */
-    --color-warning: var(--amber-500);
-    /* Warning state - amber sunlight (4.5:1 contrast) */
-    --color-warning-subtle: rgba(233, 166, 75, 0.12);
-    /* Subtle warning background - amber haze */
-    --color-error: var(--berry-500);
-    /* Error state - forest berry (5.2:1 contrast) */
-    --color-error-subtle: rgba(209, 79, 119, 0.12);
-    /* Subtle error background - berry juice */
-    --color-info: var(--spring-500);
-    /* Information state - forest spring (5:1 contrast) */
-    --color-info-subtle: rgba(75, 150, 219, 0.12);
-    /* Subtle info background - spring splash */
-    --color-neutral: var(--light-700);
-    /* Neutral state - forest gray (5.4:1 contrast) */
-    --color-neutral-subtle: rgba(110, 154, 138, 0.12);
-    /* Subtle neutral background - gray leaf */
+  --gradient-accent:      linear-gradient(45deg,var(--moss-400),var(--bloom-500));
+  --gradient-interactive: linear-gradient(45deg,var(--moss-400),var(--moss-500));
+  --gradient-button:      linear-gradient(to right,var(--moss-400),var(--moss-500));
+  --gradient-button-hover:linear-gradient(to right,var(--moss-500),var(--moss-600));
+  --gradient-forest-day:  linear-gradient(180deg,var(--mist-100),var(--light-50));
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with enchanted forest visuals
-     ════════════════════════════════════ */
-    --color-divider: rgba(54, 184, 143, 0.15);
-    /* Dividers and separators - subtle moss tint */
-    --color-divider-light: rgba(0, 0, 0, 0.05);
-    /* Lighter dividers for contrast on light areas - gentle shadow */
-    --color-border: rgba(54, 184, 143, 0.25);
-    /* Borders for containers, cards, etc - moss border */
-    --color-border-focus: var(--moss-400);
-    /* Focus state borders - forest moss */
-    --color-border-input: rgba(54, 184, 143, 0.3);
-    /* Form input borders - slightly stronger than regular */
-    --color-shadow: rgba(15, 41, 32, 0.15);
-    /* Shadows for elevation - forest shadow */
-    --color-shadow-light: rgba(15, 41, 32, 0.05);
-    /* Lighter shadows for subtle elevation - leaf shadow */
-    --color-overlay: rgba(237, 251, 245, 0.85);
-    /* Modal/dialog overlays - misty veil */
-    --color-notification-badge: var(--berry-500);
-    /* Notification badges - forest berry */
-
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(54, 184, 143, 0.4);
-    /* Scrollbar thumb - semi-transparent moss */
-    --color-scrollbar-track: rgba(218, 238, 229, 0.5);
-    /* Scrollbar track - light dewy leaf */
-
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: var(--moss-400);
-    /* Link text - forest moss (5:1 contrast) */
-    --color-link-hover: var(--moss-700);
-    /* Link hover state - moss shadow (10:1 contrast) */
-    --color-link-visited: var(--bloom-500);
-    /* Visited links - enchanted bloom (5:1 contrast) */
-    --color-emphasis: var(--amber-500);
-    /* Emphasized text - amber sunlight (4.5:1 contrast) */
-    --color-success-text: #1F8D6A;
-    /* Success messages - deep moss (8:1 contrast) */
-    --color-warning-text: #C78321;
-    /* Warning messages - deep amber (7:1 contrast) */
-    --color-error-text: #B73D62;
-    /* Error messages - deep berry (7:1 contrast) */
-    --color-info-text: #2F78B9;
-    /* Information text - deep spring (7:1 contrast) */
-
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with enchanted forest hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: var(--moss-400);
-    /* Primary icons - forest moss */
-    --color-icon-secondary: rgba(125, 106, 213, 0.9);
-    /* Secondary icons - enchanted bloom with high opacity */
-    --color-icon-tertiary: rgba(27, 74, 60, 0.7);
-    /* Tertiary icons - forest depth with reduced opacity */
-    --color-icon-on-accent: var(--light-50);
-    /* Icons on accent-colored backgrounds - white */
-    --color-icon-bg: rgba(54, 184, 143, 0.1);
-    /* Icon backgrounds or containers - subtle moss backdrop */
-    --color-icon-disabled: rgba(27, 74, 60, 0.5);
-    /* Disabled icons - faded forest */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with enchanted forest states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(54, 184, 143, 0.15);
-    /* Skill item background - moss ability */
-    --color-skill-item-hover: rgba(125, 106, 213, 0.15);
-    /* Skill item hover - enchanted bloom magic */
-    --color-skill-item-active: rgba(125, 106, 213, 0.25);
-    /* Skill item active - stronger bloom magic */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects with enchanted forest aesthetic
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--moss-400), var(--bloom-500));
-    /* Brand accent gradient - forest magic blend */
-    --gradient-interactive: linear-gradient(45deg, var(--moss-400), var(--moss-500));
-    /* Interactive element gradient - moss path */
-    --gradient-moss: linear-gradient(45deg, var(--moss-400), var(--moss-500));
-    /* Moss gradient - forest floor */
-    --gradient-enchanted: linear-gradient(45deg, var(--bloom-500), var(--bloom-600));
-    /* Enchanted gradient - bloom magic */
-    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
-    /* Glass effect gradient - morning dew */
-    --gradient-overlay: linear-gradient(180deg, rgba(237, 251, 245, 0.85), rgba(237, 251, 245, 0.95));
-    /* Overlay gradient - misty veil */
-    --gradient-bloom-moss: linear-gradient(45deg, var(--bloom-500), var(--moss-400));
-    /* Bloom to moss gradient - magical evolution */
-    --gradient-amber-moss: linear-gradient(45deg, var(--amber-500), var(--moss-400));
-    /* Amber to moss gradient - sunlit forest */
-    --gradient-mystic-morning: linear-gradient(135deg, var(--light-200), var(--moss-400), var(--bloom-500));
-    /* Mystic morning gradient - enchanted daybreak */
-    --gradient-forest-light: linear-gradient(180deg, var(--light-100), var(--light-50));
-    /* Forest light gradient - canopy filtering */
-    --gradient-button: linear-gradient(to right, var(--moss-400), var(--moss-500));
-    /* Button gradient - moss path */
-    --gradient-button-hover: linear-gradient(to right, var(--moss-500), var(--moss-600));
-    /* Button hover gradient - deeper moss path */
-    --gradient-gentle-magic: radial-gradient(circle at center, rgba(54, 184, 143, 0.1) 0%, rgba(54, 184, 143, 0) 70%);
-    /* Gentle magic gradient - moss glow */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects with enchanted forest feel
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(15, 41, 32, 0.05);
-    /* Small shadow - leaf shadow */
-    --shadow-md: 0 12px 25px -10px rgba(15, 41, 32, 0.1);
-    /* Medium shadow - branch shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(15, 41, 32, 0.15);
-    /* Large shadow - tree shadow */
-    --shadow-inner: inset 0 2px 5px rgba(15, 41, 32, 0.03);
-    /* Inner shadow - hollow log */
-    --shadow-focus: 0 0 0 3px rgba(54, 184, 143, 0.25);
-    /* Focus shadow - moss focus */
-    --shadow-button: 0 4px 14px rgba(15, 41, 32, 0.15);
-    /* Button shadow */
-    --shadow-glow: 0 0 15px rgba(54, 184, 143, 0.15), 0 0 30px rgba(54, 184, 143, 0.1);
-    /* Moss glow shadow - gentle aura */
-    --shadow-magic: 0 0 15px rgba(125, 106, 213, 0.15), 0 0 30px rgba(125, 106, 213, 0.1);
-    /* Magic shadow - enchanted aura */
-
-    /* Wave-specific colors - dark dominant for light mode */
-    --wave-primary: var(--depths-700);
-    /* Mysterious forest depth from dark theme */
-    --wave-secondary: var(--depths-600);
-    /* Shadowed foliage from dark theme */
-    --wave-accent-1: var(--mushroom-300);
-    /* Bioluminescent mushroom from dark theme */
-    --wave-accent-2: var(--wildflower-300);
-    /* Enchanted wildflower from dark theme */
+  color-scheme:light;
 }
 
-/* Set color-scheme for the theme */
-[data-theme="mystic-forest-dark"] {
-    color-scheme: dark;
+/* ════════════════════════════════
+   LEGACY TOKEN SHIM (optional)
+   ════════════════════════════════ */
+:root{
+  --color-bg-primary:var(--color-primary-bg);
+  --color-bg-secondary:var(--color-secondary-bg);
+  --color-bg-tertiary:var(--color-tertiary-bg);
+  --color-text-primary:var(--color-primary-text);
 }
 
-[data-theme="mystic-forest-light"] {
-    color-scheme: light;
-}
-
-/* ────────────────────────────────────────────────────────────────────────────
- * Custom scrollbar styling for Mystic Forest theme
- * ────────────────────────────────────────────────────────────────────────── */
-[data-theme^="mystic-forest"] .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-[data-theme^="mystic-forest"] .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--color-scrollbar-track);
-    border-radius: 4px;
-}
-
-[data-theme^="mystic-forest"] .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--color-scrollbar-thumb);
-    border-radius: 4px;
-}
-
-[data-theme^="mystic-forest"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-interactive);
-}
-
-/* Firefox scrollbar support */
-[data-theme^="mystic-forest"] .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
-}
-/* Add missing variables to Mystic Forest Dark theme */
-[data-theme="mystic-forest-dark"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(230, 242, 235, 0.15);  /* Forest mist grid lines for dark theme */
-}
-
-/* Add missing variables to Mystic Forest Light theme */
-[data-theme="mystic-forest-light"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(132, 247, 199, 0.15);  /* Bioluminescent grid lines for light theme */
-}
+/* ── Scrollbar ── */
+[data-theme^="mystic-forest"] .custom-scrollbar::-webkit-scrollbar{width:8px;height:8px}
+[data-theme^="mystic-forest"] .custom-scrollbar::-webkit-scrollbar-track{
+  background:var(--color-scrollbar-track);border-radius:4px}
+[data-theme^="mystic-forest"] .custom-scrollbar::-webkit-scrollbar-thumb{
+  background:var(--color-scrollbar-thumb);border-radius:4px}
+[data-theme^="mystic-forest"] .custom-scrollbar::-webkit-scrollbar-thumb:hover{
+  background:var(--color-interactive)}
+[data-theme^="mystic-forest"] .custom-scrollbar{
+  scrollbar-width:thin;scrollbar-color:var(--color-scrollbar-thumb) var(--color-scrollbar-track)}

@@ -23,7 +23,7 @@ const ImagePlaceholder: React.FC<{
       )}
       aria-label={alt || placeholderText || "Image placeholder"}
     >
-      <span className="text-sm font-medium">{placeholderText || "Image"}</span>
+      <span className="text-sm font-medium text-center px-2">{placeholderText || "Image"}</span>
     </div>
   );
 };

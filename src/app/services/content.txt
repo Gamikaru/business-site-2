@@ -1,223 +1,434 @@
-# Services - Common Content Document
-
-## Image Assets
-
-### Standard Images
-- **Custom Design Image:** customDesignImg (assets/images/custom-design.jpg)
-- **Mobile Development Image:** mobileDevImg (assets/images/mobile-dev.jpg)
-- **System Optimization Image:** systemOptimizationImg (assets/images/devops-maint.jpg)
-- **AI Automation Image:** aiAutomationImg (assets/images/ai.jpg)
-- **Tech Consulting Image:** techConsultingImg (assets/images/lightbulb-holding.jpg)
-
-### Dark Theme Images
-- **Custom Design Dark Image:** customDesignImgDark (assets/images/future_tunnel.jpg)
-- **Mobile Development Dark Image:** mobileDevImgDark (assets/images/cool_tunnel.jpg)
-- **System Optimization Dark Image:** systemOptimizationImgDark (assets/images/robot_futuristic.jpg)
-- **AI Automation Dark Image:** aiAutomationImgDark (assets/images/data-graphic.jpg)
-- **Tech Consulting Dark Image:** techConsultingImgDark (assets/images/consultingstrat.jpg)
-
-# SERVICES PAGE CONTENT
-
-## SERVICES OVERVIEW
-
-**Headline**
-"Practical digital solutions for real business challenges"
-
-**Introduction**
-I provide focused services that address specific business needs—whether you're looking to build something new, improve what you have, or leverage technology more effectively. Each service is tailored to deliver tangible results without unnecessary complexity.
-
-## AI INTEGRATION & AUTOMATION
-
-**Heading**
-"AI-Powered Business Automation"
-
-**Introduction**
-Put practical AI to work solving your everyday business problems. No buzzwords or empty promises—just targeted solutions that save time, reduce errors, and help you make better decisions with your data.
-
-**What You Get**
-
-- **Task Automation** — Turn repetitive, manual processes into automated workflows that free up your team for more valuable work.
-- **Customer Interactions** — Create more personalized experiences with AI-powered recommendations and assistance.
-- **Data Insights** — Transform raw information into actionable business intelligence that guides better decisions.
-- **Accessible Implementation** — Implement AI solutions without enterprise-level complexity or cost.
-
-**How It Works**
-
-1. **Opportunity Discovery** — We identify where AI can deliver the biggest impact for your specific business.
-2. **Solution Design** — I create AI solutions that align with your goals and work within your existing systems.
-3. **Implementation** — Building and training AI systems using your unique data and processes.
-4. **Integration** — Embedding AI into your workflows with minimal disruption to your team.
-
-**Example Project**
-A Tampa logistics company was spending hours manually generating reports. I built a lightweight AI assistant that automated the process, resulting in 30% fewer manual tickets and an 18% improvement in delivery times. The entire solution was implemented within 48 hours.
-
-**Pricing Starts At**
-$1,500 — AI Opportunity Assessment
-$5,000 — Custom AI Solution Implementation
-
-[Let's Discuss Your AI Project →]
-
-## WEB DEVELOPMENT
-
-**Heading**
-"Custom Business Websites & Web Apps"
-
-**Introduction**
-I build websites and web applications that work as hard as you do. Every element is designed to engage your visitors, showcase your value, and convert browsers into buyers—all while integrating smoothly with your existing business operations.
-
-**What You Get**
-
-- **Purpose-Built Design** — Websites tailored to your specific business goals and user needs.
-- **Business Integration** — Tools that connect directly to your workflow, from booking systems to customer portals.
-- **Practical Automation** — Save time with automated inquiries, scheduling, and data handling.
-- **Growth-Ready Foundation** — Built to scale and adapt as your business evolves.
-
-**How It Works**
-
-1. **Discovery** — We define goals, audience, and features that will make your website effective.
-2. **Design & Development** — I build a high-performance website or application focused on results.
-3. **Testing & Launch** — Thorough testing ensures everything works as expected before going live.
-4. **Support & Growth** — Ongoing improvements to maximize long-term impact.
-
-**Example Project**
-A local service business was losing leads because their website wasn't mobile-friendly and lacked online booking. I rebuilt their site with responsive design and an integrated scheduling system, resulting in 40% more appointments and significantly reduced phone time for their staff.
-
-**Pricing Starts At**
-$600 — Basic Website
-$1,500 — Business Website with E-commerce or Booking
-
-[Start Your Web Project →]
-
-## SYSTEM OPTIMIZATION
-
-**Heading**
-"Performance-Driven System Optimization"
-
-**Introduction**
-Slow websites and inefficient systems cost you customers, revenue, and credibility. I identify and fix the bottlenecks, security vulnerabilities, and usability issues that are holding your digital platforms back.
-
-**What You Get**
-
-- **Speed Improvements** — Pages that load quickly, keeping visitors engaged instead of leaving.
-- **Search Visibility** — Performance improvements that help boost your search engine ranking.
-- **User Retention** — Smooth, responsive experiences that encourage customers to return.
-- **Security Enhancements** — Protection for your data and your reputation.
-
-**How It Works**
-
-1. **Performance Audit** — I identify what's slowing you down and where vulnerabilities exist.
-2. **Optimization Plan** — We create a prioritized roadmap for improvements with the highest impact.
-3. **Implementation** — Executing changes with minimal disruption to your operations.
-4. **Ongoing Monitoring** — Regular analysis to maintain peak performance.
-
-**Example Project**
-An e-commerce site was losing sales because pages took over 8 seconds to load. After optimization, load times dropped to under 2 seconds, leading to a 25% decrease in abandoned carts and a 15% increase in conversion rate.
-
-**Pricing Starts At**
-$499 — Performance Audit
-$1,200 — Complete Performance Optimization
-
-[Improve Your Digital Performance →]
-
-## TECH STRATEGY & CONSULTING
-
-**Heading**
-"Tech Strategy & Consulting"
-
-**Introduction**
-Making the right technology decisions is challenging. I help you cut through the noise and choose solutions that align with your business goals—preventing costly mistakes and positioning you for long-term success.
-
-**What You Get**
-
-- **Clear Direction** — Straightforward technology recommendations without unnecessary jargon.
-- **Smarter Investment** — Informed decisions about where to focus your technology budget.
-- **Risk Reduction** — Identify and address potential issues before they impact your business.
-- **Future-Proofing** — Build systems that adapt to changing business needs and technologies.
-
-**How It Works**
-
-1. **Business Analysis** — Understanding your goals, challenges, and current technology setup.
-2. **Strategy Development** — Creating a technology approach aligned with your business vision.
-3. **Decision Support** — Guiding technology choices with clear pros, cons, and recommendations.
-4. **Implementation Planning** — Mapping out execution steps that maximize impact and minimize disruption.
-
-**Example Project**
-A healthcare provider was struggling to choose between three competing software platforms. I evaluated each option against their specific needs and workflows, helping them select and implement the right solution—avoiding a potential six-figure mistake.
-
-**Pricing Starts At**
-$750 — Strategy Session
-$3,000 — Comprehensive Technology Roadmap
-
-[Get Strategic Guidance →]
-
-## MOBILE APP DEVELOPMENT
-
-**Heading**
-"Mobile App Development"
-
-**Introduction**
-Extend your reach and deepen customer engagement with intuitive, feature-rich mobile applications. I build apps that create meaningful connections with your customers, whether on iOS, Android, or both platforms.
-
-**What You Get**
-
-- **User-Focused Design** — Interfaces that feel natural and are enjoyable to use.
-- **Engagement Features** — Tools like push notifications that keep users coming back.
-- **Monetization Options** — In-app purchases and subscription models done right.
-- **Complete Service** — Everything from concept to app store submission and marketing.
-
-**How It Works**
-
-1. **Planning** — We define your app vision, user journeys, and business goals.
-2. **Design** — Creating intuitive interfaces that users will enjoy engaging with.
-3. **Development** — Coding and testing across devices for reliability and polish.
-4. **Launch & Growth** — App store publication and ongoing improvement.
-
-**Example Project**
-A restaurant group wanted to increase repeat business and reduce third-party delivery fees. Their custom ordering app now drives 35% of their delivery business directly, eliminating commission fees and improving customer retention.
-
-**Pricing Starts At**
-$3,500 — Single Platform App (iOS or Android)
-$7,500 — Cross-Platform App
-
-[Discuss Your Mobile App →]
-
-## WORKING PROCESS
-
-**Heading**
-"How I Work"
-
-**Introduction**
-I believe in a straightforward, transparent approach focused on delivering real value. Here's what you can expect when working with me:
-
-1. **Initial Consultation** — We discuss your needs, challenges, and goals to determine if we're a good fit.
-2. **Proposal & Planning** — I provide a clear proposal including scope, timeline, and cost estimates.
-3. **Regular Updates** — Ongoing communication throughout the project with no surprises.
-4. **Delivery & Support** — Thorough testing, documentation, and training where needed.
-
-**Principles I Work By**
-
-- **No Unnecessary Complexity** — I won't overengineer solutions or add features you don't need.
-- **Practical Over Perfect** — I focus on delivering working solutions that solve real problems, not theoretical perfection.
-- **Direct Communication** — Clear, honest discussions about what's possible, what makes sense, and what to expect.
-- **Long-Term Thinking** — Building with future maintenance and growth in mind, not just immediate needs.
-
-## CALL TO ACTION
-
-**Heading**
-"Ready to get started?"
-
-**Content**
-Let's talk about your project and how I can help. Whether you have a specific need in mind or just want to explore possibilities, I'm happy to have a no-pressure conversation about your options.
-
-**Primary CTA**
-[Schedule a Free Consultation →]
-
-**Secondary CTA**
-[View My Portfolio →]
-
-**Availability Note**
-Currently booking new projects for June 2025 onward. Limited consulting slots available immediately.
-
----
-
-This services page maintains the established down-to-earth, professional tone while providing comprehensive information about each service offering. The content focuses on practical benefits rather than technical jargon and includes example projects to illustrate real-world impact. Each service section includes clear information about what clients can expect, how the process works, and pricing starting points for transparency.
+// app/services/ServicesHeader.tsx
+"use client";
+
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
+import { Heading, Text } from "@/components/common/Typography";
+import { TextReveal } from "@/components/core/Animations";
+import { BlueprintCorner } from "@/components/common/VisualInterest";
+import { useAnimationPreferences } from "@/components/core/Animations";
+import { TickStrip } from "@/components/common/Divider";
+import { cn } from "@/utils/classNames";
+
+interface Node {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+}
+
+interface ServicesHeaderProps {
+  headline: string;
+  intro: string;
+  className?: string;
+}
+
+const ServicesHeader: React.FC<ServicesHeaderProps> = ({
+  headline,
+  intro,
+  className,
+}) => {
+  const { shouldAnimate } = useAnimationPreferences();
+  const headerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [uniqueId] = useState(`header-${Math.floor(Math.random() * 10000)}`);
+  const mousePosition = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [headerReady, setHeaderReady] = useState(false);
+
+  // Scroll animations
+  const { scrollYProgress } = useScroll({
+    target: headerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const headerY = useTransform(scrollYProgress, [0, 0.8], [0, 100]);
+  const backgroundParallax = useTransform(scrollYProgress, [0, 1], [0, -150]);
+
+  // Spring for smooth motion
+  const springConfig = { stiffness: 100, damping: 30 };
+  const backgroundY = useSpring(backgroundParallax, springConfig);
+
+  // Technical data for UI embellishments
+  const [techData] = useState({
+    gridDensity: Math.floor(Math.random() * 20) + 30,
+    renderQuality: Math.floor(Math.random() * 10) + 90,
+    systemLoad: Math.floor(Math.random() * 30) + 40,
+    memoryAlloc: Math.floor(Math.random() * 40) + 30,
+  });
+
+  // Setup triangular nodes animation
+  useEffect(() => {
+    if (!shouldAnimate() || !canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Set canvas size
+    const setCanvasSize = () => {
+      if (headerRef.current && canvas) {
+        canvas.width = headerRef.current.offsetWidth;
+        canvas.height = headerRef.current.offsetHeight;
+      }
+    };
+
+    // Handle window resize
+    window.addEventListener('resize', setCanvasSize);
+    setCanvasSize();
+
+    // Create initial nodes
+    const nodeCount = Math.min(30, Math.floor(canvas.width * canvas.height / 25000));
+    const initialNodes: Node[] = [];
+
+    for (let i = 0; i < nodeCount; i++) {
+      initialNodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 3 + 2,
+      });
+    }
+
+    setNodes(initialNodes);
+
+    // Animation frame for node movement and connections
+    let animationFrameId: number;
+
+    const animate = () => {
+      if (!ctx || !canvas) return;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Update and draw nodes
+      const updatedNodes = nodes.map(node => {
+        // Update position
+        let newX = node.x + node.vx;
+        let newY = node.y + node.vy;
+
+        // Boundary checking
+        if (newX < 0 || newX > canvas.width) {
+          node.vx *= -1;
+          newX = Math.max(0, Math.min(newX, canvas.width));
+        }
+
+        if (newY < 0 || newY > canvas.height) {
+          node.vy *= -1;
+          newY = Math.max(0, Math.min(newY, canvas.height));
+        }
+
+        // Attraction to mouse
+        const mouseInfluence = 0.02;
+        const dx = mousePosition.current.x - newX;
+        const dy = mousePosition.current.y - newY;
+        const distToMouse = Math.sqrt(dx * dx + dy * dy);
+
+        if (distToMouse < 200) {
+          newX += (dx / distToMouse) * mouseInfluence;
+          newY += (dy / distToMouse) * mouseInfluence;
+        }
+
+        return {
+          ...node,
+          x: newX,
+          y: newY,
+        };
+      });
+
+      // Draw connections
+      ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-accent-primary') || '#4F46E5';
+      ctx.lineWidth = 0.5;
+
+      for (let i = 0; i < updatedNodes.length; i++) {
+        const nodeA = updatedNodes[i];
+
+        // Draw triangular node
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-accent-primary') || '#4F46E5';
+        ctx.globalAlpha = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(nodeA.x, nodeA.y - nodeA.size);
+        ctx.lineTo(nodeA.x - nodeA.size, nodeA.y + nodeA.size);
+        ctx.lineTo(nodeA.x + nodeA.size, nodeA.y + nodeA.size);
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+
+        // Connect to nearby nodes
+        for (let j = i + 1; j < updatedNodes.length; j++) {
+          const nodeB = updatedNodes[j];
+          const dx = nodeB.x - nodeA.x;
+          const dy = nodeB.y - nodeA.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 150) {
+            ctx.globalAlpha = 0.2 * (1 - distance / 150);
+            ctx.beginPath();
+            ctx.moveTo(nodeA.x, nodeA.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      setNodes(updatedNodes);
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    // Start animation
+    animate();
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', setCanvasSize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [nodes, shouldAnimate]);
+
+  // Handle mouse movement for animation interaction
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!headerRef.current) return;
+
+    const rect = headerRef.current.getBoundingClientRect();
+    mousePosition.current = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
+  };
+
+  useEffect(() => {
+    // Trigger header ready state after initial render
+    const timer = setTimeout(() => {
+      setHeaderReady(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <motion.header
+      ref={headerRef}
+      id="hdr"
+      className={cn(
+        "relative min-h-[70vh] w-full overflow-hidden flex items-center",
+        className
+      )}
+      style={{
+        opacity: headerOpacity,
+        y: headerY,
+      }}
+      onMouseMove={handleMouseMove}
+    >
+      {/* SVG filter for glitch effect */}
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <filter id={`${uniqueId}-glitch`}>
+            <feFlood floodColor="var(--color-accent-primary)" result="red" />
+            <feFlood floodColor="var(--color-accent-oceanic)" result="blue" />
+            <feComposite operator="in" in="red" in2="SourceAlpha" result="red-text" />
+            <feComposite operator="in" in="blue" in2="SourceAlpha" result="blue-text" />
+            <feOffset in="red-text" dx="-2" dy="0" result="red-text-moved" />
+            <feOffset in="blue-text" dx="2" dy="0" result="blue-text-moved" />
+            <feMerge>
+              <feMergeNode in="red-text-moved" />
+              <feMergeNode in="blue-text-moved" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Dynamic triangular connections background */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        style={{ y: backgroundY }}
+      >
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full"
+        ></canvas>
+      </motion.div>
+
+      {/* Grid overlay for technical feel */}
+      <div className="absolute inset-0 bg-blueprint-grid opacity-10 mix-blend-overlay"></div>
+
+      {/* Top measurement strip */}
+      <div className="absolute left-0 right-0 top-10 opacity-40">
+        <TickStrip
+          height={16}
+          segments={21}
+          labelEvery={5}
+          darkLabels={true}
+          glitchEffect={true}
+        />
+      </div>
+
+      {/* Blueprint corners */}
+      <div className="absolute top-0 left-0 text-accent-primary/80">
+        <BlueprintCorner size={40} />
+      </div>
+      <div className="absolute top-0 right-0 rotate-90 text-accent-primary/80">
+        <BlueprintCorner size={40} />
+      </div>
+      <div className="absolute bottom-0 left-0 -rotate-90 text-accent-primary/80">
+        <BlueprintCorner size={40} />
+      </div>
+      <div className="absolute bottom-0 right-0 rotate-180 text-accent-primary/80">
+        <BlueprintCorner size={40} />
+      </div>
+
+      {/* Technical coordinates display */}
+      <motion.div
+        className="absolute top-4 left-4 text-xs font-mono flex items-center bg-bg-glass backdrop-blur-sm px-2 py-1"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ duration: 0.5, delay: 1 }}
+      >
+        <span className="inline-block h-2 w-2 rounded-full mr-2 bg-accent-primary animate-pulse"></span>
+        <span className="text-accent-primary">SERVICES</span>
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-4 right-4 text-xs font-mono bg-bg-glass backdrop-blur-sm px-2 py-1"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.7 }}
+        transition={{ duration: 0.5, delay: 1.2 }}
+      >
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <span className="text-accent-oceanic">GRID/{techData.gridDensity}</span>
+            <span className="mx-2 text-text-secondary">|</span>
+            <span className="text-accent-oceanic">QUAL/{techData.renderQuality}</span>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Main content container */}
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          {/* Services Label - editorial element */}
+          <motion.div
+            className="inline-block px-3 py-1 mb-6 border-l-2 border-accent-primary text-sm font-mono uppercase tracking-wider"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: headerReady ? 1 : 0, x: headerReady ? 0 : -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            Services_Offerings
+          </motion.div>
+
+          {/* Headline with architectural styling */}
+          <div className="relative mb-16">
+            {/* Decorative element */}
+            <motion.div
+              className="absolute -left-8 top-1/2 transform -translate-y-1/2 w-4 h-20 bg-accent-primary/20"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: headerReady ? 1 : 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              style={{ transformOrigin: "top" }}
+            />
+
+            <TextReveal direction="up" delay={0.2} staggerChildren={true}>
+              <Heading
+                level={1}
+                className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
+              >
+                {headline.split(' ').map((word, i) => (
+                  <span key={i} className="inline-block">
+                    {i % 3 === 1 ? (
+                      <span className="text-accent-primary">{word} </span>
+                    ) : (
+                      <span>{word} </span>
+                    )}
+                  </span>
+                ))}
+              </Heading>
+            </TextReveal>
+
+            {/* Horizontal measurement line */}
+            <motion.div
+              className="absolute -right-4 top-full mt-4 w-1/3 h-px bg-accent-primary/50"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: headerReady ? 1 : 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              style={{ transformOrigin: "right" }}
+            />
+          </div>
+
+          {/* Introduction text with underline */}
+          <div id="intro" className="relative mt-12">
+            <TextReveal direction="up" delay={0.4}>
+              <Text className="text-xl md:text-2xl leading-relaxed pl-4 border-l-2 border-accent-primary">
+                {intro}
+              </Text>
+            </TextReveal>
+
+            <motion.div
+              className="h-px w-1/2 bg-accent-primary mt-8"
+              initial={{ width: 0 }}
+              animate={{ width: "50%" }}
+              transition={{ duration: 1, delay: 0.8 }}
+            />
+
+            {/* Technical label */}
+            <motion.div
+              className="absolute right-0 bottom-0 text-xs font-mono text-accent-oceanic/60"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: headerReady ? 0.8 : 0 }}
+              transition={{ duration: 0.5, delay: 1 }}
+            >
+              INIT/SERVICES
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* System metrics - neobrutalist style */}
+      <motion.div
+        className="absolute bottom-8 left-8 text-xs font-mono text-accent-oceanic/90 bg-bg-glass backdrop-blur-sm border-l-2 border-accent-oceanic/60 p-2"
+        initial={{ x: -30, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
+        <div className="flex items-center gap-3">
+          <span>CPU: {techData.systemLoad}%</span>
+          <div className="h-2 w-24 bg-bg-tertiary/40 overflow-hidden">
+            <motion.div
+              className="h-full bg-accent-oceanic/70"
+              initial={{ width: 0 }}
+              animate={{ width: `${techData.systemLoad}%` }}
+              transition={{ duration: 0.8 }}
+            />
+          </div>
+        </div>
+        <div className="flex items-center gap-3 mt-2">
+          <span>MEM: {techData.memoryAlloc}%</span>
+          <div className="h-2 w-24 bg-bg-tertiary/40 overflow-hidden">
+            <motion.div
+              className="h-full bg-accent-oceanic/70"
+              initial={{ width: 0 }}
+              animate={{ width: `${techData.memoryAlloc}%` }}
+              transition={{ duration: 0.8 }}
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Scan line effect */}
+      <motion.div
+        className="absolute left-0 right-0 h-[1px] bg-accent-primary/10 pointer-events-none"
+        initial={{ top: '0%' }}
+        animate={{ top: '100%' }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "linear",
+          repeatDelay: 2
+        }}
+      />
+    </motion.header>
+  );
+};
+
+export default ServicesHeader;

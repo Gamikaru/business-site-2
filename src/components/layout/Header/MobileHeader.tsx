@@ -1,21 +1,24 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 import { useAnimationPreferences } from "@/components/core/Animations/hooks/useAnimationPreferences";
 import Icon from "@/components/common/Icons/Icon";
 import { RemoveScroll } from "react-remove-scroll";
 import FocusTrap from "focus-trap-react";
+import ThemeSelector from "@/components/core/ThemeSelector";
+import { FontSelector } from "@/components/common/Typography";
 
-// Define the navigation items
+// Updated navigation items with Contact as 06
 const navItems = [
   { label: "Home", href: "/", number: "01" },
   { label: "About", href: "/about", number: "02" },
   { label: "Services", href: "/services", number: "03" },
   { label: "Work", href: "/portfolio", number: "04" },
   { label: "Blog", href: "/blog", number: "05" },
+  { label: "Contact", href: "/contact", number: "06" },
 ];
 
 const MobileHeader: React.FC = () => {
@@ -24,6 +27,12 @@ const MobileHeader: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("/");
   const headerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+
+  // Enhanced scroll animations
+  const headerOpacity = useTransform(scrollY, [0, 100], [0.6, 1]);
+  const headerBlur = useTransform(scrollY, [0, 100], [0, 8]);
+  const borderOpacity = useTransform(scrollY, [0, 100], [0, 0.7]);
 
   // Define animations
   const drawerVariants = {
@@ -120,13 +129,24 @@ const MobileHeader: React.FC = () => {
         variants={shouldAnimate() ? pageScaleVariants : undefined}
         initial={false}
       >
-        {/* Header Bar */}
-        <header
+        {/* Header Bar - Enhanced with better animations and styling */}
+        <motion.header
           ref={headerRef}
-          className="fixed top-0 left-0 w-full bg-transparent z-50 h-16 px-4" // changed bg-bg-primary to bg-transparent, removed border
+          className="fixed top-0 left-0 w-full z-50 h-16"
+          style={{
+            backdropFilter: `blur(${headerBlur.get()}px)`,
+          }}
         >
-          <div className="flex items-center justify-between h-full relative">
-            {/* Blueprint grid background */}
+          <motion.div
+            className="absolute inset-0 border-b bg-bg-secondary/70"
+            style={{
+              opacity: headerOpacity,
+              borderColor: `rgba(var(--divider-rgb), ${borderOpacity.get()})`
+            }}
+          />
+
+          <div className="flex items-center justify-between h-full relative px-4">
+            {/* Blueprint grid background for tech effect */}
             <div
               className="absolute inset-0 opacity-10 pointer-events-none"
               style={{
@@ -135,22 +155,15 @@ const MobileHeader: React.FC = () => {
               }}
             />
 
-            {/* Logo */}
-            <Link
-              href="/"
-              className="font-heading text-heading font-bold flex items-center focus-visible-ring rounded-md relative z-10"
-            >
-              <div className="relative pr-2">
-                <div className="absolute left-0 top-0 w-1 h-full bg-brand-primary" />
-                <span className="pl-3 text-2xl">GAV</span>
-              </div>
-            </Link>
+            {/* Empty div to maintain space - removed logo */}
+            <div></div>
 
-            {/* Action buttons */}
-            <div className="flex items-center space-x-3">
-              {/* Theme Toggle */}
+            {/* Action buttons with improved styling */}
+            <div className="flex items-center space-x-2">
+              {/* Theme Toggle with enhanced styling */}
               <button
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-bg-tertiary focus-visible-ring transition-colors duration-200"
+                className="w-9 h-9 rounded-md flex items-center justify-center bg-bg-tertiary/80 backdrop-blur-sm hover:bg-bg-tertiary
+                          focus-visible:ring-2 focus-visible:ring-accent-primary transition-colors duration-200"
                 onClick={toggleMode}
                 aria-label={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
               >
@@ -161,21 +174,39 @@ const MobileHeader: React.FC = () => {
                 )}
               </button>
 
-              {/* Menu Toggle */}
+              {/* Menu Toggle with enhanced styling */}
               <button
-                className="w-10 h-10 rounded-md flex items-center justify-center bg-bg-tertiary focus-visible-ring transition-colors duration-200"
+                className="w-9 h-9 rounded-md flex items-center justify-center bg-bg-tertiary/80 backdrop-blur-sm hover:bg-bg-tertiary
+                          focus-visible:ring-2 focus-visible:ring-accent-primary transition-colors duration-200"
                 onClick={toggleDrawer}
                 aria-label={isOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isOpen}
               >
-                <Icon name={isOpen ? "fi:FiX" : "fi:FiMenu"} size={20} className="text-text-primary" />
+                <Icon name={isOpen ? "fi:FiX" : "fi:FiMenu"} size={18} className="text-text-primary" />
               </button>
             </div>
           </div>
-        </header>
+
+          {/* Technical tick marks at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-[2px] pointer-events-none overflow-hidden">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute bottom-0 w-px h-1"
+                style={{
+                  left: `${(i * 100) / 12}%`,
+                  background: "color-mix(in srgb, var(--color-accent-primary) 20%, transparent)"
+                }}
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ delay: 0.05 * (i % 4), duration: 0.4 }}
+              />
+            ))}
+          </div>
+        </motion.header>
       </motion.div>
 
-      {/* Drawer Navigation */}
+      {/* Drawer Navigation - Enhanced with better styling and animations */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -189,11 +220,11 @@ const MobileHeader: React.FC = () => {
               onClick={() => setIsOpen(false)}
             />
 
-            {/* Drawer */}
+            {/* Drawer - Enhanced with better styling */}
             <FocusTrap active={isOpen} focusTrapOptions={{ allowOutsideClick: true }}>
               <RemoveScroll enabled={isOpen} forwardProps>
                 <motion.nav
-                  className="fixed top-0 right-0 w-[90vw] max-w-md h-full bg-bg-secondary z-50 shadow-lg"
+                  className="fixed top-0 right-0 w-[85vw] max-w-md h-full bg-bg-secondary z-50 shadow-lg border-l border-divider"
                   variants={drawerVariants}
                   initial="closed"
                   animate="open"
@@ -204,50 +235,74 @@ const MobileHeader: React.FC = () => {
                   }}
                 >
                   <div className="flex flex-col h-full">
-                    {/* Close button */}
-                    <div className="px-6 py-4 flex justify-end">
+                    {/* Header with close button - Navigation text removed */}
+                    <div className="px-6 py-5 flex justify-end items-center border-b border-divider">
                       <button
-                        className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-bg-hover focus-visible-ring transition-colors duration-200"
+                        className="w-9 h-9 rounded-md flex items-center justify-center hover:bg-bg-hover focus-visible:ring-2 focus-visible:ring-accent-primary transition-colors"
                         onClick={() => setIsOpen(false)}
                         aria-label="Close menu"
                       >
-                        <Icon name="fi:FiX" size={24} className="text-text-primary" />
+                        <Icon name="fi:FiX" size={20} className="text-text-primary" />
                       </button>
                     </div>
 
-                    {/* Navigation links */}
-                    <div className="flex-1 overflow-y-auto px-6">
-                      <ul className="space-y-4">
-                        {navItems.map((item) => (
-                          <li key={item.href}>
+                    {/* Navigation links with enhanced styling */}
+                    <div className="flex-1 overflow-y-auto px-6 py-6">
+                      <ul className="space-y-6">
+                        {navItems.map((item, index) => (
+                          <motion.li
+                            key={item.href}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05, duration: 0.3 }}
+                          >
                             <Link
                               href={item.href}
-                              className={`flex items-center py-3 focus-visible-ring rounded-md transition-colors
+                              className={`flex items-center py-3 focus-visible:ring-2 focus-visible:ring-accent-primary rounded-md transition-colors
                                 ${activeItem === item.href
                                   ? "text-heading font-medium"
                                   : "text-text-secondary hover:text-heading"
                                 }`}
                               onClick={() => setIsOpen(false)}
                             >
-                              <span className="text-brand-primary mr-3 font-mono text-sm opacity-80">
+                              <span
+                                className="mr-3 font-mono text-sm opacity-80"
+                                style={{ color: "var(--color-accent-primary)" }}
+                              >
                                 {item.number}
                               </span>
                               <span className="text-lg">{item.label}</span>
+
+                              {activeItem === item.href && (
+                                <motion.span
+                                  layoutId="mobile-nav-active"
+                                  className="ml-auto w-1.5 h-6 rounded-full"
+                                  style={{ background: "var(--color-accent-primary)" }}
+                                  transition={{ type: "spring", stiffness: 600, damping: 35 }}
+                                />
+                              )}
                             </Link>
-                          </li>
+                          </motion.li>
                         ))}
                       </ul>
                     </div>
 
-                    {/* CTA button */}
-                    <div className="p-6 border-t border-divider">
-                      <Link
-                        href="/contact"
-                        className="w-full bg-gradient-button text-text-on-accent py-3 px-6 rounded-md font-medium text-center block shadow-button transition-all duration-150 hover:shadow-lg focus-visible-ring"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Book a Strategy Call
-                      </Link>
+                    {/* Settings section */}
+                    <div className="px-6 py-5 border-t border-divider">
+                      <p className="text-sm font-medium text-text-secondary mb-4">Settings</p>
+                      <div className="flex flex-col gap-4">
+                        {/* Theme selector */}
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">Theme</span>
+                          <ThemeSelector variant="dropdown" showLabels={false} size="sm" />
+                        </div>
+
+                        {/* Font selector */}
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">Font</span>
+                          <FontSelector variant="dropdown" showPreview={false} />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </motion.nav>

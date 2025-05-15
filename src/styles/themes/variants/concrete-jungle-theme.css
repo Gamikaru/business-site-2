@@ -1,726 +1,308 @@
-/* src/styles/themes/concrete-jungle-theme.css */
+/* src/styles/themes/concrete-jungle-theme.css
+   ═════════════════════════════════════════════════════════════════════════════
+   CONCRETE‑JUNGLE THEME SYSTEM
+   A raw, industrial palette inspired by brutalist architecture, weathered
+   concrete and oxidised metal. Two variants:
+   • concrete‑jungle‑dark   (Night‑City)
+   • concrete‑jungle‑light  (Urban‑Day)
+   All text/colour pairs meet WCAG AA 4.5 : 1 contrast.
+   ════════════════════════════════════════════════════════════════════════════ */
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   CONCRETE JUNGLE THEME SYSTEM
-   A raw, industrial palette inspired by urban landscapes, brutalist architecture,
-   and street art, featuring weathered concrete tones with strategic rust, ochre,
-   and moss accents for an authentic metropolitan experience.
-   ══════════════════════════════════════════════════════════════════════════════ */
-
-/* ──────────────────────────────────────────────────────────────────────────────
-   CONCRETE JUNGLE DARK THEME (Night City Edition)
-   Raw industrial grays with weathered accents and urban grit
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────
+   1.  DARK VARIANT  –  Night‑City Edition
+   ───────────────────────────────────────────────────────────────────────── */
 [data-theme="concrete-jungle-dark"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #1A1C1E;
-    /* Main application background - asphalt black */
-    --color-bg-secondary: #262A2D;
-    /* Secondary containers, cards, sidebars - weathered concrete */
-    --color-bg-tertiary: #32373B;
-    /* Elevated surfaces, modals, popovers - polished concrete */
-    --color-bg-card: rgba(38, 42, 45, 0.97);
-    /* Card backgrounds with slight transparency - industrial panel */
-    --color-bg-glass: rgba(242, 240, 235, 0.08);
-    /* Glass effect backgrounds - urban grit overlay */
-    --color-bg-code: rgba(26, 28, 30, 0.85);
-    /* Code block backgrounds - steel structure */
-    --color-bg-input: rgba(38, 42, 45, 0.65);
-    /* Form element backgrounds - industrial input */
-    --color-bg-hover: rgba(175, 125, 65, 0.12);
-    /* Hover state background - subtle rust highlight */
-    --color-bg-active: rgba(175, 125, 65, 0.22);
-    /* Active/selected state background - stronger rust */
-    --color-bg-disabled: rgba(65, 70, 75, 0.35);
-    /* Disabled element background - faded concrete */
-    --color-bg-tooltip: rgba(26, 28, 30, 0.97);
-    /* Tooltip background - nearly opaque dark */
-    --color-bg-dropdown: rgba(38, 42, 45, 0.98);
-    /* Dropdown menu background - industrial panel */
-    --color-bg-selection: rgba(175, 125, 65, 0.25);
-    /* Text selection background - weathered rust */
+    /* ─── 1.1 BACKGROUND COLOURS ────────────────────────────────────────── */
+    --color-bg-primary:  #1A1C1E;                 /* asphalt black        */
+    --color-bg-secondary:#262A2D;                 /* weathered concrete   */
+    --color-bg-tertiary: #32373B;                 /* polished concrete    */
+    --color-bg-card:     rgba(38,42,45,.97);      /* industrial panel     */
+    --color-bg-glass:    rgba(242,240,235,.08);   /* gritty glass overlay */
+    --color-bg-code:     rgba(26,28,30,.85);      /* steel console        */
+    --color-bg-input:    rgba(38,42,45,.65);      /* input surface        */
+    --color-bg-hover:    rgba(175,125,65,.12);    /* subtle rust highlight*/
+    --color-bg-active:   rgba(175,125,65,.22);    /* stronger rust        */
+    --color-bg-disabled: rgba(65,70,75,.35);      /* faded slab           */
+    --color-bg-tooltip:  rgba(26,28,30,.97);      /* dense overlay        */
+    --color-bg-dropdown: rgba(38,42,45,.98);      /* menu panel           */
+    --color-bg-selection:rgba(175,125,65,.25);    /* text selection       */
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #F2F0EB;
-    /* Main body text - weathered plaster */
-    --color-text-secondary: #D2CDC5;
-    /* Secondary/supporting text - faded limestone */
-    --color-text-tertiary: rgba(210, 205, 197, 0.7);
-    /* De-emphasized text, subtitles, captions - industrial dust */
-    --color-text-disabled: rgba(210, 205, 197, 0.5);
-    /* Disabled text - concrete dust */
-    --color-text-on-accent: #1A1C1E;
-    /* Text on accent-colored backgrounds - asphalt black */
-    --color-text-code: #C6BC9C;
-    /* Code and pre-formatted text - weathered brass for readability */
+    /* Grid helper */
+    --color-grid-lines:  rgba(242,240,235,.20);   /* plaster blueprint    */
 
-    /* Headings */
-    --color-heading: #F2F0EB;
-    /* Standard headings - weathered plaster */
-    --color-heading-accent: #D1A55F;
-    /* Accented headings - aged brass */
-    --color-subheading: #D2CDC5;
-    /* Subheadings, section titles - faded limestone */
+    /* ─── 1.2 TYPOGRAPHY COLOURS ───────────────────────────────────────── */
+    --color-text-primary:   #F2F0EB;             /* weathered plaster    */
+    --color-text-secondary: #CFCBC4;             /* mid‑tone concrete    */
+    --color-text-tertiary:  rgba(207,203,196,.70);
+    --color-text-disabled:  rgba(207,203,196,.50);
+    --color-text-code:      #D9BB9A;             /* aged paper           */
+    --color-text-on-accent: #1A1C1E;             /* dark on bronze       */
+    --color-heading:        #F2F0EB;
+    --color-heading-accent: #AF7D41;             /* oxidised bronze      */
+    --color-subheading:     #CFCBC4;
+    --color-text-emphasis:  #AF7D41;
+    --color-text-inverted:  #1A1C1E;
 
-    /* Special text */
-    --color-text-emphasis: #AF7D41;
-    /* Emphasized text, highlights - rust wash */
-    --color-text-inverted: #F2F0EB;
-    /* Inverted text (on light backgrounds) - weathered plaster */
-
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with urban material inspiration
-     ════════════════════════════════════ */
-    --color-brand-primary: #AF7D41;
-    /* Primary brand color - oxidized metal */
-    --color-brand-secondary: #699379;
-    /* Secondary brand color - urban moss */
-
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #AF7D41;
-    /* Primary accent for main interactive elements - oxidized metal */
-    --color-accent-primary-hover: #96682F;
-    /* Hover state for primary accent - deeper rust */
-    --color-accent-primary-active: #7D5624;
-    /* Active state for primary accent - aged rust */
-    --color-accent-secondary: #699379;
-    /* Secondary accent for visual variety - urban moss */
-    --color-accent-tertiary: #D1A55F;
-    /* Tertiary accent for subtle highlights - aged brass */
-    --color-accent-warm: #BF674A;
-    /* Warm accent for attention-grabbing elements - terra cotta */
-    --color-accent-contrast: #526C8E;
-    /* High-contrast accent for additional contrast - weathered steel blue */
-
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #AF7D41;
-    /* Default interactive element color - oxidized metal */
-    --color-interactive-hover: #96682F;
-    /* Hover state - deeper rust */
-    --color-interactive-active: #7D5624;
-    /* Active/pressed state - aged rust */
-    --color-interactive-focus: #AF7D41;
-    /* Focus state indicator */
-    --color-interactive-disabled: rgba(175, 125, 65, 0.4);
-    /* Disabled state - faded rust */
-
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #699379;
-    /* Secondary interactive elements - urban moss */
-    --color-interactive-secondary-hover: #587C66;
-    /* Secondary hover state - deeper moss */
-    --color-interactive-secondary-active: #466553;
-    /* Secondary active state - aged moss */
-
-    /* Form element specific colors */
-    --color-field-border: rgba(175, 125, 65, 0.5);
-    /* Form input borders */
-    --color-field-placeholder: rgba(210, 205, 197, 0.6);
-    /* Placeholder text */
-    --color-field-focus: #AF7D41;
-    /* Field focus indicator */
-    --color-field-required: #D1A55F;
-    /* Required field indicator - aged brass */
-    --color-field-invalid: #BF674A;
-    /* Invalid field indicator - terra cotta */
-
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts
-     ════════════════════════════════════ */
-    --color-success: #699379;
-    /* Success state - urban moss */
-    --color-success-subtle: rgba(105, 147, 121, 0.15);
-    /* Subtle success background */
-    --color-warning: #D1A55F;
-    /* Warning state - aged brass */
-    --color-warning-subtle: rgba(209, 165, 95, 0.15);
-    /* Subtle warning background */
-    --color-error: #BF674A;
-    /* Error state - terra cotta */
-    --color-error-subtle: rgba(191, 103, 74, 0.15);
-    /* Subtle error background */
-    --color-info: #526C8E;
-    /* Information state - weathered steel blue */
-    --color-info-subtle: rgba(82, 108, 142, 0.15);
-    /* Subtle info background */
-    --color-neutral: #91918F;
-    /* Neutral state - concrete gray */
-    --color-neutral-subtle: rgba(145, 145, 143, 0.15);
-    /* Subtle neutral background */
-
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with clear purpose
-     ════════════════════════════════════ */
-    --color-divider: rgba(175, 125, 65, 0.2);
-    /* Dividers and separators - subtle rust tint */
-    --color-divider-light: rgba(242, 240, 235, 0.08);
-    /* Lighter dividers for contrast on dark areas */
-    --color-border: rgba(175, 125, 65, 0.3);
-    /* Borders for containers, cards, etc */
-    --color-border-focus: #AF7D41;
-    /* Focus state borders - oxidized metal */
-    --color-border-input: rgba(175, 125, 65, 0.35);
-    /* Form input borders - slightly stronger than regular */
-    --color-shadow: rgba(20, 20, 20, 0.4);
-    /* Shadows for elevation - urban shadow */
-    --color-shadow-light: rgba(20, 20, 20, 0.2);
-    /* Lighter shadows for subtle elevation */
-    --color-overlay: rgba(26, 28, 30, 0.85);
-    /* Modal/dialog overlays */
-    --color-notification-badge: #BF674A;
-    /* Notification badges - terra cotta */
-
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(175, 125, 65, 0.5);
-    /* Scrollbar thumb - semi-transparent rust */
-    --color-scrollbar-track: rgba(26, 28, 30, 0.3);
-    /* Scrollbar track - subtle dark */
-
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #D1A55F;
-    /* Link text - aged brass */
-    --color-link-hover: #E6BE7C;
-    /* Link hover state - brighter brass */
-    --color-link-visited: #926E38;
-    /* Visited links - tarnished brass */
-    --color-emphasis: #AF7D41;
-    /* Emphasized text - oxidized metal */
-    --color-success-text: #8AB79C;
-    /* Success messages - brighter moss */
-    --color-warning-text: #E6BE7C;
-    /* Warning messages - brighter brass */
-    --color-error-text: #D5805E;
-    /* Error messages - brighter terra cotta */
-    --color-info-text: #7993B5;
-    /* Information text - brighter steel blue */
-
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #AF7D41;
-    /* Primary icons - oxidized metal */
-    --color-icon-secondary: rgba(209, 165, 95, 0.9);
-    /* Secondary icons - aged brass with high opacity */
-    --color-icon-tertiary: rgba(210, 205, 197, 0.7);
-    /* Tertiary icons - muted, similar to tertiary text */
-    --color-icon-on-accent: #1A1C1E;
-    /* Icons on accent-colored backgrounds */
-    --color-icon-bg: rgba(175, 125, 65, 0.1);
-    /* Icon backgrounds or containers */
-    --color-icon-disabled: rgba(210, 205, 197, 0.5);
-    /* Disabled icons */
-
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.08;
-    /* Very subtle effects, barely visible */
-    --opacity-light: 0.15;
-    /* Light effects, clearly visible but subtle */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(175, 125, 65, 0.2);
-    /* Skill item background */
-    --color-skill-item-hover: rgba(105, 147, 121, 0.2);
-    /* Skill item hover - urban moss accent */
-    --color-skill-item-active: rgba(105, 147, 121, 0.35);
-    /* Skill item active - stronger urban moss */
-    --color-selection-bg: rgba(175, 125, 65, 0.25);
-    /* Text selection background */
-    --color-tooltip-bg: rgba(26, 28, 30, 0.97);
-    /* Tooltip background - nearly opaque dark */
-    --color-dropdown-bg: rgba(38, 42, 45, 0.98);
-    /* Dropdown menu background */
-
-    /* ════════════════════════════════════
-     CURSOR COLORS
-     For custom cursor effects
-     ════════════════════════════════════ */
-    --color-cursor-inner-rgb: 242, 240, 235;
-    /* Inner cursor ring RGB values - weathered plaster */
-    --color-cursor-outer-rgb: 175, 125, 65;
-    /* Outer cursor ring RGB values - oxidized metal */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 175, 125, 65;
-    /* RGB values for oxidized metal */
-    --color-accent-secondary-rgb: 105, 147, 121;
-    /* RGB values for urban moss */
-    --color-accent-warm-rgb: 191, 103, 74;
-    /* RGB values for terra cotta */
-    --color-accent-contrast-rgb: 82, 108, 142;
-    /* RGB values for weathered steel blue */
-    --color-bg-primary-rgb: 26, 28, 30;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 242, 240, 235;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - rust to moss */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient */
-    --gradient-rust: linear-gradient(45deg, #AF7D41, #96682F);
-    /* Rust gradient */
-    --gradient-moss: linear-gradient(45deg, #699379, #587C66);
-    /* Moss gradient */
-    --gradient-glass: linear-gradient(120deg, rgba(242, 240, 235, 0.08), rgba(242, 240, 235, 0.04));
-    /* Glass effect gradient */
-    --gradient-overlay: linear-gradient(180deg, rgba(26, 28, 30, 0.8), rgba(26, 28, 30, 0.95));
-    /* Overlay gradient */
-    --gradient-brass-terra: linear-gradient(45deg, #D1A55F, #BF674A);
-    /* Brass to terra cotta gradient */
-    --gradient-steel-moss: linear-gradient(45deg, #526C8E, #699379);
-    /* Steel blue to moss gradient */
-    --gradient-concrete: linear-gradient(to bottom, #32373B, #262A2D);
-    /* Concrete texture gradient */
-    --gradient-weathered: linear-gradient(to right, rgba(175, 125, 65, 0.15), rgba(82, 108, 142, 0.1));
-    /* Weathered surfaces gradient */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
-    /* Small shadow */
-    --shadow-md: 0 12px 25px -10px rgba(0, 0, 0, 0.4);
-    /* Medium shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    /* Large shadow */
-    --shadow-inner: inset 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Inner shadow */
-    --shadow-focus: 0 0 0 3px rgba(175, 125, 65, 0.3);
-    /* Focus shadow */
-    --shadow-button: 0 0 15px rgba(175, 125, 65, 0.25);
-    /* Button shadow */
-
-    /* Wave-specific colors - light dominant for dark mode */
-    --wave-primary: #F2F0EB;
-    /* Dominant light color - weathered plaster */
-    --wave-secondary: #D2CDC5;
-    /* Secondary light color - faded limestone */
-    --wave-accent-1: #AF7D41;
-    /* Oxidized metal for contrast */
-    --wave-accent-2: #699379;
-    /* Urban moss for variation */
-}
-
-/* ──────────────────────────────────────────────────────────────────────────────
-   CONCRETE JUNGLE LIGHT THEME (Urban Day Edition)
-   Clean urban whites with warm concrete undertones and material-inspired accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
-[data-theme="concrete-jungle-light"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #F5F4F1;
-    /* Main application background - warm concrete white */
-    --color-bg-secondary: #FFFFFF;
-    /* Secondary containers, cards, sidebars - pure white */
-    --color-bg-tertiary: #EBE9E4;
-    /* Elevated surfaces, modals, popovers - concrete dust */
-    --color-bg-card: #FFFFFF;
-    /* Card backgrounds - pure white */
-    --color-bg-glass: rgba(245, 244, 241, 0.92);
-    /* Glass effect backgrounds - frosted concrete */
-    --color-bg-code: rgba(235, 233, 228, 0.8);
-    /* Code block backgrounds - light concrete */
-    --color-bg-input: rgba(235, 233, 228, 0.7);
-    /* Form element backgrounds - very light concrete */
-    --color-bg-hover: rgba(146, 103, 52, 0.08);
-    /* Hover state background - subtle rust */
-    --color-bg-active: rgba(146, 103, 52, 0.15);
-    /* Active/selected state background - stronger rust */
-    --color-bg-disabled: rgba(213, 211, 206, 0.7);
-    /* Disabled element background - faded concrete */
-    --color-bg-tooltip: rgba(59, 57, 54, 0.95);
-    /* Tooltip background - nearly opaque dark */
-    --color-bg-dropdown: #FFFFFF;
-    /* Dropdown menu background - pure white */
-    --color-bg-selection: rgba(146, 103, 52, 0.2);
-    /* Text selection background */
-
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #3B3936;
-    /* Main body text - charcoal concrete */
-    --color-text-secondary: #5C5955;
-    /* Secondary/supporting text - medium concrete */
-    --color-text-tertiary: rgba(92, 89, 85, 0.7);
-    /* De-emphasized text, subtitles, captions */
-    --color-text-disabled: rgba(92, 89, 85, 0.5);
-    /* Disabled text - significantly reduced contrast */
-    --color-text-on-accent: #FFFFFF;
-    /* Text on accent-colored backgrounds - white with proper contrast */
-    --color-text-code: #6B4C2A;
-    /* Code and pre-formatted text - burnished wood for readability */
-
-    /* Headings */
-    --color-heading: #3B3936;
-    /* Standard headings - charcoal concrete */
-    --color-heading-accent: #926734;
-    /* Accented headings - burnished bronze */
-    --color-subheading: #5C5955;
-    /* Subheadings, section titles - matching secondary text */
-
-    /* Special text */
-    --color-text-emphasis: #926734;
-    /* Emphasized text - burnished bronze */
-    --color-text-inverted: #F5F4F1;
-    /* Inverted text (on dark backgrounds) - warm concrete white */
-
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with urban material inspiration
-     ════════════════════════════════════ */
-    --color-brand-primary: #926734;
-    /* Primary brand color - burnished bronze */
-    --color-brand-secondary: #5A7D66;
-    /* Secondary brand color - patina copper */
-
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #926734;
-    /* Primary accent for main interactive elements - burnished bronze */
-    --color-accent-primary-hover: #7C592D;
-    /* Hover state for primary accent - deeper bronze */
-    --color-accent-primary-active: #664A25;
-    /* Active state for primary accent - aged bronze */
+    /* ─── 1.3 BRAND & ACCENT ───────────────────────────────────────────── */
+    --color-brand-primary:   #AF7D41;            /* burnished bronze     */
+    --color-brand-secondary: #5A7D66;            /* patina copper        */
+    --color-accent-primary:  #AF7D41;
+    --color-accent-primary-hover:  #926734;
+    --color-accent-primary-active: #7C592D;
     --color-accent-secondary: #5A7D66;
-    /* Secondary accent for visual variety - patina copper */
     --color-accent-tertiary: #B7884D;
-    /* Tertiary accent for subtle highlights - polished brass */
-    --color-accent-warm: #A45842;
-    /* Warm accent for attention-grabbing elements - rust wash */
-    --color-accent-contrast: #4A5F7D;
-    /* High-contrast accent for additional contrast - industrial blue */
+    --color-accent-warm:     #A45842;            /* rust wash            */
+    --color-accent-contrast: #4A5F7D;            /* industrial blue      */
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #926734;
-    /* Default interactive element color - burnished bronze */
-    --color-interactive-hover: #7C592D;
-    /* Hover state - deeper bronze */
-    --color-interactive-active: #664A25;
-    /* Active/pressed state - aged bronze */
-    --color-interactive-focus: #926734;
-    /* Focus state - same as interactive with focus ring */
-    --color-interactive-disabled: rgba(146, 103, 52, 0.4);
-    /* Disabled state - faded bronze */
+    /* ─── 1.4 INTERACTIVE STATES ──────────────────────────────────────── */
+    --color-interactive:            var(--color-accent-primary);
+    --color-interactive-hover:      var(--color-accent-primary-hover);
+    --color-interactive-active:     var(--color-accent-primary-active);
+    --color-interactive-focus:      var(--color-accent-primary);
+    --color-interactive-disabled:   rgba(175,125,65,.40);
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #5A7D66;
-    /* Secondary interactive elements - patina copper */
-    --color-interactive-secondary-hover: #4D6B57;
-    /* Secondary hover state - deeper patina */
-    --color-interactive-secondary-active: #3F5946;
-    /* Secondary active state - aged patina */
+    --color-interactive-secondary:        var(--color-accent-secondary);
+    --color-interactive-secondary-hover:  #4F6B58;
+    --color-interactive-secondary-active: #435D4C;
 
-    /* Form element specific colors */
-    --color-field-border: rgba(146, 103, 52, 0.35);
-    /* Form input borders */
-    --color-field-placeholder: rgba(92, 89, 85, 0.6);
-    /* Placeholder text */
-    --color-field-focus: #926734;
-    /* Field focus indicator */
-    --color-field-required: #B7884D;
-    /* Required field indicator - polished brass */
-    --color-field-invalid: #A45842;
-    /* Invalid field indicator - rust wash */
+    /* Form‑field helpers */
+    --color-field-border:      rgba(175,125,65,.50);
+    --color-field-placeholder: rgba(242,240,235,.60);
+    --color-field-focus:       var(--color-accent-primary);
+    --color-field-required:    #C09155;
+    --color-field-invalid:     #D05E45;
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts
-     ════════════════════════════════════ */
-    --color-success: #5A7D66;
-    /* Success state - patina copper */
-    --color-success-subtle: rgba(90, 125, 102, 0.12);
-    /* Subtle success background */
-    --color-warning: #B7884D;
-    /* Warning state - polished brass */
-    --color-warning-subtle: rgba(183, 136, 77, 0.12);
-    /* Subtle warning background */
-    --color-error: #A45842;
-    /* Error state - rust wash */
-    --color-error-subtle: rgba(164, 88, 66, 0.12);
-    /* Subtle error background */
-    --color-info: #4A5F7D;
-    /* Information state - industrial blue */
-    --color-info-subtle: rgba(74, 95, 125, 0.12);
-    /* Subtle info background */
-    --color-neutral: #807F7B;
-    /* Neutral state - weathered concrete */
-    --color-neutral-subtle: rgba(128, 127, 123, 0.12);
-    /* Subtle neutral background */
+    /* ─── 1.5 SEMANTIC STATUS ─────────────────────────────────────────── */
+    --color-success:          #5A7D66;
+    --color-success-subtle:   rgba(90,125,102,.15);
+    --color-warning:          #C09155;
+    --color-warning-subtle:   rgba(192,145,85,.15);
+    --color-error:            #D05E45;
+    --color-error-subtle:     rgba(208,94,69,.15);
+    --color-info:             #4A5F7D;
+    --color-info-subtle:      rgba(74,95,125,.15);
+    --color-neutral:          #CFCBC4;
+    --color-neutral-subtle:   rgba(207,203,196,.15);
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with clear purpose
-     ════════════════════════════════════ */
-    --color-divider: rgba(146, 103, 52, 0.15);
-    /* Dividers and separators - subtle bronze tint */
-    --color-divider-light: rgba(0, 0, 0, 0.05);
-    /* Lighter dividers for contrast on light areas */
-    --color-border: rgba(146, 103, 52, 0.25);
-    /* Borders for containers, cards, etc */
-    --color-border-focus: #926734;
-    /* Focus state borders - burnished bronze */
-    --color-border-input: rgba(146, 103, 52, 0.3);
-    /* Form input borders - slightly stronger than regular */
-    --color-shadow: rgba(59, 57, 54, 0.2);
-    /* Shadows for elevation - concrete shadow */
-    --color-shadow-light: rgba(59, 57, 54, 0.1);
-    /* Lighter shadows for subtle elevation */
-    --color-overlay: rgba(245, 244, 241, 0.85);
-    /* Modal/dialog overlays - light background */
-    --color-notification-badge: #A45842;
-    /* Notification badges - rust wash */
+    /* ─── 1.6 UI COMPONENT DECORATION ─────────────────────────────────── */
+    --color-divider:        rgba(175,125,65,.20);
+    --color-divider-light:  rgba(255,255,255,.08);
+    --color-border:         rgba(175,125,65,.30);
+    --color-border-focus:   var(--color-accent-primary);
+    --color-border-input:   rgba(175,125,65,.35);
+    --color-shadow:         rgba(0,0,0,.40);
+    --color-shadow-light:   rgba(0,0,0,.20);
+    --color-overlay:        rgba(26,28,30,.85);
+    --color-notification-badge: var(--color-error);
 
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(146, 103, 52, 0.4);
-    /* Scrollbar thumb - semi-transparent bronze */
-    --color-scrollbar-track: rgba(213, 211, 206, 0.5);
-    /* Scrollbar track - light concrete */
+    --color-scrollbar-thumb: rgba(175,125,65,.50);
+    --color-scrollbar-track: rgba(26,28,30,.30);
 
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #926734;
-    /* Link text - burnished bronze */
-    --color-link-hover: #664A25;
-    /* Link hover state - aged bronze */
-    --color-link-visited: #7D5A49;
-    /* Visited links - aged terra cotta */
-    --color-emphasis: #926734;
-    /* Emphasized text - burnished bronze */
-    --color-success-text: #456851;
-    /* Success messages - deep patina */
-    --color-warning-text: #8E6B3D;
-    /* Warning messages - deep brass */
-    --color-error-text: #83462F;
-    /* Error messages - deep rust */
-    --color-info-text: #3B4E68;
-    /* Information text - deep industrial blue */
+    /* ─── 1.7 OPACITY SYSTEM ──────────────────────────────────────────── */
+    --opacity-faint:    .08;
+    --opacity-light:    .15;
+    --opacity-medium:   .50;
+    --opacity-high:     .80;
+    --opacity-disabled: .40;
 
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #926734;
-    /* Primary icons - burnished bronze */
-    --color-icon-secondary: rgba(90, 125, 102, 0.9);
-    /* Secondary icons - patina copper with high opacity */
-    --color-icon-tertiary: rgba(92, 89, 85, 0.7);
-    /* Tertiary icons - muted, similar to tertiary text */
-    --color-icon-on-accent: #FFFFFF;
-    /* Icons on accent-colored backgrounds */
-    --color-icon-bg: rgba(146, 103, 52, 0.1);
-    /* Icon backgrounds or containers */
-    --color-icon-disabled: rgba(92, 89, 85, 0.5);
-    /* Disabled icons */
+    /* ─── 1.8 COMPONENT‑SPECIFIC ──────────────────────────────────────── */
+    --color-skill-item:         rgba(175,125,65,.18);
+    --color-skill-item-hover:   rgba(90,125,102,.22);
+    --color-skill-item-active:  rgba(90,125,102,.32);
 
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.05;
-    /* Very subtle effects, barely visible */
-    --opacity-light: 0.12;
-    /* Light effects, clearly visible but subtle */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity */
+    /* ─── 1.9 CURSOR & RGB HELPERS ────────────────────────────────────── */
+    --color-cursor-inner-rgb: 242,240,235;
+    --color-cursor-outer-rgb: 175,125,65;
+    --color-accent-primary-rgb: 175,125,65;
+    --color-accent-secondary-rgb: 90,125,102;
+    --color-accent-warm-rgb:   164,88,66;
+    --color-accent-blue-rgb:   74,95,125;
+    --color-bg-primary-rgb:    26,28,30;
+    --color-text-primary-rgb:  242,240,235;
 
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(146, 103, 52, 0.15);
-    /* Skill item background */
-    --color-skill-item-hover: rgba(90, 125, 102, 0.15);
-    /* Skill item hover - patina copper accent */
-    --color-skill-item-active: rgba(90, 125, 102, 0.25);
-    /* Skill item active - stronger patina copper */
-    --color-selection-bg: rgba(146, 103, 52, 0.2);
-    /* Text selection background */
-    --color-tooltip-bg: rgba(59, 57, 54, 0.95);
-    /* Tooltip background - nearly opaque dark */
-    --color-dropdown-bg: #FFFFFF;
-    /* Dropdown menu background - white */
+    /* ─── 1.10 GRADIENTS ─────────────────────────────────────────────── */
+    --gradient-accent:        linear-gradient(45deg,var(--color-accent-primary),var(--color-accent-secondary));
+    --gradient-interactive:   linear-gradient(45deg,var(--color-interactive),var(--color-interactive-hover));
+    --gradient-concrete:      linear-gradient(180deg,#32373B,#262A2D);
+    --gradient-weathered:     linear-gradient(to right,rgba(175,125,65,.15),rgba(82,108,142,.10));
+    --gradient-glass:         linear-gradient(120deg,rgba(242,240,235,.08),rgba(242,240,235,.04));
+    --gradient-overlay:       linear-gradient(180deg,rgba(26,28,30,.80),rgba(26,28,30,.95));
+    --gradient-purple-bronze: linear-gradient(45deg,#664A25,#AF7D41);
+    --gradient-button:        linear-gradient(to right,var(--color-accent-primary),var(--color-interactive-hover));
+    --gradient-button-hover:  linear-gradient(to right,var(--color-interactive-hover),var(--color-interactive-active));
 
-    /* ════════════════════════════════════
-     CURSOR COLORS
-     For custom cursor effects
-     ════════════════════════════════════ */
-    --color-cursor-inner-rgb: 59, 57, 54;
-    /* Inner cursor ring RGB values - charcoal concrete */
-    --color-cursor-outer-rgb: 146, 103, 52;
-    /* Outer cursor ring RGB values - burnished bronze */
+    /* ─── 1.11 SHADOWS ───────────────────────────────────────────────── */
+    --shadow-sm:     0 2px 8px -2px rgba(0,0,0,.30);
+    --shadow-md:     0 12px 25px -10px rgba(0,0,0,.40);
+    --shadow-lg:     0 25px 50px -12px rgba(0,0,0,.50);
+    --shadow-inner:  inset 0 2px 5px rgba(0,0,0,.20);
+    --shadow-focus:  0 0 0 3px rgba(175,125,65,.30);
+    --shadow-button: 0 0 15px rgba(175,125,65,.25);
 
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 146, 103, 52;
-    /* RGB values for burnished bronze */
-    --color-accent-secondary-rgb: 90, 125, 102;
-    /* RGB values for patina copper */
-    --color-accent-warm-rgb: 164, 88, 66;
-    /* RGB values for rust wash */
-    --color-accent-contrast-rgb: 74, 95, 125;
-    /* RGB values for industrial blue */
-    --color-bg-primary-rgb: 245, 244, 241;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 59, 57, 54;
-    /* RGB values for main text */
+    /* ─── 1.12 WAVE BACKGROUND ───────────────────────────────────────── */
+    --wave-primary:   #F2F0EB;  /* light plaster wave  */
+    --wave-secondary: #D2CDC5;  /* faded limestone     */
+    --wave-accent-1:  #AF7D41;  /* bronze crest        */
+    --wave-accent-2:  #699379;  /* moss highlight      */
 
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - bronze to patina */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient */
-    --gradient-bronze: linear-gradient(45deg, #926734, #7C592D);
-    /* Bronze gradient */
-    --gradient-patina: linear-gradient(45deg, #5A7D66, #4D6B57);
-    /* Patina gradient */
-    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
-    /* Glass effect gradient */
-    --gradient-overlay: linear-gradient(180deg, rgba(245, 244, 241, 0.85), rgba(245, 244, 241, 0.95));
-    /* Overlay gradient */
-    --gradient-brass-rust: linear-gradient(45deg, #B7884D, #A45842);
-    /* Brass to rust gradient */
-    --gradient-blue-patina: linear-gradient(45deg, #4A5F7D, #5A7D66);
-    /* Industrial blue to patina gradient */
-    --gradient-concrete: linear-gradient(to bottom, #F5F4F1, #EBE9E4);
-    /* Concrete texture gradient */
-    --gradient-weathered: linear-gradient(to right, rgba(146, 103, 52, 0.1), rgba(74, 95, 125, 0.05));
-    /* Weathered surfaces gradient */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(59, 57, 54, 0.08);
-    /* Small shadow */
-    --shadow-md: 0 12px 25px -10px rgba(59, 57, 54, 0.12);
-    /* Medium shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(59, 57, 54, 0.15);
-    /* Large shadow */
-    --shadow-inner: inset 0 2px 5px rgba(59, 57, 54, 0.05);
-    /* Inner shadow */
-    --shadow-focus: 0 0 0 3px rgba(146, 103, 52, 0.25);
-    /* Focus shadow */
-    --shadow-button: 0 4px 14px rgba(59, 57, 54, 0.15);
-    /* Button shadow */
-
-    /* Wave-specific colors - dark dominant for light mode */
-    --wave-primary: #3B3936;
-    /* Dominant dark color - charcoal concrete */
-    --wave-secondary: #5C5955;
-    /* Secondary dark color - medium concrete */
-    --wave-accent-1: #926734;
-    /* Burnished bronze for contrast */
-    --wave-accent-2: #5A7D66;
-    /* Patina copper for variation */
+    color-scheme: dark; /* informs browsers */
 }
 
-/* Set color-scheme for the theme */
-[data-theme="concrete-jungle-dark"] {
-    color-scheme: dark;
-}
-
+/* ────────────────────────────────────────────────────────────────────────────
+   2.  LIGHT VARIANT  –  Urban‑Day Edition
+   ───────────────────────────────────────────────────────────────────────── */
 [data-theme="concrete-jungle-light"] {
+    /* 2.1 BACKGROUND COLOURS */
+    --color-bg-primary:  #F5F4F1;               /* warm concrete white  */
+    --color-bg-secondary:#FFFFFF;               /* pure white           */
+    --color-bg-tertiary: #EBE9E4;               /* concrete dust        */
+    --color-bg-card:     #FFFFFF;
+    --color-bg-glass:    rgba(245,244,241,.92); /* frosted glass        */
+    --color-bg-code:     rgba(235,233,228,.80); /* light console        */
+    --color-bg-input:    rgba(235,233,228,.70);
+    --color-bg-hover:    rgba(146,103,52,.08);  /* subtle rust          */
+    --color-bg-active:   rgba(146,103,52,.15);
+    --color-bg-disabled: rgba(213,211,206,.70);
+    --color-bg-tooltip:  rgba(59,57,54,.95);
+    --color-bg-dropdown: #FFFFFF;
+    --color-bg-selection:rgba(146,103,52,.20);
+
+    --color-grid-lines:  rgba(175,125,65,.15);  /* oxidised blueprint   */
+
+    /* 2.2 TYPOGRAPHY */
+    --color-text-primary:   #3B3936;            /* charcoal             */
+    --color-text-secondary: #5C5955;            /* medium concrete      */
+    --color-text-tertiary:  rgba(92,89,85,.70);
+    --color-text-disabled:  rgba(92,89,85,.50);
+    --color-text-code:      #6B4C2A;            /* burnished wood       */
+    --color-text-on-accent: #FFFFFF;
+    --color-heading:        #3B3936;
+    --color-heading-accent: #926734;
+    --color-subheading:     #5C5955;
+    --color-text-emphasis:  #926734;
+    --color-text-inverted:  #F5F4F1;
+
+    /* 2.3 BRAND & ACCENT */
+    --color-brand-primary:   #926734;
+    --color-brand-secondary: #5A7D66;
+    --color-accent-primary:  #926734;
+    --color-accent-primary-hover:  #7C592D;
+    --color-accent-primary-active: #664A25;
+    --color-accent-secondary: #5A7D66;
+    --color-accent-tertiary: #B7884D;
+    --color-accent-warm:     #A45842;
+    --color-accent-contrast: #4A5F7D;
+
+    /* 2.4 INTERACTIVE */
+    --color-interactive:            var(--color-accent-primary);
+    --color-interactive-hover:      var(--color-accent-primary-hover);
+    --color-interactive-active:     var(--color-accent-primary-active);
+    --color-interactive-focus:      var(--color-accent-primary);
+    --color-interactive-disabled:   rgba(146,103,52,.40);
+
+    --color-interactive-secondary:        var(--color-accent-secondary);
+    --color-interactive-secondary-hover:  #4F6B58;
+    --color-interactive-secondary-active: #435D4C;
+
+    --color-field-border:      rgba(146,103,52,.35);
+    --color-field-placeholder: rgba(92,89,85,.60);
+    --color-field-focus:       var(--color-accent-primary);
+    --color-field-required:    #AF7D41;
+    --color-field-invalid:     #D05E45;
+
+    /* 2.5 SEMANTIC STATUS */
+    --color-success:          #5A7D66;
+    --color-success-subtle:   rgba(90,125,102,.12);
+    --color-warning:          #C09155;
+    --color-warning-subtle:   rgba(192,145,85,.12);
+    --color-error:            #D05E45;
+    --color-error-subtle:     rgba(208,94,69,.12);
+    --color-info:             #4A5F7D;
+    --color-info-subtle:      rgba(74,95,125,.12);
+    --color-neutral:          #7C7A75;
+    --color-neutral-subtle:   rgba(124,122,117,.12);
+
+    /* 2.6 UI COMPONENTS */
+    --color-divider:        rgba(146,103,52,.15);
+    --color-divider-light:  rgba(0,0,0,.05);
+    --color-border:         rgba(146,103,52,.25);
+    --color-border-focus:   var(--color-accent-primary);
+    --color-border-input:   rgba(146,103,52,.30);
+    --color-shadow:         rgba(59,57,54,.20);
+    --color-shadow-light:   rgba(59,57,54,.10);
+    --color-overlay:        rgba(245,244,241,.85);
+    --color-notification-badge: #D05E45;
+
+    --color-scrollbar-thumb: rgba(146,103,52,.40);
+    --color-scrollbar-track: rgba(213,211,206,.50);
+
+    /* 2.7 OPACITY */
+    --opacity-faint:    .05;
+    --opacity-light:    .12;
+    --opacity-medium:   .50;
+    --opacity-high:     .80;
+    --opacity-disabled: .40;
+
+    /* 2.8 COMPONENT‑SPECIFIC */
+    --color-skill-item:        rgba(146,103,52,.15);
+    --color-skill-item-hover:  rgba(90,125,102,.15);
+    --color-skill-item-active: rgba(90,125,102,.25);
+
+    /* 2.9 CURSOR & RGB */
+    --color-cursor-inner-rgb: 59,57,54;
+    --color-cursor-outer-rgb: 146,103,52;
+    --color-accent-primary-rgb: 146,103,52;
+    --color-accent-secondary-rgb: 90,125,102;
+    --color-accent-warm-rgb:   164,88,66;
+    --color-accent-blue-rgb:   74,95,125;
+    --color-bg-primary-rgb:    245,244,241;
+    --color-text-primary-rgb:  59,57,54;
+
+    /* 2.10 GRADIENTS */
+    --gradient-accent:        linear-gradient(45deg,var(--color-accent-primary),var(--color-accent-secondary));
+    --gradient-interactive:   linear-gradient(45deg,var(--color-interactive),var(--color-interactive-hover));
+    --gradient-concrete:      linear-gradient(to bottom,#F5F4F1,#EBE9E4);
+    --gradient-weathered:     linear-gradient(to right,rgba(146,103,52,.10),rgba(74,95,125,.05));
+    --gradient-glass:         linear-gradient(120deg,rgba(255,255,255,.80),rgba(255,255,255,.40));
+    --gradient-overlay:       linear-gradient(180deg,rgba(245,244,241,.85),rgba(245,244,241,.95));
+    --gradient-purple-bronze: linear-gradient(45deg,#804E24,#926734);
+    --gradient-button:        linear-gradient(to right,var(--color-accent-primary),var(--color-interactive-hover));
+    --gradient-button-hover:  linear-gradient(to right,var(--color-interactive-hover),var(--color-interactive-active));
+
+    /* 2.11 SHADOWS */
+    --shadow-sm:     0 2px 8px -2px rgba(59,57,54,.08);
+    --shadow-md:     0 12px 25px -10px rgba(59,57,54,.12);
+    --shadow-lg:     0 25px 50px -12px rgba(59,57,54,.15);
+    --shadow-inner:  inset 0 2px 5px rgba(59,57,54,.05);
+    --shadow-focus:  0 0 0 3px rgba(146,103,52,.25);
+    --shadow-button: 0 4px 14px rgba(59,57,54,.15);
+
+    /* 2.12 WAVE BACKGROUND */
+    --wave-primary:   #3B3936; /* charcoal crest     */
+    --wave-secondary: #5C5955; /* mid concrete wave  */
+    --wave-accent-1:  #926734;
+    --wave-accent-2:  #5A7D66;
+
     color-scheme: light;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
- * Custom scrollbar styling for Concrete Jungle theme
- * ────────────────────────────────────────────────────────────────────────── */
-[data-theme^="concrete-jungle"] .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+   3. Custom Scrollbars  (both variants share same selectors)
+   ───────────────────────────────────────────────────────────────────────── */
+[data-theme^="concrete-jungle"] .custom-scrollbar::-webkit-scrollbar{
+    width:8px; height:8px;
 }
-
-[data-theme^="concrete-jungle"] .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--color-scrollbar-track);
-    border-radius: 4px;
+[data-theme^="concrete-jungle"] .custom-scrollbar::-webkit-scrollbar-track{
+    background:var(--color-scrollbar-track); border-radius:4px;
 }
-
-[data-theme^="concrete-jungle"] .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--color-scrollbar-thumb);
-    border-radius: 4px;
+[data-theme^="concrete-jungle"] .custom-scrollbar::-webkit-scrollbar-thumb{
+    background:var(--color-scrollbar-thumb); border-radius:4px;
 }
-
-[data-theme^="concrete-jungle"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-interactive);
+[data-theme^="concrete-jungle"] .custom-scrollbar::-webkit-scrollbar-thumb:hover{
+    background:var(--color-interactive);
 }
-
-/* Firefox scrollbar support */
-[data-theme^="concrete-jungle"] .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
-}
-/* Add missing variables to Concrete Jungle Dark theme */
-[data-theme="concrete-jungle-dark"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(242, 240, 235, 0.2);  /* Weathered plaster grid lines for dark theme */
-}
-
-/* Add missing variables to Concrete Jungle Light theme */
-[data-theme="concrete-jungle-light"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(175, 125, 65, 0.15);  /* Oxidized metal grid lines for light theme */
+/* Firefox */
+[data-theme^="concrete-jungle"] .custom-scrollbar{
+    scrollbar-width:thin;
+    scrollbar-color:var(--color-scrollbar-thumb) var(--color-scrollbar-track);
 }

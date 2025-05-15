@@ -1,10 +1,12 @@
-/* src/styles/global/globals.css */
-/* Import all CSS files first */
-@import '../themes/base.css';
-@import '../themes/green-theme.css';
-@import '../utilities/patterns.css';
-@import '../utilities/accessibility.css';
-@import '../utilities/theme.css';
+/* src/styles/globals.css */
+
+/* First import Tailwind - NEW V4 SYNTAX */
+@import "tailwindcss";
+
+/* Import font systems */
+@import './font-systems.css';
+
+/* Then import theme variants */
 @import '../themes/variants/sunset-oasis-theme.css';
 @import '../themes/variants/cyber-punk-graffiti-theme.css';
 @import '../themes/variants/monochrome-theme.css';
@@ -18,221 +20,108 @@
 @import '../themes/variants/duotone-theme.css';
 @import '../themes/variants/red-theme.css';
 @import '../themes/variants/forest-mist-theme.css';
-@import '../themes/variants/concrete-jungle-theme.css'; /* Add the Concrete Jungle theme import */
+@import '../themes/variants/concrete-jungle-theme.css';
 @import '../themes/variants/urban-splash-theme.css';
+@import '../themes/variants/earth-theme.css';
+@import '../themes/variants/winter-theme.css';
+@import '../themes/variants/yellow-theme.css';
+@import '../themes/variants/green-theme.css';
 
-@import '../utilities/animations.css';
-@import '../utilities/designer-utilties.css';
-@import '../utilities/elevation.css';
-@import '../utilities/typography.css';
-
-/* Then include Tailwind directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Base Styles */
-@layer base {
-    html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 4rem;
-    }
-
-    body {
-        background-color: var(--color-bg-primary);
-        color: var(--color-text-primary);
-        font-family: var(--font-body, system-ui), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    }
-
-    /* Selection styles */
-    ::selection {
-        background-color: var(--color-bg-selection);
-        color: var(--color-text-primary);
-    }
-
-    /* Remove typography that's already defined in typography.css */
-    /* We're removing the duplicate heading styles here */
-
-    p {
-        @apply mb-4 leading-relaxed;
-    }
-
-    a {
-        color: var(--color-link);
-        text-decoration: none;
-        transition: color 150ms cubic-bezier(0, 0, 0.2, 1);
-    }
-
-    a:hover {
-        color: var(--color-link-hover);
-    }
-
-    /* Word spacing global fixes */
-    p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    span,
-    div,
-    button,
-    a,
-    li {
-        word-break: normal !important;
-        overflow-wrap: break-word !important;
-    }
-
-    /* Fix for components that use string manipulation */
-    .preserve-whitespace {
-        white-space: pre-wrap !important;
-        word-break: normal !important;
-        word-spacing: var(--word-spacing-normal) !important;
-    }
-
-    /* Fix for components that might be using flex or grid layouts */
-    .flex>*,
-    .grid>* {
-        word-spacing: inherit;
-    }
-
-    /* Ensure inline elements maintain spacing */
-    .inline,
-    .inline-block {
-        white-space: normal;
-    }
+/* Define typography custom variants for readability */
+@custom-variant word-spacing-normal {
+  word-spacing: normal;
 }
 
-/* Animation effects - keeping only what we need */
-@layer utilities {
-    @keyframes button-shine {
-        0% {
-            opacity: 0;
-            transform: scale(0.95);
-        }
-
-        50% {
-            opacity: 0.2;
-            transform: scale(1.05);
-        }
-
-        100% {
-            opacity: 0;
-            transform: scale(0.95);
-        }
-    }
-
-    .role-button-shine {
-        animation: button-shine 2s infinite;
-    }
-
-    @keyframes cursor-blink {
-
-        0%,
-        100% {
-            opacity: 1;
-        }
-
-        50% {
-            opacity: 0;
-        }
-    }
-
-    .cursor-blink {
-        animation: cursor-blink 1s step-end infinite;
-    }
-
-    @keyframes shine {
-        0% {
-            right: -100%;
-        }
-
-        50%,
-        100% {
-            right: 100%;
-        }
-    }
-
-    .animate-shine {
-        animation: shine 2s forwards linear;
-    }
-
-    /* Add this to your global CSS or create a Tailwind plugin */
-    .clip-polygon {
-        clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
-    }
+@custom-variant word-spacing-wide {
+  word-spacing: 0.05em;
 }
 
-/* Blueprint Editorial Component Classes */
-@layer components {
-
-    /* Blueprint motifs */
-    .blueprint-line-overlay {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .blueprint-line-overlay::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='%2339A0ED' stroke-width='0.5' stroke-opacity='0.2'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)' /%3E%3C/svg%3E");
-        pointer-events: none;
-        opacity: 0.15;
-        z-index: 0;
-    }
-
-    .measurement-tick {
-        position: relative;
-        font-family: var(--font-code);
-        font-size: 0.625rem;
-        color: var(--color-accent-oceanic);
-        opacity: 0.7;
-    }
-
-    .measurement-tick::before {
-        content: "";
-        position: absolute;
-        height: 4px;
-        width: 1px;
-        background-color: var(--color-accent-oceanic);
-        opacity: 0.7;
-    }
-
-    /* Blueprint grid classes */
-    .blueprint-grid {
-        background-size: 60px 60px;
-        background-position: center;
-        background-repeat: repeat;
-    }
-
-    /* This ensures the class is backwards compatible with tailwind's bg-blueprint-grid if needed */
-    .bg-blueprint-grid {
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='currentColor' stroke-opacity='0.2' stroke-width='0.5'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M30 0v60M0 30h60M15 0v60M45 0v60M0 15h60M0 45h60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        background-size: 60px 60px;
-        background-position: center;
-        background-repeat: repeat;
-    }
-
-    /* Swiss-Editorial structure components */
-    .editorial-heading {
-        @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-heading mb-6;
-        font-family: var(--font-heading);
-    }
-
-    .editorial-subheading {
-        @apply text-xl sm:text-2xl font-medium text-subheading mb-8;
-    }
-
-    .blueprint-grid-bg {
-        @apply bg-blueprint-grid;
-    }
-
-    .isometric-grid-bg {
-        @apply bg-isometric-grid;
-    }
+@custom-variant word-spacing-wider {
+  word-spacing: 0.1em;
 }
+
+@custom-variant preserve-whitespace {
+  white-space: pre-wrap;
+}
+
+/* Define typography utilities */
+@utility text-display {
+  font-family: var(--font-display, var(--font-heading));
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-tight, var(--tracking-heading));
+}
+
+@utility text-heading-1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl, 3rem);
+  font-weight: var(--font-weight-bold, 700);
+  line-height: var(--text-5xl--line-height, 1);
+  letter-spacing: var(--tracking-heading);
+}
+
+@utility text-heading-2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl, 2.25rem);
+  font-weight: var(--font-weight-bold, 700);
+  line-height: var(--text-4xl--line-height, 1.111);
+  letter-spacing: var(--tracking-heading);
+}
+
+@utility text-heading-3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl, 1.875rem);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: var(--text-3xl--line-height, 1.2);
+  letter-spacing: var(--tracking-heading);
+}
+
+@utility text-heading-4 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl, 1.5rem);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: var(--text-2xl--line-height, 1.333);
+  letter-spacing: var(--tracking-heading);
+}
+
+@utility text-body-large {
+  font-family: var(--font-body);
+  font-size: var(--text-lg, 1.125rem);
+  font-weight: var(--font-weight-normal, 400);
+  line-height: var(--text-lg--line-height, 1.555);
+  letter-spacing: var(--tracking-body);
+}
+
+@utility text-body {
+  font-family: var(--font-body);
+  font-size: var(--text-base, 1rem);
+  font-weight: var(--font-weight-normal, 400);
+  line-height: var(--text-base--line-height, 1.5);
+  letter-spacing: var(--tracking-body);
+}
+
+@utility text-body-small {
+  font-family: var(--font-body);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: var(--font-weight-normal, 400);
+  line-height: var(--text-sm--line-height, 1.428);
+  letter-spacing: var(--tracking-body);
+}
+
+@utility text-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: var(--font-weight-medium, 500);
+  line-height: var(--text-sm--line-height, 1.428);
+  letter-spacing: var(--tracking-wide, 0.025em);
+}
+
+@utility text-code {
+  font-family: var(--font-code);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm--line-height, 1.428);
+  letter-spacing: var(--tracking-code);
+}
+
+
+/* Define any additional custom utilities and styles below */

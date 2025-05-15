@@ -1,717 +1,203 @@
-/* src/styles/themes/blue-theme.css */
+/* src/styles/themes/blue-theme.css
+   Canonical token version • 2025‑05‑14
+   ─────────────────────────────────────────────────────────── */
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   REFINED BLUE THEME SYSTEM
-   A professional, tech-focused palette built around a primary blue foundation
-   with strategic accent colors and precise contrast relationships.
-   ══════════════════════════════════════════════════════════════════════════════ */
-
-/* ──────────────────────────────────────────────────────────────────────────────
-   REFINED BLUE DARK THEME (Default)
-   Deep blue-indigo with strategic accent colors
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════
+   BLUE THEME — DARK
+   ═══════════════════════════════════════════════════════ */
 [data-theme="blue-dark"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #141b2e;
-    /* Main application background - deep blue-indigo */
-    --color-bg-secondary: #1a2744;
-    /* Secondary containers, cards, sidebars */
-    --color-bg-tertiary: #22325a;
-    /* Elevated surfaces, modals, popovers */
-    --color-bg-card: rgba(30, 40, 68, 0.97);
-    /* Card backgrounds with slight transparency */
-    --color-bg-glass: rgba(240, 242, 250, 0.08);
-    /* Glass effect backgrounds - subtle light overlay */
-    --color-bg-code: rgba(26, 32, 48, 0.85);
-    /* Code block backgrounds - slightly lighter than primary */
-    --color-bg-input: rgba(38, 46, 68, 0.65);
-    /* Form element backgrounds with subtle contrast */
-    --color-bg-hover: rgba(67, 134, 235, 0.12);
-    /* Hover state background - subtle blue highlight */
-    --color-bg-active: rgba(67, 134, 235, 0.22);
-    /* Active/selected state background - stronger blue */
-    --color-bg-disabled: rgba(70, 80, 110, 0.35);
-    /* Disabled element background - muted, low contrast */
-    --color-bg-tooltip: rgba(20, 27, 46, 0.97);
-    /* Tooltip background - nearly opaque dark */
-    --color-bg-dropdown: rgba(30, 40, 68, 0.98);
-    /* Dropdown menu background - slightly transparent dark blue */
-    --color-bg-selection: rgba(77, 137, 232, 0.25);
-    /* Text selection background - highlighted blue */
+  /* ---------- PALETTE PEAKS ---------- */
+  --blue-500:  #4D89E8;
+  --blue-600:  #3B72CA;
+  --blue-700:  #2E5DA8;
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #e8ecf7;
-    /* Main body text - soft white for reduced eye strain */
-    --color-text-secondary: #b8c6e0;
-    /* Secondary/supporting text - softer contrast */
-    --color-text-tertiary: rgba(184, 198, 224, 0.7);
-    /* De-emphasized text, subtitles, captions */
-    --color-text-disabled: rgba(184, 198, 224, 0.5);
-    /* Disabled text - significantly reduced contrast */
-    --color-text-on-accent: #ffffff;
-    /* Text on accent-colored backgrounds - white with proper contrast */
-    --color-text-code: #8cc9ff;
-    /* Code and pre-formatted text - light blue for readability */
+  --teal-500:  #3AB0BF;
+  --amber-500: #E67E22;
+  --purple-500:#9B59B6;
+  --coral-500: #E2725B;
 
-    /* Headings */
-    --color-heading: #d0dcff;
-    /* Standard headings - slightly brighter than body text */
-    --color-heading-accent: #4d89e8;
-    /* Accented headings - refined blue */
-    --color-subheading: #b8c6e0;
-    /* Subheadings, section titles - matching secondary text */
+  --bg-50:  #E8ECF7;
+  --bg-100: #B8C6E0;
+  --bg-900: #141B2E;
+  --bg-800: #1A2744;
+  --bg-700: #22325A;
 
-    /* Special text */
-    --color-text-emphasis: #3ab0bf;
-    /* Emphasized text, highlights - teal accent */
-    --color-text-inverted: #e8ecf7;
-    /* Inverted text (on light backgrounds) - soft white */
+  /* ---------- SEMANTIC BACKGROUND ---------- */
+  --color-primary-bg:      var(--bg-900);
+  --color-secondary-bg:    var(--bg-800);
+  --color-tertiary-bg:     var(--bg-700);
+  --color-card-bg:         rgba(30 40 68 / .97);
+  --color-glass-bg:        rgba(240 242 250 / .08);
+  --color-code-bg:         rgba(26 32 48 / .85);
+  --color-input-bg:        rgba(38 46 68 / .65);
+  --color-hover-bg:        rgba(77 137 232 / .12);
+  --color-active-bg:       rgba(77 137 232 / .22);
+  --color-disabled-bg:     rgba(70 80 110 / .35);
+  --color-tooltip-bg:      rgba(20 27 46 / .97);
+  --color-dropdown-bg:     rgba(30 40 68 / .98);
+  --color-selection-bg:    rgba(77 137 232 / .25);
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with triadic relationship
-     ════════════════════════════════════ */
-    --color-brand-primary: #4d89e8;
-    /* Primary brand color - refined blue */
-    --color-brand-secondary: #3ab0bf;
-    /* Secondary brand color - complementary teal */
+  /* ---------- SEMANTIC TEXT ---------- */
+  --color-primary-text:    var(--bg-50);
+  --color-secondary-text:  var(--bg-100);
+  --color-tertiary-text:   rgba(184 198 224 / .70);
+  --color-disabled-text:   rgba(184 198 224 / .50);
+  --color-text-on-accent:  #FFFFFF;
+  --color-code-text:       #8CC9FF;
+  --color-heading:         #D0DCFF;
+  --color-heading-accent:  var(--blue-500);
+  --color-subheading:      var(--bg-100);
+  --color-text-emphasis:   var(--teal-500);
+  --color-text-inverted:   var(--bg-50);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #4d89e8;
-    /* Primary accent for main interactive elements */
-    --color-accent-primary-hover: #3b72ca;
-    /* Hover state for primary accent - deeper blue */
-    --color-accent-primary-active: #2e5da8;
-    /* Active state for primary accent - even deeper blue */
-    --color-accent-secondary: #3ab0bf;
-    /* Secondary accent for visual variety */
-    --color-accent-tertiary: #8cc9ff;
-    /* Tertiary accent for subtle highlights - light blue */
-    --color-accent-warm: #e67e22;
-    /* Warm accent for attention-grabbing elements - amber orange */
-    --color-accent-contrast: #9b59b6;
-    /* High-contrast accent for additional contrast and triadic balance - purple */
+  /* ---------- BRAND & ACCENTS ---------- */
+  --color-brand-primary:   var(--blue-500);
+  --color-brand-secondary: var(--teal-500);
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #4d89e8;
-    /* Default interactive element color - refined blue */
-    --color-interactive-hover: #3b72ca;
-    /* Hover state - deeper blue */
-    --color-interactive-active: #2e5da8;
-    /* Active/pressed state - even deeper blue */
-    --color-interactive-focus: #4d89e8;
-    /* Focus state indicator */
-    --color-interactive-disabled: rgba(77, 137, 232, 0.4);
-    /* Disabled state - faded blue */
+  --color-accent-primary:          var(--blue-500);
+  --color-accent-primary-hover:    var(--blue-600);
+  --color-accent-primary-active:   var(--blue-700);
+  --color-accent-secondary:        var(--teal-500);
+  --color-accent-tertiary:         #8CC9FF;
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #3ab0bf;
-    /* Secondary interactive elements - teal */
-    --color-interactive-secondary-hover: #2e8f9a;
-    /* Secondary hover state - deeper teal */
-    --color-interactive-secondary-active: #236d76;
-    /* Secondary active state - even deeper teal */
+  /* ---------- STATUS ---------- */
+  --color-success:         #27AE60;
+  --color-success-subtle:  rgba(39 174 96 / .15);
+  --color-warning:         #F39C12;
+  --color-warning-subtle:  rgba(243 156 18 / .15);
+  --color-error:           var(--coral-500);
+  --color-error-subtle:    rgba(226 114 91 / .15);
+  --color-info:            var(--blue-500);
+  --color-info-subtle:     rgba(77 137 232 / .15);
+  --color-neutral:         #7F8C8D;
+  --color-neutral-subtle:  rgba(127 140 141 / .15);
 
-    /* Form element specific colors */
-    --color-field-border: rgba(77, 137, 232, 0.5);
-    /* Form input borders */
-    --color-field-placeholder: rgba(184, 198, 224, 0.6);
-    /* Placeholder text */
-    --color-field-focus: #4d89e8;
-    /* Field focus indicator */
-    --color-field-required: #3ab0bf;
-    /* Required field indicator */
-    --color-field-invalid: #e2725b;
-    /* Invalid field indicator */
+  /* ---------- SUPPORT ---------- */
+  --color-grid-lines:      rgba(240 242 250 / .20);
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts
-     ════════════════════════════════════ */
-    --color-success: #27ae60;
-    /* Success state - green */
-    --color-success-subtle: rgba(39, 174, 96, 0.15);
-    /* Subtle success background */
-    --color-warning: #f39c12;
-    /* Warning state - amber */
-    --color-warning-subtle: rgba(243, 156, 18, 0.15);
-    /* Subtle warning background */
-    --color-error: #e2725b;
-    /* Error state - coral red (more colorblind-friendly) */
-    --color-error-subtle: rgba(226, 114, 91, 0.15);
-    /* Subtle error background */
-    --color-info: #4d89e8;
-    /* Information state - blue */
-    --color-info-subtle: rgba(77, 137, 232, 0.15);
-    /* Subtle info background */
-    --color-neutral: #7f8c8d;
-    /* Neutral state - gray */
-    --color-neutral-subtle: rgba(127, 140, 141, 0.15);
-    /* Subtle neutral background */
+  --shadow-sm:    0 2px  8px -2px rgba(10 15 30 / .25);
+  --shadow-md:    0 12px 25px -10px rgba(10 15 30 / .35);
+  --shadow-lg:    0 25px 50px -12px rgba(10 15 30 / .40);
+  --shadow-focus: 0 0 0 3px rgba(77 137 232 / .30);
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with clear purpose
-     ════════════════════════════════════ */
-    --color-divider: rgba(77, 137, 232, 0.2);
-    /* Dividers and separators - subtle blue tint */
-    --color-divider-light: rgba(240, 242, 250, 0.08);
-    /* Lighter dividers for contrast on dark areas */
-    --color-border: rgba(77, 137, 232, 0.3);
-    /* Borders for containers, cards, etc */
-    --color-border-focus: #4d89e8;
-    /* Focus state borders - refined blue */
-    --color-border-input: rgba(77, 137, 232, 0.35);
-    /* Form input borders - slightly stronger than regular */
-    --color-shadow: rgba(10, 15, 30, 0.4);
-    /* Shadows for elevation - deeper blue-black */
-    --color-shadow-light: rgba(10, 15, 30, 0.2);
-    /* Lighter shadows for subtle elevation */
-    --color-overlay: rgba(20, 27, 46, 0.85);
-    /* Modal/dialog overlays */
-    --color-notification-badge: #e2725b;
-    /* Notification badges - colorblind-friendly coral */
-
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(77, 137, 232, 0.5);
-    /* Scrollbar thumb - semi-transparent blue */
-    --color-scrollbar-track: rgba(35, 38, 65, 0.3);
-    /* Scrollbar track - subtle dark blue */
-
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #4d89e8;
-    /* Link text - refined blue */
-    --color-link-hover: #8cc9ff;
-    /* Link hover state - lighter blue */
-    --color-link-visited: #9b59b6;
-    /* Visited links - purple */
-    --color-emphasis: #3ab0bf;
-    /* Emphasized text - teal */
-    --color-success-text: #27ae60;
-    /* Success messages - green */
-    --color-warning-text: #f39c12;
-    /* Warning messages - amber */
-    --color-error-text: #e2725b;
-    /* Error messages - coral red */
-    --color-info-text: #4d89e8;
-    /* Information text - refined blue */
-
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #4d89e8;
-    /* Primary icons - refined blue */
-    --color-icon-secondary: rgba(58, 176, 191, 0.9);
-    /* Secondary icons - teal with high opacity */
-    --color-icon-tertiary: rgba(184, 198, 224, 0.7);
-    /* Tertiary icons - muted, similar to tertiary text */
-    --color-icon-on-accent: #ffffff;
-    /* Icons on accent-colored backgrounds */
-    --color-icon-bg: rgba(77, 137, 232, 0.12);
-    /* Icon backgrounds or containers */
-    --color-icon-disabled: rgba(184, 198, 224, 0.5);
-    /* Disabled icons */
-
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.08;
-    /* Very subtle effects, barely visible */
-    --opacity-light: 0.15;
-    /* Light effects, clearly visible but subtle */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(77, 137, 232, 0.2);
-    /* Skill item background */
-    --color-skill-item-hover: rgba(58, 176, 191, 0.2);
-    /* Skill item hover - teal accent */
-    --color-skill-item-active: rgba(58, 176, 191, 0.35);
-    /* Skill item active - stronger teal */
-    --color-selection-bg: rgba(77, 137, 232, 0.25);
-    /* Text selection background */
-    --color-tooltip-bg: rgba(20, 27, 46, 0.97);
-    /* Tooltip background - nearly opaque dark */
-    --color-dropdown-bg: rgba(30, 40, 68, 0.98);
-    /* Dropdown menu background */
-
-    /* ════════════════════════════════════
-     CURSOR COLORS
-     For custom cursor effects
-     ════════════════════════════════════ */
-    --color-cursor-inner-rgb: 240, 242, 250;
-    /* Inner cursor ring RGB values - soft white */
-    --color-cursor-outer-rgb: 77, 137, 232;
-    /* Outer cursor ring RGB values - refined blue */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 77, 137, 232;
-    /* RGB values for refined blue */
-    --color-accent-secondary-rgb: 58, 176, 191;
-    /* RGB values for teal */
-    --color-accent-warm-rgb: 230, 126, 34;
-    /* RGB values for amber orange */
-    --color-accent-purple-rgb: 155, 89, 182;
-    /* RGB values for purple */
-    --color-bg-primary-rgb: 20, 27, 46;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 232, 236, 247;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - blue to teal */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient */
-    --gradient-blue: linear-gradient(45deg, #4d89e8, #3b72ca);
-    /* Blue gradient */
-    --gradient-teal: linear-gradient(45deg, #3ab0bf, #2e8f9a);
-    /* Teal gradient */
-    --gradient-glass: linear-gradient(120deg, rgba(240, 242, 250, 0.08), rgba(240, 242, 250, 0.04));
-    /* Glass effect gradient */
-    --gradient-overlay: linear-gradient(180deg, rgba(20, 27, 46, 0.8), rgba(20, 27, 46, 0.95));
-    /* Overlay gradient */
-    --gradient-purple-blue: linear-gradient(45deg, #9b59b6, #4d89e8);
-    /* Purple to blue gradient */
-    --gradient-blue-orange: linear-gradient(45deg, #4d89e8, #e67e22);
-    /* Blue to orange gradient */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(10, 15, 30, 0.25);
-    /* Small shadow */
-    --shadow-md: 0 12px 25px -10px rgba(10, 15, 30, 0.35);
-    /* Medium shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(10, 15, 30, 0.4);
-    /* Large shadow */
-    --shadow-inner: inset 0 2px 5px rgba(10, 15, 30, 0.15);
-    /* Inner shadow */
-    --shadow-focus: 0 0 0 3px rgba(77, 137, 232, 0.3);
-    /* Focus shadow */
-    --shadow-button: 0 0 15px rgba(77, 137, 232, 0.25);
-    /* Button shadow */
-
-    /* Wave-specific colors - white dominant for dark mode */
-    --wave-primary: #f3f6fb;
-    /* Dominant white color */
-    --wave-secondary: #ffffff;
-    /* Pure white for contrast */
-    --wave-accent-1: #3869b6;
-    /* Light theme accent for contrast */
-    --wave-accent-2: #2a7f8a;
-    /* Light theme teal for variation */
+  --wave-primary:   #F3F6FB;
+  --wave-secondary: #FFFFFF;
+  --wave-accent-1:  #3869B6;
+  --wave-accent-2:  #2A7F8A;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   REFINED BLUE LIGHT THEME
-   Soft blue-tinted white with professional blue accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════
+   BLUE THEME — LIGHT
+   ═══════════════════════════════════════════════════════ */
 [data-theme="blue-light"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #f3f6fb;
-    /* Main application background - soft blue-tinted white */
-    --color-bg-secondary: #ffffff;
-    /* Secondary containers, cards, sidebars */
-    --color-bg-tertiary: #eaf0f7;
-    /* Elevated surfaces, modals, popovers */
-    --color-bg-card: #ffffff;
-    /* Card backgrounds - pure white */
-    --color-bg-glass: rgba(243, 246, 251, 0.92);
-    /* Glass effect backgrounds - light surfaces */
-    --color-bg-code: rgba(235, 240, 250, 0.8);
-    /* Code block backgrounds - light gray-blue */
-    --color-bg-input: rgba(235, 240, 250, 0.7);
-    /* Form element backgrounds - very light blue */
-    --color-bg-hover: rgba(61, 122, 204, 0.08);
-    /* Hover state background - subtle blue */
-    --color-bg-active: rgba(61, 122, 204, 0.15);
-    /* Active/selected state background - stronger blue */
-    --color-bg-disabled: rgba(223, 227, 235, 0.7);
-    /* Disabled element background - light gray */
-    --color-bg-tooltip: rgba(42, 49, 64, 0.95);
-    /* Tooltip background - nearly opaque dark */
-    --color-bg-dropdown: #ffffff;
-    /* Dropdown menu background - white */
-    --color-bg-selection: rgba(56, 105, 182, 0.2);
-    /* Text selection background - highlighted blue */
+  /* ---------- PALETTE PEAKS ---------- */
+  --blue-500:  #3869B6;
+  --blue-600:  #2D5998;
+  --blue-700:  #224879;
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #2a3140;
-    /* Main body text - dark blue-gray */
-    --color-text-secondary: #455464;
-    /* Secondary/supporting text - medium blue-gray */
-    --color-text-tertiary: rgba(69, 84, 100, 0.7);
-    /* De-emphasized text, subtitles, captions */
-    --color-text-disabled: rgba(69, 84, 100, 0.5);
-    /* Disabled text - significantly reduced contrast */
-    --color-text-on-accent: #ffffff;
-    /* Text on accent-colored backgrounds - white with proper contrast */
-    --color-text-code: #0c569e;
-    /* Code and pre-formatted text - dark blue for readability */
+  --teal-500:  #2A7F8A;
+  --amber-500: #E67E22;
+  --purple-500:#8048A8;
+  --coral-500: #D55E47;
 
-    /* Headings */
-    --color-heading: #3869b6;
-    /* Standard headings - primary blue */
-    --color-heading-accent: #2a7f8a;
-    /* Accented headings - teal */
-    --color-subheading: #455464;
-    /* Subheadings, section titles - matching secondary text */
+  --bg-50:  #F3F6FB;
+  --bg-100: #EAF0F7;
+  --bg-900: #2A3140;
 
-    /* Special text */
-    --color-text-emphasis: #2a7f8a;
-    /* Emphasized text - teal */
-    --color-text-inverted: #f3f6fb;
-    /* Inverted text (on dark backgrounds) - soft blue-white */
+  /* ---------- SEMANTIC BACKGROUND ---------- */
+  --color-primary-bg:      var(--bg-50);
+  --color-secondary-bg:    #FFFFFF;
+  --color-tertiary-bg:     var(--bg-100);
+  --color-card-bg:         #FFFFFF;
+  --color-glass-bg:        rgba(243 246 251 / .92);
+  --color-code-bg:         rgba(235 240 250 / .80);
+  --color-input-bg:        rgba(235 240 250 / .70);
+  --color-hover-bg:        rgba(61 122 204 / .08);
+  --color-active-bg:       rgba(61 122 204 / .15);
+  --color-disabled-bg:     rgba(223 227 235 / .70);
+  --color-tooltip-bg:      rgba(42 49 64 / .95);
+  --color-dropdown-bg:     #FFFFFF;
+  --color-selection-bg:    rgba(56 105 182 / .20);
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with triadic relationship
-     ════════════════════════════════════ */
-    --color-brand-primary: #3869b6;
-    /* Primary brand color - refined blue */
-    --color-brand-secondary: #2a7f8a;
-    /* Secondary brand color - complementary teal */
+  /* ---------- SEMANTIC TEXT ---------- */
+  --color-primary-text:    var(--bg-900);
+  --color-secondary-text:  #455464;
+  --color-tertiary-text:   rgba(69 84 100 / .70);
+  --color-disabled-text:   rgba(69 84 100 / .50);
+  --color-text-on-accent:  #FFFFFF;
+  --color-code-text:       #0C569E;
+  --color-heading:         var(--blue-500);
+  --color-heading-accent:  var(--teal-500);
+  --color-subheading:      #455464;
+  --color-text-emphasis:   var(--teal-500);
+  --color-text-inverted:   var(--bg-50);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #3869b6;
-    /* Primary accent for main interactive elements */
-    --color-accent-primary-hover: #2d5998;
-    /* Hover state for primary accent - deeper blue */
-    --color-accent-primary-active: #224879;
-    /* Active state for primary accent - even deeper blue */
-    --color-accent-secondary: #2a7f8a;
-    /* Secondary accent for visual variety */
-    --color-accent-tertiary: #2c5aa0;
-    /* Tertiary accent for subtle highlights - darker blue */
-    --color-accent-warm: #d26e16;
-    /* Warm accent for attention-grabbing elements - amber orange */
-    --color-accent-contrast: #8048a8;
-    /* High-contrast accent for additional contrast - purple */
+  /* ---------- BRAND & ACCENTS ---------- */
+  --color-brand-primary:   var(--blue-500);
+  --color-brand-secondary: var(--teal-500);
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #3869b6;
-    /* Default interactive element color - blue */
-    --color-interactive-hover: #2d5998;
-    /* Hover state - deeper blue */
-    --color-interactive-active: #224879;
-    /* Active/pressed state - even deeper blue */
-    --color-interactive-focus: #3869b6;
-    /* Focus state - same as interactive with focus ring */
-    --color-interactive-disabled: rgba(56, 105, 182, 0.4);
-    /* Disabled state - faded blue */
+  --color-accent-primary:          var(--blue-500);
+  --color-accent-primary-hover:    var(--blue-600);
+  --color-accent-primary-active:   var(--blue-700);
+  --color-accent-secondary:        var(--teal-500);
+  --color-accent-tertiary:         #2C5AA0;
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #2a7f8a;
-    /* Secondary interactive elements - teal */
-    --color-interactive-secondary-hover: #216570;
-    /* Secondary hover state - deeper teal */
-    --color-interactive-secondary-active: #184f58;
-    /* Secondary active state - even deeper teal */
+  /* ---------- STATUS ---------- */
+  --color-success:         #27AE60;
+  --color-success-subtle:  rgba(39 174 96 / .12);
+  --color-warning:         var(--amber-500);
+  --color-warning-subtle:  rgba(230 126 34 / .12);
+  --color-error:           var(--coral-500);
+  --color-error-subtle:    rgba(213 94 71 / .12);
+  --color-info:            var(--blue-500);
+  --color-info-subtle:     rgba(56 105 182 / .12);
+  --color-neutral:         #7F8C8D;
+  --color-neutral-subtle:  rgba(127 140 141 / .12);
 
-    /* Form element specific colors */
-    --color-field-border: rgba(56, 105, 182, 0.35);
-    /* Form input borders */
-    --color-field-placeholder: rgba(69, 84, 100, 0.6);
-    /* Placeholder text */
-    --color-field-focus: #3869b6;
-    /* Field focus indicator */
-    --color-field-required: #2a7f8a;
-    /* Required field indicator */
-    --color-field-invalid: #d55e47;
-    /* Invalid field indicator */
+  /* ---------- SUPPORT ---------- */
+  --color-grid-lines:      rgba(77 137 232 / .15);
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts
-     ════════════════════════════════════ */
-    --color-success: #27ae60;
-    /* Success state - green */
-    --color-success-subtle: rgba(39, 174, 96, 0.12);
-    /* Subtle success background */
-    --color-warning: #e67e22;
-    /* Warning state - amber */
-    --color-warning-subtle: rgba(230, 126, 34, 0.12);
-    /* Subtle warning background */
-    --color-error: #d55e47;
-    /* Error state - coral red (more colorblind-friendly) */
-    --color-error-subtle: rgba(213, 94, 71, 0.12);
-    /* Subtle error background */
-    --color-info: #3869b6;
-    /* Information state - blue */
-    --color-info-subtle: rgba(56, 105, 182, 0.12);
-    /* Subtle info background */
-    --color-neutral: #7f8c8d;
-    /* Neutral state - gray */
-    --color-neutral-subtle: rgba(127, 140, 141, 0.12);
-    /* Subtle neutral background */
+  --shadow-sm:    0 2px  8px -2px rgba(42 49 64 / .08);
+  --shadow-md:    0 12px 25px -10px rgba(42 49 64 / .12);
+  --shadow-lg:    0 25px 50px -12px rgba(42 49 64 / .20);
+  --shadow-focus: 0 0 0 3px rgba(56 105 182 / .25);
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with clear purpose
-     ════════════════════════════════════ */
-    --color-divider: rgba(56, 105, 182, 0.15);
-    /* Dividers and separators - subtle blue tint */
-    --color-divider-light: rgba(0, 0, 0, 0.05);
-    /* Lighter dividers for contrast on light areas */
-    --color-border: rgba(56, 105, 182, 0.25);
-    /* Borders for containers, cards, etc */
-    --color-border-focus: #3869b6;
-    /* Focus state borders - blue */
-    --color-border-input: rgba(56, 105, 182, 0.3);
-    /* Form input borders - slightly stronger than regular */
-    --color-shadow: rgba(42, 49, 64, 0.2);
-    /* Shadows for elevation - blue-gray shadow */
-    --color-shadow-light: rgba(42, 49, 64, 0.1);
-    /* Lighter shadows for subtle elevation */
-    --color-overlay: rgba(243, 246, 251, 0.85);
-    /* Modal/dialog overlays - light background */
-    --color-notification-badge: #d55e47;
-    /* Notification badges - attention-grabbing coral */
-
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(56, 105, 182, 0.4);
-    /* Scrollbar thumb - semi-transparent blue */
-    --color-scrollbar-track: rgba(223, 227, 235, 0.5);
-    /* Scrollbar track - light gray */
-
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #3869b6;
-    /* Link text - blue */
-    --color-link-hover: #224879;
-    /* Link hover state - darker blue */
-    --color-link-visited: #8048a8;
-    /* Visited links - purple-blue */
-    --color-emphasis: #2a7f8a;
-    /* Emphasized text - teal */
-    --color-success-text: #27ae60;
-    /* Success messages - green */
-    --color-warning-text: #e67e22;
-    /* Warning messages - amber */
-    --color-error-text: #d55e47;
-    /* Error messages - coral red */
-    --color-info-text: #3869b6;
-    /* Information text - blue */
-
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #3869b6;
-    /* Primary icons - blue */
-    --color-icon-secondary: rgba(42, 127, 138, 0.9);
-    /* Secondary icons - teal with high opacity */
-    --color-icon-tertiary: rgba(69, 84, 100, 0.7);
-    /* Tertiary icons - muted, similar to tertiary text */
-    --color-icon-on-accent: #ffffff;
-    /* Icons on accent-colored backgrounds */
-    --color-icon-bg: rgba(56, 105, 182, 0.1);
-    /* Icon backgrounds or containers */
-    --color-icon-disabled: rgba(69, 84, 100, 0.5);
-    /* Disabled icons */
-
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.05;
-    /* Very subtle effects, barely visible */
-    --opacity-light: 0.12;
-    /* Light effects, clearly visible but subtle */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(56, 105, 182, 0.15);
-    /* Skill item background */
-    --color-skill-item-hover: rgba(42, 127, 138, 0.15);
-    /* Skill item hover - teal accent */
-    --color-skill-item-active: rgba(42, 127, 138, 0.25);
-    /* Skill item active - stronger teal */
-    --color-selection-bg: rgba(56, 105, 182, 0.2);
-    /* Text selection background */
-    --color-tooltip-bg: rgba(42, 49, 64, 0.95);
-    /* Tooltip background - nearly opaque dark */
-    --color-dropdown-bg: #ffffff;
-    /* Dropdown menu background - white */
-
-    /* ════════════════════════════════════
-     CURSOR COLORS
-     For custom cursor effects
-     ════════════════════════════════════ */
-    --color-cursor-inner-rgb: 42, 49, 64;
-    /* Inner cursor ring RGB values - dark blue-gray */
-    --color-cursor-outer-rgb: 56, 105, 182;
-    /* Outer cursor ring RGB values - blue */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 56, 105, 182;
-    /* RGB values for refined blue */
-    --color-accent-secondary-rgb: 42, 127, 138;
-    /* RGB values for teal */
-    --color-accent-warm-rgb: 210, 110, 22;
-    /* RGB values for amber orange */
-    --color-accent-purple-rgb: 128, 72, 168;
-    /* RGB values for purple */
-    --color-bg-primary-rgb: 243, 246, 251;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 42, 49, 64;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - blue to teal */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient */
-    --gradient-blue: linear-gradient(45deg, #3869b6, #2d5998);
-    /* Blue gradient */
-    --gradient-teal: linear-gradient(45deg, #2a7f8a, #216570);
-    /* Teal gradient */
-    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
-    /* Glass effect gradient */
-    --gradient-overlay: linear-gradient(180deg, rgba(243, 246, 251, 0.85), rgba(243, 246, 251, 0.95));
-    /* Overlay gradient */
-    --gradient-purple-blue: linear-gradient(45deg, #8048a8, #3869b6);
-    /* Purple to blue gradient */
-    --gradient-blue-orange: linear-gradient(45deg, #3869b6, #d26e16);
-    /* Blue to orange gradient */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(42, 49, 64, 0.08);
-    /* Small shadow */
-    --shadow-md: 0 12px 25px -10px rgba(42, 49, 64, 0.12);
-    /* Medium shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(42, 49, 64, 0.2);
-    /* Large shadow */
-    --shadow-inner: inset 0 2px 5px rgba(42, 49, 64, 0.05);
-    /* Inner shadow */
-    --shadow-focus: 0 0 0 3px rgba(56, 105, 182, 0.25);
-    /* Focus shadow */
-    --shadow-button: 0 4px 14px rgba(42, 49, 64, 0.15);
-    /* Button shadow */
-
-    /* Wave-specific colors - dark dominant for light mode */
-    --wave-primary: #141b2e;
-    /* Dominant charcoal/dark blue */
-    --wave-secondary: #1a2744;
-    /* Slightly lighter dark blue */
-    --wave-accent-1: #4d89e8;
-    /* Dark theme blue accent */
-    --wave-accent-2: #3ab0bf;
-    /* Dark theme teal accent */
+  --wave-primary:   var(--bg-900);
+  --wave-secondary: #1A2744;
+  --wave-accent-1:  var(--blue-500);
+  --wave-accent-2:  var(--teal-500);
 }
 
-/* Set color-scheme for the theme */
-[data-theme="blue-dark"] {
-    color-scheme: dark;
+/* ═══════════════════════════════════════════════════════
+   COLOR‑SCHEME HINT
+   ═══════════════════════════════════════════════════════ */
+[data-theme="blue-dark"]  { color-scheme: dark;  }
+[data-theme="blue-light"] { color-scheme: light; }
+
+/* ═══════════════════════════════════════════════════════
+   LEGACY VARIABLE ALIASES  (keep until full refactor)
+   ═══════════════════════════════════════════════════════ */
+:root {
+  /* Background aliases */
+  --color-bg-primary:      var(--color-primary-bg);
+  --color-bg-secondary:    var(--color-secondary-bg);
+  --color-bg-tertiary:     var(--color-tertiary-bg);
+  --color-bg-card:         var(--color-card-bg);
+  --color-bg-glass:        var(--color-glass-bg);
+  --color-bg-code:         var(--color-code-bg);
+  --color-bg-input:        var(--color-input-bg);
+  --color-bg-hover:        var(--color-hover-bg);
+  --color-bg-active:       var(--color-active-bg);
+  --color-bg-disabled:     var(--color-disabled-bg);
+  --color-bg-tooltip:      var(--color-tooltip-bg);
+  --color-bg-dropdown:     var(--color-dropdown-bg);
+  --color-bg-selection:    var(--color-selection-bg);
+
+  /* Text aliases */
+  --color-text-primary:    var(--color-primary-text);
+  --color-text-secondary:  var(--color-secondary-text);
+  --color-text-tertiary:   var(--color-tertiary-text);
+  --color-text-disabled:   var(--color-disabled-text);
 }
 
-[data-theme="blue-light"] {
-    color-scheme: light;
-}
-
-/* ────────────────────────────────────────────────────────────────────────────
- * Custom scrollbar styling for Blue theme
- * ────────────────────────────────────────────────────────────────────────── */
-[data-theme^="blue"] .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-[data-theme^="blue"] .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--color-scrollbar-track);
-    border-radius: 4px;
-}
-
-[data-theme^="blue"] .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--color-scrollbar-thumb);
-    border-radius: 4px;
-}
-
-[data-theme^="blue"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-interactive);
-}
-
-/* Firefox scrollbar support */
-[data-theme^="blue"] .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
-}
-/* Add missing variables to Blue Dark theme */
-[data-theme="blue-dark"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(240, 242, 250, 0.2);  /* Light blue grid lines for dark theme */
-}
-
-/* Add missing variables to Blue Light theme */
-[data-theme="blue-light"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(77, 137, 232, 0.15);  /* Blue grid lines for light theme */
-}
+/* End blue theme */

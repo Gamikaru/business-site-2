@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-// Define theme types
+// Define theme types - ensure we include all available themes
 type ColorTheme =
   | "green"
   | "blue"
@@ -25,8 +25,8 @@ type ColorTheme =
   | "sunset-oasis"
   | "tropical-paradise"
   | "urban-splash"
-  | "winter"
-  | "yellow";
+  | "winter" // Added winter
+  | "yellow"; // Added yellow
 
 type Mode = "light" | "dark";
 

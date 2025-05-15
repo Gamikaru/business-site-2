@@ -64,7 +64,10 @@ const DesktopFooter: React.FC = () => {
           <div className="col-span-3">
             <h3 className="text-heading font-heading font-semibold text-lg mb-4">
               Quick Links
-              <div className="w-16 h-px bg-brand-primary mt-2"></div>
+              <div
+                className="w-16 h-px mt-2"
+                style={{ background: "var(--color-accent-primary)" }}
+              ></div>
             </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
@@ -73,7 +76,10 @@ const DesktopFooter: React.FC = () => {
                     href={link.href}
                     className="text-text-secondary hover:text-heading transition-colors duration-200 inline-flex items-center group"
                   >
-                    <span className="mr-2 text-brand-primary opacity-80">
+                    <span
+                      className="mr-2 opacity-80"
+                      style={{ color: "var(--color-accent-primary)" }}
+                    >
                       •
                     </span>
                     {link.label}
@@ -87,7 +93,10 @@ const DesktopFooter: React.FC = () => {
           <div className="col-span-3">
             <h3 className="text-heading font-heading font-semibold text-lg mb-4">
               Services
-              <div className="w-16 h-px bg-brand-primary mt-2"></div>
+              <div
+                className="w-16 h-px mt-2"
+                style={{ background: "var(--color-accent-primary)" }}
+              ></div>
             </h3>
             <ul className="space-y-2">
               {serviceLinks.map((link) => (
@@ -96,7 +105,10 @@ const DesktopFooter: React.FC = () => {
                     href={link.href}
                     className="text-text-secondary hover:text-heading transition-colors duration-200 inline-flex items-center group"
                   >
-                    <span className="mr-2 text-brand-primary opacity-80">
+                    <span
+                      className="mr-2 opacity-80"
+                      style={{ color: "var(--color-accent-primary)" }}
+                    >
                       •
                     </span>
                     {link.label}
@@ -110,7 +122,10 @@ const DesktopFooter: React.FC = () => {
           <div className="col-span-3">
             <h3 className="text-heading font-heading font-semibold text-lg mb-4">
               Insights
-              <div className="w-16 h-px bg-brand-primary mt-2"></div>
+              <div
+                className="w-16 h-px mt-2"
+                style={{ background: "var(--color-accent-primary)" }}
+              ></div>
             </h3>
             <div className="mb-4">
               <h4 className="text-heading font-medium">Latest Post ▶</h4>
@@ -119,7 +134,8 @@ const DesktopFooter: React.FC = () => {
               </p>
               <Link
                 href="/blog/llm-guardrails"
-                className="text-sm text-brand-primary mt-2 inline-flex items-center group hover:text-accent-oceanic transition-colors duration-200"
+                className="text-sm mt-2 inline-flex items-center group transition-colors duration-200"
+                style={{ color: "var(--color-accent-primary)" }}
               >
                 Read More
                 <Icon
@@ -135,7 +151,10 @@ const DesktopFooter: React.FC = () => {
           <div className="col-span-3">
             <h3 className="text-heading font-heading font-semibold text-lg mb-4">
               Connect
-              <div className="w-16 h-px bg-brand-primary mt-2"></div>
+              <div
+                className="w-16 h-px mt-2"
+                style={{ background: "var(--color-accent-primary)" }}
+              ></div>
             </h3>
             <div className="space-y-2">
               <p className="text-text-primary">hello@gav.dev</p>
@@ -146,7 +165,11 @@ const DesktopFooter: React.FC = () => {
                   href="https://twitter.com/yourusername"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 flex items-center justify-center rounded-sm border border-divider text-icon-secondary hover:text-brand-primary hover:border-brand-primary transition-colors duration-200 focus-visible-ring"
+                  className="w-8 h-8 flex items-center justify-center rounded-sm border text-icon-secondary transition-colors duration-200 focus-visible-ring"
+                  style={{
+                    borderColor: "var(--color-divider)",
+                    color: "var(--color-icon-secondary)",
+                  }}
                   whileHover={shouldAnimate() ? { y: -3 } : {}}
                   transition={{ duration: 0.2 }}
                   aria-label="Twitter"
@@ -159,7 +182,11 @@ const DesktopFooter: React.FC = () => {
                   href="https://github.com/yourusername"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 flex items-center justify-center rounded-sm border border-divider text-icon-secondary hover:text-brand-primary hover:border-brand-primary transition-colors duration-200 focus-visible-ring"
+                  className="w-8 h-8 flex items-center justify-center rounded-sm border text-icon-secondary transition-colors duration-200 focus-visible-ring"
+                  style={{
+                    borderColor: "var(--color-divider)",
+                    color: "var(--color-icon-secondary)",
+                  }}
                   whileHover={shouldAnimate() ? { y: -3 } : {}}
                   transition={{ duration: 0.2 }}
                   aria-label="GitHub"
@@ -172,7 +199,11 @@ const DesktopFooter: React.FC = () => {
                   href="https://linkedin.com/in/yourusername"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 flex items-center justify-center rounded-sm border border-divider text-icon-secondary hover:text-brand-primary hover:border-brand-primary transition-colors duration-200 focus-visible-ring"
+                  className="w-8 h-8 flex items-center justify-center rounded-sm border text-icon-secondary transition-colors duration-200 focus-visible-ring"
+                  style={{
+                    borderColor: "var(--color-divider)",
+                    color: "var(--color-icon-secondary)",
+                  }}
                   whileHover={shouldAnimate() ? { y: -3 } : {}}
                   transition={{ duration: 0.2 }}
                   aria-label="LinkedIn"

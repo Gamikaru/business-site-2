@@ -57,17 +57,17 @@ const MobileBlogPosts: React.FC<MobileBlogPostsProps> = ({ posts, analyticsData 
                   <div className="absolute inset-0 bg-gradient-to-t from-bg-card/90 to-transparent"></div>
 
                   {/* Reading time badge */}
-                  <div className="absolute top-3 left-3 px-2 py-1 bg-black/60 backdrop-blur-sm rounded flex items-center space-x-1.5">
+                  <div className="absolute top-3 left-3 px-2 py-1 bg-code-bg backdrop-blur-sm rounded flex items-center space-x-1.5">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cx="12" r="10"></circle>
                       <path d="M12 6v6l4 2"></path>
                     </svg>
-                    <span className="text-xs text-white font-medium">{post.readTime}</span>
+                    <span className="text-xs text-primary-text font-medium">{post.readTime}</span>
                   </div>
 
                   {index === 0 && (
-                    <div className="absolute top-3 right-3 px-2 py-1 bg-brand-primary/90 rounded">
-                      <span className="text-xs text-white font-medium">Featured</span>
+                    <div className="absolute top-3 right-3 px-2 py-1 bg-brand-primary rounded">
+                      <span className="text-xs text-text-on-accent font-medium">Featured</span>
                     </div>
                   )}
                 </div>
@@ -87,7 +87,7 @@ const MobileBlogPosts: React.FC<MobileBlogPostsProps> = ({ posts, analyticsData 
                     <div className="flex justify-between items-center text-[10px] font-mono text-text-tertiary border-t border-divider pt-3">
                       <div>WORDS/{analytics.wordCount}</div>
                       <div className="flex items-center space-x-1">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent-oceanic"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-accent-secondary"></div>
                         <span>POP/{analytics.popularity}%</span>
                       </div>
                     </div>

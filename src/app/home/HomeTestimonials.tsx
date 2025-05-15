@@ -2,23 +2,21 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
-import {
-  ScrollReveal,
-  TextReveal,
-  AnimatedPath,
-} from "@/components/core/Animations";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ScrollReveal, AnimatedPath } from "@/components/core/Animations";
 import { Divider } from "@/components/common/Divider";
 import { Heading } from "@/components/common/Typography";
 import { processQuoteIntoSegments } from "@/utils/textUtils";
-import RichText  from "@/components/common/Typography/RichText";
-
 import { cn } from "@/utils/classNames";
+
+import {
+  TestimonialQuote,
+  TestimonialAuthor,
+  TestimonialResult,
+  TestimonialBackground,
+  TestimonialMeasurements,
+  TestimonialPagination
+} from "./components/testimonials";
 
 interface TestimonialItem {
   id: string;
@@ -123,50 +121,7 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
   const testimonial = items[activeIndex];
 
   // Process quote for highlighting
-  // src/components/home/HomeTestimonials.tsx
-
-  // processQuote function - updated to preserve spaces between words
-  // Alternative simpler implementation
-  // Alternative simpler implementation
-  // Updated processQuote function for src/components/home/HomeTestimonials.tsx
-  // Add this import to the top of HomeTestimonials.tsx
-
-  // Then replace the processQuote function with this:
-  const processQuote = () => {
-    if (!testimonial) return null;
-
-    // Use the utility function to split the quote with proper spacing
-    const segments = processQuoteIntoSegments(testimonial.quote, 3);
-
-    return (
-      <>
-        <span className="text-4xl text-brand-primary">&quot;</span>
-        {segments.map((segment, index) => (
-          <React.Fragment key={index}>
-            <motion.span
-              className={cn(
-                "inline-block whitespace-normal preserve-whitespace",
-                highlightedText === index
-                  ? "text-brand-primary font-semibold word-spacing-wide"
-                  : "text-text-primary word-spacing-normal"
-              )}
-              animate={{
-                scale: highlightedText === index ? 1.05 : 1,
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              {segment}
-            </motion.span>
-            {/* Explicit space between segments */}
-            {index < segments.length - 1 && (
-              <span className="inline-block whitespace-pre"> </span>
-            )}
-          </React.Fragment>
-        ))}
-        <span className="text-4xl text-brand-primary">&quot;</span>
-      </>
-    );
-  };
+  const segments = processQuoteIntoSegments(testimonial.quote, 3);
 
   return (
     <motion.section
@@ -177,89 +132,12 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
       transition={{ duration: 0.8 }}
     >
       {/* Enhanced technical background */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Animated wave background patterns */}
-        <motion.div
-          className="absolute inset-0"
-          style={{
-            y: backgroundY,
-            opacity: opacityWave,
-          }}
-        >
-          {/* Multiple wave layers with animation */}
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="0 0 1440 400"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            className="absolute inset-0"
-          >
-            <motion.path
-              d="M0 89L48 97.2C96 105.3 192 121.7 288 130.3C384 139 480 139 576 147.2C672 155.3 768 171.7 864 171.8C960 172 1056 156 1152 147.2C1248 138.3 1344 138.7 1392 139L1440 139L1440 401L1392 401C1344 401 1248 401 1152 401C1056 401 960 401 864 401C768 401 672 401 576 401C480 401 384 401 288 401C192 401 96 401 48 401L0 401L0 89Z"
-              fill="var(--wave-accent-1)"
-              opacity="0.25"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 0.25 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-            />
-            <motion.path
-              d="M0 209L48 201.2C96 193.3 192 177.7 288 168.8C384 160 480 160 576 168.5C672 177 768 193 864 209.2C960 225.3 1056 241.7 1152 250.7C1248 259.7 1344 260.3 1392 260.7L1440 261L1440 401L1392 401C1344 401 1248 401 1152 401C1056 401 960 401 864 401C768 401 672 401 576 401C480 401 384 401 288 401C192 401 96 401 48 401L0 401L0 209Z"
-              fill="var(--wave-accent-2)"
-              opacity="0.15"
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 0.15 }}
-              transition={{ duration: 1.8, delay: 0.2, ease: "easeOut" }}
-            />
-          </svg>
+      <TestimonialBackground
+        backgroundY={backgroundY}
+        opacityWave={opacityWave}
+      />
 
-          {/* Technical measurement grid overlay */}
-          <svg
-            className="absolute inset-0 opacity-5"
-            width="100%"
-            height="100%"
-            preserveAspectRatio="none"
-          >
-            {/* Horizontal lines */}
-            {Array.from({ length: 10 }).map((_, i) => (
-              <motion.line
-                key={`h-${i}`}
-                x1="0"
-                y1={`${i * 10}%`}
-                x2="100%"
-                y2={`${i * 10}%`}
-                stroke="var(--color-accent-oceanic)"
-                strokeWidth={i % 5 === 0 ? "0.5" : "0.2"}
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1.5, delay: 0.2 + i * 0.05 }}
-              />
-            ))}
-
-            {/* Vertical lines */}
-            {Array.from({ length: 10 }).map((_, i) => (
-              <motion.line
-                key={`v-${i}`}
-                x1={`${i * 10}%`}
-                y1="0"
-                x2={`${i * 10}%`}
-                y2="100%"
-                stroke="var(--color-accent-oceanic)"
-                strokeWidth={i % 5 === 0 ? "0.5" : "0.2"}
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1.5, delay: 0.2 + i * 0.05 }}
-              />
-            ))}
-          </svg>
-        </motion.div>
-
-        {/* Technical dots pattern */}
-        <div className="absolute inset-0 opacity-10 bg-dots-dense"></div>
-      </div>
-
-<div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
+      <div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
         {/* Enhanced section header with technical styling */}
         <ScrollReveal
           direction="up"
@@ -284,7 +162,7 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <AnimatedPath
                   d="M0 12H24"
-                  stroke="var(--color-brand-primary)"
+                  stroke="var(--color-accent-primary)"
                   strokeWidth="2"
                 />
               </svg>
@@ -299,7 +177,7 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <AnimatedPath
                   d="M24 12H0"
-                  stroke="var(--color-brand-primary)"
+                  stroke="var(--color-accent-primary)"
                   strokeWidth="2"
                 />
               </svg>
@@ -309,204 +187,34 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
 
         {/* Enhanced testimonial container */}
         <div className="max-w-4xl mx-auto relative">
-          {/* Technical measurement frame */}
-          <motion.div
-            className="absolute -inset-6 border border-accent-oceanic/30 hidden md:block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-          >
-            {/* Corner measurement markers */}
-            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent-oceanic/80"></div>
-            <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-accent-oceanic/80"></div>
-            <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-accent-oceanic/80"></div>
-            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent-oceanic/80"></div>
-
-            {/* Dimension measurements */}
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-accent-oceanic">
-              W:{techValues.testimonialDimensions.width}px
-            </div>
-            <div className="absolute -left-6 top-1/2 -translate-y-1/2 text-[10px] font-mono text-accent-oceanic transform -rotate-90">
-              H:{techValues.testimonialDimensions.height}px
-            </div>
-
-            {/* Technical readout */}
-            <div className="absolute -top-6 right-0 text-[10px] font-mono text-accent-oceanic">
-              ALIGN:{techValues.alignmentFactor}
-            </div>
-          </motion.div>
-
-          {/* Quote verification badge */}
-          <motion.div
-            className="absolute -left-10 top-4 hidden md:block"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 1 }}
-          >
-            <div className="bg-bg-glass backdrop-blur-sm p-2 rounded-full border border-brand-primary/30">
-              <div className="relative">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="var(--color-brand-primary)"
-                  strokeWidth="2"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                <div className="absolute -bottom-1 -right-1 h-2 w-2 rounded-full bg-brand-primary animate-pulse"></div>
-              </div>
-            </div>
-            <div className="text-[10px] font-mono text-brand-primary mt-1 text-center">
-              VERIFIED
-            </div>
-          </motion.div>
-
-          {/* Confidence score indicator */}
-          <motion.div
-            className="absolute -right-16 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center"
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 1.2 }}
-          >
-            <div className="h-32 w-4 bg-bg-glass backdrop-blur-sm border border-accent-oceanic/30 rounded-full overflow-hidden">
-              <motion.div
-                className="w-full bg-brand-primary rounded-full"
-                initial={{ height: 0 }}
-                animate={{ height: `${techValues.confidenceScore}%` }}
-                transition={{ duration: 1, delay: 1.5 }}
-              ></motion.div>
-            </div>
-            <div className="text-[10px] font-mono text-accent-oceanic mt-2">
-              CONF:{techValues.confidenceScore}%
-            </div>
-          </motion.div>
+          {/* Technical measurements */}
+          <TestimonialMeasurements techValues={techValues} />
 
           {/* Main quote with dynamic highlighting */}
           <div ref={quoteRef} className="relative">
-            <TextReveal
-              splitBy="words"
-              staggerChildren={true}
-              direction="up"
-              className="mb-8 text-center"
-            >
-              <div className="text-xl md:text-2xl lg:text-3xl font-heading italic leading-relaxed">
-                <RichText content={testimonial.quote} />
-              </div>
-            </TextReveal>
-
-            {/* Animated underline */}
-            <motion.div
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-px bg-brand-primary"
-              initial={{ width: 0 }}
-              animate={{ width: isQuoteVisible ? "60%" : "0%" }}
-              transition={{ duration: 1, delay: 0.5 }}
-            ></motion.div>
+            <TestimonialQuote
+              quote={testimonial.quote}
+              segments={segments}
+              highlightedText={highlightedText}
+              isVisible={isQuoteVisible}
+            />
           </div>
 
           {/* Author attribution with enhanced styling */}
-          <ScrollReveal
-            direction="up"
-            delay={0.4}
-            className="text-center mt-10 relative"
-          >
-            <div className="relative inline-block">
-              <p className="text-lg font-medium text-brand-primary">
-                — {testimonial.author}, {testimonial.role}
-              </p>
-
-              {/* Technical measurement lines */}
-              <motion.div
-                className="absolute -left-10 top-1/2 -translate-y-1/2 hidden md:block"
-                initial={{ opacity: 0, scaleX: 0 }}
-                animate={{ opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                style={{ transformOrigin: "right" }}
-              >
-                <svg width="40" height="2" viewBox="0 0 40 2">
-                  <rect
-                    width="40"
-                    height="2"
-                    fill="var(--color-brand-primary)"
-                    opacity="0.3"
-                  />
-                </svg>
-              </motion.div>
-
-              <motion.div
-                className="absolute -right-10 top-1/2 -translate-y-1/2 hidden md:block"
-                initial={{ opacity: 0, scaleX: 0 }}
-                animate={{ opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                style={{ transformOrigin: "left" }}
-              >
-                <svg width="40" height="2" viewBox="0 0 40 2">
-                  <rect
-                    width="40"
-                    height="2"
-                    fill="var(--color-brand-primary)"
-                    opacity="0.3"
-                  />
-                </svg>
-              </motion.div>
-            </div>
-          </ScrollReveal>
+          <TestimonialAuthor
+            author={testimonial.author}
+            role={testimonial.role}
+          />
 
           {/* Result highlight with technical styling */}
-          <ScrollReveal
-            direction="up"
-            delay={0.5}
-            className="mt-12 text-center"
-          >
-            <motion.div
-              className="bg-bg-glass backdrop-blur-sm p-6 rounded-lg inline-block relative max-w-xl"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              whileHover={{
-                boxShadow: "0 0 20px rgba(var(--color-brand-primary-rgb), 0.2)",
-              }}
-            >
-              {/* Technical corner details */}
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-brand-primary"></div>
-              <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-brand-primary"></div>
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-brand-primary"></div>
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-brand-primary"></div>
+          <TestimonialResult result={testimonial.result} />
 
-              <div className="relative z-10">
-                <p className="text-text-primary italic">
-                  <span className="text-brand-primary font-bold inline-block mr-2">
-                    ↑
-                  </span>{" "}
-                  <RichText content={testimonial.result} />
-                </p>
-              </div>
-
-              {/* Technical data readout */}
-              <div className="absolute -bottom-1 right-3 transform translate-y-full text-[8px] font-mono text-accent-cosmic hidden md:block">
-                IMPACT/ASSESSMENT
-              </div>
-            </motion.div>
-          </ScrollReveal>
-
-          {/* Multi-testimonial indicator dots (if you have multiple testimonials) */}
-          {items.length > 1 && (
-            <div className="flex justify-center mt-10 space-x-2">
-              {items.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveIndex(i)}
-                  className={cn(
-                    "w-3 h-3 rounded-full transition-colors duration-300",
-                    i === activeIndex ? "bg-brand-primary" : "bg-divider"
-                  )}
-                  aria-label={`View testimonial ${i + 1}`}
-                />
-              ))}
-            </div>
-          )}
+          {/* Multi-testimonial indicator dots */}
+          <TestimonialPagination
+            totalItems={items.length}
+            activeIndex={activeIndex}
+            onSelect={setActiveIndex}
+          />
         </div>
       </div>
 
@@ -532,7 +240,7 @@ const HomeTestimonials: React.FC<HomeTestimonialsProps> = ({
               y1="0"
               x2="60"
               y2="100"
-              stroke="var(--color-brand-primary)"
+              stroke="var(--color-accent-primary)"
               strokeWidth="0.5"
               strokeOpacity="0.3"
               initial={{ pathLength: 0 }}

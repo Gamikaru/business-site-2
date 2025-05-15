@@ -5,7 +5,7 @@ import { cn } from '@/utils/classNames';
 
 // Define variants for the Heading component
 const headingVariants = cva(
-  'font-heading font-bold text-heading tracking-heading leading-heading whitespace-normal word-spacing-normal', // Added whitespace-normal and word-spacing-normal
+  'font-heading tracking-heading leading-heading whitespace-normal',
   {
     variants: {
       level: {
@@ -41,7 +41,6 @@ const headingVariants = cva(
         capitalize: 'capitalize',
         normal: 'normal-case',
       },
-      // Add a new spacing variant
       spacing: {
         normal: 'word-spacing-normal',
         wide: 'word-spacing-wide',
@@ -53,17 +52,16 @@ const headingVariants = cva(
       variant: 'default',
       weight: 'bold',
       align: 'left',
-      spacing: 'normal', // Default to normal spacing
+      spacing: 'normal',
     },
   }
 );
 
-// Update props interface to include the new spacing variant
 export interface HeadingProps
   extends React.HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  preserveSpacing?: boolean; // Add this option
+  preserveSpacing?: boolean;
 }
 
 // The Heading component
@@ -78,14 +76,14 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     spacing,
     className,
     children,
-    preserveSpacing = true, // Default to preserve spacing
+    preserveSpacing = true,
     ...props
   }, ref) => {
     // Determine heading element based on level prop or as prop
     const Component = as || (`h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6');
 
-    // If preserveSpacing is true, add an additional class to ensure spacing
-    const spacingClass = preserveSpacing ? 'whitespace-normal word-break-normal' : '';
+    // If preserveSpacing is true, add an additional class
+    const spacingClass = preserveSpacing ? 'whitespace-normal preserve-whitespace' : '';
 
     return (
       <Component
@@ -95,7 +93,6 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
           spacingClass,
           className
         )}
-        style={{ wordSpacing: 'var(--word-spacing-heading)' }} // Ensure word spacing is applied
         {...props}
       >
         {children}

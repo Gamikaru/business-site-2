@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
 // Define system font fallbacks
 export const SYSTEM_FONTS = {
@@ -9,425 +9,368 @@ export const SYSTEM_FONTS = {
   mono: 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
 };
 
-// Enhance Font System with structured definitions
-export const FONT_SYSTEMS = {
-  MODERN: {
-    id: "modern",
-    name: "Modern",
-    heading: {
-      family: `var(--font-montserrat), ${SYSTEM_FONTS.sans}`, // Using CSS variable
-      weights: [600, 700],
-      letterSpacing: -0.01,
-      features: "'kern', 'liga', 'calt', 'pnum'",
-    },
-    body: {
-      family: `var(--font-inter), ${SYSTEM_FONTS.sans}`,
-      weights: [400, 500, 600],
-      letterSpacing: 0.025,
-      features: "'kern', 'liga', 'calt', 'onum'",
-    },
-    code: {
-      family: `var(--font-jetbrains-mono), ${SYSTEM_FONTS.mono}`,
-      weights: [400, 500],
-      letterSpacing: 0,
-      features: "'kern', 'zero'",
-    },
-    lineHeight: {
-      tight: 1.2,
-      normal: 1.6,
-      code: 1.5,
-    },
-    scale: 1.2,
-  },
-  ELEGANT: {
-    id: "elegant",
-    name: "Elegant",
-    heading: {
-      family: `var(--font-playfair-display), ${SYSTEM_FONTS.serif}`,
-      weights: [600, 700],
-      letterSpacing: -0.02,
-      features: "'kern', 'liga', 'calt', 'pnum', 'ss01'",
-    },
-    body: {
-      family: `var(--font-lato), ${SYSTEM_FONTS.sans}`,
-      weights: [400, 700],
-      letterSpacing: 0.02,
-      features: "'kern', 'liga', 'calt', 'onum'",
-    },
-    code: {
-      family: `var(--font-fira-code), ${SYSTEM_FONTS.mono}`,
-      weights: [400, 500],
-      letterSpacing: 0,
-      features: "'kern', 'liga'",
-    },
-    lineHeight: {
-      tight: 1.3,
-      normal: 1.7,
-      code: 1.5,
-    },
-    scale: 1.25,
-  },
-  TECHNICAL: {
-    id: "technical",
-    name: "Technical",
-    heading: {
-      family: `var(--font-roboto), ${SYSTEM_FONTS.sans}`,
-      weights: [500, 700],
-      letterSpacing: 0,
-      features: "'kern', 'liga', 'calt', 'pnum'",
-    },
-    body: {
-      family: `var(--font-source-sans-pro), ${SYSTEM_FONTS.sans}`, // Keep this variable name for compatibility
-      weights: [400, 600],
-      letterSpacing: 0.015,
-      features: "'kern', 'liga', 'calt'",
-    },
-    code: {
-      family: `var(--font-inconsolata), ${SYSTEM_FONTS.mono}`,
-      weights: [400, 500],
-      letterSpacing: 0,
-      features: "'kern', 'zero'",
-    },
-    lineHeight: {
-      tight: 1.2,
-      normal: 1.5,
-      code: 1.4,
-    },
-    scale: 1.2,
-  },
-  EDITORIAL: {
-    id: "editorial",
-    name: "Editorial",
-    heading: {
-      family: `var(--font-fraunces), ${SYSTEM_FONTS.serif}`,
-      weights: [600, 700, 900],
-      letterSpacing: -0.02,
-      features: "'kern', 'liga', 'calt', 'pnum', 'ss01'",
-    },
-    body: {
-      family: `var(--font-libre-franklin), ${SYSTEM_FONTS.sans}`,
-      weights: [400, 500, 600],
-      letterSpacing: 0.01,
-      features: "'kern', 'liga', 'calt', 'onum'",
-    },
-    code: {
-      family: `var(--font-ibm-plex-mono), ${SYSTEM_FONTS.mono}`,
-      weights: [400, 500],
-      letterSpacing: 0,
-      features: "'kern', 'zero'",
-    },
-    lineHeight: {
-      tight: 1.2,
-      normal: 1.65,
-      code: 1.5,
-    },
-    scale: 1.3,
-  },
-  NEO_GEOMETRIC: {
-    id: "neo-geometric",
-    name: "Neo Geometric",
-    heading: {
-      family: `var(--font-space-grotesk), ${SYSTEM_FONTS.sans}`,
-      weights: [500, 700],
-      letterSpacing: -0.03,
-      features: "'kern', 'liga', 'calt', 'ss01'",
-    },
-    body: {
-      family: `var(--font-dm-sans), ${SYSTEM_FONTS.sans}`,
-      weights: [400, 500, 700],
-      letterSpacing: 0.01,
-      features: "'kern', 'liga', 'calt'",
-    },
-    code: {
-      family: `var(--font-jetbrains-mono), ${SYSTEM_FONTS.mono}`,  // Using JetBrains as fallback for Recursive Mono
-      weights: [400, 500],
-      letterSpacing: 0,
-      features: "'kern', 'ss01', 'ss02'",
-    },
-    lineHeight: {
-      tight: 1.15,
-      normal: 1.6,
-      code: 1.5,
-    },
-    scale: 1.25,
-  },
-  CYBERVOID: {
-    id: "cybervoid",
-    name: "Cybervoid",
-    heading: {
-      family: `var(--font-rajdhani), ${SYSTEM_FONTS.sans}`,
-      weights: [500, 600, 700],
-      letterSpacing: 0.03,
-      features: "'kern', 'liga', 'calt'",
-    },
-    body: {
-      family: `var(--font-quantico), ${SYSTEM_FONTS.sans}`,
-      weights: [400, 700],
-      letterSpacing: 0.01,
-      features: "'kern', 'liga', 'calt'",
-    },
-    code: {
-      family: `var(--font-vt323), ${SYSTEM_FONTS.mono}`,
-      weights: [400],
-      letterSpacing: 0,
-      features: "'kern'",
-    },
-    lineHeight: {
-      tight: 1.15,
-      normal: 1.5,
-      code: 1.4,
-    },
-    scale: 1.5,
-  },
-  SYSTEM: {
-    id: "system",
-    name: "System",
-    heading: {
-      family: SYSTEM_FONTS.sans,
-      weights: [600, 700],
-      letterSpacing: -0.01,
-      features: "'kern', 'liga', 'calt'",
-    },
-    body: {
-      family: SYSTEM_FONTS.sans,
-      weights: [400, 500, 600],
-      letterSpacing: 0.01,
-      features: "'kern', 'liga', 'calt'",
-    },
-    code: {
-      family: SYSTEM_FONTS.mono,
-      weights: [400, 500],
-      letterSpacing: 0,
-      features: "'kern'",
-    },
-    lineHeight: {
-      tight: 1.2,
-      normal: 1.5,
-      code: 1.5,
-    },
-    scale: 1.2,
-  },
-};
+// Font definition interfaces
+interface FontDefinition {
+  family: string;
+  weight: string;
+  fallback: keyof typeof SYSTEM_FONTS;
+}
 
-// Map fonts to complementary color themes
-export const FONT_THEME_RECOMMENDATIONS = {
-  "neo-geometric": ["blue", "silver", "modern-pro"],
-  cybervoid: ["cyber-punk-graffiti", "red", "duotone"],
-  editorial: ["green", "earth", "royal-jewel"],
-  technical: ["quantum-nebula", "monochrome", "silver"],
-};
-
-// TypeScript interfaces
-interface FontSystem {
+export interface FontSystem {
   id: string;
   name: string;
-  heading: FontFamily;
-  body: FontFamily;
-  code: FontFamily;
-  lineHeight: {
-    tight: number;
-    normal: number;
-    code: number;
-  };
-  scale: number;
+  description: string;
+  heading: FontDefinition;
+  body: FontDefinition;
+  code: FontDefinition;
+  category?: string;
 }
 
-interface FontFamily {
-  family: string;
-  weights: number[];
-  letterSpacing: number;
-  features: string;
-}
+// Font system definitions
+export const FONT_SYSTEMS: Record<string, FontSystem> = {
+  modern: {
+    id: "modern",
+    name: "Modern",
+    description: "Clean and contemporary using Inter & Montserrat",
+    category: "sans-serif",
+    heading: {
+      family: "var(--font-montserrat)",
+      weight: "700",
+      fallback: "sans",
+    },
+    body: {
+      family: "var(--font-inter)",
+      weight: "400",
+      fallback: "sans",
+    },
+    code: {
+      family: "var(--font-jetbrains-mono)",
+      weight: "400",
+      fallback: "mono",
+    }
+  },
+  elegant: {
+    id: "elegant",
+    name: "Elegant",
+    description: "Refined and classic look with Playfair Display & Lato",
+    category: "serif",
+    heading: {
+      family: "var(--font-playfair-display)",
+      weight: "700",
+      fallback: "serif",
+    },
+    body: {
+      family: "var(--font-lato)",
+      weight: "400",
+      fallback: "sans",
+    },
+    code: {
+      family: "var(--font-fira-code)",
+      weight: "400",
+      fallback: "mono",
+    }
+  },
+  technical: {
+    id: "technical",
+    name: "Technical",
+    description: "Precise and functional using Roboto & Source Sans Pro",
+    category: "sans-serif",
+    heading: {
+      family: "var(--font-roboto)",
+      weight: "500",
+      fallback: "sans",
+    },
+    body: {
+      family: "var(--font-source-sans-pro)",
+      weight: "400",
+      fallback: "sans",
+    },
+    code: {
+      family: "var(--font-inconsolata)",
+      weight: "400",
+      fallback: "mono",
+    }
+  },
+  editorial: {
+    id: "editorial",
+    name: "Editorial",
+    description: "Refined reading experience with Fraunces & Libre Franklin",
+    category: "mixed",
+    heading: {
+      family: "var(--font-fraunces)",
+      weight: "700",
+      fallback: "serif",
+    },
+    body: {
+      family: "var(--font-libre-franklin)",
+      weight: "400",
+      fallback: "sans",
+    },
+    code: {
+      family: "var(--font-ibm-plex-mono)",
+      weight: "400",
+      fallback: "mono",
+    }
+  },
+  neoGeometric: {
+    id: "neoGeometric",
+    name: "Neo Geometric",
+    description: "Modern geometric style with Space Grotesk & DM Sans",
+    category: "geometric",
+    heading: {
+      family: "var(--font-space-grotesk)",
+      weight: "700",
+      fallback: "sans",
+    },
+    body: {
+      family: "var(--font-dm-sans)",
+      weight: "400",
+      fallback: "sans",
+    },
+    code: {
+      family: "var(--font-jetbrains-mono)",
+      weight: "400",
+      fallback: "mono",
+    }
+  },
+  cybervoid: {
+    id: "cybervoid",
+    name: "Cybervoid",
+    description: "Futuristic look with Rajdhani & Quantico",
+    category: "futuristic",
+    heading: {
+      family: "var(--font-rajdhani)",
+      weight: "600",
+      fallback: "sans",
+    },
+    body: {
+      family: "var(--font-quantico)",
+      weight: "400",
+      fallback: "sans",
+    },
+    code: {
+      family: "var(--font-vt323)",
+      weight: "400",
+      fallback: "mono",
+    }
+  }
+};
 
+// Font context type definition
 interface FontContextType {
   fontSystem: string;
-  changeFontSystem: (newSystemId: string) => void;
+  changeFontSystem: (id: string) => void;
   FONT_SYSTEMS: Record<string, FontSystem>;
-  currentSystemData: FontSystem | undefined;
+  currentSystemData: FontSystem | null;
+  fontsLoaded: boolean;
 }
 
-// Create context with a default undefined value
+// Create the context
 const FontContext = createContext<FontContextType | undefined>(undefined);
 
 // Provider component
-export const FontProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  // Get initial font system from localStorage or use default
-  const getInitialFontSystem = () => {
-    if (typeof window === "undefined") return FONT_SYSTEMS.MODERN.id;
+export const FontProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [fontSystem, setFontSystem] = useState<string>("modern");
+  const [currentSystemData, setCurrentSystemData] = useState<FontSystem | null>(FONT_SYSTEMS.modern);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
-    const savedFont = localStorage.getItem("fontSystem");
-    return savedFont &&
-      Object.values(FONT_SYSTEMS).some((system) => system.id === savedFont)
-      ? savedFont
-      : FONT_SYSTEMS.MODERN.id; // Default to MODERN font system
-  };
-
-  const [fontSystem, setFontSystem] = useState<string>(getInitialFontSystem);
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Set mounted state to prevent hydration issues
+  // Check if fonts are loaded from sessionStorage
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    if (typeof window === "undefined") return;
 
-  // Update font system with enhanced properties
-  const changeFontSystem = (newSystemId: string) => {
-    const systemObj = Object.values(FONT_SYSTEMS).find(
-      (system) => system.id === newSystemId
-    );
+    // Check if fonts are loaded
+    setFontsLoaded(!!sessionStorage.getItem('fontsLoaded'));
 
-    if (systemObj) {
-      console.log(
-        `Changing font system to: ${systemObj.name} (${systemObj.id})`
-      );
-      setFontSystem(systemObj.id);
-
-      // Save to localStorage
-      localStorage.setItem("fontSystem", systemObj.id);
-    }
-  };
-
-  // Apply font system on initial load and changes
-  useEffect(() => {
-    if (!isMounted) return;
-
-    const systemObj = Object.values(FONT_SYSTEMS).find(
-      (system) => system.id === fontSystem
-    );
-
-    if (systemObj) {
-      console.log(`Setting font system: ${systemObj.name} (${systemObj.id})`);
-
-      // For debugging: examine actual family values
-      console.log("Heading font:", systemObj.heading.family);
-      console.log("Body font:", systemObj.body.family);
-      console.log("Code font:", systemObj.code.family);
-
-      // Apply font properties to CSS variables
-      // We need to get *just* the actual font name part, e.g., 'Montserrat' not 'var(--font-montserrat)'
-      const extractFontName = (fontFamily: string) => {
-        // If it includes var(), extract just the font name
-        if (fontFamily.includes('var(--font-')) {
-          // Get the variable name inside var()
-          const varName = fontFamily.match(/var\(([^)]+)\)/)?.[1];
-
-          // Get the font name inside the variable - it will be something like '--font-montserrat'
-          // We need to extract just 'Montserrat'
-          if (varName) {
-            const fontName = varName.replace('--font-', '').replace(/-/g, ' ');
-            return fontName.charAt(0).toUpperCase() + fontName.slice(1);
+    // Also listen for the fonts-loaded class
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          const element = mutation.target as HTMLElement;
+          if (element.classList.contains('fonts-loaded')) {
+            setFontsLoaded(true);
           }
         }
+      });
+    });
 
-        // If it's a direct font name with fallbacks, return the first one
-        return fontFamily.split(',')[0].trim().replace(/['"]/g, '');
-      };
+    observer.observe(document.documentElement, { attributes: true });
 
-      // Format font family properly with actual font name first, then fallbacks
-      const formatFontFamily = (fontFamily: string, systemFallback: string) => {
-        const fontName = extractFontName(fontFamily);
-        return `"${fontName}", ${systemFallback}`;
-      };
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
-      document.documentElement.style.setProperty(
-        "--font-heading",
-        formatFontFamily(systemObj.heading.family, SYSTEM_FONTS.sans)
-      );
-      document.documentElement.style.setProperty(
-        "--font-body",
-        formatFontFamily(systemObj.body.family, SYSTEM_FONTS.sans)
-      );
-      document.documentElement.style.setProperty(
-        "--font-code",
-        formatFontFamily(systemObj.code.family, SYSTEM_FONTS.mono)
-      );
+  // Apply font system when it changes
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-      // Apply line heights
-      document.documentElement.style.setProperty(
-        "--line-height-tight",
-        systemObj.lineHeight.tight.toString()
-      );
-      document.documentElement.style.setProperty(
-        "--line-height-normal",
-        systemObj.lineHeight.normal.toString()
-      );
-      document.documentElement.style.setProperty(
-        "--line-height-code",
-        systemObj.lineHeight.code.toString()
-      );
+    // Get the font system object
+    const systemObj = FONT_SYSTEMS[fontSystem];
+    if (!systemObj) return;
 
-      // Apply letter spacing
-      document.documentElement.style.setProperty(
-        "--letter-spacing-heading",
-        `${systemObj.heading.letterSpacing}em`
-      );
-      document.documentElement.style.setProperty(
-        "--letter-spacing-body",
-        `${systemObj.body.letterSpacing}em`
-      );
-      document.documentElement.style.setProperty(
-        "--letter-spacing-code",
-        `${systemObj.code.letterSpacing}em`
-      );
+    // Update current system data
+    setCurrentSystemData(systemObj);
 
-      // Apply font features
-      document.documentElement.style.setProperty(
-        "--font-feature-settings-heading",
-        systemObj.heading.features
-      );
-      document.documentElement.style.setProperty(
-        "--font-feature-settings-body",
-        systemObj.body.features
-      );
-      document.documentElement.style.setProperty(
-        "--font-feature-settings-code",
-        systemObj.code.features
-      );
+    // Set data attribute for CSS
+    document.documentElement.setAttribute("data-font-system", systemObj.id);
 
-      // Apply type scale
-      document.documentElement.style.setProperty(
-        "--font-scale-ratio",
-        systemObj.scale.toString()
-      );
+    // Debug logging to see if values are being set correctly
+    console.log("Font system changed:", {
+      id: systemObj.id,
+      headingFont: systemObj.heading.family,
+      bodyFont: systemObj.body.family,
+      codeFont: systemObj.code.family,
+      computedHeadingFont: getComputedStyle(document.documentElement).getPropertyValue('--font-heading'),
+      computedBodyFont: getComputedStyle(document.documentElement).getPropertyValue('--font-body'),
+      computedCodeFont: getComputedStyle(document.documentElement).getPropertyValue('--font-code')
+    });
 
-      // Apply attributes for CSS selectors
-      document.documentElement.setAttribute("data-font", systemObj.id);
+    // Force a style recalculation by toggling a dummy class
+    document.documentElement.classList.add("font-switching");
 
-      // Update classes for specific styling
-      const currentFontClass = Array.from(
-        document.documentElement.classList
-      ).find((className) => className.startsWith("font-system-"));
+    // Small timeout to ensure the browser applies the changes
+    setTimeout(() => {
+      document.documentElement.classList.remove("font-switching");
+    }, 50);
 
-      if (currentFontClass) {
-        document.documentElement.classList.remove(currentFontClass);
+    // Store the selected font system in local storage
+    localStorage.setItem("fontSystem", fontSystem);
+
+    console.log("Applied font system:", systemObj.id);
+  }, [fontSystem]);
+
+  // Load stored font preference on initial render
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Try to get stored font system
+    const storedFont = localStorage.getItem("fontSystem");
+    if (storedFont && FONT_SYSTEMS[storedFont]) {
+      // Only set if it's different to avoid unnecessary re-renders
+      if (storedFont !== fontSystem) {
+        setFontSystem(storedFont);
       }
-
-      document.documentElement.classList.add(`font-system-${systemObj.id}`);
     }
-  }, [fontSystem, isMounted]);
+  }, []);
+
+  const changeFontSystem = (id: string) => {
+    if (FONT_SYSTEMS[id]) {
+      try {
+        // Set the font system ID and update context state
+        setFontSystem(id);
+        const system = FONT_SYSTEMS[id];
+        setCurrentSystemData(system);
+
+        // Apply data attribute to document element
+        document.documentElement.setAttribute("data-font-system", id);
+
+        // STEP 1: Direct CSS Variable Application
+        const root = document.documentElement;
+        root.style.setProperty('--font-current-heading', system.heading.family);
+        root.style.setProperty('--font-current-body', system.body.family);
+        root.style.setProperty('--font-current-code', system.code.family);
+        root.style.setProperty('--font-heading', system.heading.family);
+        root.style.setProperty('--font-body', system.body.family);
+        root.style.setProperty('--font-code', system.code.family);
+
+        // STEP 2: Add dynamic style tag with !important rules
+        // Remove any existing font-fix style tag
+        const existingStyle = document.getElementById('font-system-fix');
+        if (existingStyle) {
+          existingStyle.remove();
+        }
+
+        // Create new style tag with !important rules
+        const styleEl = document.createElement('style');
+        styleEl.id = 'font-system-fix';
+        styleEl.textContent = `
+          .font-heading { font-family: ${system.heading.family} !important; }
+          .font-body { font-family: ${system.body.family} !important; }
+          .font-code { font-family: ${system.code.family} !important; }
+        `;
+        document.head.appendChild(styleEl);
+
+        // STEP 3: Direct element manipulation (most aggressive)
+        const applyDirectFonts = () => {
+          document.querySelectorAll('.font-heading').forEach(el => {
+            (el as HTMLElement).style.fontFamily = `${system.heading.family}`;
+          });
+
+          document.querySelectorAll('.font-body').forEach(el => {
+            (el as HTMLElement).style.fontFamily = `${system.body.family}`;
+          });
+
+          document.querySelectorAll('.font-code').forEach(el => {
+            (el as HTMLElement).style.fontFamily = `${system.code.family}`;
+          });
+        };
+
+        // Apply direct styles immediately
+        applyDirectFonts();
+
+        // Reapply after a short delay to catch any newly rendered elements
+        setTimeout(applyDirectFonts, 100);
+
+        // STEP 4: Set other font properties
+        root.style.setProperty('--tracking-heading',
+          id === 'modern' ? '-0.02em' :
+          id === 'elegant' ? '0em' :
+          id === 'cybervoid' ? '0.02em' :
+          '-0.01em'
+        );
+
+        root.style.setProperty('--tracking-body',
+          id === 'modern' ? '-0.01em' :
+          id === 'elegant' ? '0.01em' :
+          id === 'cybervoid' ? '0.01em' :
+          '0em'
+        );
+
+        // Force reflow
+        void document.documentElement.offsetHeight;
+
+        // Toggle transition class
+        document.documentElement.classList.add('font-switching');
+        setTimeout(() => {
+          document.documentElement.classList.remove('font-switching');
+
+          // Final pass to update any elements that might have been missed
+          applyDirectFonts();
+        }, 150);
+
+        // Debug info
+        console.log('Font system changed to:', {
+          id,
+          heading: system.heading.family,
+          body: system.body.family,
+          code: system.code.family
+        });
+
+        // Save to localStorage
+        localStorage.setItem("fontSystem", id);
+      } catch (error) {
+        console.error("Error changing font system:", error);
+      }
+    }
+  };
 
   return (
-    <FontContext.Provider
-      value={{
-        fontSystem,
-        changeFontSystem,
-        FONT_SYSTEMS,
-        currentSystemData: Object.values(FONT_SYSTEMS).find(
-          (system) => system.id === fontSystem
-        ),
-      }}
-    >
+    <FontContext.Provider value={{
+      fontSystem,
+      changeFontSystem,
+      FONT_SYSTEMS,
+      currentSystemData,
+      fontsLoaded
+    }}>
       {children}
     </FontContext.Provider>
   );
 };
 
-// Custom hook for using the font context
-export const useFontContext = () => {
+// Custom hook for accessing the font context
+export const useFontContext = (): FontContextType => {
   const context = useContext(FontContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error("useFontContext must be used within a FontProvider");
   }
   return context;

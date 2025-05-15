@@ -62,7 +62,10 @@ const MobileFooter: React.FC = () => {
                     href={link.href}
                     className="text-text-secondary hover:text-heading transition-colors duration-200 inline-flex items-center group py-1"
                   >
-                    <span className="mr-2 text-brand-primary opacity-80">•</span>
+                    <span
+                      className="mr-2 opacity-80"
+                      style={{ color: "var(--color-accent-primary)" }}
+                    >•</span>
                     {link.label}
                   </Link>
                 </li>
@@ -82,7 +85,10 @@ const MobileFooter: React.FC = () => {
                     href={link.href}
                     className="text-text-secondary hover:text-heading transition-colors duration-200 inline-flex items-center group py-1"
                   >
-                    <span className="mr-2 text-brand-primary opacity-80">•</span>
+                    <span
+                      className="mr-2 opacity-80"
+                      style={{ color: "var(--color-accent-primary)" }}
+                    >•</span>
                     {link.label}
                   </Link>
                 </li>
@@ -150,7 +156,11 @@ const MobileFooter: React.FC = () => {
                 href="https://twitter.com/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-sm border border-divider text-icon-secondary hover:text-brand-primary hover:border-brand-primary transition-colors duration-200 focus-visible-ring"
+                className="w-10 h-10 flex items-center justify-center rounded-sm border text-icon-secondary transition-colors duration-200 focus-visible-ring"
+                style={{
+                  borderColor: "var(--color-divider)",
+                  color: "var(--color-icon-secondary)",
+                }}
                 whileHover={shouldAnimate() ? { y: -2 } : {}}
                 transition={{ duration: 0.2 }}
                 aria-label="Twitter"
@@ -162,7 +172,11 @@ const MobileFooter: React.FC = () => {
                 href="https://github.com/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-sm border border-divider text-icon-secondary hover:text-brand-primary hover:border-brand-primary transition-colors duration-200 focus-visible-ring"
+                className="w-10 h-10 flex items-center justify-center rounded-sm border text-icon-secondary transition-colors duration-200 focus-visible-ring"
+                style={{
+                  borderColor: "var(--color-divider)",
+                  color: "var(--color-icon-secondary)",
+                }}
                 whileHover={shouldAnimate() ? { y: -2 } : {}}
                 transition={{ duration: 0.2 }}
                 aria-label="GitHub"
@@ -174,7 +188,11 @@ const MobileFooter: React.FC = () => {
                 href="https://linkedin.com/in/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-sm border border-divider text-icon-secondary hover:text-brand-primary hover:border-brand-primary transition-colors duration-200 focus-visible-ring"
+                className="w-10 h-10 flex items-center justify-center rounded-sm border text-icon-secondary transition-colors duration-200 focus-visible-ring"
+                style={{
+                  borderColor: "var(--color-divider)",
+                  color: "var(--color-icon-secondary)",
+                }}
                 whileHover={shouldAnimate() ? { y: -2 } : {}}
                 transition={{ duration: 0.2 }}
                 aria-label="LinkedIn"

@@ -1,0 +1,212 @@
+/* src/styles/themes/yellow-theme.css
+   Golden Ray — v1 • 2025‑05‑14
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   GOLDEN RAY — DARK (Amber Night)
+   ═══════════════════════════════════════ */
+[data-theme="yellow-dark"]{
+  /* ========== ATOMIC PALETTE ========== */
+  /* Depths */
+  --depth-900:#1A1406;
+  --depth-800:#231B08;   /* bg‑primary */
+  --depth-700:#2E230B;
+  --depth-600:#3B2C0E;
+  --depth-500:#493613;
+
+  /* Amber chain */
+  --amber-300:#FFD67B;
+  --amber-400:#FFC74A;
+  --amber-500:#FFB824; /* brand / accent */
+  --amber-600:#E6A31F;
+  --amber-700:#C48A19;
+
+  /* Complements */
+  --citrine-500:#FFE884;
+  --amethyst-500:#9F86FF;  /* soft purple contrast */
+  --sage-500:#6DBC8A;
+
+  /* ========== SURFACES ========== */
+  --color-primary-bg:   var(--depth-800);
+  --color-secondary-bg: var(--depth-700);
+  --color-tertiary-bg:  var(--depth-600);
+  --color-card-bg:      rgb(35 27 8 / .96);
+  --color-glass-bg:     rgb(255 244 222 / .08);
+  --color-code-bg:      rgb(26 20 6 / .85);
+  --color-input-bg:     rgb(35 27 8 / .65);
+  --color-hover-bg:     rgb(255 184 36 / .12);
+  --color-active-bg:    rgb(255 184 36 / .22);
+  --color-disabled-bg:  rgb(62 46 16 / .35);
+  --color-tooltip-bg:   rgb(26 20 6 / .97);
+  --color-dropdown-bg:  rgb(35 27 8 / .98);
+  --color-selection-bg: rgb(255 184 36 / .25);
+
+  --color-grid-lines:   rgb(255 231 186 / .15);
+
+  /* ========== TYPE ========== */
+  --color-primary-text:#FFF7E3;
+  --color-secondary-text:#E8D4AE;
+  --color-tertiary-text:rgb(232 212 174 / .70);
+  --color-disabled-text:rgb(232 212 174 / .50);
+  --color-text-on-accent:#231B08;
+  --color-code-text:#FFC74A;
+
+  --color-heading:#FFEDB8;
+  --color-heading-accent:var(--amber-500);
+  --color-subheading:#E8D4AE;
+  --color-text-emphasis:var(--amethyst-500);
+  --color-text-inverted:#FFF7E3;
+
+  /* ========== BRAND / ACCENT ========== */
+  --color-brand-primary:var(--amber-500);
+  --color-brand-secondary:var(--amber-700);
+
+  --color-accent-primary:        var(--amber-500);
+  --color-accent-primary-hover:  var(--amber-600);
+  --color-accent-primary-active: var(--amber-700);
+  --color-accent-secondary:      var(--citrine-500);
+  --color-accent-tertiary:       var(--sage-500);
+  --color-accent-contrast:       var(--amethyst-500);
+
+  /* ========== STATUS ========== */
+  --color-success:var(--sage-500);           --color-success-subtle:rgb(109 188 138 / .15);
+  --color-warning:var(--amber-500);          --color-warning-subtle:rgb(255 184 36 / .15);
+  --color-error:#FF6F59;                     --color-error-subtle:rgb(255 111 89 / .15);
+  --color-info:var(--amethyst-500);          --color-info-subtle:rgb(159 134 255 / .15);
+  --color-neutral:#9C9B97;                   --color-neutral-subtle:rgb(156 155 151 / .15);
+
+  /* ========== SUPPORT ========== */
+  --color-border:        rgb(255 184 36 / .30);
+  --color-border-focus:  var(--amber-500);
+  --color-border-input:  rgb(255 184 36 / .35);
+  --color-divider:       rgb(255 184 36 / .20);
+  --color-divider-light: rgb(255 244 222 / .08);
+
+  --shadow-sm:   0 2px 8px  -2px rgb(16 12 4 / .25);
+  --shadow-md:   0 12px 25px -10px rgb(16 12 4 / .35);
+  --shadow-lg:   0 25px 50px -12px rgb(16 12 4 / .40);
+  --shadow-focus:0 0 0 3px  rgb(255 184 36 / .30);
+
+  --color-scrollbar-thumb:rgb(255 184 36 / .50);
+  --color-scrollbar-track:rgb(26 20 6 / .30);
+
+  /* ========== DECOR ========== */
+  --wave-primary:#FFFBEF;
+  --wave-secondary:#FFFFFF;
+  --wave-accent-1:var(--amber-600);
+  --wave-accent-2:var(--amethyst-500);
+
+  --gradient-accent:      linear-gradient(45deg,var(--amber-500),var(--amber-600));
+  --gradient-interactive: linear-gradient(45deg,var(--amber-500),var(--amber-600));
+  --gradient-button:      linear-gradient(to right,var(--amber-500),var(--amber-600));
+  --gradient-button-hover:linear-gradient(to right,var(--amber-600),var(--amber-700));
+  --gradient-aurora:      linear-gradient(45deg,var(--amethyst-500),var(--amber-500));
+  --gradient-amber-sage:  linear-gradient(45deg,var(--amber-500),var(--sage-500));
+  --gradient-overlay:     linear-gradient(180deg,rgb(26 20 6 / .80),rgb(26 20 6 / .95));
+
+  color-scheme:dark;
+}
+
+/* ═══════════════════════════════════════
+   GOLDEN RAY — LIGHT (Honey Day)
+   ═══════════════════════════════════════ */
+[data-theme="yellow-light"]{
+  /* ========== SURFACES ========== */
+  --color-primary-bg:#FFFBEF;
+  --color-secondary-bg:#FFFFFF;
+  --color-tertiary-bg:#FFF1CF;
+  --color-card-bg:#FFFFFF;
+  --color-glass-bg:rgb(255 251 239 / .92);
+  --color-code-bg:rgb(255 241 207 / .80);
+  --color-input-bg:rgb(255 241 207 / .70);
+  --color-hover-bg:rgb(255 184 36 / .08);
+  --color-active-bg:rgb(255 184 36 / .15);
+  --color-disabled-bg:rgb(246 232 200 / .70);
+  --color-tooltip-bg:rgb(38 30 12 / .95);
+  --color-dropdown-bg:#FFFFFF;
+  --color-selection-bg:rgb(255 184 36 / .20);
+
+  --color-grid-lines:rgb(255 184 36 / .12);
+
+  /* ========== TYPE ========== */
+  --color-primary-text:#251B0A;
+  --color-secondary-text:#4A3615;
+  --color-tertiary-text:rgb(74 54 21 / .70);
+  --color-disabled-text:rgb(74 54 21 / .50);
+  --color-text-on-accent:#251B0A;
+  --color-code-text:#C48A19;
+
+  --color-heading:var(--amber-700);
+  --color-heading-accent:var(--amethyst-500);
+  --color-subheading:#4A3615;
+  --color-text-emphasis:var(--amethyst-500);
+  --color-text-inverted:#FFFBEF;
+
+  /* ========== BRAND / ACCENT ========== */
+  --color-brand-primary:var(--amber-700);
+  --color-brand-secondary:var(--amber-600);
+
+  --color-accent-primary:        var(--amber-700);
+  --color-accent-primary-hover:  var(--amber-600);
+  --color-accent-primary-active: var(--amber-500);
+  --color-accent-secondary:      var(--citrine-500);
+  --color-accent-tertiary:       var(--sage-500);
+  --color-accent-contrast:       var(--amethyst-500);
+
+  /* ========== STATUS ========== */
+  --color-success:#318463;            --color-success-subtle:rgb(49 132 99 / .12);
+  --color-warning:var(--amber-600);   --color-warning-subtle:rgb(230 163 31 / .12);
+  --color-error:#C84F35;              --color-error-subtle:rgb(200 79 53 / .12);
+  --color-info:var(--amethyst-500);   --color-info-subtle:rgb(159 134 255 / .12);
+  --color-neutral:#847E73;            --color-neutral-subtle:rgb(132 126 115 / .12);
+
+  /* ========== SUPPORT ========== */
+  --color-border:        rgb(255 184 36 / .25);
+  --color-border-focus:  var(--amber-700);
+  --color-border-input:  rgb(255 184 36 / .30);
+  --color-divider:       rgb(255 184 36 / .15);
+  --color-divider-light: rgb(0 0 0 / .05);
+
+  --shadow-sm:   0 2px 8px  -2px rgb(38 30 12 / .08);
+  --shadow-md:   0 12px 25px -10px rgb(38 30 12 / .12);
+  --shadow-lg:   0 25px 50px -12px rgb(38 30 12 / .15);
+  --shadow-focus:0 0 0 3px  rgb(255 184 36 / .25);
+
+  --color-scrollbar-thumb:rgb(255 184 36 / .40);
+  --color-scrollbar-track:rgb(246 232 200 / .50);
+
+  /* ========== DECOR ========== */
+  --wave-primary:var(--depth-800);
+  --wave-secondary:var(--depth-700);
+  --wave-accent-1:var(--amber-500);
+  --wave-accent-2:var(--amethyst-500);
+
+  --gradient-accent:      linear-gradient(45deg,var(--amber-700),var(--amber-600));
+  --gradient-interactive: linear-gradient(45deg,var(--amber-700),var(--amber-600));
+  --gradient-button:      linear-gradient(to right,var(--amber-700),var(--amber-600));
+  --gradient-button-hover:linear-gradient(to right,var(--amber-600),var(--amber-500));
+  --gradient-aurora:      linear-gradient(45deg,var(--amethyst-500),var(--amber-600));
+  --gradient-amber-sage:  linear-gradient(45deg,var(--amber-600),var(--sage-500));
+  --gradient-overlay:     linear-gradient(180deg,rgb(255 251 239 / .85),rgb(255 251 239 / .95));
+
+  color-scheme:light;
+}
+
+/* ════════════════════════════════
+   LEGACY TOKEN SHIM
+   ════════════════════════════════ */
+:root{
+  --color-bg-primary:var(--color-primary-bg);
+  --color-text-primary:var(--color-primary-text);
+}
+
+/* ── Scrollbar (shared) ── */
+[data-theme^="yellow"] .custom-scrollbar::-webkit-scrollbar{width:8px;height:8px}
+[data-theme^="yellow"] .custom-scrollbar::-webkit-scrollbar-track{
+  background:var(--color-scrollbar-track);border-radius:4px}
+[data-theme^="yellow"] .custom-scrollbar::-webkit-scrollbar-thumb{
+  background:var(--color-scrollbar-thumb);border-radius:4px}
+[data-theme^="yellow"] .custom-scrollbar::-webkit-scrollbar-thumb:hover{
+  background:var(--color-interactive)}
+[data-theme^="yellow"] .custom-scrollbar{
+  scrollbar-width:thin;scrollbar-color:var(--color-scrollbar-thumb) var(--color-scrollbar-track)}

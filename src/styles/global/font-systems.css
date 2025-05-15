@@ -1,0 +1,190 @@
+/* src/styles/font-systems.css */
+
+/* Theme variable definition for Tailwind v4 */
+@theme {
+  /* This is the critical part - define these at theme level for Tailwind */
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-display: var(--font-heading);
+
+  /* Define these at theme level explicitly */
+  --font-heading: var(--font-current-heading, var(--font-montserrat));
+  --font-body: var(--font-current-body, var(--font-inter));
+  --font-code: var(--font-current-code, var(--font-jetbrains-mono));
+}
+
+/* Default root variables */
+:root {
+  /* Default to modern fonts */
+  --font-current-heading: var(--font-montserrat);
+  --font-current-body: var(--font-inter);
+  --font-current-code: var(--font-jetbrains-mono);
+
+  /* Default tracking values */
+  --tracking-heading: -0.015em;
+  --tracking-body: 0;
+  --tracking-code: -0.03em;
+
+  /* Default word spacing values */
+  --word-spacing-heading: normal;
+  --word-spacing-body: normal;
+  --word-spacing-code: normal;
+
+  /* Default font features */
+  --font-features-heading: "calt", "liga";
+  --font-features-body: "calt", "liga";
+  --font-features-code: "calt", "liga", "ss01", "ss02";
+}
+
+/* ---------- FONT SYSTEM DEFINITIONS ---------- */
+
+/* Modern font system - use html selector for higher specificity */
+html[data-font-system="modern"] {
+  --font-current-heading: var(--font-montserrat);
+  --font-current-body: var(--font-inter);
+  --font-current-code: var(--font-jetbrains-mono);
+  --tracking-heading: -0.02em;
+  --tracking-body: -0.01em;
+  --tracking-code: -0.03em;
+}
+
+/* Elegant font system */
+html[data-font-system="elegant"] {
+  --font-current-heading: var(--font-playfair-display);
+  --font-current-body: var(--font-lato);
+  --font-current-code: var(--font-fira-code);
+  --tracking-heading: 0em;
+  --tracking-body: 0.01em;
+  --tracking-code: -0.01em;
+  --word-spacing-heading: 0.05em;
+}
+
+/* Technical font system */
+html[data-font-system="technical"] {
+  --font-current-heading: var(--font-roboto);
+  --font-current-body: var(--font-source-sans-pro);
+  --font-current-code: var(--font-inconsolata);
+  --tracking-heading: -0.01em;
+  --tracking-body: 0em;
+  --tracking-code: -0.02em;
+}
+
+/* Editorial font system */
+html[data-font-system="editorial"] {
+  --font-current-heading: var(--font-fraunces);
+  --font-current-body: var(--font-libre-franklin);
+  --font-current-code: var(--font-ibm-plex-mono);
+  --tracking-heading: -0.01em;
+  --tracking-body: 0.005em;
+  --tracking-code: -0.01em;
+  --word-spacing-heading: 0.03em;
+  --word-spacing-body: 0.01em;
+}
+
+/* Neo Geometric font system */
+html[data-font-system="neoGeometric"] {
+  --font-current-heading: var(--font-space-grotesk);
+  --font-current-body: var(--font-dm-sans);
+  --font-current-code: var(--font-jetbrains-mono);
+  --tracking-heading: -0.03em;
+  --tracking-body: -0.01em;
+  --tracking-code: -0.02em;
+}
+
+/* Cybervoid font system */
+html[data-font-system="cybervoid"] {
+  --font-current-heading: var(--font-rajdhani);
+  --font-current-body: var(--font-quantico);
+  --font-current-code: var(--font-vt323);
+  --tracking-heading: 0.02em;
+  --tracking-body: 0.01em;
+  --tracking-code: 0em;
+  --word-spacing-heading: 0.05em;
+  --word-spacing-body: 0.02em;
+}
+
+/* Font loading state styles */
+.font-loading .font-heading,
+.font-loading .font-body,
+.font-loading .font-code {
+  opacity: 0.5;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.fonts-loaded .font-heading,
+.fonts-loaded .font-body,
+.fonts-loaded .font-code {
+  opacity: 1;
+}
+
+/* Font switching transition state */
+.font-switching * {
+  transition: font-family 0.01s;
+}
+
+/* Base font classes */
+.font-heading {
+  font-family: var(--font-heading) !important; /* Use !important to override */
+  letter-spacing: var(--tracking-heading);
+  font-feature-settings: var(--font-features-heading);
+  word-spacing: var(--word-spacing-heading);
+}
+
+.font-body {
+  font-family: var(--font-body) !important; /* Use !important to override */
+  letter-spacing: var(--tracking-body);
+  font-feature-settings: var(--font-features-body);
+  word-spacing: var(--word-spacing-body);
+}
+
+.font-code {
+  font-family: var(--font-code) !important; /* Use !important to override */
+  letter-spacing: var(--tracking-code);
+  font-feature-settings: var(--font-features-code);
+  word-spacing: var(--word-spacing-code);
+}
+
+/* Add new class utilities for direct font application - inline font variant */
+.inline-font-heading {
+  font-family: var(--font-montserrat) !important;
+}
+
+.inline-font-body {
+  font-family: var(--font-inter) !important;
+}
+
+.inline-font-code {
+  font-family: var(--font-jetbrains-mono) !important;
+}
+
+/* Add this for Tailwind-specific compatibility */
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading) !important;
+  }
+  .font-body {
+    font-family: var(--font-body) !important;
+  }
+  .font-code {
+    font-family: var(--font-code) !important;
+  }
+
+  /* System-specific font utilities for direct access */
+  .font-montserrat {
+    font-family: var(--font-montserrat) !important;
+  }
+  .font-inter {
+    font-family: var(--font-inter) !important;
+  }
+  .font-jetbrains-mono {
+    font-family: var(--font-jetbrains-mono) !important;
+  }
+  .font-playfair-display {
+    font-family: var(--font-playfair-display) !important;
+  }
+  .font-lato {
+    font-family: var(--font-lato) !important;
+  }
+  /* ...add other specific font utilities... */
+}

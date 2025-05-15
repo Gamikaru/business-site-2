@@ -1,729 +1,224 @@
-/* src/styles/themes/red-theme.css */
+/* src/styles/themes/red-theme.css
+   v2 — 2025‑05‑14
+   ───────────────────────────────────────── */
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   REFINED RED THEME SYSTEM
-   A professional, tech-focused palette built around a primary crimson foundation
-   with strategic accent colors and precise contrast relationships.
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   REFINED RED — DARK (Deep Maroon Night)
+   ═══════════════════════════════════════ */
+[data-theme="red-dark"]{
+  /* ========== ATOMIC PALETTE ========== */
+  /* Depths */
+  --depth-900:#14080A;
+  --depth-800:#1E1215; /* ← bg‑primary */
+  --depth-700:#2C181D;
+  --depth-600:#3A1F26;
+  --depth-500:#4B262E;
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   REFINED RED DARK THEME (Default)
-   Deep maroon-black with rich undertones and crimson accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
-[data-theme="red-dark"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #1E1215;
-    /* Main application background - deep maroon-black with rich undertones */
-    --color-bg-secondary: #2C181D;
-    /* Secondary containers, cards, sidebars */
-    --color-bg-tertiary: #3A1F26;
-    /* Elevated surfaces, modals, popovers */
-    --color-bg-card: rgba(44, 24, 29, 0.97);
-    /* Card backgrounds with slight transparency */
-    --color-bg-glass: rgba(255, 240, 240, 0.08);
-    /* Glass effect backgrounds - subtle light overlay */
-    --color-bg-code: rgba(30, 18, 21, 0.85);
-    /* Code block backgrounds - slightly lighter than primary */
-    --color-bg-input: rgba(44, 24, 29, 0.65);
-    /* Form element backgrounds with subtle contrast */
-    --color-bg-hover: rgba(190, 45, 68, 0.12);
-    /* Hover state background - subtle red highlight */
-    --color-bg-active: rgba(190, 45, 68, 0.22);
-    /* Active/selected state background - stronger red */
-    --color-bg-disabled: rgba(70, 40, 45, 0.35);
-    /* Disabled element background - muted, low contrast */
-    --color-bg-tooltip: rgba(30, 18, 21, 0.97);
-    /* Tooltip background - nearly opaque dark */
-    --color-bg-dropdown: rgba(44, 24, 29, 0.98);
-    /* Dropdown menu background */
-    --color-bg-selection: rgba(190, 45, 68, 0.25);
-    /* Text selection background */
+  /* Crimson chain */
+  --crimson-300:#DE3E55;
+  --crimson-400:#C7334C;
+  --crimson-500:#BE2D44; /* brand / accent */
+  --crimson-600:#A3263B;
+  --crimson-700:#8C2235;
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #F0ECEE;
-    /* Main body text - soft white for reduced eye strain */
-    --color-text-secondary: #D6BDC4;
-    /* Secondary/supporting text - softer contrast */
-    --color-text-tertiary: rgba(214, 189, 196, 0.7);
-    /* De-emphasized text, subtitles, captions */
-    --color-text-disabled: rgba(214, 189, 196, 0.5);
-    /* Disabled text - significantly reduced contrast */
-    --color-text-on-accent: #ffffff;
-    /* Text on accent-colored backgrounds - white with proper contrast */
-    --color-text-code: #D68C99;
-    /* Code and pre-formatted text - dusty rose for readability */
+  /* Complements */
+  --ocean-500:#345C80;
+  --forest-500:#27544A;
+  --cosmic-500:#483D7A;
+  --amber-500:#9A7545;
+  --teal-500:#2D8A6A;
 
-    /* Headings */
-    --color-heading: #F3E5E8;
-    /* Standard headings - slightly brighter than body text */
-    --color-heading-accent: #BE2D44;
-    /* Accented headings - refined deep crimson */
-    --color-subheading: #D6BDC4;
-    /* Subheadings, section titles - matching secondary text */
+  /* ========== SURFACES ========== */
+  --color-primary-bg:   var(--depth-800);
+  --color-secondary-bg: var(--depth-700);
+  --color-tertiary-bg:  var(--depth-600);
+  --color-card-bg:      rgb(44 24 29 / .97);
+  --color-glass-bg:     rgb(255 240 240 / .08);
+  --color-code-bg:      rgb(30 18 21 / .85);
+  --color-input-bg:     rgb(44 24 29 / .65);
+  --color-hover-bg:     rgb(190 45 68 / .12);
+  --color-active-bg:    rgb(190 45 68 / .22);
+  --color-disabled-bg:  rgb(70 40 45 / .35);
+  --color-tooltip-bg:   rgb(30 18 21 / .97);
+  --color-dropdown-bg:  rgb(44 24 29 / .98);
+  --color-selection-bg: rgb(190 45 68 / .25);
 
-    /* Special text */
-    --color-text-emphasis: #345C80;
-    /* Emphasized text, highlights - deep oceanic blue */
-    --color-text-inverted: #F0ECEE;
-    /* Inverted text (on light backgrounds) - soft white */
+  --color-grid-lines:   rgb(240 236 238 / .15);
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with complementary relationship
-     ════════════════════════════════════ */
-    --color-brand-primary: #BE2D44;
-    /* Primary brand color - refined deep crimson */
-    --color-brand-secondary: #9A243A;
-    /* Secondary brand color - deeper crimson */
+  /* ========== TYPE ========== */
+  --color-primary-text:#F0ECEE;
+  --color-secondary-text:#D6BDC4;
+  --color-tertiary-text:rgb(214 189 196 / .70);
+  --color-disabled-text:rgb(214 189 196 / .50);
+  --color-text-on-accent:#FFFFFF;
+  --color-code-text:#D68C99;
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #BE2D44;
-    /* Primary accent for main interactive elements - refined deep crimson */
-    --color-accent-primary-hover: #A3263B;
-    /* Hover state for primary accent - deeper crimson */
-    --color-accent-primary-active: #9A243A;
-    /* Active state for primary accent - even deeper crimson */
-    --color-accent-secondary: #9A243A;
-    /* Secondary accent for visual variety - deeper crimson */
-    --color-accent-tertiary: #781D2E;
-    /* Tertiary accent for subtle highlights - very deep crimson */
-    --color-accent-oceanic: #345C80;
-    /* Complementary oceanic blue accent */
-    --color-accent-cosmic: #483D7A;
-    /* Cosmic purple-blue accent for depth */
-    --color-accent-forest: #27544A;
-    /* Forest green accent - complementary to red tones */
+  --color-heading:#F3E5E8;
+  --color-heading-accent:var(--crimson-500);
+  --color-subheading:#D6BDC4;
+  --color-text-emphasis:var(--ocean-500);
+  --color-text-inverted:#F0ECEE;
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #BE2D44;
-    /* Default interactive element color - refined deep crimson */
-    --color-interactive-hover: #A3263B;
-    /* Hover state - deeper crimson */
-    --color-interactive-active: #9A243A;
-    /* Active/pressed state - even deeper crimson */
-    --color-interactive-focus: #BE2D44;
-    /* Focus state indicator */
-    --color-interactive-disabled: rgba(190, 45, 68, 0.4);
-    /* Disabled state - faded crimson */
+  /* ========== BRAND / ACCENT ========== */
+  --color-brand-primary:var(--crimson-500);
+  --color-brand-secondary:var(--crimson-700);
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #345C80;
-    /* Secondary interactive elements - deep oceanic blue */
-    --color-interactive-secondary-hover: #2D4E6E;
-    /* Secondary hover state - deeper blue */
-    --color-interactive-secondary-active: #24405A;
-    /* Secondary active state - even deeper blue */
+  --color-accent-primary:        var(--crimson-500);
+  --color-accent-primary-hover:  var(--crimson-600);
+  --color-accent-primary-active: var(--crimson-700);
+  --color-accent-secondary:      var(--crimson-700);
+  --color-accent-tertiary:       #781D2E;
+  --color-accent-oceanic:        var(--ocean-500);
+  --color-accent-cosmic:         var(--cosmic-500);
+  --color-accent-forest:         var(--forest-500);
 
-    /* Form element specific colors */
-    --color-field-border: rgba(190, 45, 68, 0.5);
-    /* Form input borders */
-    --color-field-placeholder: rgba(214, 189, 196, 0.6);
-    /* Placeholder text */
-    --color-field-focus: #BE2D44;
-    /* Field focus indicator */
-    --color-field-required: #345C80;
-    /* Required field indicator - oceanic blue */
-    --color-field-invalid: #BE2D44;
-    /* Invalid field indicator - refined deep crimson */
+  /* ========== STATUS ========== */
+  --color-success:var(--teal-500);            --color-success-subtle:rgb(45 138 106 / .15);
+  --color-warning:var(--amber-500);           --color-warning-subtle:rgb(154 117 69 / .15);
+  --color-error:var(--crimson-500);           --color-error-subtle:rgb(190 45 68 / .15);
+  --color-info:var(--ocean-500);              --color-info-subtle:rgb(52 92 128 / .15);
+  --color-neutral:#7F8C8D;                    --color-neutral-subtle:rgb(127 140 141 / .15);
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts
-     ════════════════════════════════════ */
-    --color-success: #2D8A6A;
-    /* Success state - deep teal-green */
-    --color-success-subtle: rgba(45, 138, 106, 0.15);
-    /* Subtle success background */
-    --color-warning: #9A7545;
-    /* Warning state - deep amber (more masculine) */
-    --color-warning-subtle: rgba(154, 117, 69, 0.15);
-    /* Subtle warning background */
-    --color-error: #BE2D44;
-    /* Error state - refined deep crimson */
-    --color-error-subtle: rgba(190, 45, 68, 0.15);
-    /* Subtle error background */
-    --color-info: #345C80;
-    /* Information state - deep oceanic blue */
-    --color-info-subtle: rgba(52, 92, 128, 0.15);
-    /* Subtle info background */
-    --color-neutral: #7F8C8D;
-    /* Neutral state - gray */
-    --color-neutral-subtle: rgba(127, 140, 141, 0.15);
-    /* Subtle neutral background */
+  /* ========== SUPPORT ========== */
+  --color-border:        rgb(190 45 68 / .30);
+  --color-border-focus:  var(--crimson-500);
+  --color-border-input:  rgb(190 45 68 / .35);
+  --color-divider:       rgb(190 45 68 / .20);
+  --color-divider-light: rgb(255 240 240 / .08);
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with clear purpose
-     ════════════════════════════════════ */
-    --color-divider: rgba(190, 45, 68, 0.2);
-    /* Dividers and separators - subtle red tint */
-    --color-divider-light: rgba(255, 240, 240, 0.08);
-    /* Lighter dividers for contrast on dark areas */
-    --color-border: rgba(190, 45, 68, 0.3);
-    /* Borders for containers, cards, etc */
-    --color-border-focus: #BE2D44;
-    /* Focus state borders - refined deep crimson */
-    --color-border-input: rgba(190, 45, 68, 0.35);
-    /* Form input borders - slightly stronger than regular */
-    --color-shadow: rgba(20, 8, 10, 0.4);
-    /* Shadows for elevation - deeper maroon-black */
-    --color-shadow-light: rgba(20, 8, 10, 0.2);
-    /* Lighter shadows for subtle elevation */
-    --color-overlay: rgba(30, 18, 21, 0.85);
-    /* Modal/dialog overlays */
-    --color-notification-badge: #BE2D44;
-    /* Notification badges - refined deep crimson */
+  --shadow-sm:   0 2px 8px  -2px rgb(20 8 10 / .25);
+  --shadow-md:   0 12px 25px -10px rgb(20 8 10 / .35);
+  --shadow-lg:   0 25px 50px -12px rgb(20 8 10 / .40);
+  --shadow-focus:0 0 0 3px  rgb(190 45 68 / .30);
 
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(190, 45, 68, 0.5);
-    /* Scrollbar thumb - semi-transparent crimson */
-    --color-scrollbar-track: rgba(30, 18, 21, 0.3);
-    /* Scrollbar track - subtle dark maroon */
+  --color-scrollbar-thumb:rgb(190 45 68 / .50);
+  --color-scrollbar-track:rgb(30 18 21 / .30);
 
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #5887B7;
-    /* Link text - medium-deep blue */
-    --color-link-hover: #79A7D7;
-    /* Link hover state - lighter blue */
-    --color-link-visited: #7B68B3;
-    /* Visited links - cosmic purple */
-    --color-emphasis: #345C80;
-    /* Emphasized text - deep oceanic blue for contrast with red */
-    --color-success-text: #3D9E7E;
-    /* Success messages - brighter teal-green for readability */
-    --color-warning-text: #C99A5B;
-    /* Warning messages - warm amber */
-    --color-error-text: #DE3E55;
-    /* Error messages - brighter crimson for visibility */
-    --color-info-text: #5887B7;
-    /* Information text - medium-deep blue */
+  /* ========== DECOR ========== */
+  --wave-primary:#FAF6F7;
+  --wave-secondary:#FFFFFF;
+  --wave-accent-1:var(--crimson-600);
+  --wave-accent-2:var(--ocean-500);
 
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #BE2D44;
-    /* Primary icons - refined deep crimson */
-    --color-icon-secondary: rgba(52, 92, 128, 0.9);
-    /* Secondary icons - deep oceanic blue with high opacity */
-    --color-icon-tertiary: rgba(214, 189, 196, 0.7);
-    /* Tertiary icons - muted, similar to tertiary text */
-    --color-icon-on-accent: #ffffff;
-    /* Icons on accent-colored backgrounds */
-    --color-icon-bg: rgba(190, 45, 68, 0.12);
-    /* Icon backgrounds or containers */
-    --color-icon-disabled: rgba(214, 189, 196, 0.5);
-    /* Disabled icons */
+  --gradient-accent:      linear-gradient(45deg,var(--crimson-500),var(--crimson-600));
+  --gradient-interactive: linear-gradient(45deg,var(--crimson-500),var(--crimson-600));
+  --gradient-button:      linear-gradient(to right,var(--crimson-500),var(--crimson-600));
+  --gradient-button-hover:linear-gradient(to right,var(--crimson-600),var(--crimson-700));
+  --gradient-cosmic-red:  linear-gradient(45deg,var(--cosmic-500),var(--crimson-500));
+  --gradient-red-ocean:   linear-gradient(45deg,var(--crimson-500),var(--ocean-500));
+  --gradient-red-forest:  linear-gradient(45deg,var(--crimson-500),var(--forest-500));
+  --gradient-overlay:     linear-gradient(180deg,rgb(30 18 21 / .80),rgb(30 18 21 / .95));
 
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.08;
-    /* Very subtle effects, barely visible */
-    --opacity-light: 0.15;
-    /* Light effects, clearly visible but subtle */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(190, 45, 68, 0.2);
-    /* Skill item background */
-    --color-skill-item-hover: rgba(52, 92, 128, 0.2);
-    /* Skill item hover - oceanic blue accent */
-    --color-skill-item-active: rgba(52, 92, 128, 0.35);
-    /* Skill item active - stronger oceanic blue */
-    --color-selection-bg: rgba(190, 45, 68, 0.25);
-    /* Text selection background */
-    --color-tooltip-bg: rgba(30, 18, 21, 0.97);
-    /* Tooltip background - nearly opaque dark */
-    --color-dropdown-bg: rgba(44, 24, 29, 0.98);
-    /* Dropdown menu background */
-
-    /* ════════════════════════════════════
-     CURSOR COLORS
-     For custom cursor effects
-     ════════════════════════════════════ */
-    --color-cursor-inner-rgb: 240, 236, 238;
-    /* Inner cursor ring RGB values - soft white */
-    --color-cursor-outer-rgb: 190, 45, 68;
-    /* Outer cursor ring RGB values - refined deep crimson */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 190, 45, 68;
-    /* RGB values for refined deep crimson */
-    --color-accent-secondary-rgb: 154, 36, 58;
-    /* RGB values for deeper crimson */
-    --color-accent-oceanic-rgb: 52, 92, 128;
-    /* RGB values for deep oceanic blue */
-    --color-accent-cosmic-rgb: 72, 61, 122;
-    /* RGB values for cosmic purple */
-    --color-accent-forest-rgb: 39, 84, 74;
-    /* RGB values for deep forest green */
-    --color-bg-primary-rgb: 30, 18, 21;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 240, 236, 238;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - crimson gradient */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient */
-    --gradient-red: linear-gradient(45deg, #BE2D44, #A3263B);
-    /* Red gradient */
-    --gradient-crimson: linear-gradient(45deg, #9A243A, #781D2E);
-    /* Deeper crimson gradient */
-    --gradient-glass: linear-gradient(120deg, rgba(255, 240, 240, 0.08), rgba(255, 240, 240, 0.04));
-    /* Glass effect gradient */
-    --gradient-overlay: linear-gradient(180deg, rgba(30, 18, 21, 0.8), rgba(30, 18, 21, 0.95));
-    /* Overlay gradient */
-    --gradient-cosmic-red: linear-gradient(45deg, #483D7A, #BE2D44);
-    /* Cosmic purple to red gradient */
-    --gradient-red-oceanic: linear-gradient(45deg, #BE2D44, #345C80);
-    /* Red to oceanic blue gradient */
-    --gradient-red-forest: linear-gradient(45deg, #BE2D44, #27544A);
-    /* Red to forest green gradient */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(20, 8, 10, 0.25);
-    /* Small shadow */
-    --shadow-md: 0 12px 25px -10px rgba(20, 8, 10, 0.35);
-    /* Medium shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(20, 8, 10, 0.4);
-    /* Large shadow */
-    --shadow-inner: inset 0 2px 5px rgba(20, 8, 10, 0.15);
-    /* Inner shadow */
-    --shadow-focus: 0 0 0 3px rgba(190, 45, 68, 0.3);
-    /* Focus shadow */
-    --shadow-button: 0 0 15px rgba(190, 45, 68, 0.25);
-    /* Button shadow */
-
-    /* Wave-specific colors - white dominant for dark mode */
-    --wave-primary: #faf6f7;
-    /* Sophisticated off-white from light theme */
-    --wave-secondary: #ffffff;
-    /* White */
-    --wave-accent-1: #B4293F;
-    /* Refined crimson from light theme */
-    --wave-accent-2: #2D4B6E;
-    /* Oceanic blue from light theme */
+  color-scheme:dark;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   REFINED RED LIGHT THEME
-   Sophisticated off-white with warm undertones and crimson accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
-[data-theme="red-light"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #faf6f7;
-    /* Main application background - sophisticated off-white with subtle warm undertone */
-    --color-bg-secondary: #ffffff;
-    /* Secondary containers, cards, sidebars */
-    --color-bg-tertiary: #f7eaee;
-    /* Elevated surfaces, modals, popovers */
-    --color-bg-card: #ffffff;
-    /* Card backgrounds - pure white */
-    --color-bg-glass: rgba(250, 246, 247, 0.92);
-    /* Glass effect backgrounds - light surfaces */
-    --color-bg-code: rgba(247, 234, 238, 0.8);
-    /* Code block backgrounds - light warm gray */
-    --color-bg-input: rgba(247, 234, 238, 0.7);
-    /* Form element backgrounds - very light warm */
-    --color-bg-hover: rgba(180, 42, 67, 0.08);
-    /* Hover state background - subtle red */
-    --color-bg-active: rgba(180, 42, 67, 0.15);
-    /* Active/selected state background - stronger red */
-    --color-bg-disabled: rgba(235, 226, 228, 0.7);
-    /* Disabled element background - light neutral gray */
-    --color-bg-tooltip: rgba(42, 25, 32, 0.95);
-    /* Tooltip background - nearly opaque dark */
-    --color-bg-dropdown: #ffffff;
-    /* Dropdown menu background - white */
-    --color-bg-selection: rgba(180, 42, 67, 0.2);
-    /* Text selection background */
+/* ═══════════════════════════════════════
+   REFINED RED — LIGHT (Crimson Day)
+   ═══════════════════════════════════════ */
+[data-theme="red-light"]{
+  /* ATOMS already defined above; light just overrides surfaces & text */
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #2A1920;
-    /* Main body text - deep maroon-black */
-    --color-text-secondary: #4D2E38;
-    /* Secondary/supporting text - rich burgundy */
-    --color-text-tertiary: rgba(77, 46, 56, 0.7);
-    /* De-emphasized text, subtitles, captions */
-    --color-text-disabled: rgba(77, 46, 56, 0.5);
-    /* Disabled text - significantly reduced contrast */
-    --color-text-on-accent: #ffffff;
-    /* Text on accent-colored backgrounds - white with proper contrast */
-    --color-text-code: #8C2235;
-    /* Code and pre-formatted text - deep burgundy for readability */
+  /* ========== SURFACES ========== */
+  --color-primary-bg:#FAF6F7;
+  --color-secondary-bg:#FFFFFF;
+  --color-tertiary-bg:#F7EAEE;
+  --color-card-bg:#FFFFFF;
+  --color-glass-bg:rgb(250 246 247 / .92);
+  --color-code-bg:rgb(247 234 238 / .80);
+  --color-input-bg:rgb(247 234 238 / .70);
+  --color-hover-bg:rgb(180 41 63 / .08);
+  --color-active-bg:rgb(180 41 63 / .15);
+  --color-disabled-bg:rgb(235 226 228 / .70);
+  --color-tooltip-bg:rgb(42 25 32 / .95);
+  --color-dropdown-bg:#FFFFFF;
+  --color-selection-bg:rgb(180 41 63 / .20);
 
-    /* Headings */
-    --color-heading: #B4293F;
-    /* Standard headings - refined crimson */
-    --color-heading-accent: #2D4B6E;
-    /* Accented headings - deep oceanic blue */
-    --color-subheading: #4D2E38;
-    /* Subheadings, section titles - rich burgundy */
+  --color-grid-lines:rgb(190 45 68 / .12);
 
-    /* Special text */
-    --color-text-emphasis: #2D4B6E;
-    /* Emphasized text - deep oceanic blue */
-    --color-text-inverted: #faf6f7;
-    /* Inverted text (on dark backgrounds) - sophisticated off-white */
+  /* ========== TYPE ========== */
+  --color-primary-text:#2A1920;
+  --color-secondary-text:#4D2E38;
+  --color-tertiary-text:rgb(77 46 56 / .70);
+  --color-disabled-text:rgb(77 46 56 / .50);
+  --color-text-on-accent:#FFFFFF;
+  --color-code-text:#8C2235;
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with complementary relationship
-     ════════════════════════════════════ */
-    --color-brand-primary: #B4293F;
-    /* Primary brand color - refined crimson */
-    --color-brand-secondary: #8C2235;
-    /* Secondary brand color - deeper crimson */
+  --color-heading:var(--crimson-600);
+  --color-heading-accent:var(--ocean-500);
+  --color-subheading:#4D2E38;
+  --color-text-emphasis:var(--ocean-500);
+  --color-text-inverted:#FAF6F7;
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #B4293F;
-    /* Primary accent for main interactive elements - refined crimson */
-    --color-accent-primary-hover: #9C2337;
-    /* Hover state for primary accent - deeper crimson */
-    --color-accent-primary-active: #8C2235;
-    /* Active state for primary accent - even deeper crimson */
-    --color-accent-secondary: #8C2235;
-    /* Secondary accent for visual variety - deeper crimson */
-    --color-accent-tertiary: #671B28;
-    /* Tertiary accent for subtle highlights - very deep crimson */
-    --color-accent-oceanic: #2D4B6E;
-    /* Oceanic blue accent - sophisticated complement to reds */
-    --color-accent-cosmic: #3E305A;
-    /* Cosmic purple accent - adds depth and sophistication */
-    --color-accent-forest: #1B4F45;
-    /* Forest green accent - complementary to red tones */
+  /* ========== BRAND / ACCENT ========== */
+  --color-brand-primary:var(--crimson-600);
+  --color-brand-secondary:var(--crimson-700);
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #B4293F;
-    /* Default interactive element color - refined crimson */
-    --color-interactive-hover: #9C2337;
-    /* Hover state - deeper crimson */
-    --color-interactive-active: #8C2235;
-    /* Active/pressed state - even deeper crimson */
-    --color-interactive-focus: #B4293F;
-    /* Focus state - same as interactive with focus ring */
-    --color-interactive-disabled: rgba(180, 41, 63, 0.4);
-    /* Disabled state - faded crimson */
+  --color-accent-primary:        var(--crimson-600);
+  --color-accent-primary-hover:  var(--crimson-700);
+  --color-accent-primary-active: #671B28;
+  --color-accent-secondary:      var(--crimson-700);
+  --color-accent-tertiary:       #671B28;
+  --color-accent-oceanic:        var(--ocean-500);
+  --color-accent-cosmic:         #3E305A;
+  --color-accent-forest:         var(--forest-500);
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #2D4B6E;
-    /* Secondary interactive elements - oceanic blue */
-    --color-interactive-secondary-hover: #263F5C;
-    /* Secondary hover state - deeper blue */
-    --color-interactive-secondary-active: #1F344B;
-    /* Secondary active state - even deeper blue */
+  /* ========== STATUS (same hues, lighter opacities) ========== */
+  --color-success:#276749;           --color-success-subtle:rgb(39 103 73 / .12);
+  --color-warning:#7B5E39;           --color-warning-subtle:rgb(123 94 57 / .12);
+  --color-error:var(--crimson-600);  --color-error-subtle:rgb(180 41 63 / .12);
+  --color-info:var(--ocean-500);     --color-info-subtle:rgb(45 75 110 / .12);
+  --color-neutral:#5E696B;           --color-neutral-subtle:rgb(94 105 107 / .12);
 
-    /* Form element specific colors */
-    --color-field-border: rgba(180, 41, 63, 0.35);
-    /* Form input borders */
-    --color-field-placeholder: rgba(77, 46, 56, 0.6);
-    /* Placeholder text */
-    --color-field-focus: #B4293F;
-    /* Field focus indicator */
-    --color-field-required: #2D4B6E;
-    /* Required field indicator - oceanic blue */
-    --color-field-invalid: #B4293F;
-    /* Invalid field indicator - refined crimson */
+  /* ========== SUPPORT ========== */
+  --color-border:        rgb(180 41 63 / .25);
+  --color-border-focus:  var(--crimson-600);
+  --color-border-input:  rgb(180 41 63 / .30);
+  --color-divider:       rgb(180 41 63 / .15);
+  --color-divider-light: rgb(0 0 0 / .05);
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts
-     ════════════════════════════════════ */
-    --color-success: #276749;
-    /* Success state - deep forest green */
-    --color-success-subtle: rgba(39, 103, 73, 0.12);
-    /* Subtle success background */
-    --color-warning: #7B5E39;
-    /* Warning state - rich amber (more masculine) */
-    --color-warning-subtle: rgba(123, 94, 57, 0.12);
-    /* Subtle warning background */
-    --color-error: #B4293F;
-    /* Error state - refined crimson */
-    --color-error-subtle: rgba(180, 41, 63, 0.12);
-    /* Subtle error background */
-    --color-info: #2D4B6E;
-    /* Information state - deep oceanic blue */
-    --color-info-subtle: rgba(45, 75, 110, 0.12);
-    /* Subtle info background */
-    --color-neutral: #5E696B;
-    /* Neutral state - slate gray */
-    --color-neutral-subtle: rgba(94, 105, 107, 0.12);
-    /* Subtle neutral background */
+  --shadow-sm:   0 2px 8px  -2px rgb(42 25 32 / .08);
+  --shadow-md:   0 12px 25px -10px rgb(42 25 32 / .12);
+  --shadow-lg:   0 25px 50px -12px rgb(42 25 32 / .15);
+  --shadow-focus:0 0 0 3px  rgb(180 41 63 / .25);
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with clear purpose
-     ════════════════════════════════════ */
-    --color-divider: rgba(180, 41, 63, 0.15);
-    /* Dividers and separators - subtle crimson tint */
-    --color-divider-light: rgba(0, 0, 0, 0.05);
-    /* Lighter dividers for contrast on light areas */
-    --color-border: rgba(180, 41, 63, 0.25);
-    /* Borders for containers, cards, etc */
-    --color-border-focus: #B4293F;
-    /* Focus state borders - refined crimson */
-    --color-border-input: rgba(180, 41, 63, 0.3);
-    /* Form input borders - slightly stronger than regular */
-    --color-shadow: rgba(42, 25, 32, 0.15);
-    /* Shadows for elevation - maroon shadow */
-    --color-shadow-light: rgba(42, 25, 32, 0.08);
-    /* Lighter shadows for subtle elevation */
-    --color-overlay: rgba(250, 246, 247, 0.85);
-    /* Modal/dialog overlays - light background */
-    --color-notification-badge: #B4293F;
-    /* Notification badges - attention-grabbing crimson */
+  --color-scrollbar-thumb:rgb(180 41 63 / .40);
+  --color-scrollbar-track:rgb(235 226 228 / .50);
 
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(180, 41, 63, 0.4);
-    /* Scrollbar thumb - semi-transparent crimson */
-    --color-scrollbar-track: rgba(235, 226, 228, 0.5);
-    /* Scrollbar track - light neutral gray */
+  /* ========== DECOR ========== */
+  --wave-primary:var(--depth-800);
+  --wave-secondary:var(--depth-700);
+  --wave-accent-1:var(--crimson-500);
+  --wave-accent-2:var(--ocean-500);
 
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #2D4B6E;
-    /* Link text - oceanic blue */
-    --color-link-hover: #1F344B;
-    /* Link hover state - deeper blue */
-    --color-link-visited: #3E305A;
-    /* Visited links - cosmic purple */
-    --color-emphasis: #B4293F;
-    /* Emphasized text - refined crimson */
-    --color-success-text: #276749;
-    /* Success messages - deep forest green */
-    --color-warning-text: #7B5E39;
-    /* Warning messages - rich amber */
-    --color-error-text: #B4293F;
-    /* Error messages - refined crimson */
-    --color-info-text: #2D4B6E;
-    /* Information text - oceanic blue */
+  --gradient-accent:      linear-gradient(45deg,var(--crimson-600),var(--crimson-700));
+  --gradient-interactive: linear-gradient(45deg,var(--crimson-600),var(--crimson-700));
+  --gradient-button:      linear-gradient(to right,var(--crimson-600),var(--crimson-700));
+  --gradient-button-hover:linear-gradient(to right,var(--crimson-700),#671B28);
+  --gradient-cosmic-red:  linear-gradient(45deg,#3E305A,var(--crimson-600));
+  --gradient-red-ocean:   linear-gradient(45deg,var(--crimson-600),var(--ocean-500));
+  --gradient-red-forest:  linear-gradient(45deg,var(--crimson-600),var(--forest-500));
+  --gradient-overlay:     linear-gradient(180deg,rgb(250 246 247 / .85),rgb(250 246 247 / .95));
 
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #B4293F;
-    /* Primary icons - refined crimson */
-    --color-icon-secondary: rgba(45, 75, 110, 0.9);
-    /* Secondary icons - oceanic blue with high opacity */
-    --color-icon-tertiary: rgba(77, 46, 56, 0.7);
-    /* Tertiary icons - muted, similar to tertiary text */
-    --color-icon-on-accent: #ffffff;
-    /* Icons on accent-colored backgrounds */
-    --color-icon-bg: rgba(180, 41, 63, 0.1);
-    /* Icon backgrounds or containers */
-    --color-icon-disabled: rgba(77, 46, 56, 0.5);
-    /* Disabled icons */
-
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.05;
-    /* Very subtle effects, barely visible */
-    --opacity-light: 0.12;
-    /* Light effects, clearly visible but subtle */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(180, 41, 63, 0.15);
-    /* Skill item background */
-    --color-skill-item-hover: rgba(45, 75, 110, 0.15);
-    /* Skill item hover - oceanic blue accent */
-    --color-skill-item-active: rgba(45, 75, 110, 0.25);
-    /* Skill item active - stronger oceanic blue */
-    --color-selection-bg: rgba(180, 41, 63, 0.2);
-    /* Text selection background */
-    --color-tooltip-bg: rgba(42, 25, 32, 0.95);
-    /* Tooltip background - nearly opaque dark */
-    --color-dropdown-bg: #ffffff;
-    /* Dropdown menu background - white */
-
-    /* ════════════════════════════════════
-     CURSOR COLORS
-     For custom cursor effects
-     ════════════════════════════════════ */
-    --color-cursor-inner-rgb: 42, 25, 32;
-    /* Inner cursor ring RGB values - deep maroon-black */
-    --color-cursor-outer-rgb: 180, 41, 63;
-    /* Outer cursor ring RGB values - refined crimson */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 180, 41, 63;
-    /* RGB values for refined crimson */
-    --color-accent-secondary-rgb: 140, 34, 53;
-    /* RGB values for deeper crimson */
-    --color-accent-oceanic-rgb: 45, 75, 110;
-    /* RGB values for oceanic blue */
-    --color-accent-cosmic-rgb: 62, 48, 90;
-    /* RGB values for cosmic purple */
-    --color-accent-forest-rgb: 27, 79, 69;
-    /* RGB values for forest green */
-    --color-bg-primary-rgb: 250, 246, 247;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 42, 25, 32;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - crimson gradient */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient */
-    --gradient-red: linear-gradient(45deg, #B4293F, #9C2337);
-    /* Red gradient */
-    --gradient-crimson: linear-gradient(45deg, #8C2235, #671B28);
-    /* Deeper crimson gradient */
-    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
-    /* Glass effect gradient */
-    --gradient-overlay: linear-gradient(180deg, rgba(250, 246, 247, 0.85), rgba(250, 246, 247, 0.95));
-    /* Overlay gradient */
-    --gradient-cosmic-red: linear-gradient(45deg, #3E305A, #B4293F);
-    /* Cosmic purple to red gradient */
-    --gradient-red-oceanic: linear-gradient(45deg, #B4293F, #2D4B6E);
-    /* Red to oceanic blue gradient */
-    --gradient-red-forest: linear-gradient(45deg, #B4293F, #1B4F45);
-    /* Red to forest green gradient */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(42, 25, 32, 0.08);
-    /* Small shadow */
-    --shadow-md: 0 12px 25px -10px rgba(42, 25, 32, 0.12);
-    /* Medium shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(42, 25, 32, 0.15);
-    /* Large shadow */
-    --shadow-inner: inset 0 2px 5px rgba(42, 25, 32, 0.05);
-    /* Inner shadow */
-    --shadow-focus: 0 0 0 3px rgba(180, 41, 63, 0.25);
-    /* Focus shadow */
-    --shadow-button: 0 4px 14px rgba(42, 25, 32, 0.15);
-    /* Button shadow */
-
-    /* Wave-specific colors - dark dominant for light mode */
-    --wave-primary: #1E1215;
-    /* Deep maroon-black from dark theme */
-    --wave-secondary: #2C181D;
-    /* Secondary dark color from dark theme */
-    --wave-accent-1: #BE2D44;
-    /* Refined deep crimson from dark theme */
-    --wave-accent-2: #345C80;
-    /* Deep oceanic blue from dark theme */
+  color-scheme:light;
 }
 
-/* Set color-scheme for the theme */
-[data-theme="red-dark"] {
-    color-scheme: dark;
+/* ════════════════════════════════
+   LEGACY TOKEN SHIM (optional)
+   ════════════════════════════════ */
+:root{
+  --color-bg-primary:var(--color-primary-bg);
+  --color-bg-secondary:var(--color-secondary-bg);
+  --color-bg-tertiary:var(--color-tertiary-bg);
+  --color-text-primary:var(--color-primary-text);
 }
 
-[data-theme="red-light"] {
-    color-scheme: light;
-}
-
-/* ────────────────────────────────────────────────────────────────────────────
- * Custom scrollbar styling for Red theme
- * ────────────────────────────────────────────────────────────────────────── */
-[data-theme^="red"] .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-[data-theme^="red"] .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--color-scrollbar-track);
-    border-radius: 4px;
-}
-
-[data-theme^="red"] .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--color-scrollbar-thumb);
-    border-radius: 4px;
-}
-
-[data-theme^="red"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-interactive);
-}
-
-/* Firefox scrollbar support */
-[data-theme^="red"] .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
-}
-/* Add missing variables to Red Dark theme */
-[data-theme="red-dark"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(240, 236, 238, 0.15);  /* Light grid lines for dark theme */
-}
-
-/* Add missing variables to Red Light theme */
-[data-theme="red-light"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(190, 45, 68, 0.12);  /* Red grid lines for light theme */
-}
+/* ── Scrollbar (shared) ── */
+[data-theme^="red"] .custom-scrollbar::-webkit-scrollbar{width:8px;height:8px}
+[data-theme^="red"] .custom-scrollbar::-webkit-scrollbar-track{
+  background:var(--color-scrollbar-track);border-radius:4px}
+[data-theme^="red"] .custom-scrollbar::-webkit-scrollbar-thumb{
+  background:var(--color-scrollbar-thumb);border-radius:4px}
+[data-theme^="red"] .custom-scrollbar::-webkit-scrollbar-thumb:hover{
+  background:var(--color-interactive)}
+[data-theme^="red"] .custom-scrollbar{
+  scrollbar-width:thin;scrollbar-color:var(--color-scrollbar-thumb) var(--color-scrollbar-track)}

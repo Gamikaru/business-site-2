@@ -1,710 +1,223 @@
-/* src/styles/themes/tropical-paradise-theme.css */
+/* src/styles/themes/tropical-paradise-theme.css
+   Island refactor — 2025‑05‑14
+   ───────────────────────────────────────────────────────── */
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   TROPICAL PARADISE THEME SYSTEM
+/* ═══════════════════════════════════════════════
+   TROPICAL PARADISE — DARK  (Ocean Night)
+   ═══════════════════════════════════════════════ */
+[data-theme="tropical-paradise-dark"]{
+  /* =====   ATOMS   ===== */
+  --ocean-900:#0C2638;
+  --ocean-800:#143A52;
+  --ocean-700:#1D4961;
 
-   A sophisticated, vibrant palette built around deep ocean teals, sunset corals,
-   and golden sand accents for a refreshing, energetic interface with island elegance.
+  --reef-teal-500:#00CFC4;
+  --reef-teal-600:#00B1A6;
+  --reef-teal-700:#00948A;
 
-   ORGANIZATION:
-   - Color palette variables (dark & light modes)
-   - Functional/semantic color assignments
-   - Color relationships and hierarchies
-   - Specialized component colors
-   ══════════════════════════════════════════════════════════════════════════════ */
+  --sunset-coral-500:#FF7361;
+  --sunset-coral-600:#FF5D47;
+  --sunset-coral-700:#FF452D;
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   TROPICAL PARADISE DARK THEME (Ocean Night Edition)
-   Deep ocean blues with vibrant teal and coral accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
-[data-theme="tropical-paradise-dark"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #0D2A3D;
-    /* Main application background - deep ocean blue */
-    --color-bg-secondary: #143a52;
-    /* Secondary containers, cards, sidebars - deeper teal */
-    --color-bg-tertiary: #1d4961;
-    /* Elevated surfaces, modals, popovers - ocean depth */
-    --color-bg-card: rgba(20, 58, 82, 0.97);
-    /* Card backgrounds with slight transparency */
-    --color-bg-glass: rgba(209, 248, 255, 0.08);
-    /* Glass effect backgrounds - subtle aqua overlay */
-    --color-bg-code: rgba(13, 42, 61, 0.85);
-    /* Code block backgrounds - slightly lighter than primary */
-    --color-bg-input: rgba(20, 58, 82, 0.65);
-    /* Form element backgrounds with subtle contrast */
-    --color-bg-hover: rgba(0, 209, 198, 0.12);
-    /* Hover state background - subtle teal highlight */
-    --color-bg-active: rgba(0, 209, 198, 0.22);
-    /* Active/selected state background - stronger teal */
-    --color-bg-disabled: rgba(48, 75, 90, 0.35);
-    /* Disabled element background - muted, low contrast */
-    --color-bg-tooltip: rgba(13, 42, 61, 0.97);
-    /* Tooltip background - intel brief */
-    --color-bg-dropdown: rgba(20, 58, 82, 0.98);
-    /* Dropdown menu background - tactical options */
-    --color-bg-selection: rgba(0, 209, 198, 0.25);
-    /* Text selection background - target marked */
+  --sand-gold-500:#F9C94D;
+  --blossom-500:#9A7CF7;
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #F0FEFF;
-    /* Main body text - soft aqua white for reduced eye strain */
-    --color-text-secondary: #ADE2E6;
-    /* Secondary/supporting text - softer contrast */
-    --color-text-tertiary: rgba(173, 226, 230, 0.7);
-    /* De-emphasized text, subtitles, captions */
-    --color-text-disabled: rgba(173, 226, 230, 0.5);
-    /* Disabled text - significantly reduced contrast */
-    --color-text-on-accent: #0D2A3D;
-    /* Text on accent-colored backgrounds - deep ocean blue with proper contrast */
-    --color-text-code: #6CFFEF;
-    /* Code and pre-formatted text - bright aqua for readability */
+  /* =====   SURFACES   ===== */
+  --color-primary-bg:   var(--ocean-900);
+  --color-secondary-bg: var(--ocean-800);
+  --color-tertiary-bg:  var(--ocean-700);
+  --color-card-bg:      rgba(20 58 82/.97);
+  --color-glass-bg:     rgba(209 248 255/.08);
+  --color-code-bg:      rgba(12 38 56/.85);
+  --color-input-bg:     rgba(20 58 82/.65);
+  --color-hover-bg:     rgba(  0 207 194/.12);
+  --color-active-bg:    rgba(  0 207 194/.22);
+  --color-disabled-bg:  rgba(48 75 90/.35);
+  --color-tooltip-bg:   rgba(12 38 56/.97);
+  --color-dropdown-bg:  rgba(20 58 82/.98);
+  --color-selection-bg: rgba(  0 207 194/.25);
 
-    /* Headings */
-    --color-heading: #00D1C6;
-    /* Standard headings - vibrant teal */
-    --color-heading-accent: #FF7E6B;
-    /* Accented headings - sunset coral */
-    --color-subheading: #ADE2E6;
-    /* Subheadings, section titles */
+  --color-grid-lines:   rgba(240 254 255/.20);
 
-    /* Special text */
-    --color-text-emphasis: #FFD166;
-    /* Emphasized text, highlights - golden sand */
-    --color-text-inverted: #F0FEFF;
-    /* Inverted text (on dark backgrounds) - soft aqua white */
+  /* =====   TYPE   ===== */
+  --color-primary-text:#F0FEFF;
+  --color-secondary-text:#ABE1E6;
+  --color-tertiary-text:rgba(171 225 230/.70);
+  --color-disabled-text:rgba(171 225 230/.50);
+  --color-text-on-accent:#0C2638;
+  --color-code-text:#6AFFED;
+  --color-heading:var(--reef-teal-500);
+  --color-heading-accent:var(--sunset-coral-500);
+  --color-subheading:#ABE1E6;
+  --color-text-emphasis:var(--sand-gold-500);
+  --color-text-inverted:#F0FEFF;
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with tropical coastal energy
-     ════════════════════════════════════ */
-    --color-brand-primary: #00D1C6;
-    /* Primary brand color - vibrant teal */
-    --color-brand-secondary: #FF7E6B;
-    /* Secondary brand color - sunset coral */
+  /* =====   BRAND & ACCENT   ===== */
+  --color-brand-primary:var(--reef-teal-500);
+  --color-brand-secondary:var(--sunset-coral-500);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #00D1C6;
-    /* Primary accent for main interactive elements - vibrant teal */
-    --color-accent-primary-hover: #00B3A9;
-    /* Hover state for primary accent - deeper teal */
-    --color-accent-primary-active: #009790;
-    /* Active state for primary accent - even deeper teal */
-    --color-accent-secondary: #FF7E6B;
-    /* Secondary accent for visual variety - sunset coral */
-    --color-accent-tertiary: #FFD166;
-    /* Tertiary accent for subtle highlights - golden sand */
-    --color-accent-warm: #FFD166;
-    /* Warm accent for attention-grabbing elements - golden sand */
-    --color-accent-contrast: #9D88F9;
-    /* High-contrast accent for important elements - tropical blossom */
+  --color-accent-primary:         var(--reef-teal-500);
+  --color-accent-primary-hover:   var(--reef-teal-600);
+  --color-accent-primary-active:  var(--reef-teal-700);
+  --color-accent-secondary:       var(--sunset-coral-500);
+  --color-accent-tertiary:        var(--sand-gold-500);
+  --color-accent-warm:            var(--sand-gold-500);
+  --color-accent-contrast:        var(--blossom-500);
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #00D1C6;
-    /* Default interactive element color - vibrant teal */
-    --color-interactive-hover: #00B3A9;
-    /* Hover state - deeper teal (1.3:1 from default) */
-    --color-interactive-active: #009790;
-    /* Active/pressed state - even deeper teal (1.6:1 from default) */
-    --color-interactive-focus: #00D1C6;
-    /* Focus state indicator - vibrant teal */
-    --color-interactive-disabled: rgba(0, 209, 198, 0.4);
-    /* Disabled state - faded teal */
+  /* =====   STATUS   ===== */
+  --color-success:#40D38F;                       --color-success-subtle:rgba(64 211 143/.15);
+  --color-warning:var(--sand-gold-500);          --color-warning-subtle:rgba(249 201  77/.15);
+  --color-error:var(--sunset-coral-600);         --color-error-subtle:rgba(255  93  71/.15);
+  --color-info:var(--reef-teal-500);             --color-info-subtle:rgba(  0 207 194/.15);
+  --color-neutral:#ABE1E6;                       --color-neutral-subtle:rgba(171 225 230/.15);
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #FF7E6B;
-    /* Secondary interactive elements - sunset coral */
-    --color-interactive-secondary-hover: #FF6A54;
-    /* Secondary hover state - deeper coral */
-    --color-interactive-secondary-active: #FF5540;
-    /* Secondary active state - even deeper coral */
+  /* =====   SUPPORT   ===== */
+  --color-border:         rgba(  0 207 194/.40);
+  --color-border-focus:   var(--reef-teal-500);
+  --color-border-input:   rgba(  0 207 194/.50);
+  --color-divider:        rgba(  0 207 194/.30);
+  --color-divider-light:  rgba(240 254 255/.08);
 
-    /* Form element specific colors */
-    --color-field-border: rgba(0, 209, 198, 0.5);
-    /* Form input borders - teal input frame */
-    --color-field-placeholder: rgba(173, 226, 230, 0.6);
-    /* Placeholder text - faded aqua text */
-    --color-field-focus: #00D1C6;
-    /* Field focus indicator - vibrant teal */
-    --color-field-required: #00D1C6;
-    /* Required field indicator - vibrant teal */
-    --color-field-invalid: #FF6A54;
-    /* Invalid field indicator - deeper coral */
+  --shadow-sm:0 2px 8px -2px  rgba(3 20 30/.25);
+  --shadow-md:0 12px 25px -10px rgba(3 20 30/.35);
+  --shadow-lg:0 25px 50px -12px rgba(3 20 30/.40);
+  --shadow-focus:0 0 0 3px rgba(  0 207 194/.30);
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts with tropical themes
-     ════════════════════════════════════ */
-    --color-success: #44D695;
-    /* Success state - palm leaf green (system online) */
-    --color-success-subtle: rgba(68, 214, 149, 0.15);
-    /* Subtle success background - system confirmation */
-    --color-warning: #FFD166;
-    /* Warning state - golden sand (system alert) */
-    --color-warning-subtle: rgba(255, 209, 102, 0.15);
-    /* Subtle warning background - system caution */
-    --color-error: #FF6A54;
-    /* Error state - deeper coral (system failure) */
-    --color-error-subtle: rgba(255, 106, 84, 0.15);
-    /* Subtle error background - system error */
-    --color-info: #00D1C6;
-    /* Information state - vibrant teal (system info) */
-    --color-info-subtle: rgba(0, 209, 198, 0.15);
-    /* Subtle info background - system message */
-    --color-neutral: #ADE2E6;
-    /* Neutral state - soft aqua (system neutral) */
-    --color-neutral-subtle: rgba(173, 226, 230, 0.15);
-    /* Subtle neutral background - system background */
+  --color-scrollbar-thumb:rgba(  0 207 194/.50);
+  --color-scrollbar-track:rgba(12 38 56/.30);
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with tropical visuals
-     ════════════════════════════════════ */
-    --color-divider: rgba(0, 209, 198, 0.3);
-    /* Dividers and separators - teal dividers */
-    --color-divider-light: rgba(240, 254, 255, 0.08);
-    /* Lighter dividers for contrast on dark areas - aqua divisions */
-    --color-border: rgba(0, 209, 198, 0.4);
-    /* Borders for containers, cards, etc - teal boundaries */
-    --color-border-focus: #00D1C6;
-    /* Focus state borders - vibrant teal highlight */
-    --color-border-input: rgba(0, 209, 198, 0.5);
-    /* Form input borders - teal input frame */
-    --color-shadow: rgba(3, 20, 30, 0.5);
-    /* Shadows for elevation - deep ocean shadow */
-    --color-shadow-light: rgba(3, 20, 30, 0.3);
-    /* Lighter shadows for subtle elevation - ocean glow */
-    --color-overlay: rgba(13, 42, 61, 0.8);
-    /* Modal/dialog overlays - ocean overlay */
-    --color-notification-badge: #FF6A54;
-    /* Notification badges - coral alert */
+  /* =====   DECOR   ===== */
+  --wave-primary:#E6FEFF;
+  --wave-secondary:#FFFFFF;
+  --wave-accent-1:var(--reef-teal-600);
+  --wave-accent-2:var(--sunset-coral-600);
 
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(0, 209, 198, 0.5);
-    /* Scrollbar thumb - teal slider */
-    --color-scrollbar-track: rgba(13, 42, 61, 0.3);
-    /* Scrollbar track - ocean track */
+  --gradient-accent:      linear-gradient(45deg,var(--reef-teal-500),var(--sunset-coral-500));
+  --gradient-interactive: linear-gradient(45deg,var(--reef-teal-500),var(--reef-teal-600));
+  --gradient-button:      linear-gradient(to right,var(--reef-teal-500),var(--reef-teal-600));
+  --gradient-button-hover:linear-gradient(to right,var(--reef-teal-600),var(--reef-teal-700));
+  --gradient-island-sunrise:linear-gradient(135deg,var(--ocean-800),var(--reef-teal-500),var(--sunset-coral-500));
 
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #6CFFEF;
-    /* Link text - bright aqua hyperlink */
-    --color-link-hover: #9AFFFA;
-    /* Link hover state - lighter aqua connection */
-    --color-link-visited: #9D88F9;
-    /* Visited links - tropical blossom */
-    --color-emphasis: #FF7E6B;
-    /* Emphasized text - sunset coral */
-    --color-success-text: #44D695;
-    /* Success messages - palm leaf green text */
-    --color-warning-text: #FFD166;
-    /* Warning messages - golden sand alert text */
-    --color-error-text: #FF6A54;
-    /* Error messages - deeper coral failure text */
-    --color-info-text: #00D1C6;
-    /* Information text - vibrant teal information */
-
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #00D1C6;
-    /* Primary icons - vibrant teal icons */
-    --color-icon-secondary: rgba(255, 126, 107, 0.9);
-    /* Secondary icons - sunset coral with high opacity */
-    --color-icon-tertiary: rgba(173, 226, 230, 0.7);
-    /* Tertiary icons - soft aqua background elements */
-    --color-icon-on-accent: #0D2A3D;
-    /* Icons on accent-colored backgrounds - deep ocean blue */
-    --color-icon-bg: rgba(0, 209, 198, 0.1);
-    /* Icon backgrounds or containers - teal backdrop */
-    --color-icon-disabled: rgba(173, 226, 230, 0.5);
-    /* Disabled icons - faded aqua */
-
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.08;
-    /* Very subtle effects, barely visible - sea mist */
-    --opacity-light: 0.15;
-    /* Light effects, clearly visible but subtle - shallow water */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent - underwater view */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid - deep dive */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity - washed out */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(0, 209, 198, 0.2);
-    /* Skill item background - teal ability */
-    --color-skill-item-hover: rgba(255, 126, 107, 0.3);
-    /* Skill item hover - coral activation */
-    --color-skill-item-active: rgba(255, 126, 107, 0.4);
-    /* Skill item active - strong coral */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 0, 209, 198;
-    /* RGB values for vibrant teal */
-    --color-accent-secondary-rgb: 255, 126, 107;
-    /* RGB values for sunset coral */
-    --color-accent-warm-rgb: 255, 209, 102;
-    /* RGB values for golden sand */
-    --color-accent-purple-rgb: 157, 136, 249;
-    /* RGB values for tropical blossom */
-    --color-bg-primary-rgb: 13, 42, 61;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 240, 254, 255;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects with tropical aesthetic
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - ocean sunset */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient - teal depths */
-    --gradient-teal: linear-gradient(45deg, #00D1C6, #00B3A9);
-    /* Vibrant teal gradient - ocean current */
-    --gradient-coral: linear-gradient(45deg, #FF7E6B, #FF6A54);
-    /* Sunset coral gradient - sunset glow */
-    --gradient-glass: linear-gradient(120deg, rgba(209, 248, 255, 0.08), rgba(209, 248, 255, 0.04));
-    /* Glass effect gradient - gentle wave */
-    --gradient-overlay: linear-gradient(180deg, rgba(13, 42, 61, 0.8), rgba(13, 42, 61, 0.95));
-    /* Overlay gradient - deep dive */
-    --gradient-purple-teal: linear-gradient(45deg, #9D88F9, #00D1C6);
-    /* Purple to teal gradient - tropical twilight */
-    --gradient-coral-gold: linear-gradient(45deg, #FF7E6B, #FFD166);
-    /* Coral to gold gradient - island sunset */
-    --gradient-island-sunrise: linear-gradient(135deg, #143a52, #00D1C6, #FF7E6B);
-    /* Morning horizon over island waters */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient - teal flow */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient - deeper teal flow */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects with tropical feel
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(3, 20, 30, 0.25);
-    /* Small shadow - gentle wave shadow */
-    --shadow-md: 0 12px 25px -10px rgba(3, 20, 30, 0.35);
-    /* Medium shadow - moderate depth */
-    --shadow-lg: 0 25px 50px -12px rgba(3, 20, 30, 0.4);
-    /* Large shadow - ocean depth shadow */
-    --shadow-inner: inset 0 2px 5px rgba(3, 20, 30, 0.15);
-    /* Inner shadow - lagoon depth */
-    --shadow-focus: 0 0 0 3px rgba(0, 209, 198, 0.3);
-    /* Focus shadow - teal glow */
-    --shadow-button: 0 0 15px rgba(0, 209, 198, 0.25);
-    /* Button shadow - teal aura */
-    --shadow-neon: 0 0 10px rgba(0, 209, 198, 0.5), 0 0 20px rgba(0, 209, 198, 0.3), 0 0 30px rgba(0, 209, 198, 0.1);
-    /* Neon glow shadow - bioluminescent reef */
-    --shadow-neon-coral: 0 0 10px rgba(255, 126, 107, 0.5), 0 0 20px rgba(255, 126, 107, 0.3), 0 0 30px rgba(255, 126, 107, 0.1);
-    /* Coral neon glow shadow - sunset reflection */
-    --shadow-data-edge: 0 0 0 1px rgba(0, 209, 198, 0.2), 0 0 0 2px rgba(0, 209, 198, 0.1);
-    /* Data edge shadow - wave edge */
-
-    /* Wave-specific colors - white dominant for dark mode */
-    --wave-primary: #E6FEFF;
-    /* Bright aqua white from light theme */
-    --wave-secondary: #FFFFFF;
-    /* Pure white */
-    --wave-accent-1: #00A8A0;
-    /* Deeper teal from light theme */
-    --wave-accent-2: #FF6A54;
-    /* Deeper coral from light theme */
+  color-scheme:dark;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   TROPICAL PARADISE LIGHT THEME (Island Day Edition)
-   Bright aqua whites with vibrant teal and coral accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
-[data-theme="tropical-paradise-light"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #E6FEFF;
-    /* Main application background - bright aqua white */
-    --color-bg-secondary: #FFFFFF;
-    /* Secondary containers, cards, sidebars - pure white */
-    --color-bg-tertiary: #CFFAF9;
-    /* Elevated surfaces, modals, popovers - light aqua */
-    --color-bg-card: #FFFFFF;
-    /* Card backgrounds - pure white */
-    --color-bg-glass: rgba(230, 254, 255, 0.92);
-    /* Glass effect backgrounds - light surfaces */
-    --color-bg-code: rgba(207, 250, 249, 0.8);
-    /* Code block backgrounds - light aqua */
-    --color-bg-input: rgba(207, 250, 249, 0.7);
-    /* Form element backgrounds - very light aqua */
-    --color-bg-hover: rgba(0, 168, 160, 0.08);
-    /* Hover state background - subtle teal */
-    --color-bg-active: rgba(0, 168, 160, 0.15);
-    /* Active/selected state background - stronger teal */
-    --color-bg-disabled: rgba(220, 240, 240, 0.7);
-    /* Disabled element background - light aqua-gray */
-    --color-bg-tooltip: rgba(10, 53, 70, 0.95);
-    /* Tooltip background - info readout */
-    --color-bg-dropdown: #FFFFFF;
-    /* Dropdown menu background - option panel */
-    --color-bg-selection: rgba(0, 168, 160, 0.2);
-    /* Text selection background - data selection */
+/* ═══════════════════════════════════════════════
+   TROPICAL PARADISE — LIGHT (Island Day)
+   ═══════════════════════════════════════════════ */
+[data-theme="tropical-paradise-light"]{
+  /* =====   ATOMS   ===== */
+  --reef-teal-500:#00A8A0;
+  --reef-teal-600:#008F87;
+  --reef-teal-700:#007A74;
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #0A3546;
-    /* Main body text - deep teal-blue */
-    --color-text-secondary: #18576E;
-    /* Secondary/supporting text - medium teal-blue */
-    --color-text-tertiary: rgba(24, 87, 110, 0.7);
-    /* De-emphasized text, subtitles, captions */
-    --color-text-disabled: rgba(24, 87, 110, 0.5);
-    /* Disabled text - significantly reduced contrast */
-    --color-text-on-accent: #FFFFFF;
-    /* Text on accent-colored backgrounds - white with proper contrast */
-    --color-text-code: #0A8780;
-    /* Code and pre-formatted text - dark teal for readability */
+  --sunset-coral-500:#FF6A54;
+  --sunset-coral-600:#FF5540;
+  --sunset-coral-700:#FF3D26;
 
-    /* Headings */
-    --color-heading: #00A8A0;
-    /* Standard headings - deeper teal */
-    --color-heading-accent: #FF6A54;
-    /* Accented headings - deeper coral */
-    --color-subheading: #18576E;
-    /* Subheadings, section titles */
+  --sand-gold-500:#EEBB4D;
+  --blossom-500:#7D68D9;
 
-    /* Special text */
-    --color-text-emphasis: #FF6A54;
-    /* Emphasized text - deeper coral */
-    --color-text-inverted: #E6FEFF;
-    /* Inverted text (on dark backgrounds) - bright aqua white */
+  --aqua-50:#E6FEFF;
+  --aqua-100:#CFFAF9;
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with tropical coastal energy
-     ════════════════════════════════════ */
-    --color-brand-primary: #00A8A0;
-    /* Primary brand color - deeper teal */
-    --color-brand-secondary: #FF6A54;
-    /* Secondary brand color - deeper coral */
+  /* =====   SURFACES   ===== */
+  --color-primary-bg:   var(--aqua-50);
+  --color-secondary-bg: #FFFFFF;
+  --color-tertiary-bg:  var(--aqua-100);
+  --color-card-bg:      #FFFFFF;
+  --color-glass-bg:     rgba(230 254 255/.90);
+  --color-code-bg:      rgba(207 250 249/.80);
+  --color-input-bg:     rgba(207 250 249/.70);
+  --color-hover-bg:     rgba(  0 168 160/.08);
+  --color-active-bg:    rgba(  0 168 160/.15);
+  --color-disabled-bg:  rgba(220 240 240/.70);
+  --color-tooltip-bg:   rgba(10 53 70/.95);
+  --color-dropdown-bg:  #FFFFFF;
+  --color-selection-bg: rgba(  0 168 160/.20);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #00A8A0;
-    /* Primary accent for main interactive elements - deeper teal */
-    --color-accent-primary-hover: #008F87;
-    /* Hover state for primary accent - even deeper teal */
-    --color-accent-primary-active: #007A74;
-    /* Active state for primary accent - darkest teal */
-    --color-accent-secondary: #FF6A54;
-    /* Secondary accent for visual variety - deeper coral */
-    --color-accent-tertiary: #EEBB4D;
-    /* Tertiary accent for subtle highlights - warm golden sand */
-    --color-accent-warm: #EEBB4D;
-    /* Warm accent for attention-grabbing elements - warm golden sand */
-    --color-accent-contrast: #7D68D9;
-    /* High-contrast accent for important elements - tropical blossom */
+  --color-grid-lines:   rgba(  0 207 194/.15);
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #00A8A0;
-    /* Default interactive element color - deeper teal */
-    --color-interactive-hover: #008F87;
-    /* Hover state - even deeper teal (1.3:1 from default) */
-    --color-interactive-active: #007A74;
-    /* Active/pressed state - darkest teal (1.6:1 from default) */
-    --color-interactive-focus: #00A8A0;
-    /* Focus state indicator - deeper teal */
-    --color-interactive-disabled: rgba(0, 168, 160, 0.4);
-    /* Disabled state - faded teal */
+  /* =====   TYPE   ===== */
+  --color-primary-text:#0A3546;
+  --color-secondary-text:#18576E;
+  --color-tertiary-text:rgba(24 87 110/.70);
+  --color-disabled-text:rgba(24 87 110/.50);
+  --color-text-on-accent:#FFFFFF;
+  --color-code-text:#0A8780;
+  --color-heading:var(--reef-teal-500);
+  --color-heading-accent:var(--sunset-coral-500);
+  --color-subheading:#18576E;
+  --color-text-emphasis:var(--sunset-coral-500);
+  --color-text-inverted:var(--aqua-50);
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #FF6A54;
-    /* Secondary interactive elements - deeper coral */
-    --color-interactive-secondary-hover: #FF5540;
-    /* Secondary hover state - even deeper coral */
-    --color-interactive-secondary-active: #FF3D26;
-    /* Secondary active state - darkest coral */
+  /* =====   BRAND & ACCENT   ===== */
+  --color-brand-primary:var(--reef-teal-500);
+  --color-brand-secondary:var(--sunset-coral-500);
 
-    /* Form element specific colors */
-    --color-field-border: rgba(0, 168, 160, 0.35);
-    /* Form input borders - teal input frame */
-    --color-field-placeholder: rgba(24, 87, 110, 0.6);
-    /* Placeholder text */
-    --color-field-focus: #00A8A0;
-    /* Field focus indicator */
-    --color-field-required: #00A8A0;
-    /* Required field indicator */
-    --color-field-invalid: #FF5540;
-    /* Invalid field indicator */
+  --color-accent-primary:         var(--reef-teal-500);
+  --color-accent-primary-hover:   var(--reef-teal-600);
+  --color-accent-primary-active:  var(--reef-teal-700);
+  --color-accent-secondary:       var(--sunset-coral-500);
+  --color-accent-tertiary:        var(--sand-gold-500);
+  --color-accent-warm:            var(--sand-gold-500);
+  --color-accent-contrast:        var(--blossom-500);
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts with tropical themes
-     ════════════════════════════════════ */
-    --color-success: #20B578;
-    /* Success state - palm leaf green (system clear) */
-    --color-success-subtle: rgba(32, 181, 120, 0.12);
-    /* Subtle success background - system operational */
-    --color-warning: #EEBB4D;
-    /* Warning state - warm golden sand (alert status) */
-    --color-warning-subtle: rgba(238, 187, 77, 0.12);
-    /* Subtle warning background - system warning */
-    --color-error: #FF5540;
-    /* Error state - even deeper coral (system critical) */
-    --color-error-subtle: rgba(255, 85, 64, 0.12);
-    /* Subtle error background - system breach */
-    --color-info: #00A8A0;
-    /* Information state - deeper teal (system info) */
-    --color-info-subtle: rgba(0, 168, 160, 0.12);
-    /* Subtle info background - system message */
-    --color-neutral: #6A98AB;
-    /* Neutral state - ocean gray-blue (system neutral) */
-    --color-neutral-subtle: rgba(106, 152, 171, 0.12);
-    /* Subtle neutral background - system standby */
+  /* =====   STATUS   ===== */
+  --color-success:#1EB274;                        --color-success-subtle:rgba(30 178 116/.12);
+  --color-warning:var(--sand-gold-500);           --color-warning-subtle:rgba(238 187  77/.12);
+  --color-error:var(--sunset-coral-600);          --color-error-subtle:rgba(255  85  64/.12);
+  --color-info:var(--reef-teal-500);              --color-info-subtle:rgba(  0 168 160/.12);
+  --color-neutral:#6A98AB;                        --color-neutral-subtle:rgba(106 152 171/.12);
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with tropical visuals
-     ════════════════════════════════════ */
-    --color-divider: rgba(0, 168, 160, 0.25);
-    /* Dividers and separators - teal dividers */
-    --color-divider-light: rgba(0, 0, 0, 0.05);
-    /* Lighter dividers for contrast on light areas - subtle division */
-    --color-border: rgba(0, 168, 160, 0.3);
-    /* Borders for containers, cards, etc - teal borders */
-    --color-border-focus: #00A8A0;
-    /* Focus state borders - deeper teal highlight */
-    --color-border-input: rgba(0, 168, 160, 0.3);
-    /* Form input borders - teal input field */
-    --color-shadow: rgba(10, 53, 70, 0.15);
-    /* Shadows for elevation - teal-blue shadow */
-    --color-shadow-light: rgba(10, 53, 70, 0.08);
-    /* Lighter shadows for subtle elevation - light ocean shadow */
-    --color-overlay: rgba(230, 254, 255, 0.85);
-    /* Modal/dialog overlays - light background */
-    --color-notification-badge: #FF5540;
-    /* Notification badges - attention-grabbing coral */
+  /* =====   SUPPORT   ===== */
+  --color-border:         rgba(  0 168 160/.30);
+  --color-border-focus:   var(--reef-teal-500);
+  --color-border-input:   rgba(  0 168 160/.30);
+  --color-divider:        rgba(  0 168 160/.25);
+  --color-divider-light:  rgba(  0   0   0/.05);
 
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(0, 168, 160, 0.4);
-    /* Scrollbar thumb - teal slider */
-    --color-scrollbar-track: rgba(220, 240, 240, 0.5);
-    /* Scrollbar track - light aqua-gray */
+  --shadow-sm:0 2px 8px -2px  rgba(10 53 70/.08);
+  --shadow-md:0 12px 25px -10px rgba(10 53 70/.12);
+  --shadow-lg:0 25px 50px -12px rgba(10 53 70/.15);
+  --shadow-focus:0 0 0 3px rgba(  0 168 160/.25);
 
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #00A8A0;
-    /* Link text - deeper teal */
-    --color-link-hover: #007A74;
-    /* Link hover state - darkest teal */
-    --color-link-visited: #7D68D9;
-    /* Visited links - tropical blossom */
-    --color-emphasis: #FF6A54;
-    /* Emphasized text - deeper coral */
-    --color-success-text: #20B578;
-    /* Success messages - palm leaf green */
-    --color-warning-text: #EEBB4D;
-    /* Warning messages - warm golden sand */
-    --color-error-text: #FF5540;
-    /* Error messages - even deeper coral */
-    --color-info-text: #00A8A0;
-    /* Information text - deeper teal */
+  --color-scrollbar-thumb:rgba(  0 168 160/.40);
+  --color-scrollbar-track:rgba(220 240 240/.50);
 
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #00A8A0;
-    /* Primary icons - deeper teal */
-    --color-icon-secondary: rgba(255, 106, 84, 0.9);
-    /* Secondary icons - deeper coral with high opacity */
-    --color-icon-tertiary: rgba(24, 87, 110, 0.7);
-    /* Tertiary icons - muted, similar to tertiary text */
-    --color-icon-on-accent: #FFFFFF;
-    /* Icons on accent-colored backgrounds - white */
-    --color-icon-bg: rgba(0, 168, 160, 0.1);
-    /* Icon backgrounds or containers - teal backdrop */
-    --color-icon-disabled: rgba(24, 87, 110, 0.5);
-    /* Disabled icons - faded ocean */
+  --wave-primary:var(--ocean-900);
+  --wave-secondary:var(--ocean-800);
+  --wave-accent-1:var(--reef-teal-500);
+  --wave-accent-2:var(--sunset-coral-500);
 
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.05;
-    /* Very subtle effects, barely visible - shallow ripple */
-    --opacity-light: 0.12;
-    /* Light effects, clearly visible but subtle - gentle wave */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent - lagoon view */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid - island view */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity - beach haze */
+  --gradient-accent:      linear-gradient(45deg,var(--reef-teal-500),var(--sunset-coral-500));
+  --gradient-interactive: linear-gradient(45deg,var(--reef-teal-500),var(--reef-teal-600));
+  --gradient-button:      linear-gradient(to right,var(--reef-teal-500),var(--reef-teal-600));
+  --gradient-button-hover:linear-gradient(to right,var(--reef-teal-600),var(--reef-teal-700));
+  --gradient-island-day:  linear-gradient(135deg,var(--aqua-100),var(--reef-teal-500),var(--sunset-coral-500));
 
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(0, 168, 160, 0.15);
-    /* Skill item background - teal spec */
-    --color-skill-item-hover: rgba(255, 106, 84, 0.15);
-    /* Skill item hover - coral highlight */
-    --color-skill-item-active: rgba(255, 106, 84, 0.25);
-    /* Skill item active - stronger coral */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 0, 168, 160;
-    /* RGB values for deeper teal */
-    --color-accent-secondary-rgb: 255, 106, 84;
-    /* RGB values for deeper coral */
-    --color-accent-warm-rgb: 238, 187, 77;
-    /* RGB values for warm golden sand */
-    --color-accent-purple-rgb: 125, 104, 217;
-    /* RGB values for tropical blossom */
-    --color-bg-primary-rgb: 230, 254, 255;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 10, 53, 70;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects with tropical aesthetic
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Teal to coral gradient - ocean sunset */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Teal gradient - ocean depths */
-    --gradient-teal: linear-gradient(45deg, #00A8A0, #008F87);
-    /* Deeper teal gradient - reef waters */
-    --gradient-coral: linear-gradient(45deg, #FF6A54, #FF5540);
-    /* Deeper coral gradient - sunset skies */
-    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
-    /* Glass effect gradient - light surfaces */
-    --gradient-overlay: linear-gradient(180deg, rgba(230, 254, 255, 0.85), rgba(230, 254, 255, 0.95));
-    /* Overlay gradient - light background */
-    --gradient-purple-teal: linear-gradient(45deg, #7D68D9, #00A8A0);
-    /* Tropical blossom to teal gradient - island magic */
-    --gradient-coral-gold: linear-gradient(45deg, #FF6A54, #EEBB4D);
-    /* Deeper coral to warm golden sand gradient - tropical sunset */
-    --gradient-island-day: linear-gradient(135deg, #CFFAF9, #00A8A0, #FF6A54);
-    /* Daytime horizon over island waters */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects with tropical feel
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(10, 53, 70, 0.08);
-    /* Small shadow - gentle ripple */
-    --shadow-md: 0 12px 25px -10px rgba(10, 53, 70, 0.12);
-    /* Medium shadow - reef shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(10, 53, 70, 0.15);
-    /* Large shadow - island shadow */
-    --shadow-inner: inset 0 2px 5px rgba(10, 53, 70, 0.05);
-    /* Inner shadow - shell texture */
-    --shadow-focus: 0 0 0 3px rgba(0, 168, 160, 0.25);
-    /* Focus shadow - teal highlight */
-    --shadow-button: 0 4px 14px rgba(10, 53, 70, 0.15);
-    /* Button shadow - island elevation */
-    --shadow-neon: 0 0 10px rgba(0, 168, 160, 0.4), 0 0 20px rgba(0, 168, 160, 0.2), 0 0 30px rgba(0, 168, 160, 0.1);
-    /* Teal neon glow shadow - lagoon shimmer */
-    --shadow-neon-coral: 0 0 10px rgba(255, 106, 84, 0.4), 0 0 20px rgba(255, 106, 84, 0.2), 0 0 30px rgba(255, 106, 84, 0.1);
-    /* Coral neon glow shadow - sunset glow */
-    --shadow-data-edge: 0 0 0 1px rgba(0, 168, 160, 0.2), 0 0 0 2px rgba(0, 168, 160, 0.1);
-    /* Data edge shadow - reef outline */
-
-    /* Wave-specific colors - dark dominant for light mode */
-    --wave-primary: #0D2A3D;
-    /* Deep ocean blue from dark theme */
-    --wave-secondary: #143a52;
-    /* Deeper teal from dark theme */
-    --wave-accent-1: #00D1C6;
-    /* Vibrant teal from dark theme */
-    --wave-accent-2: #FF7E6B;
-    /* Sunset coral from dark theme */
+  color-scheme:light;
 }
 
-/* Set color-scheme for the theme */
-[data-theme="tropical-paradise-dark"] {
-    color-scheme: dark;
+/* ═══════════════════════════════════════
+   LEGACY SHIM — remove when migration done
+   ═══════════════════════════════════════ */
+:root{
+  --color-bg-primary:var(--color-primary-bg);
+  --color-bg-secondary:var(--color-secondary-bg);
+  --color-bg-tertiary:var(--color-tertiary-bg);
+  --color-bg-card:var(--color-card-bg);
+  --color-text-primary:var(--color-primary-text);
+  --color-text-secondary:var(--color-secondary-text);
+  --color-text-tertiary:var(--color-tertiary-text);
 }
 
-[data-theme="tropical-paradise-light"] {
-    color-scheme: light;
-}
-
-/* ────────────────────────────────────────────────────────────────────────────
- * Custom scrollbar styling for Tropical Paradise theme
- * ────────────────────────────────────────────────────────────────────────── */
-[data-theme^="tropical-paradise"] .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-[data-theme^="tropical-paradise"] .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--color-scrollbar-track);
-    border-radius: 4px;
-}
-
-[data-theme^="tropical-paradise"] .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--color-scrollbar-thumb);
-    border-radius: 4px;
-}
-
-[data-theme^="tropical-paradise"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-interactive);
-}
-
-/* Firefox scrollbar support */
-[data-theme^="tropical-paradise"] .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
-}
-/* Add missing variables to Tropical Paradise Dark theme */
-[data-theme="tropical-paradise-dark"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(240, 254, 255, 0.2);  /* Soft aqua grid lines for dark theme */
-}
-
-/* Add missing variables to Tropical Paradise Light theme */
-[data-theme="tropical-paradise-light"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(0, 209, 198, 0.15);  /* Vibrant teal grid lines for light theme */
-}
+/* ── Scrollbar ── */
+[data-theme^="tropical-paradise"] .custom-scrollbar::-webkit-scrollbar{width:8px;height:8px}
+[data-theme^="tropical-paradise"] .custom-scrollbar::-webkit-scrollbar-track{
+  background:var(--color-scrollbar-track);border-radius:4px}
+[data-theme^="tropical-paradise"] .custom-scrollbar::-webkit-scrollbar-thumb{
+  background:var(--color-scrollbar-thumb);border-radius:4px}
+[data-theme^="tropical-paradise"] .custom-scrollbar::-webkit-scrollbar-thumb:hover{
+  background:var(--color-interactive)}
+[data-theme^="tropical-paradise"] .custom-scrollbar{
+  scrollbar-width:thin;scrollbar-color:var(--color-scrollbar-thumb) var(--color-scrollbar-track)}

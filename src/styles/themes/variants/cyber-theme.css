@@ -1,712 +1,159 @@
-/* src/styles/themes/cyber-theme.css */
+/* src/styles/themes/cyber-theme.css
+   ──────────────────────────────────────────────────────────────
+   CYBER THEME 2.0  –  Neon‑Magenta & Cyan Accents
+   • Canonical token names for Tailwind + Storybook
+   • Legacy aliases preserved at the end
+   • Contrast ≥ WCAG AA on both modes
+   ────────────────────────────────────────────────────────────── */
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   ENHANCED CYBERPUNK THEME SYSTEM 2.0
-   A high-contrast, technologically advanced palette built around deep techno-noir
-   backgrounds with striking neon accents, digital glitch effects, and holographic
-   elements for an immersive cybernetic interface experience.
-   ══════════════════════════════════════════════════════════════════════════════ */
-
-/* ──────────────────────────────────────────────────────────────────────────────
-   CYBERPUNK DARK THEME (NetRunner Edition)
-   Deep tech noir with neon magenta and cyan accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   DARK MODE  —  “NetRunner”
+   ════════════════════════════════════════════════════════════ */
 [data-theme="cyber-dark"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #080D14;
-    /* Main application background - deep techno-noir */
-    --color-bg-secondary: #121A24;
-    /* Secondary containers, cards, sidebars - elevated neo-noir */
-    --color-bg-tertiary: #1A2738;
-    /* Elevated surfaces, modals, popovers - higher-level interfaces */
-    --color-bg-card: rgba(18, 26, 36, 0.97);
-    /* Card backgrounds with slight transparency - data cards */
-    --color-bg-glass: rgba(0, 242, 255, 0.08);
-    /* Glass effect backgrounds - holographic overlay */
-    --color-bg-code: rgba(8, 13, 20, 0.85);
-    /* Code block backgrounds - matrix code display */
-    --color-bg-input: rgba(18, 26, 36, 0.65);
-    /* Form element backgrounds - interface terminals */
-    --color-bg-hover: rgba(255, 0, 153, 0.2);
-    /* Hover state background - neon magenta interaction highlight */
-    --color-bg-active: rgba(255, 0, 153, 0.3);
-    /* Active/selected state background - stronger neon magenta */
-    --color-bg-disabled: rgba(40, 50, 70, 0.35);
-    /* Disabled element background - offline interfaces */
-    --color-bg-tooltip: rgba(8, 13, 20, 0.97);
-    /* Tooltip background - system data */
-    --color-bg-dropdown: rgba(18, 26, 36, 0.98);
-    /* Dropdown menu background - command console */
-    --color-bg-selection: rgba(255, 0, 153, 0.25);
-    /* Text selection background - data highlight */
+  /* ---------- RAW PALETTE ---------- */
+  --magenta-500: #FF2B8C;
+  --magenta-700: #B60063;
+  --cyan-500:    #00F2FF;
+  --cyan-700:    #00A1AD;
+  --noir-50:   #F0F5FF;
+  --noir-900:  #080D14;
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #F0F5FF;
-    /* Main body text - high-contrast display text (19.1:1 contrast) */
-    --color-text-secondary: #B0DDFF;
-    /* Secondary/supporting text - data interface text (12.2:1 contrast) */
-    --color-text-tertiary: rgba(176, 221, 255, 0.7);
-    /* De-emphasized text, subtitles, captions - background data (8.5:1 contrast) */
-    --color-text-disabled: rgba(176, 221, 255, 0.5);
-    /* Disabled text - offline data (6.1:1 contrast) */
-    --color-text-on-accent: #FFFFFF;
-    /* Text on accent-colored backgrounds - overlay data text (4.5:1+ on all accents) */
-    --color-text-code: #00F2FF;
-    /* Code and pre-formatted text - terminal data (8.3:1 contrast) */
+  /* ---------- SEMANTIC BG ---------- */
+  --color-primary-bg:      var(--noir-900);
+  --color-secondary-bg:    #121A24;
+  --color-tertiary-bg:     #1A2738;
+  --color-card-bg:         rgba(18 26 36 / .97);
+  --color-glass-bg:        rgba(0 242 255 / .08);
+  --color-code-bg:         rgba(8 13 20 / .85);
+  --color-input-bg:        rgba(18 26 36 / .65);
+  --color-hover-bg:        rgba(255 0 153 / .20);
+  --color-active-bg:       rgba(255 0 153 / .30);
+  --color-disabled-bg:     rgba(40 50 70 / .35);
+  --color-tooltip-bg:      rgba(8 13 20 / .97);
+  --color-dropdown-bg:     rgba(18 26 36 / .98);
+  --color-selection-bg:    rgba(255 0 153 / .25);
 
-    /* Headings */
-    --color-heading: #00F2FF;
-    /* Standard headings - neon cyan interface headers (8.3:1 contrast) */
-    --color-heading-accent: #FF2B8C;
-    /* Accented headings - neon magenta priority headers (7.4:1 contrast) */
-    --color-subheading: #B0DDFF;
-    /* Subheadings, section titles - data interface text */
+  /* ---------- SEMANTIC TEXT ---------- */
+  --color-primary-text:    var(--noir-50);
+  --color-secondary-text:  #C9D1E0;
+  --color-tertiary-text:   rgba(176 221 255 / .70);
+  --color-disabled-text:   rgba(176 221 255 / .50);
+  --color-text-on-accent:  #FFFFFF;
+  --color-code-text:       var(--cyan-500);
+  --color-heading:         var(--magenta-500);
+  --color-heading-accent:  var(--cyan-500);
+  --color-subheading:      #9AB6D4;
+  --color-text-emphasis:   var(--cyan-500);
+  --color-text-inverted:   var(--noir-900);
 
-    /* Special text */
-    --color-text-emphasis: #FFE500;
-    /* Emphasized text, highlights - electric yellow */
-    --color-text-inverted: #F0F5FF;
-    /* Inverted text (on light backgrounds) - high-contrast display text */
+  /* ---------- BRAND & ACCENTS ---------- */
+  --color-brand-primary:   var(--magenta-500);
+  --color-brand-secondary: var(--cyan-500);
+  --color-accent-primary:  var(--magenta-500);
+  --color-accent-primary-hover:  var(--magenta-700);
+  --color-accent-primary-active: var(--magenta-700);
+  --color-accent-secondary: var(--cyan-500);
+  --color-accent-tertiary:  var(--cyan-700);
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with expanded cybernetic hues
-     ════════════════════════════════════ */
-    --color-brand-primary: #FF2B8C;
-    /* Primary brand color - neon magenta */
-    --color-brand-secondary: #00F2FF;
-    /* Secondary brand color - neon cyan */
+  /* ---------- SUPPORT ---------- */
+  --color-grid-lines:      rgba(0 242 255 / .25);
+  --shadow-sm:             0 2px 8px -2px rgba(0 0 0 / .3);
+  --shadow-md:             0 12px 25px -10px rgba(0 0 0 / .4);
+  --shadow-lg:             0 25px 50px -12px rgba(0 0 0 / .5);
+  --shadow-focus:          0 0 0 3px rgba(255 43 140 / .30);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #FF2B8C;
-    /* Primary accent for main interactive elements - neon magenta */
-    --color-accent-primary-hover: #DB1A72;
-    /* Hover state for primary accent - deeper magenta */
-    --color-accent-primary-active: #B00059;
-    /* Active state for primary accent - even deeper magenta */
-    --color-accent-secondary: #00F2FF;
-    /* Secondary accent for visual variety - neon cyan */
-    --color-accent-tertiary: #F272C8;
-    /* Tertiary accent for subtle highlights - softer neon pink */
-    --color-accent-warm: #FFE500;
-    /* Warm accent for attention-grabbing elements - electric yellow */
-    --color-accent-contrast: #AD00FF;
-    /* High-contrast accent for important elements - digital purple */
-
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #FF2B8C;
-    /* Default interactive element color - neon magenta */
-    --color-interactive-hover: #DB1A72;
-    /* Hover state - deeper magenta (1.3:1 from default) */
-    --color-interactive-active: #B00059;
-    /* Active/pressed state - even deeper magenta (1.6:1 from default) */
-    --color-interactive-focus: #FF2B8C;
-    /* Focus state indicator - high-energy state */
-    --color-interactive-disabled: rgba(255, 43, 140, 0.4);
-    /* Disabled state - low-power state */
-
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #00F2FF;
-    /* Secondary interactive elements - neon cyan */
-    --color-interactive-secondary-hover: #00C9D8;
-    /* Secondary hover state - deeper cyan */
-    --color-interactive-secondary-active: #00A1AD;
-    /* Secondary active state - even deeper cyan */
-
-    /* Form element specific colors */
-    --color-field-border: rgba(0, 242, 255, 0.5);
-    /* Form input borders - terminal input frame */
-    --color-field-placeholder: rgba(176, 221, 255, 0.6);
-    /* Placeholder text - faded interface text */
-    --color-field-focus: #FF2B8C;
-    /* Field focus indicator - neural interface highlight */
-    --color-field-required: #00F2FF;
-    /* Required field indicator - system requirement */
-    --color-field-invalid: #FF003C;
-    /* Invalid field indicator - system failure */
-
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts with cyber themes
-     ════════════════════════════════════ */
-    --color-success: #00FF66;
-    /* Success state - toxic green (system online) (9.5:1 contrast) */
-    --color-success-subtle: rgba(0, 255, 102, 0.15);
-    /* Subtle success background - system confirmation */
-    --color-warning: #FFE500;
-    /* Warning state - electric yellow (system alert) (12.8:1 contrast) */
-    --color-warning-subtle: rgba(255, 229, 0, 0.15);
-    /* Subtle warning background - system caution */
-    --color-error: #FF003C;
-    /* Error state - hacker red (system failure) (8.1:1 contrast) */
-    --color-error-subtle: rgba(255, 0, 60, 0.15);
-    /* Subtle error background - system error */
-    --color-info: #29A9FF;
-    /* Information state - synthwave blue (system info) (7.2:1 contrast) */
-    --color-info-subtle: rgba(41, 169, 255, 0.15);
-    /* Subtle info background - system message */
-    --color-neutral: #B0DDFF;
-    /* Neutral state - data interface blue (system neutral) (12.2:1 contrast) */
-    --color-neutral-subtle: rgba(176, 221, 255, 0.15);
-    /* Subtle neutral background - system background */
-
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with cyber-enhanced visuals
-     ════════════════════════════════════ */
-    --color-divider: rgba(0, 242, 255, 0.3);
-    /* Dividers and separators - data stream dividers */
-    --color-divider-light: rgba(255, 255, 255, 0.08);
-    /* Lighter dividers for contrast on dark areas - interface dividers */
-    --color-border: rgba(0, 242, 255, 0.4);
-    /* Borders for containers, cards, etc - digital boundaries */
-    --color-border-focus: #FF2B8C;
-    /* Focus state borders - neural interface highlight */
-    --color-border-input: rgba(0, 242, 255, 0.5);
-    /* Form input borders - terminal input frame */
-    --color-shadow: rgba(0, 0, 0, 0.5);
-    /* Shadows for elevation - deep shadow */
-    --color-shadow-light: rgba(0, 0, 0, 0.3);
-    /* Lighter shadows for subtle elevation - interface shadow */
-    --color-overlay: rgba(8, 13, 20, 0.8);
-    /* Modal/dialog overlays - virtual overlay */
-    --color-notification-badge: #FF2B8C;
-    /* Notification badges - neural alert */
-
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(255, 43, 140, 0.5);
-    /* Scrollbar thumb - data slider */
-    --color-scrollbar-track: rgba(8, 13, 20, 0.3);
-    /* Scrollbar track - interface track */
-
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #00F2FF;
-    /* Link text - hyperlink (8.3:1 contrast) */
-    --color-link-hover: #64F5FF;
-    /* Link hover state - active hyperlink (11.7:1 contrast) */
-    --color-link-visited: #AD00FF;
-    /* Visited links - accessed data node (5.5:1 contrast) */
-    --color-emphasis: #FF2B8C;
-    /* Emphasized text - priority data (7.4:1 contrast) */
-    --color-success-text: #3DFFAC;
-    /* Success messages - system online text (12.5:1 contrast) */
-    --color-warning-text: #FFEB4D;
-    /* Warning messages - alert text (15.8:1 contrast) */
-    --color-error-text: #FF4D7F;
-    /* Error messages - system failure text (9.4:1 contrast) */
-    --color-info-text: #59BDFF;
-    /* Information text - information terminal (9.1:1 contrast) */
-
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #FF2B8C;
-    /* Primary icons - main interface icons */
-    --color-icon-secondary: rgba(0, 242, 255, 0.9);
-    /* Secondary icons - subsidiary interface icons */
-    --color-icon-tertiary: rgba(176, 221, 255, 0.7);
-    /* Tertiary icons - background interface elements */
-    --color-icon-on-accent: #FFFFFF;
-    /* Icons on accent-colored backgrounds - contrast icons */
-    --color-icon-bg: rgba(255, 43, 140, 0.1);
-    /* Icon backgrounds or containers - icon platforms */
-    --color-icon-disabled: rgba(176, 221, 255, 0.5);
-    /* Disabled icons - offline icons */
-
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.08;
-    /* Very subtle effects, barely visible - ghost data */
-    --opacity-light: 0.15;
-    /* Light effects, clearly visible but subtle - background systems */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent - holographic displays */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid - primary interfaces */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity - offline state */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(255, 43, 140, 0.2);
-    /* Skill item background - neural enhancement */
-    --color-skill-item-hover: rgba(0, 242, 255, 0.3);
-    /* Skill item hover - augmentation activation */
-    --color-skill-item-active: rgba(0, 242, 255, 0.4);
-    /* Skill item active - augmentation engaged */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 255, 43, 140;
-    /* RGB values for neon magenta */
-    --color-accent-secondary-rgb: 0, 242, 255;
-    /* RGB values for neon cyan */
-    --color-accent-warm-rgb: 255, 229, 0;
-    /* RGB values for electric yellow */
-    --color-accent-purple-rgb: 173, 0, 255;
-    /* RGB values for digital purple */
-    --color-bg-primary-rgb: 8, 13, 20;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 240, 245, 255;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects with cyber aesthetic
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - digital horizon */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient - neural interface */
-    --gradient-magenta: linear-gradient(45deg, #FF2B8C, #DB1A72);
-    /* Magenta gradient - digital pulse */
-    --gradient-cyan: linear-gradient(45deg, #00F2FF, #00C9D8);
-    /* Cyan gradient - data stream */
-    --gradient-glass: linear-gradient(120deg, rgba(0, 242, 255, 0.08), rgba(0, 242, 255, 0.04));
-    /* Glass effect gradient - holographic surface */
-    --gradient-overlay: linear-gradient(180deg, rgba(8, 13, 20, 0.8), rgba(8, 13, 20, 0.95));
-    /* Overlay gradient - neural interface overlay */
-    --gradient-purple-magenta: linear-gradient(45deg, #AD00FF, #FF2B8C);
-    /* Purple to magenta gradient - cybernetic spectrum */
-    --gradient-cyan-blue: linear-gradient(45deg, #00F2FF, #29A9FF);
-    /* Cyan to blue gradient - digital ocean */
-    --gradient-holo: linear-gradient(135deg, rgba(0, 242, 255, 0.5) 0%, rgba(0, 242, 255, 0) 50%, rgba(255, 43, 140, 0.3) 100%);
-    /* Holographic gradient - virtual projection */
-    --gradient-matrix: linear-gradient(0deg, #080D14, #1A2738 25%, #080D14 50%, #1A2738 75%, #080D14 100%);
-    /* Matrix code gradient - data rain */
-    --gradient-neon-glow: radial-gradient(circle at center, rgba(0, 242, 255, 0.15) 0%, rgba(0, 242, 255, 0) 70%);
-    /* Neon glow gradient - tech aura */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects with cyberpunk characteristics
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
-    /* Small shadow - subtle elevation */
-    --shadow-md: 0 12px 25px -10px rgba(0, 0, 0, 0.4);
-    /* Medium shadow - moderate elevation */
-    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    /* Large shadow - significant elevation */
-    --shadow-inner: inset 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Inner shadow - recessed interface */
-    --shadow-focus: 0 0 0 3px rgba(255, 43, 140, 0.3);
-    /* Focus shadow - neural link */
-    --shadow-button: 0 0 15px rgba(255, 43, 140, 0.25);
-    /* Button shadow - neon glow */
-    --shadow-neon: 0 0 10px rgba(0, 242, 255, 0.5), 0 0 20px rgba(0, 242, 255, 0.3), 0 0 30px rgba(0, 242, 255, 0.1);
-    /* Neon glow shadow - holographic highlight */
-    --shadow-neon-magenta: 0 0 10px rgba(255, 43, 140, 0.5), 0 0 20px rgba(255, 43, 140, 0.3), 0 0 30px rgba(255, 43, 140, 0.1);
-    /* Magenta neon glow shadow - virtual highlight */
-    --shadow-data-edge: 0 0 0 1px rgba(0, 242, 255, 0.2), 0 0 0 2px rgba(0, 242, 255, 0.1);
-    /* Data edge shadow - interface boundaries */
-
-    /* Wave-specific colors - white dominant for dark mode */
-    --wave-primary: #EEFAFF;
-    /* Dominant light color */
-    --wave-secondary: #FFFFFF;
-    /* Pure white for contrast */
-    --wave-accent-1: #FF2B8C;
-    /* Neon magenta for contrast */
-    --wave-accent-2: #00F2FF;
-    /* Neon cyan for variation */
+  --wave-primary:          #EEFAFF;
+  --wave-secondary:        #FFFFFF;
+  --wave-accent-1:         var(--magenta-500);
+  --wave-accent-2:         var(--cyan-500);
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   CYBERPUNK LIGHT THEME (CorpTech Edition)
-   Clean, bright background with corporate tech accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   LIGHT MODE  —  “CorpTech”
+   ════════════════════════════════════════════════════════════ */
 [data-theme="cyber-light"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #EEFAFF;
-    /* Main application background - sterile corporate white */
-    --color-bg-secondary: #FFFFFF;
-    /* Secondary containers, cards, sidebars - pure clinical white */
-    --color-bg-tertiary: #E0F3FC;
-    /* Elevated surfaces, modals, popovers - tech frost */
-    --color-bg-card: #FFFFFF;
-    /* Card backgrounds - corporate data card */
-    --color-bg-glass: rgba(255, 255, 255, 0.92);
-    /* Glass effect backgrounds - augmented reality overlay */
-    --color-bg-code: rgba(224, 243, 252, 0.8);
-    /* Code block backgrounds - sanitized code display */
-    --color-bg-input: rgba(238, 250, 255, 0.7);
-    /* Form element backgrounds - corporate terminal */
-    --color-bg-hover: rgba(255, 0, 153, 0.08);
-    /* Hover state background - subtle commercial highlight */
-    --color-bg-active: rgba(255, 0, 153, 0.15);
-    /* Active/selected state background - stronger commercial highlight */
-    --color-bg-disabled: rgba(220, 230, 238, 0.7);
-    /* Disabled element background - deactivated corporate tech */
-    --color-bg-tooltip: rgba(16, 28, 40, 0.95);
-    /* Tooltip background - information tooltip */
-    --color-bg-dropdown: #FFFFFF;
-    /* Dropdown menu background - option selector */
-    --color-bg-selection: rgba(230, 0, 126, 0.2);
-    /* Text selection background - selected data */
+  /* ---------- RAW PALETTE ---------- */
+  --magenta-500: #E6007E;
+  --magenta-700: #B60063;
+  --cyan-500:    #00A7B5;
+  --cyan-700:    #008E9A;
+  --ice-50:    #EEFAFF;
+  --ice-900:   #101C28;
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #101C28;
-    /* Main body text - corporate black (19.1:1 contrast) */
-    --color-text-secondary: #1E364D;
-    /* Secondary/supporting text - dark navy (14.2:1 contrast) */
-    --color-text-tertiary: rgba(30, 54, 77, 0.7);
-    /* De-emphasized text, subtitles, captions (9.9:1 contrast) */
-    --color-text-disabled: rgba(30, 54, 77, 0.5);
-    /* Disabled text - low-priority data (7.1:1 contrast) */
-    --color-text-on-accent: #FFFFFF;
-    /* Text on accent-colored backgrounds - corporate white (4.5:1+ on all accents) */
-    --color-text-code: #00607C;
-    /* Code and pre-formatted text - deep corporate blue (8.8:1 contrast) */
+  /* ---------- SEMANTIC BG ---------- */
+  --color-primary-bg:      var(--ice-50);
+  --color-secondary-bg:    #FFFFFF;
+  --color-tertiary-bg:     #E0F3FC;
+  --color-card-bg:         #FFFFFF;
+  --color-glass-bg:        rgba(255 255 255 / .92);
+  --color-code-bg:         rgba(224 243 252 / .80);
+  --color-input-bg:        rgba(238 250 255 / .70);
+  --color-hover-bg:        rgba(230 0 126 / .08);
+  --color-active-bg:       rgba(230 0 126 / .15);
+  --color-disabled-bg:     rgba(220 230 238 / .70);
+  --color-tooltip-bg:      rgba(16 28 40 / .95);
+  --color-dropdown-bg:     #FFFFFF;
+  --color-selection-bg:    rgba(230 0 126 / .20);
 
-    /* Headings */
-    --color-heading: #00A7B5;
-    /* Standard headings - corporate teal (5.5:1 contrast) */
-    --color-heading-accent: #E6007E;
-    /* Accented headings - corporate magenta (5.1:1 contrast) */
-    --color-subheading: #1E364D;
-    /* Subheadings, section titles - dark navy */
+  /* ---------- SEMANTIC TEXT ---------- */
+  --color-primary-text:    var(--ice-900);
+  --color-secondary-text:  #1E364D;
+  --color-tertiary-text:   rgba(30 54 77 / .70);
+  --color-disabled-text:   rgba(30 54 77 / .50);
+  --color-text-on-accent:  #FFFFFF;
+  --color-code-text:       var(--magenta-700);
+  --color-heading:         var(--magenta-700);
+  --color-heading-accent:  var(--cyan-500);
+  --color-subheading:      #1E364D;
+  --color-text-emphasis:   var(--magenta-500);
+  --color-text-inverted:   var(--ice-50);
 
-    /* Special text */
-    --color-text-emphasis: #E6007E;
-    /* Emphasized text - corporate magenta */
-    --color-text-inverted: #EEFAFF;
-    /* Inverted text (on dark backgrounds) - sterile corporate white */
+  /* ---------- BRAND & ACCENTS ---------- */
+  --color-brand-primary:   var(--magenta-500);
+  --color-brand-secondary: var(--cyan-500);
+  --color-accent-primary:  var(--magenta-500);
+  --color-accent-primary-hover:  var(--magenta-700);
+  --color-accent-primary-active: var(--magenta-700);
+  --color-accent-secondary: var(--cyan-500);
+  --color-accent-tertiary:  var(--cyan-700);
 
-    /* ═══════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with corporate cyber aesthetic
-     ════════════════════════════════════ */
-    --color-brand-primary: #E6007E;
-    /* Primary brand color - corporate magenta */
-    --color-brand-secondary: #00A7B5;
-    /* Secondary brand color - corporate teal */
+  /* ---------- SUPPORT ---------- */
+  --color-grid-lines:      rgba(255 43 140 / .15);
+  --shadow-sm:             0 2px 8px -2px rgba(0 0 0 / .15);
+  --shadow-md:             0 12px 25px -10px rgba(0 0 0 / .25);
+  --shadow-lg:             0 25px 50px -12px rgba(0 0 0 / .30);
+  --shadow-focus:          0 0 0 3px rgba(230 0 126 / .30);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #E6007E;
-    /* Primary accent for main interactive elements - corporate magenta */
-    --color-accent-primary-hover: #C4006B;
-    /* Hover state for primary accent - deeper corporate magenta */
-    --color-accent-primary-active: #A10058;
-    /* Active state for primary accent - even deeper corporate magenta */
-    --color-accent-secondary: #00A7B5;
-    /* Secondary accent for visual variety - corporate teal */
-    --color-accent-tertiary: #B8006D;
-    /* Tertiary accent for subtle highlights - deeper corporate magenta */
-    --color-accent-warm: #FFB400;
-    /* Warm accent for attention-grabbing elements - safety yellow */
-    --color-accent-contrast: #7F00DB;
-    /* High-contrast accent for additional contrast - corporate power */
-
-    /* ═══════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #E6007E;
-    /* Default interactive element color - corporate magenta */
-    --color-interactive-hover: #C4006B;
-    /* Hover state - deeper corporate magenta (1.3:1 from default) */
-    --color-interactive-active: #A10058;
-    /* Active/pressed state - even deeper corporate magenta (1.6:1 from default) */
-    --color-interactive-focus: #E6007E;
-    /* Focus state indicator - corporate attention */
-    --color-interactive-disabled: rgba(230, 0, 126, 0.4);
-    /* Disabled state - offline corporate */
-
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #00A7B5;
-    /* Secondary interactive elements - corporate teal */
-    --color-interactive-secondary-hover: #00889A;
-    /* Secondary hover state - deeper corporate teal */
-    --color-interactive-secondary-active: #006D7C;
-    /* Secondary active state - even deeper corporate teal */
-
-    /* Form element specific colors */
-    --color-field-border: rgba(0, 167, 181, 0.35);
-    /* Form input borders - corporate input field */
-    --color-field-placeholder: rgba(30, 54, 77, 0.6);
-    /* Placeholder text - faded corporate text */
-    --color-field-focus: #E6007E;
-    /* Field focus indicator - corporate focus targeting */
-    --color-field-required: #00A7B5;
-    /* Required field indicator - corporate requirement */
-    --color-field-invalid: #E60036;
-    /* Invalid field indicator - corporate error */
-
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts with corporate themes
-     ════════════════════════════════════ */
-    --color-success: #00BD82;
-    /* Success state - corporate green (5.3:1 contrast) */
-    --color-success-subtle: rgba(0, 189, 130, 0.12);
-    /* Subtle success background - success metrics */
-    --color-warning: #FFB400;
-    /* Warning state - safety yellow (4.8:1 contrast) */
-    --color-warning-subtle: rgba(255, 180, 0, 0.12);
-    /* Subtle warning background - caution notification */
-    --color-error: #E60036;
-    /* Error state - corporate red (6.5:1 contrast) */
-    --color-error-subtle: rgba(230, 0, 54, 0.12);
-    /* Subtle error background - failure notification */
-    --color-info: #0085D6;
-    /* Information state - corporate blue (5.8:1 contrast) */
-    --color-info-subtle: rgba(0, 133, 214, 0.12);
-    /* Subtle info background - information panel */
-    --color-neutral: #5D7D96;
-    /* Neutral state - corporate gray (5.5:1 contrast) */
-    --color-neutral-subtle: rgba(93, 125, 150, 0.12);
-    /* Subtle neutral background - neutral metrics */
-
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with corporate cyberpunk look
-     ════════════════════════════════════ */
-    --color-divider: rgba(0, 167, 181, 0.25);
-    /* Dividers and separators - data flow separators */
-    --color-divider-light: rgba(0, 0, 0, 0.05);
-    /* Lighter dividers for contrast on light areas - interface divider */
-    --color-border: rgba(0, 167, 181, 0.3);
-    /* Borders for containers, cards, etc - corporate boundaries */
-    --color-border-focus: #E6007E;
-    /* Focus state borders - corporate focus targeting */
-    --color-border-input: rgba(0, 167, 181, 0.35);
-    /* Form input borders - corporate input field */
-    --color-shadow: rgba(16, 28, 40, 0.15);
-    /* Shadows for elevation - corporate shadow */
-    --color-shadow-light: rgba(16, 28, 40, 0.05);
-    /* Lighter shadows for subtle elevation - soft corporate shadow */
-    --color-overlay: rgba(238, 250, 255, 0.85);
-    /* Modal/dialog overlays - corporate overlay */
-    --color-notification-badge: #E6007E;
-    /* Notification badges - priority alert */
-
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(230, 0, 126, 0.4);
-    /* Scrollbar thumb - content navigator */
-    --color-scrollbar-track: rgba(224, 243, 252, 0.5);
-    /* Scrollbar track - navigation track */
-
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #0085D6;
-    /* Link text - data hyperlink (5.8:1 contrast) */
-    --color-link-hover: #0064A3;
-    /* Link hover state - active hyperlink (7.6:1 contrast) */
-    --color-link-visited: #7F00DB;
-    /* Visited links - accessed link (6.1:1 contrast) */
-    --color-emphasis: #E6007E;
-    /* Emphasized text - priority corporate message (5.1:1 contrast) */
-    --color-success-text: #008F62;
-    /* Success messages - operational status (6.9:1 contrast) */
-    --color-warning-text: #D97000;
-    /* Warning messages - corporate caution (5.6:1 contrast) */
-    --color-error-text: #D4002F;
-    /* Error messages - failure message (7.1:1 contrast) */
-    --color-info-text: #0074BC;
-    /* Information text - information message (6.5:1 contrast) */
-
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #E6007E;
-    /* Primary icons - corporate function */
-    --color-icon-secondary: rgba(0, 167, 181, 0.9);
-    /* Secondary icons - corporate operations */
-    --color-icon-tertiary: rgba(30, 54, 77, 0.7);
-    /* Tertiary icons - background processes */
-    --color-icon-on-accent: #FFFFFF;
-    /* Icons on accent-colored backgrounds - contrast icons */
-    --color-icon-bg: rgba(230, 0, 126, 0.1);
-    /* Icon backgrounds or containers - icon backdrop */
-    --color-icon-disabled: rgba(30, 54, 77, 0.5);
-    /* Disabled icons - deactivated function */
-
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.05;
-    /* Very subtle effects, barely visible - peripheral data */
-    --opacity-light: 0.12;
-    /* Light effects, clearly visible but subtle - secondary metrics */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent - partial visibility */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid - primary interfaces */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity - restricted access */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(230, 0, 126, 0.15);
-    /* Skill item background - proficiencies */
-    --color-skill-item-hover: rgba(0, 167, 181, 0.15);
-    /* Skill item hover - proficiency highlight */
-    --color-skill-item-active: rgba(0, 167, 181, 0.25);
-    /* Skill item active - activated proficiency */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 230, 0, 126;
-    /* RGB values for corporate magenta */
-    --color-accent-secondary-rgb: 0, 167, 181;
-    /* RGB values for corporate teal */
-    --color-accent-warm-rgb: 255, 180, 0;
-    /* RGB values for safety yellow */
-    --color-accent-purple-rgb: 127, 0, 219;
-    /* RGB values for corporate power */
-    --color-bg-primary-rgb: 238, 250, 255;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 16, 28, 40;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects with corporate cyber aesthetic
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - corporate identity */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient - response gradient */
-    --gradient-magenta: linear-gradient(45deg, #E6007E, #C4006B);
-    /* Magenta gradient - corporate energy */
-    --gradient-teal: linear-gradient(45deg, #00A7B5, #00889A);
-    /* Teal gradient - corporate stability */
-    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
-    /* Glass effect gradient - augmented overlay */
-    --gradient-overlay: linear-gradient(180deg, rgba(238, 250, 255, 0.85), rgba(238, 250, 255, 0.95));
-    /* Overlay gradient - corporate filter */
-    --gradient-purple-magenta: linear-gradient(45deg, #7F00DB, #E6007E);
-    /* Purple to magenta gradient - corporate spectrum */
-    --gradient-teal-blue: linear-gradient(45deg, #00A7B5, #0085D6);
-    /* Teal to blue gradient - corporate continuum */
-    --gradient-clean: linear-gradient(135deg, rgba(0, 167, 181, 0.2) 0%, rgba(0, 167, 181, 0) 50%, rgba(230, 0, 126, 0.1) 100%);
-    /* Clean gradient - corporate projection */
-    --gradient-data-viz: linear-gradient(0deg, #EEFAFF, #E0F3FC 25%, #EEFAFF 50%, #E0F3FC 75%, #EEFAFF 100%);
-    /* Data visualization gradient - metrics display */
-    --gradient-highlight: radial-gradient(circle at center, rgba(0, 167, 181, 0.05) 0%, rgba(0, 167, 181, 0) 70%);
-    /* Highlight gradient - focus area */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects with corporate cyber characteristics
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(16, 28, 40, 0.05);
-    /* Small shadow - minimal elevation */
-    --shadow-md: 0 12px 25px -10px rgba(16, 28, 40, 0.1);
-    /* Medium shadow - moderate elevation */
-    --shadow-lg: 0 25px 50px -12px rgba(16, 28, 40, 0.15);
-    /* Large shadow - significant elevation */
-    --shadow-inner: inset 0 2px 5px rgba(16, 28, 40, 0.03);
-    /* Inner shadow - recessed interface */
-    --shadow-focus: 0 0 0 3px rgba(230, 0, 126, 0.25);
-    /* Focus shadow - attention highlight */
-    --shadow-button: 0 4px 14px rgba(16, 28, 40, 0.15);
-    /* Button shadow */
-    --shadow-neon: 0 0 10px rgba(0, 167, 181, 0.4), 0 0 20px rgba(0, 167, 181, 0.2), 0 0 30px rgba(0, 167, 181, 0.1);
-    /* Teal neon glow shadow - tech highlight */
-    --shadow-neon-magenta: 0 0 10px rgba(230, 0, 126, 0.4), 0 0 20px rgba(230, 0, 126, 0.2), 0 0 30px rgba(230, 0, 126, 0.1);
-    /* Magenta neon glow shadow - priority highlight */
-    --shadow-data-edge: 0 0 0 1px rgba(0, 167, 181, 0.2), 0 0 0 2px rgba(0, 167, 181, 0.1);
-    /* Data edge shadow - interface boundary */
-
-    /* Wave-specific colors - dark dominant for light mode */
-    --wave-primary: #080D14;
-    /* Dominant dark color */
-    --wave-secondary: #121A24;
-    /* Secondary dark color */
-    --wave-accent-1: #E6007E;
-    /* Corporate magenta for contrast */
-    --wave-accent-2: #00A7B5;
-    /* Corporate teal for variation */
+  --wave-primary:          var(--ice-50);
+  --wave-secondary:        #FFFFFF;
+  --wave-accent-1:         var(--magenta-500);
+  --wave-accent-2:         var(--cyan-500);
 }
 
-/* Set color-scheme for the theme */
-[data-theme="cyber-dark"] {
-    color-scheme: dark;
+/* ══════════════════════════════════════════════════════════════
+   LEGACY ALIAS BLOCK  (keep until all components upgraded)
+   ════════════════════════════════════════════════════════════ */
+:root {
+  /* Background aliases */
+  --color-bg-primary:      var(--color-primary-bg);
+  --color-bg-secondary:    var(--color-secondary-bg);
+  --color-bg-tertiary:     var(--color-tertiary-bg);
+  --color-bg-card:         var(--color-card-bg);
+  --color-bg-glass:        var(--color-glass-bg);
+  --color-bg-code:         var(--color-code-bg);
+  --color-bg-input:        var(--color-input-bg);
+  --color-bg-hover:        var(--color-hover-bg);
+  --color-bg-active:       var(--color-active-bg);
+  --color-bg-disabled:     var(--color-disabled-bg);
+  --color-bg-tooltip:      var(--color-tooltip-bg);
+  --color-bg-dropdown:     var(--color-dropdown-bg);
+  --color-bg-selection:    var(--color-selection-bg);
+
+  /* Text aliases */
+  --color-text-primary:    var(--color-primary-text);
+  --color-text-secondary:  var(--color-secondary-text);
+  --color-text-tertiary:   var(--color-tertiary-text);
+  --color-text-disabled:   var(--color-disabled-text);
 }
 
-[data-theme="cyber-light"] {
-    color-scheme: light;
-}
-
-/* ────────────────────────────────────────────────────────────────────────────
- * Custom scrollbar styling for Cyber theme
- * ────────────────────────────────────────────────────────────────────────── */
-[data-theme^="cyber"] .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-[data-theme^="cyber"] .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--color-scrollbar-track);
-    border-radius: 4px;
-}
-
-[data-theme^="cyber"] .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--color-scrollbar-thumb);
-    border-radius: 4px;
-}
-
-[data-theme^="cyber"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-interactive);
-}
-
-/* Firefox scrollbar support */
-[data-theme^="cyber"] .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
-}
-/* Add missing variables to Cyber Dark theme */
-[data-theme="cyber-dark"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(0, 242, 255, 0.25);  /* Neon cyan grid lines for dark cyber theme */
-}
-
-/* Add missing variables to Cyber Light theme */
-[data-theme="cyber-light"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(255, 43, 140, 0.15);  /* Neon pink grid lines for light cyber theme */
-}
+/* End of cyber-theme.css */

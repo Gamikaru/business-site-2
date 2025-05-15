@@ -4,12 +4,28 @@ import React, { useEffect, useState } from "react";
 import { useFontContext } from "@/context/FontContext";
 
 const FontDebugger = () => {
-  const { currentSystemData, fontSystem } = useFontContext();
+  const { currentSystemData, fontSystem, fontsLoaded } = useFontContext();
   const [computedStyles, setComputedStyles] = useState<{
     heading: string;
     body: string;
     code: string;
-  }>({ heading: '', body: '', code: '' });
+    trackingHeading: string;
+    trackingBody: string;
+    trackingCode: string;
+    wordSpacingHeading: string;
+    wordSpacingBody: string;
+    wordSpacingCode: string;
+  }>({
+    heading: '',
+    body: '',
+    code: '',
+    trackingHeading: '',
+    trackingBody: '',
+    trackingCode: '',
+    wordSpacingHeading: '',
+    wordSpacingBody: '',
+    wordSpacingCode: ''
+  });
 
   // Update computed styles when font system changes
   useEffect(() => {
@@ -19,9 +35,15 @@ const FontDebugger = () => {
         heading: styles.getPropertyValue('--font-heading'),
         body: styles.getPropertyValue('--font-body'),
         code: styles.getPropertyValue('--font-code'),
+        trackingHeading: styles.getPropertyValue('--tracking-heading'),
+        trackingBody: styles.getPropertyValue('--tracking-body'),
+        trackingCode: styles.getPropertyValue('--tracking-code'),
+        wordSpacingHeading: styles.getPropertyValue('--word-spacing-heading'),
+        wordSpacingBody: styles.getPropertyValue('--word-spacing-body'),
+        wordSpacingCode: styles.getPropertyValue('--word-spacing-code')
       });
     }
-  }, [fontSystem]);
+  }, [fontSystem, fontsLoaded]);
 
   if (!currentSystemData) return null;
 
@@ -33,6 +55,9 @@ const FontDebugger = () => {
         <div>
           <h4 className="font-medium mb-1">Current Font System: {currentSystemData.name}</h4>
           <div>Font system ID: {currentSystemData.id}</div>
+          <div>Fonts loaded: {fontsLoaded ? 'Yes' : 'No'}</div>
+          <div>data-font-system: {document.documentElement.getAttribute('data-font-system')}</div>
+          <div>data-fonts-loaded: {document.documentElement.getAttribute('data-fonts-loaded')}</div>
         </div>
 
         <div>
@@ -41,6 +66,12 @@ const FontDebugger = () => {
             <div>--font-heading: {computedStyles.heading}</div>
             <div>--font-body: {computedStyles.body}</div>
             <div>--font-code: {computedStyles.code}</div>
+            <div>--tracking-heading: {computedStyles.trackingHeading}</div>
+            <div>--tracking-body: {computedStyles.trackingBody}</div>
+            <div>--tracking-code: {computedStyles.trackingCode}</div>
+            <div>--word-spacing-heading: {computedStyles.wordSpacingHeading}</div>
+            <div>--word-spacing-body: {computedStyles.wordSpacingBody}</div>
+            <div>--word-spacing-code: {computedStyles.wordSpacingCode}</div>
           </div>
         </div>
       </div>

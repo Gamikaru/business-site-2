@@ -1,37 +1,98 @@
-// src/components/home/HomeServices.tsx
-"use client";
+// src/app/home/HomeServices.tsx
+'use client'
 
-import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import {
-  ScrollReveal,
-  GestureElement,
-  TextReveal,
-  AnimatedPath
-} from "@/components/core/Animations";
-import { Button } from "@/components/common/Button";
-import { Divider } from "@/components/common/Divider";
-import { Heading, Text } from "@/components/common/Typography";
-import { cn } from "@/utils/classNames";
-import Image from "next/image";
-import  RichText from "@/components/common/Typography/RichText";
+import React, { useRef, useState, useEffect, useCallback, memo } from 'react'
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion'
+import { cn } from '@/utils/classNames'
+import { Heading, Text } from '@/components/common/Typography'
+import { Button } from '@/components/common/Button'
+import RichText from '@/components/common/Typography/RichText'
+import { ScrollReveal, TextReveal } from '@/components/core/Animations'
+import AnimatedGridBackground from '@/components/common/VisualInterest/AnimatedGridBackground'
+import { Divider } from '@/components/common/Divider'
+import Link from 'next/link'
+import Image from 'next/image'
 
+// Types
 interface ServiceItem {
-  id: string;
-  number: string;
-  title: string;
-  description: string;
-  iconSrc: string;
-  link: string;
+  id: string
+  number: string
+  title: string
+  description: string
+  iconSrc: string
+  link: string
 }
 
 interface HomeServicesProps {
-  heading: string;
-  introduction: string;
-  items: ServiceItem[];
-  ctaText: string;
-  ctaLink: string;
-  className?: string;
+  heading: string
+  introduction: string
+  items: ServiceItem[]
+  ctaText: string
+  ctaLink: string
+  className?: string
+}
+
+interface PulsePoint {
+  id: number
+  x: number
+  y: number
+  color: number
+}
+
+interface SystemMetrics {
+  efficiency: number
+  connectivity: number
+  pulseRate: number
+}
+
+// Constants
+const GLITCH_INTERVAL_MS = 5000
+const GLITCH_DURATION_MS = 120
+const PULSE_CLEANUP_MS = 3000
+const PULSE_LIMIT = 6
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.8 }
+  }
+}
+
+const decorationVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.5 }
+  }
+}
+
+const serviceItemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: (delay: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: { type: 'spring', stiffness: 50, damping: 9, delay }
+  }),
+  hover: {
+    y: -5,
+    transition: { duration: 0.3 }
+  }
+}
+
+const progressBarVariants = {
+  initial: { width: "30%" },
+  active: { width: "100%", transition: { duration: 0.5 } }
+}
+
+const cornerVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, delay }
+  })
 }
 
 const HomeServices: React.FC<HomeServicesProps> = ({
@@ -42,186 +103,267 @@ const HomeServices: React.FC<HomeServicesProps> = ({
   ctaLink,
   className,
 }) => {
-  // Reference for scroll effects and animation triggers
-  const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const isHeadingInView = useInView(headingRef, { once: false, margin: "-10% 0px" });
+  // Refs for section and animations
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const isHeadingInView = useInView(headingRef, { once: false, margin: "-10% 0px" })
+  const [uniqueId] = useState(`services-${Math.floor(Math.random() * 10000)}`)
 
-  // Scroll animation values
+  // Interactive states
+  const [activeService, setActiveService] = useState<string | null>(null)
+  const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 })
+  const [glitchActive, setGlitchActive] = useState(false)
+  const [pulsePoints, setPulsePoints] = useState<PulsePoint[]>([])
+  const [pulseCounter, setPulseCounter] = useState(0)
+  const [systemMetrics, setSystemMetrics] = useState<SystemMetrics>({
+    efficiency: Math.floor(Math.random() * 30) + 70,
+    connectivity: Math.floor(Math.random() * 40) + 60,
+    pulseRate: Math.floor(Math.random() * 200) + 800,
+  })
+
+  // Scroll animations
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
-  });
+  })
 
-  // Transform values for parallax effects
-  const backgroundPositionY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const gridRotate = useTransform(scrollYProgress, [0, 1], [0, 2]);
+  // Scroll-driven transforms
+  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 0.8, 0.8, 0])
+  const sectionScale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.98])
+  const sectionY = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, 50])
 
-  // Generate random technical data for the service metrics
-  const [serviceMetrics] = useState({
-    efficiency: Math.floor(Math.random() * 40) + 60, // 60-99%
-    uptime: (99 + Math.random()).toFixed(2), // 99.00-99.99%
-    iterations: Math.floor(Math.random() * 10) + 1, // 1-10
-    deployFreq: Math.floor(Math.random() * 12) + 1, // 1-12
-  });
+  // Handle mouse movement for interactive effects
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!sectionRef.current) return
 
-  // State for active service (hover effect)
-  const [activeService, setActiveService] = useState<string | null>(null);
+    const rect = sectionRef.current.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
 
-  // Function to get a color based on index for more variety
-  const getColorByIndex = (index: number) => {
-    const colors = ['brand-primary', 'accent-secondary', 'accent-warm', 'accent-contrast'];
-    return colors[index % colors.length];
-  };
+    setMousePosition({ x, y })
+  }, [])
 
-  // Function to get status indicator color
-  const getStatusColor = (index: number) => {
-    const colors = ['success', 'accent-warm', 'accent-secondary', 'accent-contrast'];
-    return colors[index % colors.length];
-  };
+  // Handle clicks for interactive pulse effects
+  const handleMouseClick = useCallback((e: React.MouseEvent) => {
+    if (!sectionRef.current) return
 
-  // Simulate periodic data updates
+    const rect = sectionRef.current.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+
+    const newPulse: PulsePoint = {
+      id: pulseCounter,
+      x,
+      y,
+      color: pulseCounter % 4
+    }
+
+    setPulsePoints((prev) => [...prev.slice(-PULSE_LIMIT + 1), newPulse])
+    setPulseCounter((prev) => prev + 1)
+
+    // Trigger glitch effect
+    setGlitchActive(true)
+    setTimeout(() => setGlitchActive(false), GLITCH_DURATION_MS)
+  }, [pulseCounter])
+
+  // Clean up old pulse points
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const serviceDivs = document.querySelectorAll('[data-service-status]');
-      serviceDivs.forEach(div => {
-        const statusLight = div.querySelector('.status-indicator') as HTMLElement;
-        if (statusLight) {
-          // Randomly blink some status lights
-          if (Math.random() > 0.7) {
-            statusLight.style.opacity = '0.4';
-            setTimeout(() => {
-              statusLight.style.opacity = '1';
-            }, 200);
-          }
-        }
-      });
-    }, 2000);
+    if (pulsePoints.length === 0) return
 
-    return () => clearInterval(intervalId);
-  }, []);
+    const cleanup = setTimeout(() => {
+      setPulsePoints((prev) => prev.slice(-PULSE_LIMIT))
+    }, PULSE_CLEANUP_MS)
+
+    return () => clearTimeout(cleanup)
+  }, [pulsePoints])
+
+  // Periodic effects to simulate system activity
+  useEffect(() => {
+    const glitchInterval = setInterval(() => {
+      // Random glitch effect
+      if (Math.random() > 0.7) {
+        setGlitchActive(true)
+        setTimeout(() => setGlitchActive(false), GLITCH_DURATION_MS)
+      }
+
+      // Update random metrics
+      setSystemMetrics({
+        efficiency: Math.floor(Math.random() * 15) + 85,
+        connectivity: Math.floor(Math.random() * 20) + 80,
+        pulseRate: Math.floor(Math.random() * 200) + 800,
+      })
+    }, GLITCH_INTERVAL_MS)
+
+    return () => clearInterval(glitchInterval)
+  }, [])
+
+  // Get color class based on index
+  const getColorClass = useCallback((index: number): string => {
+    const colors = ['accent-primary', 'accent-secondary', 'accent-warm', 'accent-contrast']
+    return colors[index % colors.length]
+  }, [])
 
   return (
-    <motion.section
+    <motion.div
       ref={sectionRef}
-      className={cn("relative bg-bg-secondary overflow-hidden", className)}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      className={cn("relative overflow-hidden py-24 sm:py-32", className)}
+      onMouseMove={handleMouseMove}
+      onClick={handleMouseClick}
+      style={{
+        y: sectionY,
+        scale: sectionScale,
+      }}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
     >
-      {/* Enhanced blueprint grid background with parallax */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          y: backgroundPositionY,
-          rotate: gridRotate,
-        }}
-      >
-        {/* Multiple layered backgrounds for depth */}
-        <div className="absolute inset-0 opacity-[0.07] bg-blueprint-grid" />
-        <div className="absolute inset-0 opacity-[0.05] bg-circuit" />
+      {/* SVG filter for glitch effects */}
+      <svg width="0" height="0" className="absolute" aria-hidden="true">
+        <defs>
+          <filter id={`${uniqueId}-glitch`}>
+            <feFlood floodColor="var(--color-accent-primary)" result="red" />
+            <feFlood floodColor="var(--color-accent-secondary)" result="blue" />
+            <feComposite operator="in" in="red" in2="SourceAlpha" result="red-text" />
+            <feComposite operator="in" in="blue" in2="SourceAlpha" result="blue-text" />
+            <feOffset in="red-text" dx="-2" dy="0" result="red-text-moved" />
+            <feOffset in="blue-text" dx="2" dy="0" result="blue-text-moved" />
+            <feMerge>
+              <feMergeNode in="red-text-moved" />
+              <feMergeNode in="blue-text-moved" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
 
-        {/* Radial gradient overlay for depth */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent to-bg-secondary/80" />
+      {/* Technical background */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-b from-bg-primary via-bg-secondary to-bg-primary"
+          style={{ opacity: backgroundOpacity }}
+        />
+
+        <AnimatedGridBackground
+          className="absolute inset-0"
+          particleCount={25}
+          density={20}
+          opacity={0.2}
+          colors={['accent-primary', 'accent-secondary', 'accent-warm', 'brand-primary']}
+        />
+
+        {/* Blueprint corner indicators */}
+        <div className="absolute top-0 left-0 h-16 w-16 border-l-2 border-t-2 border-accent-secondary/30" aria-hidden="true" />
+        <div className="absolute top-0 right-0 h-16 w-16 border-r-2 border-t-2 border-accent-secondary/30" aria-hidden="true" />
+        <div className="absolute bottom-0 left-0 h-16 w-16 border-l-2 border-b-2 border-accent-secondary/30" aria-hidden="true" />
+        <div className="absolute bottom-0 right-0 h-16 w-16 border-r-2 border-b-2 border-accent-secondary/30" aria-hidden="true" />
+      </div>
+
+      {/* Technical measurement overlays */}
+      <div className="absolute left-8 top-0 bottom-0 w-px border-l border-accent-primary/20 hidden md:block" aria-hidden="true" />
+      <div className="absolute right-8 top-0 bottom-0 w-px border-r border-accent-primary/20 hidden md:block" aria-hidden="true" />
+
+      {/* Scan lines effect */}
+      <motion.div
+        className="absolute left-0 right-0 h-[2px] bg-accent-secondary/10 pointer-events-none"
+        initial={{ top: '0%' }}
+        animate={{ top: '100%' }}
+        transition={{
+          duration: 3.5,
+          repeat: Infinity,
+          ease: "linear",
+          repeatDelay: 2
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Pulse interaction points */}
+      <AnimatePresence>
+        {pulsePoints.map((pulse) => (
+          <motion.div
+            key={`pulse-${pulse.id}`}
+            className="absolute pointer-events-none z-10"
+            style={{
+              left: `${pulse.x * 100}%`,
+              top: `${pulse.y * 100}%`,
+              transform: "translate(-50%, -50%)"
+            }}
+            initial={{ opacity: 0.8, scale: 0 }}
+            animate={{ opacity: 0, scale: 2 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+            aria-hidden="true"
+          >
+            <div className="relative">
+              <div className={`absolute inset-0 w-20 h-20 rounded-full bg-${getColorClass(pulse.color)} opacity-20`}></div>
+              <div className={`w-32 h-32 rounded-full border-2 border-${getColorClass(pulse.color)} flex items-center justify-center`}>
+                <div className={`w-24 h-24 rounded-full border border-${getColorClass(pulse.color)}/60`}></div>
+              </div>
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <line x1="30" y1="0" x2="30" y2="60" className={`stroke-${getColorClass(pulse.color)}`} strokeWidth="1" strokeDasharray="2 3" />
+                <line x1="0" y1="30" x2="60" y2="30" className={`stroke-${getColorClass(pulse.color)}`} strokeWidth="1" strokeDasharray="2 3" />
+                <circle cx="30" cy="30" r="3" className={`fill-${getColorClass(pulse.color)}`} />
+              </svg>
+            </div>
+          </motion.div>
+        ))}
+      </AnimatePresence>
+
+      {/* System status indicator */}
+      <motion.div
+        className={cn(
+          "absolute top-6 left-6 text-xs font-mono flex items-center z-20",
+          glitchActive ? "text-accent-primary" : "text-accent-secondary"
+        )}
+        animate={{
+          opacity: glitchActive ? [0.7, 1, 0.7] : 0.7,
+          filter: glitchActive ? `url(#${uniqueId}-glitch)` : 'none'
+        }}
+        aria-hidden="true"
+      >
+        <span className={cn(
+          "inline-block h-2 w-2 rounded-full mr-2",
+          glitchActive ? "bg-accent-primary animate-ping" : "bg-accent-secondary"
+        )} />
+        <span>SYS/SERVICES/{systemMetrics.efficiency}%</span>
       </motion.div>
 
-      {/* Technical measurement guides */}
-      <div className="absolute left-0 h-full w-6 border-r border-accent-oceanic/20 hidden lg:block">
-        <div className="h-full flex flex-col justify-between py-12">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="relative">
-              <div className="absolute -right-1 w-2 h-px bg-accent-oceanic"></div>
-              <div className="absolute -right-8 text-[8px] font-mono text-accent-oceanic">
-                {(i * 20).toString().padStart(3, '0')}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="absolute right-0 h-full w-6 border-l border-accent-oceanic/20 hidden lg:block">
-        <div className="h-full flex flex-col justify-between py-12">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="relative">
-              <div className="absolute -left-1 w-2 h-px bg-accent-oceanic"></div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-<div className="container mx-auto py-16 md:py-32 px-4 md:px-8 max-w-7xl relative z-10">
-        {/* Technical status bar */}
-        <div className="hidden md:flex justify-between items-center mb-8 text-xs font-mono">
-          <div className="flex items-center space-x-4 text-accent-oceanic">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Technical status metrics */}
+        <div className="flex justify-between items-center mb-12 text-xs font-mono text-accent-secondary" aria-hidden="true">
+          <div className="flex items-center space-x-6">
             <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-accent-oceanic mr-2 animate-pulse"></div>
-              <span>SYS.STATUS/ACTIVE</span>
+              <div className="w-2 h-2 rounded-full bg-accent-primary mr-2 animate-pulse"></div>
+              <span>CONN/{systemMetrics.connectivity}%</span>
             </div>
-            <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-accent-secondary mr-2"></div>
-              <span>EFFICIENCY/{serviceMetrics.efficiency}%</span>
+            <div className="hidden sm:flex items-center">
+              <div className="w-2 h-2 rounded-full bg-accent-warm/70 mr-2"></div>
+              <span>SYNC/{systemMetrics.pulseRate}ms</span>
             </div>
           </div>
-          <div className="text-accent-warm">
-            UPTIME/{serviceMetrics.uptime}%
+          <div className="text-accent-secondary">
+            {`LOC//${Math.floor(mousePosition.x * 100)}.${Math.floor(mousePosition.y * 100)}`}
           </div>
         </div>
 
-        {/* Enhanced section header */}
-        <div ref={headingRef} className="max-w-3xl mx-auto text-center mb-12 md:mb-20 relative">
-          {/* Decorative connectors */}
+        {/* Section header */}
+        <div
+          ref={headingRef}
+          className="max-w-3xl mx-auto text-center mb-16 relative"
+        >
+          {/* Terminal-style header bar */}
           <motion.div
-            className="absolute -left-16 top-1/2 -translate-y-1/2 hidden lg:block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHeadingInView ? 1 : 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            className="absolute -top-2 left-8 right-8 h-6 flex items-center px-4 border-t border-l border-r border-accent-secondary/60 bg-bg-glass backdrop-blur-sm mx-auto max-w-xl"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: isHeadingInView ? 1 : 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            style={{ transformOrigin: "center" }}
+            aria-hidden="true"
           >
-            <svg width="50" height="80" viewBox="0 0 50 80" fill="none">
-              <AnimatedPath
-                d="M50 40H30L10 10M10 70L30 40"
-                stroke="var(--color-accent-secondary)"
-                strokeWidth="1"
-                strokeDasharray="4 2"
-              />
-              <AnimatedPath
-                d="M0 40H10"
-                stroke="var(--color-accent-contrast)"
-                strokeWidth="1"
-              />
-              <AnimatedPath
-                d="M15 10V70"
-                stroke="var(--color-accent-oceanic)"
-                strokeWidth="0.5"
-                strokeDasharray="1 2"
-              />
-            </svg>
-          </motion.div>
+            <div className="text-[10px] font-mono text-accent-primary">
+              SERVICES.MODULE/INITIALIZED
+            </div>
 
-          <motion.div
-            className="absolute -right-16 top-1/2 -translate-y-1/2 hidden lg:block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHeadingInView ? 1 : 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <svg width="50" height="80" viewBox="0 0 50 80" fill="none">
-              <AnimatedPath
-                d="M0 40H20L40 10M40 70L20 40"
-                stroke="var(--color-accent-warm)"
-                strokeWidth="1"
-                strokeDasharray="4 2"
-              />
-              <AnimatedPath
-                d="M50 40H40"
-                stroke="var(--color-accent-contrast)"
-                strokeWidth="1"
-              />
-              <AnimatedPath
-                d="M35 10V70"
-                stroke="var(--color-accent-oceanic)"
-                strokeWidth="0.5"
-                strokeDasharray="1 2"
-              />
-            </svg>
+            <div className="ml-auto h-2 w-2 rounded-full bg-accent-primary animate-pulse" />
           </motion.div>
 
           <TextReveal
@@ -229,380 +371,294 @@ const HomeServices: React.FC<HomeServicesProps> = ({
             delay={0.2}
             splitBy="words"
             staggerChildren={true}
-            className="mb-8 relative"
+            className="mb-6 relative"
           >
             <Heading
               level={2}
-              className="text-[clamp(1.8rem,3.2vw+1rem,2.4rem)] font-heading font-bold text-heading uppercase relative inline-block"
+              className={cn(
+                "text-[clamp(2rem,5vw,3rem)] font-heading font-bold relative inline-block pt-6",
+                glitchActive && "filter-glitch"
+              )}
+              style={{ filter: glitchActive ? `url(#${uniqueId}-glitch)` : 'none' }}
             >
               <RichText content={heading} />
-              <motion.div
-                className="absolute -bottom-3 left-0 right-0 h-[3px]"
-                initial={{ width: 0 }}
-                animate={{ width: isHeadingInView ? "100%" : "0%" }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                <div className="h-full bg-gradient-to-r from-transparent via-accent-secondary to-transparent"></div>
-              </motion.div>
             </Heading>
           </TextReveal>
 
-          <ScrollReveal direction="up" delay={0.3} className="relative">
-            <div className="backdrop-blur-sm bg-bg-secondary/50 p-6 rounded-sm relative">
-              {/* Technical corner details */}
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent-secondary"></div>
-              <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-accent-warm"></div>
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-accent-warm"></div>
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent-secondary"></div>
+          {/* Underline with architectural style */}
+          <motion.div
+            className="h-[1px] w-40 bg-accent-primary/60 mx-auto mb-10"
+            initial={{ width: 0 }}
+            animate={{ width: isHeadingInView ? 160 : 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          />
 
-              <Text size="xl" className="text-text-secondary">
+          <ScrollReveal direction="up" delay={0.3} className="relative">
+            <motion.div
+              className="bg-bg-glass backdrop-blur-sm border border-accent-secondary/30 p-8 relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isHeadingInView ? 1 : 0, y: isHeadingInView ? 0 : 20 }}
+            >
+              {/* Corner brackets */}
+              <div className="absolute -top-1.5 -left-1.5 h-3 w-3 border-l border-t border-accent-secondary/60" aria-hidden="true" />
+              <div className="absolute -top-1.5 -right-1.5 h-3 w-3 border-r border-t border-accent-secondary/60" aria-hidden="true" />
+              <div className="absolute -bottom-1.5 -left-1.5 h-3 w-3 border-l border-b border-accent-secondary/60" aria-hidden="true" />
+              <div className="absolute -bottom-1.5 -right-1.5 h-3 w-3 border-r border-b border-accent-secondary/60" aria-hidden="true" />
+
+              <Text as="div" size="xl" className="text-text-secondary">
                 <RichText content={introduction} />
               </Text>
-            </div>
+            </motion.div>
           </ScrollReveal>
-
-          {/* Data metrics */}
-          <motion.div
-            className="absolute -bottom-8 right-0 text-xs font-mono text-accent-warm hidden md:block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHeadingInView ? 1 : 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-          >
-            ITER/{serviceMetrics.iterations} DEP/{serviceMetrics.deployFreq}/mo
-          </motion.div>
         </div>
 
-        {/* Enhanced service cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-16">
+        {/* Services grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((service, index) => (
             <ScrollReveal
               key={service.id}
               direction={index % 3 === 0 ? "left" : index % 3 === 1 ? "up" : "right"}
               delay={0.2 + index * 0.1}
-              className="h-full"
             >
-              <GestureElement
-                tiltEnabled={true}
-                tiltFactor={3}
-                scaleOnHover={true}
-                scaleAmount={1.02}
-                className="h-full"
+              <motion.div
+                className={cn(
+                  "group relative border backdrop-blur-sm bg-bg-glass transition-all duration-300 h-full",
+                  activeService === service.id
+                    ? "border-accent-primary shadow-glow"
+                    : "border-white/10 hover:border-accent-secondary/60"
+                )}
+                variants={serviceItemVariants}
+                initial="hidden"
+                animate="visible"
+                custom={index * 0.1}
+                whileHover="hover"
                 onMouseEnter={() => setActiveService(service.id)}
                 onMouseLeave={() => setActiveService(null)}
               >
-                <div
-                  className={cn(
-                    "relative h-full border rounded-lg overflow-hidden transition-all duration-300",
-                    activeService === service.id
-                      ? `border-${getColorByIndex(index)} bg-bg-glass`
-                      : "border-divider bg-bg-card/80"
-                  )}
-                  data-service-status={service.id}
-                >
-                  {/* Service number badge */}
-                  <div className="absolute top-4 left-4 w-8 h-8 flex items-center justify-center border border-accent-oceanic/70 text-accent-oceanic font-mono text-xs">
-                    {service.number}
-                  </div>
+                {/* Technical grid overlay */}
+                <div className="absolute inset-0 pointer-events-none opacity-10" aria-hidden="true">
+                  <div className="absolute inset-0 bg-blueprint-grid opacity-30" />
+                </div>
 
-                  {/* Status indicator - varied colors */}
-                  <div className="absolute top-4 right-4 flex items-center">
-                    <div className={`status-indicator w-2 h-2 rounded-full bg-${getStatusColor(index)} mr-2 transition-opacity`}></div>
-                    <span className="text-xs font-mono text-text-secondary">READY</span>
-                  </div>
+                {/* Upper accent bar */}
+                <div className="h-1 w-full bg-gradient-to-r from-transparent via-accent-secondary to-transparent opacity-60" />
 
-                  {/* Blueprint corner detail */}
-                  <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none">
-                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                      <AnimatedPath
-                        d="M64 0L64 16M64 0L48 0"
-                        stroke={`var(--color-${getColorByIndex(index + 1)})`}
-                        strokeWidth="1"
-                        strokeOpacity="0.5"
-                      />
-                    </svg>
-                  </div>
+                {/* Technical coordinates */}
+                <div className="absolute top-3 right-3 text-[10px] font-mono text-accent-secondary opacity-70" aria-hidden="true">
+                  ID::{service.id.toUpperCase()}
+                </div>
 
-                  <div className="p-8 pt-16">
-                    {/* Animated service icon */}
-                    <div className="mb-6 relative">
-                      <div className="w-16 h-16 relative">
-                        <div
-                          className={cn(
-                            "absolute inset-0 rounded-lg transition-opacity duration-300",
-                            activeService === service.id
-                              ? "opacity-20"
-                              : "opacity-10"
-                          )}
-                          style={{
-                            background: `radial-gradient(circle, var(--color-${getColorByIndex(index)}) 0%, transparent 70%)`
-                          }}
-                        />
+                {/* Status indicator */}
+                <div className={cn(
+                  "absolute top-3 left-3 flex items-center",
+                  activeService === service.id ? "text-accent-primary" : "text-accent-secondary"
+                )} aria-hidden="true">
+                  <div className={cn(
+                    "h-1.5 w-1.5 rounded-full mr-1",
+                    activeService === service.id ? "bg-accent-primary animate-ping" : "bg-accent-secondary"
+                  )}></div>
+                  <span className="text-[10px] font-mono">ACTIVE</span>
+                </div>
 
-                        <Image
-                          src={service.iconSrc}
-                          alt=""
-                          width={64}
-                          height={64}
-                          className="relative z-10"
-                        />
-                      </div>
-
-                      {/* Technical scan line on hover - varied colors */}
-                      {activeService === service.id && (
-                        <motion.div
-                          className={`absolute inset-0 bg-gradient-to-b from-transparent via-${getColorByIndex(index)}/30 to-transparent`}
-                          style={{
-                            height: "200%",
-                            top: "-50%"
-                          }}
-                          animate={{
-                            top: ["0%", "100%"],
-                          }}
-                          transition={{
-                            repeat: Infinity,
-                            duration: 1.5,
-                            ease: "linear"
-                          }}
-                        />
+                {/* Content */}
+                <div className="p-8 pt-12">
+                  {/* Icon with technical styling */}
+                  <div className="mb-6 relative w-16 h-16">
+                    <motion.div
+                      className={cn(
+                        "absolute inset-0 rounded-md opacity-20",
+                        activeService === service.id && "animate-pulse"
                       )}
-                    </div>
+                      style={{
+                        background: `radial-gradient(circle, var(--color-${index % 2 ? 'accent-primary' : 'accent-secondary'}) 0%, transparent 70%)`
+                      }}
+                      aria-hidden="true"
+                    />
+                    <Image
+                      src={service.iconSrc}
+                      alt=""
+                      width={64}
+                      height={64}
+                      className="relative z-10"
+                    />
 
-                    {/* Service title */}
-                    <Heading level={3} className="mb-4 text-xl font-heading font-semibold">
+                    {/* Scan effect on hover */}
+                    {activeService === service.id && (
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-secondary/30 to-transparent h-[200%] -top-[50%]"
+                        animate={{
+                          top: ["0%", "100%"],
+                        }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 1.5,
+                          ease: "linear"
+                        }}
+                        aria-hidden="true"
+                      />
+                    )}
+                  </div>
+
+                  {/* Service title */}
+                  <div className="mb-4">
+                    <div className="font-mono text-[10px] text-accent-secondary mb-1" aria-hidden="true">SERVICE [{service.number}]</div>
+                    <Heading level={3} className="text-xl font-heading font-bold">
                       <RichText content={service.title} />
                     </Heading>
-
-                    {/* Service description */}
-                    <RichText content={service.description} className="text-text-secondary" />
-
-                    {/* Learn more link with varied colors */}
-                    <div className="mt-auto">
-                      <Button
-                        intent="text"
-                        href={service.link}
-                        className={cn(
-                          "px-0 font-medium transition-colors",
-                          activeService === service.id
-                            ? `text-${getColorByIndex(index)}`
-                            : "text-accent-cosmic"
-                        )}
-                        icon={
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        }
-                        iconPosition="right"
-                      >
-                        Learn more
-                      </Button>
-                    </div>
                   </div>
 
-                  {/* Bottom progress bar with varied colors */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-bg-tertiary overflow-hidden">
-                    <motion.div
-                      className={`h-full bg-${getColorByIndex(index)}`}
-                      initial={{ width: "0%" }}
-                      animate={{ width: `${30 + Math.random() * 70}%` }}
-                      transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
-                    />
+                  {/* Service description */}
+                  <Text as="div" className="mb-6 text-text-secondary">
+                    <RichText content={service.description} />
+                  </Text>
+
+                  {/* Technical link */}
+                  <div className="mt-auto pt-4 border-t border-white/10">
+                    <Link href={service.link} className="group flex justify-between items-center text-sm font-medium">
+                      <span className={cn(
+                        "transition-colors",
+                        activeService === service.id ? "text-accent-primary" : "text-text-primary group-hover:text-accent-primary"
+                      )}>
+                        Learn more
+                      </span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-accent-secondary" aria-hidden="true">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </Link>
+                  </div>
+
+                  {/* Bottom system indicator */}
+                  <div className="absolute bottom-2 right-2 text-[9px] font-mono text-accent-secondary/50 flex items-center gap-2" aria-hidden="true">
+                    {activeService === service.id && (
+                      <motion.div
+                        className="h-1 w-1 rounded-full bg-accent-primary"
+                        animate={{ opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      />
+                    )}
+                    {`SYS::${index + 1}`}
                   </div>
                 </div>
-              </GestureElement>
+
+                {/* Progress bar */}
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-accent-primary/50"
+                  variants={progressBarVariants}
+                  initial="initial"
+                  animate={activeService === service.id ? "active" : "initial"}
+                  aria-hidden="true"
+                />
+              </motion.div>
             </ScrollReveal>
           ))}
         </div>
 
-        {/* Enhanced CTA Button */}
-        <div className="flex justify-center relative">
+        {/* CTA with architectural styling */}
+        <div className="mt-16 flex justify-center">
           <ScrollReveal direction="up" delay={0.5}>
-            <div className="relative group perspective-effect">
-              {/* Button glow effect - changed to accent-secondary */}
-              <div className="absolute inset-0 -m-1 rounded-lg transition-opacity opacity-0 group-hover:opacity-100 duration-300 blur-md" style={{
-                background: "radial-gradient(circle, var(--color-accent-secondary) 0%, transparent 70%)"
-              }}></div>
+            <div className="relative">
+              {/* Technical frame */}
+              <motion.div
+                className="absolute -left-4 -top-4 border-l-2 border-t-2 border-accent-secondary/60 w-12 h-12 pointer-events-none"
+                variants={cornerVariants}
+                initial="hidden"
+                animate="visible"
+                custom={0.6}
+                aria-hidden="true"
+              />
 
-              <div className="relative z-10">
-                <Button
-                  intent="gradient"
-                  size="lg"
-                  href={ctaLink}
-                  icon={
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8 1L15 8L8 15"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M15 8H1"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  }
-                  iconPosition="right"
-                >
-                  {ctaText}
-                </Button>
-              </div>
+              <Button
+                intent="gradient"
+                size="lg"
+                href={ctaLink}
+                className="relative border-2 border-accent-primary bg-transparent hover:bg-accent-primary/20 transition-all text-white font-bold tracking-wider"
+                icon={
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M8 1L15 8L8 15"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M15 8H1"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                }
+                iconPosition="right"
+              >
+                {ctaText}
+              </Button>
 
-              {/* Target indicator - using accent-warm */}
-              <div className="absolute -left-6 -bottom-6 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                  <AnimatedPath
-                    d="M24 12V0M24 48V36M12 24H0M48 24H36"
-                    stroke="var(--color-accent-warm)"
-                    strokeWidth="1"
-                    strokeDasharray="2 2"
-                  />
-                  <AnimatedPath
-                    d="M24 28C26.2091 28 28 26.2091 28 24C28 21.7909 26.2091 20 24 20C21.7909 20 20 21.7909 20 24C20 26.2091 21.7909 28 24 28Z"
-                    stroke="var(--color-accent-secondary)"
-                    strokeWidth="1"
-                  />
-                </svg>
-              </div>
+              {/* Technical measurement */}
+              <motion.div
+                className="absolute -right-4 -bottom-4 border-r-2 border-b-2 border-accent-secondary/60 w-12 h-12 pointer-events-none"
+                variants={cornerVariants}
+                initial="hidden"
+                animate="visible"
+                custom={0.7}
+                aria-hidden="true"
+              />
+
+              {/* Technical readout */}
+              <motion.div
+                className="absolute -right-8 top-1/2 -translate-y-1/2 text-[10px] font-mono text-accent-secondary/70 hidden lg:flex items-center gap-2"
+                variants={decorationVariants}
+                initial="hidden"
+                animate="visible"
+                custom={0.8}
+                aria-hidden="true"
+              >
+                <div className="h-1 w-1 rounded-full bg-accent-primary animate-pulse" />
+                <span>CTA::READY</span>
+              </motion.div>
             </div>
           </ScrollReveal>
         </div>
-
-        {/* Enhanced measurement ticks */}
-        <div className="mt-20 relative h-12 w-full hidden md:block">
-          <motion.div
-            className="absolute bottom-0 left-0 w-full border-t border-divider"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-          >
-            {Array.from({ length: 11 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute top-0 flex flex-col items-center"
-                style={{ left: `${i * 10}%`, transform: 'translateX(-50%)' }}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 1 + (i * 0.05) }}
-              >
-                <div className={cn(
-                  "w-px bg-divider",
-                  i % 5 === 0 ? "h-4" : "h-2"
-                )}></div>
-                {i % 5 === 0 && (
-                  <span className="text-[10px] font-mono text-text-tertiary mt-1">
-                    {i * 10}
-                  </span>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Technical data matrix - using varied colors */}
-        <motion.div
-          className="absolute bottom-16 left-6 font-mono text-[10px] hidden lg:block"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.7 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-        >
-          <div className="grid grid-cols-3 gap-x-6 gap-y-1">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <React.Fragment key={i}>
-                <div className={`text-${getColorByIndex(i)}`}>{`M${i+1}:${Math.floor(Math.random() * 999)}`}</div>
-                <div className="text-accent-oceanic">{`F${i+1}:${(Math.random() * 10).toFixed(2)}`}</div>
-                <div className={`text-${getStatusColor(i)}`}>{`S${i+1}:${Math.floor(Math.random() * 99)}%`}</div>
-              </React.Fragment>
-            ))}
-          </div>
-        </motion.div>
       </div>
 
-      {/* Enhanced angled divider with technical details */}
-      <div className="relative">
+      {/* Angled divider */}
+      <div className="relative mt-20">
         <Divider
           type="plane"
           height={120}
           bgBottom="var(--color-bg-primary)"
           className="z-10"
         />
-
-        {/* Technical grid overlay on divider - varied colors */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <svg className="absolute bottom-0 left-0 right-0 h-[120px] w-full" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none">
-            <motion.line
-              x1="30" y1="0" x2="70" y2="100"
-              stroke="var(--color-accent-secondary)"
-              strokeWidth="0.3"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.5, delay: 0.2 }}
-            />
-            <motion.line
-              x1="60" y1="0" x2="40" y2="100"
-              stroke="var(--color-accent-warm)"
-              strokeWidth="0.2"
-              strokeDasharray="4 2"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.3, delay: 0.4 }}
-            />
-
-            <motion.text
-              x="80" y="40"
-              fill="var(--color-accent-oceanic)"
-              fontSize="3"
-              fontFamily="monospace"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.8 }}
-              transition={{ delay: 1.2 }}
-            >
-              PORT/SECT
-            </motion.text>
-          </svg>
-        </div>
       </div>
 
-      {/* Utility styles for special effects */}
+      {/* Dynamic color classes for dynamic classNames */}
       <style jsx global>{`
-        .bg-radial-gradient {
-          background: radial-gradient(circle at center, var(--from), var(--to));
+        .shadow-glow {
+          box-shadow: 0 0 20px var(--color-active-bg);
         }
 
-        .perspective-effect {
-          transform-style: preserve-3d;
-          perspective: 1000px;
+        .filter-glitch {
+          animation: text-glitch 0.3s linear;
         }
 
-        /* Dynamic color classes for the component */
-        .bg-brand-primary { background-color: var(--color-brand-primary); }
-        .bg-accent-secondary { background-color: var(--color-accent-secondary); }
-        .bg-accent-warm { background-color: var(--color-accent-warm); }
-        .bg-accent-contrast { background-color: var(--color-accent-contrast); }
-        .bg-success { background-color: var(--color-success); }
-
-        .text-brand-primary { color: var(--color-brand-primary); }
-        .text-accent-secondary { color: var(--color-accent-secondary); }
-        .text-accent-warm { color: var(--color-accent-warm); }
-        .text-accent-contrast { color: var(--color-accent-contrast); }
-        .text-success { color: var(--color-success); }
-
-        .border-brand-primary { border-color: var(--color-brand-primary); }
-        .border-accent-secondary { border-color: var(--color-accent-secondary); }
-        .border-accent-warm { border-color: var(--color-accent-warm); }
-        .border-accent-contrast { border-color: var(--color-accent-contrast); }
+        @keyframes text-glitch {
+          0%, 100% { transform: none; opacity: 1; }
+          7% { transform: skew(-0.5deg, -0.9deg); opacity: 0.75; }
+          30% { transform: skew(0.8deg, -0.1deg); opacity: 0.75; }
+          55% { transform: skew(-1deg, 0.2deg); opacity: 0.75; }
+          75% { transform: skew(0.4deg, 1deg); opacity: 0.75; }
+        }
       `}</style>
-    </motion.section>
-  );
-};
+    </motion.div>
+  )
+}
 
-export default HomeServices;
+export default memo(HomeServices)

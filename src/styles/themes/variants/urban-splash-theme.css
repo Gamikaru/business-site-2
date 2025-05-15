@@ -1,741 +1,223 @@
-/* src/styles/themes/urban-splash-theme.css */
+/* src/styles/themes/urban-splash-theme.css
+   Playful • Neon‑grit makeover — 2025‑05‑14
+   ───────────────────────────────────────────────────────── */
 
-/* ══════════════════════════════════════════════════════════════════════════════
-   URBAN SPLASH THEME SYSTEM
-   A vibrant, street-inspired palette built around industrial backgrounds with
-   explosive color splashes, graffiti aesthetics, and raw urban energy.
-   ══════════════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   URBAN SPLASH — DARK  (Graffiti Night)
+   ═══════════════════════════════════════════════ */
+[data-theme="urban-splash-dark"]{
+  /* =====   ATOMS   ===== */
+  --concrete-900:#1C1C1E;
+  --concrete-800:#272729;
+  --concrete-700:#323236;
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   URBAN SPLASH DARK THEME (Urban Night Edition)
-   Industrial concrete backgrounds with vibrant neon spray paint accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
-[data-theme="urban-splash-dark"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #1c1c1e;
-    /* Main application background - concrete charcoal */
-    --color-bg-secondary: #272729;
-    /* Secondary containers, cards, sidebars - asphalt gray */
-    --color-bg-tertiary: #323236;
-    /* Elevated surfaces, modals, popovers - urban slate */
-    --color-bg-card: rgba(39, 39, 41, 0.97);
-    /* Card backgrounds with slight transparency - industrial overlay */
-    --color-bg-glass: rgba(255, 255, 255, 0.08);
-    /* Glass effect backgrounds - street glow */
-    --color-bg-code: rgba(28, 28, 30, 0.85);
-    /* Code block backgrounds - slightly lighter than primary */
-    --color-bg-input: rgba(39, 39, 41, 0.65);
-    /* Form element backgrounds with subtle contrast */
-    --color-bg-hover: rgba(255, 40, 130, 0.15);
-    /* Hover state background - subtle pink splash */
-    --color-bg-active: rgba(255, 40, 130, 0.25);
-    /* Active/selected state background - stronger pink splash */
-    --color-bg-disabled: rgba(60, 60, 67, 0.35);
-    /* Disabled element background - faded concrete */
-    --color-bg-tooltip: rgba(28, 28, 30, 0.97);
-    /* Tooltip background - nearly opaque dark */
-    --color-bg-dropdown: rgba(39, 39, 41, 0.98);
-    /* Dropdown menu background */
-    --color-bg-selection: rgba(0, 230, 255, 0.25);
-    /* Text selection background - electric blue highlight */
+  --splash-pink-500:#FF2882;
+  --splash-pink-600:#E81C70;
+  --splash-pink-700:#D1105E;
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #f2f2f7;
-    /* Main body text - bright white with hint of blue for reduced eye strain */
-    --color-text-secondary: #c7c7cc;
-    /* Secondary/supporting text - softer contrast */
-    --color-text-tertiary: rgba(199, 199, 204, 0.7);
-    /* De-emphasized text, subtitles, captions */
-    --color-text-disabled: rgba(199, 199, 204, 0.5);
-    /* Disabled text - significantly reduced contrast */
-    --color-text-on-accent: #ffffff;
-    /* Text on accent-colored backgrounds - pure white for optimal contrast */
-    --color-text-code: #91fbff;
-    /* Code and pre-formatted text - electric cyan for readability */
+  --splash-cyan-500:#00E6FF;
+  --splash-cyan-600:#00CCE2;
 
-    /* Headings */
-    --color-heading: #f2f2f7;
-    /* Standard headings - bright white */
-    --color-heading-accent: #ff2882;
-    /* Accented headings - electric pink */
-    --color-subheading: #c7c7cc;
-    /* Subheadings, section titles - matching secondary text */
+  --splash-yellow-500:#FFDD00;
+  --splash-orange-500:#FF7A00;
+  --splash-lime-500:#5BFF28;
 
-    /* Special text */
-    --color-text-emphasis: #ffdd00;
-    /* Emphasized text, highlights - neon yellow */
-    --color-text-inverted: #1c1c1e;
-    /* Inverted text (on light backgrounds) - concrete charcoal */
+  /* =====   SURFACES   ===== */
+  --color-primary-bg:   var(--concrete-900);
+  --color-secondary-bg: var(--concrete-800);
+  --color-tertiary-bg:  var(--concrete-700);
+  --color-card-bg:      rgba(39 39 41/.97);
+  --color-glass-bg:     rgba(255 255 255/.08);
+  --color-code-bg:      rgba(28 28 30/.85);
+  --color-input-bg:     rgba(39 39 41/.65);
+  --color-hover-bg:     rgba(255 40 130/.15);
+  --color-active-bg:    rgba(255 40 130/.25);
+  --color-disabled-bg:  rgba(60 60 67/.35);
+  --color-tooltip-bg:   rgba(28 28 30/.97);
+  --color-dropdown-bg:  rgba(39 39 41/.98);
+  --color-selection-bg: rgba(  0 230 255/.25);
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with explosive complementary variety
-     ════════════════════════════════════ */
-    --color-brand-primary: #ff2882;
-    /* Primary brand color - electric pink */
-    --color-brand-secondary: #00e6ff;
-    /* Secondary brand color - electric blue */
+  --color-grid-lines:   rgba(242 242 247/.20);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #ff2882;
-    /* Primary accent for main interactive elements - electric pink */
-    --color-accent-primary-hover: #e81c70;
-    /* Hover state for primary accent - deeper pink */
-    --color-accent-primary-active: #d1105e;
-    /* Active state for primary accent - even deeper pink */
-    --color-accent-secondary: #00e6ff;
-    /* Secondary accent for visual variety - electric blue */
-    --color-accent-tertiary: #ffdd00;
-    /* Tertiary accent for subtle highlights - neon yellow */
-    --color-accent-warm: #ff7a00;
-    /* Warm accent for attention-grabbing elements - neon orange */
-    --color-accent-contrast: #5bff28;
-    /* High-contrast accent for additional contrast - lime green */
+  /* =====   TYPE   ===== */
+  --color-primary-text:#F2F2F7;
+  --color-secondary-text:#C7C7CC;
+  --color-tertiary-text:rgba(199 199 204/.70);
+  --color-disabled-text:rgba(199 199 204/.50);
+  --color-text-on-accent:#FFFFFF;
+  --color-code-text:#91FBFF;
+  --color-heading:#F2F2F7;
+  --color-heading-accent:var(--splash-pink-500);
+  --color-subheading:#C7C7CC;
+  --color-text-emphasis:var(--splash-yellow-500);
+  --color-text-inverted:#1C1C1E;
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #ff2882;
-    /* Default interactive element color - electric pink */
-    --color-interactive-hover: #e81c70;
-    /* Hover state - deeper pink */
-    --color-interactive-active: #d1105e;
-    /* Active/pressed state - even deeper pink */
-    --color-interactive-focus: #ff2882;
-    /* Focus state indicator */
-    --color-interactive-disabled: rgba(255, 40, 130, 0.4);
-    /* Disabled state - faded pink */
+  /* =====   BRAND & ACCENT   ===== */
+  --color-brand-primary:var(--splash-pink-500);
+  --color-brand-secondary:var(--splash-cyan-500);
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #00e6ff;
-    /* Secondary interactive elements - electric blue */
-    --color-interactive-secondary-hover: #00cce2;
-    /* Secondary hover state - deeper blue */
-    --color-interactive-secondary-active: #00b5c9;
-    /* Secondary active state - even deeper blue */
+  --color-accent-primary:         var(--splash-pink-500);
+  --color-accent-primary-hover:   var(--splash-pink-600);
+  --color-accent-primary-active:  var(--splash-pink-700);
+  --color-accent-secondary:       var(--splash-cyan-500);
+  --color-accent-tertiary:        var(--splash-yellow-500);
+  --color-accent-warm:            var(--splash-orange-500);
+  --color-accent-contrast:        var(--splash-lime-500);
 
-    /* Form element specific colors */
-    --color-field-border: rgba(0, 230, 255, 0.5);
-    /* Form input borders */
-    --color-field-placeholder: rgba(199, 199, 204, 0.6);
-    /* Placeholder text */
-    --color-field-focus: #00e6ff;
-    /* Field focus indicator */
-    --color-field-required: #ffdd00;
-    /* Required field indicator */
-    --color-field-invalid: #ff3b30;
-    /* Invalid field indicator */
+  /* =====   STATUS   ===== */
+  --color-success:var(--splash-lime-500);           --color-success-subtle:rgba( 91 255  40/.15);
+  --color-warning:var(--splash-yellow-500);         --color-warning-subtle:rgba(255 221   0/.15);
+  --color-error:#FF3B30;                            --color-error-subtle:rgba(255  59  48/.15);
+  --color-info:var(--splash-cyan-500);              --color-info-subtle:rgba(  0 230 255/.15);
+  --color-neutral:#C7C7CC;                          --color-neutral-subtle:rgba(199 199 204/.15);
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts
-     ════════════════════════════════════ */
-    --color-success: #5bff28;
-    /* Success state - lime green */
-    --color-success-subtle: rgba(91, 255, 40, 0.15);
-    /* Subtle success background */
-    --color-warning: #ffdd00;
-    /* Warning state - neon yellow */
-    --color-warning-subtle: rgba(255, 221, 0, 0.15);
-    /* Subtle warning background */
-    --color-error: #ff3b30;
-    /* Error state - alert red */
-    --color-error-subtle: rgba(255, 59, 48, 0.15);
-    /* Subtle error background */
-    --color-info: #00e6ff;
-    /* Information state - electric blue */
-    --color-info-subtle: rgba(0, 230, 255, 0.15);
-    /* Subtle info background */
-    --color-neutral: #c7c7cc;
-    /* Neutral state - mid-gray */
-    --color-neutral-subtle: rgba(199, 199, 204, 0.15);
-    /* Subtle neutral background */
+  /* =====   SUPPORT   ===== */
+  --color-border:         rgba(  0 230 255/.30);
+  --color-border-focus:   var(--splash-yellow-500);
+  --color-border-input:   rgba(  0 230 255/.40);
+  --color-divider:        rgba(255  40 130/.25);
+  --color-divider-light:  rgba(255 255 255/.08);
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with urban aesthetics
-     ════════════════════════════════════ */
-    --color-divider: rgba(255, 40, 130, 0.25);
-    /* Dividers and separators - subtle pink lines */
-    --color-divider-light: rgba(255, 255, 255, 0.08);
-    /* Lighter dividers for contrast on dark areas */
-    --color-border: rgba(0, 230, 255, 0.3);
-    /* Borders for containers, cards, etc */
-    --color-border-focus: #ffdd00;
-    /* Focus state borders - neon yellow */
-    --color-border-input: rgba(0, 230, 255, 0.4);
-    /* Form input borders - slightly stronger than regular */
-    --color-shadow: rgba(0, 0, 0, 0.4);
-    /* Shadows for elevation - deep black */
-    --color-shadow-light: rgba(0, 0, 0, 0.2);
-    /* Lighter shadows for subtle elevation */
-    --color-overlay: rgba(28, 28, 30, 0.85);
-    /* Modal/dialog overlays */
-    --color-notification-badge: #ff3b30;
-    /* Notification badges - alert red */
+  --shadow-sm:0 2px 8px -2px  rgba(0 0 0/.30);
+  --shadow-md:0 12px 25px -10px rgba(0 0 0/.40);
+  --shadow-lg:0 25px 50px -12px rgba(0 0 0/.50);
+  --shadow-focus:0 0 0 3px rgba(255 221 0/.30);
 
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(255, 40, 130, 0.5);
-    /* Scrollbar thumb - semi-transparent pink */
-    --color-scrollbar-track: rgba(28, 28, 30, 0.3);
-    /* Scrollbar track - subtle dark */
+  --color-scrollbar-thumb:rgba(255 40 130/.50);
+  --color-scrollbar-track:rgba(28 28 30/.30);
 
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #00e6ff;
-    /* Link text - electric blue */
-    --color-link-hover: #70eeff;
-    /* Link hover state - lighter blue */
-    --color-link-visited: #9d5cff;
-    /* Visited links - electric purple */
-    --color-emphasis: #ffdd00;
-    /* Emphasized text - neon yellow */
-    --color-success-text: #5bff28;
-    /* Success messages - lime green */
-    --color-warning-text: #ffdd00;
-    /* Warning messages - neon yellow */
-    --color-error-text: #ff3b30;
-    /* Error messages - alert red */
-    --color-info-text: #00e6ff;
-    /* Information text - electric blue */
+  /* =====   DECOR   ===== */
+  --wave-primary:#F8F8F8;
+  --wave-secondary:#FFFFFF;
+  --wave-accent-1:var(--splash-pink-500);
+  --wave-accent-2:var(--splash-cyan-500);
 
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #ff2882;
-    /* Primary icons - electric pink */
-    --color-icon-secondary: rgba(0, 230, 255, 0.9);
-    /* Secondary icons - electric blue */
-    --color-icon-tertiary: rgba(199, 199, 204, 0.7);
-    /* Tertiary icons - muted, similar to tertiary text */
-    --color-icon-on-accent: #ffffff;
-    /* Icons on accent-colored backgrounds */
-    --color-icon-bg: rgba(255, 40, 130, 0.1);
-    /* Icon backgrounds or containers */
-    --color-icon-disabled: rgba(199, 199, 204, 0.5);
-    /* Disabled icons */
+  --gradient-accent:      linear-gradient(45deg,var(--splash-pink-500),var(--splash-cyan-500));
+  --gradient-interactive: linear-gradient(45deg,var(--splash-pink-500),var(--splash-pink-600));
+  --gradient-button:      linear-gradient(to right,var(--splash-pink-500),var(--splash-pink-600));
+  --gradient-button-hover:linear-gradient(to right,var(--splash-pink-600),var(--splash-pink-700));
+  --gradient-splash:      radial-gradient(circle at 30% 40%,var(--splash-pink-500) 0%,var(--splash-cyan-500) 100%);
 
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.08;
-    /* Very subtle effects, barely visible */
-    --opacity-light: 0.15;
-    /* Light effects, clearly visible but subtle */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity */
-
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(255, 40, 130, 0.2);
-    /* Skill item background */
-    --color-skill-item-hover: rgba(0, 230, 255, 0.25);
-    /* Skill item hover - electric blue */
-    --color-skill-item-active: rgba(0, 230, 255, 0.35);
-    /* Skill item active - stronger electric blue */
-    --color-selection-bg: rgba(0, 230, 255, 0.25);
-    /* Text selection background */
-    --color-tooltip-bg: rgba(28, 28, 30, 0.97);
-    /* Tooltip background - nearly opaque dark */
-    --color-dropdown-bg: rgba(39, 39, 41, 0.98);
-    /* Dropdown menu background */
-
-    /* ════════════════════════════════════
-     CURSOR COLORS
-     For custom cursor effects
-     ════════════════════════════════════ */
-    --color-cursor-inner-rgb: 242, 242, 247;
-    /* Inner cursor ring RGB values - bright white */
-    --color-cursor-outer-rgb: 255, 40, 130;
-    /* Outer cursor ring RGB values - electric pink */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 255, 40, 130;
-    /* RGB values for electric pink */
-    --color-accent-secondary-rgb: 0, 230, 255;
-    /* RGB values for electric blue */
-    --color-accent-tertiary-rgb: 255, 221, 0;
-    /* RGB values for neon yellow */
-    --color-accent-warm-rgb: 255, 122, 0;
-    /* RGB values for neon orange */
-    --color-accent-contrast-rgb: 91, 255, 40;
-    /* RGB values for lime green */
-    --color-bg-primary-rgb: 28, 28, 30;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 242, 242, 247;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects with spray paint aesthetics
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - pink to blue */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient */
-    --gradient-pink: linear-gradient(45deg, #ff2882, #e81c70);
-    /* Pink gradient */
-    --gradient-blue: linear-gradient(45deg, #00e6ff, #00cce2);
-    /* Blue gradient */
-    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
-    /* Glass effect gradient */
-    --gradient-overlay: linear-gradient(180deg, rgba(28, 28, 30, 0.8), rgba(28, 28, 30, 0.95));
-    /* Overlay gradient */
-    --gradient-yellow-pink: linear-gradient(45deg, #ffdd00, #ff2882);
-    /* Yellow to pink gradient */
-    --gradient-blue-lime: linear-gradient(45deg, #00e6ff, #5bff28);
-    /* Blue to lime gradient */
-    --gradient-multicolor: linear-gradient(90deg, #ff2882, #ffdd00, #00e6ff, #5bff28);
-    /* Multi-color spray paint gradient */
-    --gradient-splash: radial-gradient(circle at 30% 40%, #ff2882 0%, #00e6ff 100%);
-    /* Splash effect gradient */
-    --gradient-urban: linear-gradient(to bottom, #323236, #1c1c1e);
-    /* Urban concrete gradient */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects with urban feel
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
-    /* Small shadow */
-    --shadow-md: 0 12px 25px -10px rgba(0, 0, 0, 0.4);
-    /* Medium shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    /* Large shadow */
-    --shadow-inner: inset 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Inner shadow */
-    --shadow-focus: 0 0 0 3px rgba(255, 221, 0, 0.3);
-    /* Focus shadow - neon yellow glow */
-    --shadow-button: 0 0 15px rgba(255, 40, 130, 0.25);
-    /* Button shadow - pink glow */
-    --shadow-neon: 0 0 10px rgba(0, 230, 255, 0.5), 0 0 20px rgba(0, 230, 255, 0.3);
-    /* Neon glow shadow effect */
-    --shadow-splash: 0 0 30px rgba(255, 40, 130, 0.25);
-    /* Color splash shadow effect */
-
-    /* Wave-specific colors - white dominant for dark mode */
-    --wave-primary: #f8f8f8;
-    /* Dominant white color */
-    --wave-secondary: #ffffff;
-    /* Pure white for contrast */
-    --wave-accent-1: #ff2882;
-    /* Electric pink for contrast */
-    --wave-accent-2: #00e6ff;
-    /* Electric blue for variation */
+  color-scheme:dark;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────
-   URBAN SPLASH LIGHT THEME (Urban Day Edition)
-   Light concrete backgrounds with vibrant urban paint accents
-   Contrast ratio: All text exceeds WCAG AA (4.5:1) standards
-   ────────────────────────────────────────────────────────────────────────── */
-[data-theme="urban-splash-light"] {
-    /* ════════════════════════════════════
-     BACKGROUND COLORS
-     Core surface colors for UI layers with clear progression
-     ════════════════════════════════════ */
-    --color-bg-primary: #f4f4f5;
-    /* Main application background - light concrete */
-    --color-bg-secondary: #ffffff;
-    /* Secondary containers, cards, sidebars - pure white */
-    --color-bg-tertiary: #e9e9eb;
-    /* Elevated surfaces, modals, popovers - light gray */
-    --color-bg-card: #ffffff;
-    /* Card backgrounds - pure white */
-    --color-bg-glass: rgba(244, 244, 245, 0.92);
-    /* Glass effect backgrounds - light concrete transparency */
-    --color-bg-code: rgba(233, 233, 235, 0.8);
-    /* Code block backgrounds - light gray */
-    --color-bg-input: rgba(244, 244, 245, 0.7);
-    /* Form element backgrounds - very light */
-    --color-bg-hover: rgba(229, 0, 97, 0.08);
-    /* Hover state background - subtle pink */
-    --color-bg-active: rgba(229, 0, 97, 0.15);
-    /* Active/selected state background - stronger pink */
-    --color-bg-disabled: rgba(209, 209, 214, 0.7);
-    /* Disabled element background - light gray */
-    --color-bg-tooltip: rgba(44, 44, 46, 0.95);
-    /* Tooltip background - nearly opaque dark */
-    --color-bg-dropdown: #ffffff;
-    /* Dropdown menu background - white */
-    --color-bg-selection: rgba(0, 200, 225, 0.2);
-    /* Text selection background - blue highlight */
+/* ═══════════════════════════════════════════════
+   URBAN SPLASH — LIGHT  (Graffiti Day)
+   ═══════════════════════════════════════════════ */
+[data-theme="urban-splash-light"]{
+  /* =====   ATOMS   ===== */
+  --concrete-50:#F4F4F5;
+  --concrete-100:#E9E9EB;
 
-    /* ════════════════════════════════════
-     TEXT COLORS
-     Typography hierarchy with precise contrast levels
-     ════════════════════════════════════ */
-    --color-text-primary: #2c2c2e;
-    /* Main body text - deep charcoal */
-    --color-text-secondary: #48484a;
-    /* Secondary/supporting text - medium charcoal */
-    --color-text-tertiary: rgba(72, 72, 74, 0.7);
-    /* De-emphasized text, subtitles, captions */
-    --color-text-disabled: rgba(72, 72, 74, 0.5);
-    /* Disabled text - significantly reduced contrast */
-    --color-text-on-accent: #ffffff;
-    /* Text on accent-colored backgrounds - pure white */
-    --color-text-code: #0066b2;
-    /* Code and pre-formatted text - deep blue for readability */
+  --splash-pink-500:#E50061;
+  --splash-pink-600:#C30052;
+  --splash-pink-700:#A10045;
 
-    /* Headings */
-    --color-heading: #2c2c2e;
-    /* Standard headings - deep charcoal */
-    --color-heading-accent: #e50061;
-    /* Accented headings - vivid pink */
-    --color-subheading: #48484a;
-    /* Subheadings, section titles - matching secondary text */
+  --splash-cyan-500:#00C8E1;
+  --splash-cyan-600:#00AAC1;
 
-    /* Special text */
-    --color-text-emphasis: #d10000;
-    /* Emphasized text - bright red */
-    --color-text-inverted: #f4f4f5;
-    /* Inverted text (on dark backgrounds) - light concrete */
+  --splash-yellow-500:#D6C000;
+  --splash-orange-500:#FF6B00;
+  --splash-lime-500:#38C700;
 
-    /* ════════════════════════════════════
-     BRAND & ACCENT COLORS
-     Strategic palette for brand identity with explosive complementary variety
-     ════════════════════════════════════ */
-    --color-brand-primary: #e50061;
-    /* Primary brand color - vivid pink */
-    --color-brand-secondary: #00c8e1;
-    /* Secondary brand color - vivid cyan */
+  /* =====   SURFACES   ===== */
+  --color-primary-bg:   var(--concrete-50);
+  --color-secondary-bg: #FFFFFF;
+  --color-tertiary-bg:  var(--concrete-100);
+  --color-card-bg:      #FFFFFF;
+  --color-glass-bg:     rgba(255 255 255/.90);
+  --color-code-bg:      rgba(233 233 235/.80);
+  --color-input-bg:     rgba(244 244 245/.70);
+  --color-hover-bg:     rgba(229   0  97/.08);
+  --color-active-bg:    rgba(229   0  97/.15);
+  --color-disabled-bg:  rgba(209 209 214/.70);
+  --color-tooltip-bg:   rgba(44 44 46/.95);
+  --color-dropdown-bg:  #FFFFFF;
+  --color-selection-bg: rgba(  0 200 225/.20);
 
-    /* Accents for CTAs, highlights, and visual interest */
-    --color-accent-primary: #e50061;
-    /* Primary accent for main interactive elements - vivid pink */
-    --color-accent-primary-hover: #c30052;
-    /* Hover state for primary accent - deeper pink */
-    --color-accent-primary-active: #a10045;
-    /* Active state for primary accent - even deeper pink */
-    --color-accent-secondary: #00c8e1;
-    /* Secondary accent for visual variety - vivid cyan */
-    --color-accent-tertiary: #d6c000;
-    /* Tertiary accent for subtle highlights - vivid yellow */
-    --color-accent-warm: #ff6b00;
-    /* Warm accent for attention-grabbing elements - vivid orange */
-    --color-accent-contrast: #38c700;
-    /* High-contrast accent for additional contrast - vivid green */
+  --color-grid-lines:   rgba(255  40 130/.15);
 
-    /* ════════════════════════════════════
-     INTERACTIVE ELEMENT COLORS
-     States for buttons, inputs, and controls with meaningful progression
-     ════════════════════════════════════ */
-    --color-interactive: #e50061;
-    /* Default interactive element color - vivid pink */
-    --color-interactive-hover: #c30052;
-    /* Hover state - deeper pink */
-    --color-interactive-active: #a10045;
-    /* Active/pressed state - even deeper pink */
-    --color-interactive-focus: #e50061;
-    /* Focus state - same as interactive with focus ring */
-    --color-interactive-disabled: rgba(229, 0, 97, 0.4);
-    /* Disabled state - faded pink */
+  /* =====   TYPE   ===== */
+  --color-primary-text:#2C2C2E;
+  --color-secondary-text:#48484A;
+  --color-tertiary-text:rgba(72 72 74/.70);
+  --color-disabled-text:rgba(72 72 74/.50);
+  --color-text-on-accent:#FFFFFF;
+  --color-code-text:#0066B2;
+  --color-heading:#2C2C2E;
+  --color-heading-accent:var(--splash-pink-500);
+  --color-subheading:#48484A;
+  --color-text-emphasis:#D10000;
+  --color-text-inverted:var(--concrete-50);
 
-    /* Secondary interaction colors */
-    --color-interactive-secondary: #00c8e1;
-    /* Secondary interactive elements - vivid cyan */
-    --color-interactive-secondary-hover: #00aac1;
-    /* Secondary hover state - deeper cyan */
-    --color-interactive-secondary-active: #008c9f;
-    /* Secondary active state - even deeper cyan */
+  /* =====   BRAND & ACCENT   ===== */
+  --color-brand-primary:var(--splash-pink-500);
+  --color-brand-secondary:var(--splash-cyan-500);
 
-    /* Form element specific colors */
-    --color-field-border: rgba(0, 200, 225, 0.35);
-    /* Form input borders */
-    --color-field-placeholder: rgba(72, 72, 74, 0.6);
-    /* Placeholder text */
-    --color-field-focus: #00c8e1;
-    /* Field focus indicator */
-    --color-field-required: #d6c000;
-    /* Required field indicator */
-    --color-field-invalid: #ff3b30;
-    /* Invalid field indicator */
+  --color-accent-primary:         var(--splash-pink-500);
+  --color-accent-primary-hover:   var(--splash-pink-600);
+  --color-accent-primary-active:  var(--splash-pink-700);
+  --color-accent-secondary:       var(--splash-cyan-500);
+  --color-accent-tertiary:        var(--splash-yellow-500);
+  --color-accent-warm:            var(--splash-orange-500);
+  --color-accent-contrast:        var(--splash-lime-500);
 
-    /* ════════════════════════════════════
-     SEMANTIC STATUS COLORS
-     Colorblind-friendly feedback, validation, and alerts
-     ════════════════════════════════════ */
-    --color-success: #38c700;
-    /* Success state - vivid green */
-    --color-success-subtle: rgba(56, 199, 0, 0.12);
-    /* Subtle success background */
-    --color-warning: #d6c000;
-    /* Warning state - vivid yellow */
-    --color-warning-subtle: rgba(214, 192, 0, 0.12);
-    /* Subtle warning background */
-    --color-error: #ff3b30;
-    /* Error state - alert red */
-    --color-error-subtle: rgba(255, 59, 48, 0.12);
-    /* Subtle error background */
-    --color-info: #00c8e1;
-    /* Information state - vivid cyan */
-    --color-info-subtle: rgba(0, 200, 225, 0.12);
-    /* Subtle info background */
-    --color-neutral: #8e8e93;
-    /* Neutral state - medium gray */
-    --color-neutral-subtle: rgba(142, 142, 147, 0.12);
-    /* Subtle neutral background */
+  /* =====   STATUS   ===== */
+  --color-success:var(--splash-lime-500);           --color-success-subtle:rgba(56 199   0/.12);
+  --color-warning:var(--splash-yellow-500);         --color-warning-subtle:rgba(214 192   0/.12);
+  --color-error:#FF3B30;                            --color-error-subtle:rgba(255  59  48/.12);
+  --color-info:var(--splash-cyan-500);              --color-info-subtle:rgba(  0 200 225/.12);
+  --color-neutral:#8E8E93;                          --color-neutral-subtle:rgba(142 142 147/.12);
 
-    /* ════════════════════════════════════
-     UI COMPONENT COLORS
-     Specific UI elements and decorations with urban daytime aesthetic
-     ════════════════════════════════════ */
-    --color-divider: rgba(229, 0, 97, 0.15);
-    /* Dividers and separators - subtle pink lines */
-    --color-divider-light: rgba(0, 0, 0, 0.05);
-    /* Lighter dividers for contrast on light areas */
-    --color-border: rgba(0, 200, 225, 0.25);
-    /* Borders for containers, cards, etc */
-    --color-border-focus: #d6c000;
-    /* Focus state borders - vivid yellow */
-    --color-border-input: rgba(0, 200, 225, 0.3);
-    /* Form input borders - slightly stronger than regular */
-    --color-shadow: rgba(0, 0, 0, 0.15);
-    /* Shadows for elevation - subtle dark */
-    --color-shadow-light: rgba(0, 0, 0, 0.05);
-    /* Lighter shadows for subtle elevation */
-    --color-overlay: rgba(244, 244, 245, 0.85);
-    /* Modal/dialog overlays - light background */
-    --color-notification-badge: #ff3b30;
-    /* Notification badges - alert red */
+  /* =====   SUPPORT   ===== */
+  --color-border:         rgba(  0 200 225/.25);
+  --color-border-focus:   var(--splash-yellow-500);
+  --color-border-input:   rgba(  0 200 225/.30);
+  --color-divider:        rgba(229   0  97/.15);
+  --color-divider-light:  rgba(  0   0   0/.05);
 
-    /* Scrollbar custom colors */
-    --color-scrollbar-thumb: rgba(229, 0, 97, 0.4);
-    /* Scrollbar thumb - semi-transparent pink */
-    --color-scrollbar-track: rgba(209, 209, 214, 0.5);
-    /* Scrollbar track - light gray */
+  --shadow-sm:0 2px 8px -2px  rgba(0 0 0/.10);
+  --shadow-md:0 12px 25px -10px rgba(0 0 0/.15);
+  --shadow-lg:0 25px 50px -12px rgba(0 0 0/.20);
+  --shadow-focus:0 0 0 3px rgba(214 192 0/.25);
 
-    /* ════════════════════════════════════
-     SEMANTIC TEXT COLORS
-     For text with specific meanings and clear distinction
-     ════════════════════════════════════ */
-    --color-link: #00c8e1;
-    /* Link text - vivid cyan */
-    --color-link-hover: #008c9f;
-    /* Link hover state - deeper cyan */
-    --color-link-visited: #7847eb;
-    /* Visited links - rich purple */
-    --color-emphasis: #d10000;
-    /* Emphasized text - bright red */
-    --color-success-text: #2ba700;
-    /* Success messages - deeper green for contrast */
-    --color-warning-text: #b39f00;
-    /* Warning messages - deeper yellow for contrast */
-    --color-error-text: #d70015;
-    /* Error messages - deeper red for contrast */
-    --color-info-text: #0095a8;
-    /* Information text - deeper cyan for contrast */
+  --color-scrollbar-thumb:rgba(229   0  97/.40);
+  --color-scrollbar-track:rgba(209 209 214/.50);
 
-    /* ════════════════════════════════════
-     ICON COLORS
-     For UI iconography with clear hierarchy
-     ════════════════════════════════════ */
-    --color-icon-primary: #e50061;
-    /* Primary icons - vivid pink */
-    --color-icon-secondary: rgba(0, 200, 225, 0.9);
-    /* Secondary icons - vivid cyan */
-    --color-icon-tertiary: rgba(72, 72, 74, 0.7);
-    /* Tertiary icons - muted, similar to tertiary text */
-    --color-icon-on-accent: #ffffff;
-    /* Icons on accent-colored backgrounds */
-    --color-icon-bg: rgba(229, 0, 97, 0.1);
-    /* Icon backgrounds or containers */
-    --color-icon-disabled: rgba(72, 72, 74, 0.5);
-    /* Disabled icons */
+  --wave-primary:var(--concrete-900);
+  --wave-secondary:var(--concrete-800);
+  --wave-accent-1:var(--splash-pink-500);
+  --wave-accent-2:var(--splash-cyan-500);
 
-    /* ════════════════════════════════════
-     OPACITY SYSTEM
-     For consistent transparency levels
-     ════════════════════════════════════ */
-    --opacity-faint: 0.05;
-    /* Very subtle effects, barely visible */
-    --opacity-light: 0.12;
-    /* Light effects, clearly visible but subtle */
-    --opacity-medium: 0.5;
-    /* Medium effects, semi-transparent */
-    --opacity-high: 0.8;
-    /* High opacity, nearly solid */
-    --opacity-disabled: 0.4;
-    /* Standard disabled state opacity */
+  --gradient-accent:      linear-gradient(45deg,var(--splash-pink-500),var(--splash-cyan-500));
+  --gradient-interactive: linear-gradient(45deg,var(--splash-pink-500),var(--splash-pink-600));
+  --gradient-button:      linear-gradient(to right,var(--splash-pink-500),var(--splash-pink-600));
+  --gradient-button-hover:linear-gradient(to right,var(--splash-pink-600),var(--splash-pink-700));
+  --gradient-splash:      radial-gradient(circle at 30% 40%,var(--splash-pink-500) 0%,var(--splash-cyan-500) 100%);
 
-    /* ════════════════════════════════════
-     COMPONENT-SPECIFIC COLORS
-     For specialized UI components with intentional states
-     ════════════════════════════════════ */
-    --color-skill-item: rgba(229, 0, 97, 0.15);
-    /* Skill item background */
-    --color-skill-item-hover: rgba(0, 200, 225, 0.15);
-    /* Skill item hover - vivid cyan */
-    --color-skill-item-active: rgba(0, 200, 225, 0.25);
-    /* Skill item active - stronger vivid cyan */
-    --color-selection-bg: rgba(0, 200, 225, 0.2);
-    /* Text selection background */
-    --color-tooltip-bg: rgba(44, 44, 46, 0.95);
-    /* Tooltip background - nearly opaque dark */
-    --color-dropdown-bg: #ffffff;
-    /* Dropdown menu background - white */
-
-    /* ════════════════════════════════════
-     CURSOR COLORS
-     For custom cursor effects
-     ════════════════════════════════════ */
-    --color-cursor-inner-rgb: 44, 44, 46;
-    /* Inner cursor ring RGB values - deep charcoal */
-    --color-cursor-outer-rgb: 229, 0, 97;
-    /* Outer cursor ring RGB values - vivid pink */
-
-    /* ════════════════════════════════════
-     RGB VALUES
-     For custom opacity operations
-     ════════════════════════════════════ */
-    --color-accent-primary-rgb: 229, 0, 97;
-    /* RGB values for vivid pink */
-    --color-accent-secondary-rgb: 0, 200, 225;
-    /* RGB values for vivid cyan */
-    --color-accent-tertiary-rgb: 214, 192, 0;
-    /* RGB values for vivid yellow */
-    --color-accent-warm-rgb: 255, 107, 0;
-    /* RGB values for vivid orange */
-    --color-accent-contrast-rgb: 56, 199, 0;
-    /* RGB values for vivid green */
-    --color-bg-primary-rgb: 244, 244, 245;
-    /* RGB values for main background */
-    --color-text-primary-rgb: 44, 44, 46;
-    /* RGB values for main text */
-
-    /* ════════════════════════════════════
-     GRADIENT PRESETS
-     For consistent gradient effects with daylight urban aesthetics
-     ════════════════════════════════════ */
-    --gradient-accent: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
-    /* Brand accent gradient - pink to cyan */
-    --gradient-interactive: linear-gradient(45deg, var(--color-interactive), var(--color-interactive-hover));
-    /* Interactive element gradient */
-    --gradient-pink: linear-gradient(45deg, #e50061, #c30052);
-    /* Pink gradient */
-    --gradient-cyan: linear-gradient(45deg, #00c8e1, #00aac1);
-    /* Cyan gradient */
-    --gradient-glass: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
-    /* Glass effect gradient */
-    --gradient-overlay: linear-gradient(180deg, rgba(244, 244, 245, 0.85), rgba(244, 244, 245, 0.95));
-    /* Overlay gradient */
-    --gradient-yellow-pink: linear-gradient(45deg, #d6c000, #e50061);
-    /* Yellow to pink gradient */
-    --gradient-cyan-green: linear-gradient(45deg, #00c8e1, #38c700);
-    /* Cyan to green gradient */
-    --gradient-multicolor: linear-gradient(90deg, #e50061, #d6c000, #00c8e1, #38c700);
-    /* Multi-color urban paint gradient */
-    --gradient-splash: radial-gradient(circle at 30% 40%, #e50061 0%, #00c8e1 100%);
-    /* Splash effect gradient */
-    --gradient-concrete: linear-gradient(to bottom, #f4f4f5, #e9e9eb);
-    /* Urban concrete gradient */
-    --gradient-button: linear-gradient(to right, var(--color-accent-primary), var(--color-interactive-hover));
-    /* Button gradient */
-    --gradient-button-hover: linear-gradient(to right, var(--color-interactive-hover), var(--color-interactive-active));
-    /* Button hover gradient */
-
-    /* ════════════════════════════════════
-     SHADOW PRESETS
-     For consistent elevation effects with daytime urban feel
-     ════════════════════════════════════ */
-    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.1);
-    /* Small shadow */
-    --shadow-md: 0 12px 25px -10px rgba(0, 0, 0, 0.15);
-    /* Medium shadow */
-    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
-    /* Large shadow */
-    --shadow-inner: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-    /* Inner shadow */
-    --shadow-focus: 0 0 0 3px rgba(214, 192, 0, 0.25);
-    /* Focus shadow - yellow glow */
-    --shadow-button: 0 4px 14px rgba(0, 0, 0, 0.15);
-    /* Button shadow */
-    --shadow-neon: 0 0 10px rgba(0, 200, 225, 0.4), 0 0 20px rgba(0, 200, 225, 0.2);
-    /* Neon glow shadow effect */
-    --shadow-splash: 0 0 30px rgba(229, 0, 97, 0.2);
-    /* Color splash shadow effect */
-
-    /* Wave-specific colors - dark dominant for light mode */
-    --wave-primary: #1c1c1e;
-    /* Dominant concrete charcoal */
-    --wave-secondary: #272729;
-    /* Asphalt gray */
-    --wave-accent-1: #ff2882;
-    /* Electric pink from dark theme */
-    --wave-accent-2: #00e6ff;
-    /* Electric blue from dark theme */
+  color-scheme:light;
 }
 
-/* Set color-scheme for the theme */
-[data-theme="urban-splash-dark"] {
-    color-scheme: dark;
+/* ═══════════════════════════════════════
+   LEGACY VARIABLE SHIM – delete when ready
+   ═══════════════════════════════════════ */
+:root{
+  --color-bg-primary:var(--color-primary-bg);
+  --color-bg-secondary:var(--color-secondary-bg);
+  --color-bg-tertiary:var(--color-tertiary-bg);
+  --color-bg-card:var(--color-card-bg);
+  --color-text-primary:var(--color-primary-text);
+  --color-text-secondary:var(--color-secondary-text);
+  --color-text-tertiary:var(--color-tertiary-text);
 }
 
-[data-theme="urban-splash-light"] {
-    color-scheme: light;
-}
-
-/* ────────────────────────────────────────────────────────────────────────────
- * Custom scrollbar styling for Urban Splash theme
- * ────────────────────────────────────────────────────────────────────────── */
-[data-theme^="urban-splash"] .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-[data-theme^="urban-splash"] .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--color-scrollbar-track);
-    border-radius: 4px;
-}
-
-[data-theme^="urban-splash"] .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--color-scrollbar-thumb);
-    border-radius: 4px;
-}
-
-[data-theme^="urban-splash"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-interactive);
-}
-
-/* Firefox scrollbar support */
-[data-theme^="urban-splash"] .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
-}
-/* Add missing variables to Urban Splash Dark theme */
-[data-theme="urban-splash-dark"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(242, 242, 247, 0.2);  /* Bright grid lines for dark splash theme */
-}
-
-/* Add missing variables to Urban Splash Light theme */
-[data-theme="urban-splash-light"] {
-    /* Grid colors */
-    --color-grid-lines: rgba(255, 40, 130, 0.15);  /* Electric pink grid lines for light theme */
-}
+/* ── Scrollbar ── */
+[data-theme^="urban-splash"] .custom-scrollbar::-webkit-scrollbar{width:8px;height:8px}
+[data-theme^="urban-splash"] .custom-scrollbar::-webkit-scrollbar-track{
+  background:var(--color-scrollbar-track);border-radius:4px}
+[data-theme^="urban-splash"] .custom-scrollbar::-webkit-scrollbar-thumb{
+  background:var(--color-scrollbar-thumb);border-radius:4px}
+[data-theme^="urban-splash"] .custom-scrollbar::-webkit-scrollbar-thumb:hover{
+  background:var(--color-interactive)}
+[data-theme^="urban-splash"] .custom-scrollbar{
+  scrollbar-width:thin;scrollbar-color:var(--color-scrollbar-thumb) var(--color-scrollbar-track)}
