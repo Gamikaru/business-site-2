@@ -1,103 +1,202 @@
+// src/components/core/Animations/components/ScrollReveal.tsx
 "use client";
 
-import React, { ReactNode, useState, useEffect } from 'react';
-import { motion, MotionProps } from 'framer-motion';
-import { useAnimationPreferences } from '../hooks/useAnimationPreferences';
+import React, {
+  useRef,
+  useEffect,
+  useMemo,
+  useState,
+  memo,
+  Fragment,
+} from "react";
+import { MotionProps } from "framer-motion";
+import { useAnimationPreferences } from "../hooks/useAnimationPreferences";
+import { animationManager } from "../utils/AnimationManager";
+import { Motion } from "../providers/MotionProvider";
 
-interface ScrollRevealProps extends Omit<MotionProps, 'transition' | 'initial' | 'whileInView' | 'viewport'> {
-  children: ReactNode;
+interface ScrollRevealProps
+  extends Omit<
+    MotionProps,
+    | "transition"
+    | "initial"
+    | "animate"
+    | "whileInView"
+    | "viewport"
+  > {
+  children: React.ReactNode;
   delay?: number;
   duration?: number;
-  direction?: 'up' | 'down' | 'left' | 'right' | 'scale' | 'opacity';
+  direction?: "up" | "down" | "left" | "right" | "scale" | "opacity";
   distance?: number;
   once?: boolean;
   className?: string;
   threshold?: number;
-  resetOnScrollOut?: boolean; // Add new prop to control reset behavior
+  id?: string;
+  margin?: string; // Viewport margin for earlier/later triggers
+  transitionType?: "tween" | "spring";
+  springConfig?: {
+    stiffness?: number;
+    damping?: number;
+    mass?: number;
+  };
+  layout?: boolean | "position"; // Support for layout animations
+  layoutId?: string; // Support for shared element transitions
+  stagger?: boolean;
+  staggerDelay?: number;
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   delay = 0,
   duration,
-  direction = 'up',
+  direction = "up",
   distance = 50,
-  once = true, // Change default to true to prevent disappearing
+  once = true,
   className = "",
   threshold = 0.2,
-  resetOnScrollOut = false, // Default to false to maintain visibility
+  id: providedId,
+  margin = "0px",
+  transitionType = "tween",
+  springConfig,
+  layout = false,
+  layoutId,
+  stagger = false,
+  staggerDelay = 0.1,
   ...motionProps
 }) => {
-  const { shouldAnimate, getTransitionSettings, getIntensity } = useAnimationPreferences();
-  const [hasBeenVisible, setHasBeenVisible] = useState(false);
+  const {
+    getTransitionSettings,
+    getIntensity,
+    shouldAnimate,
+  } = useAnimationPreferences();
 
-  // Apply intensity to distance
+  /* ------------------------------------------------------------------ */
+  /*  Unique ID + completion tracking                                   */
+  /* ------------------------------------------------------------------ */
+  const uniqueIdRef = useRef<string>(
+    providedId || `scroll-reveal-${Math.random().toString(36).slice(2, 9)}`
+  );
+  const [animating, setAnimating] = useState<boolean>(true);
+
+  /* ------------------------------------------------------------------ */
+  /*  Motion helpers                                                    */
+  /* ------------------------------------------------------------------ */
   const effectiveDistance = distance * getIntensity();
-
-  // If animations are disabled, just render children
-  if (!shouldAnimate()) {
-    return <div className={className}>{children}</div>;
-  }
-
-  // Get transition settings
-  const { duration: calculatedDuration, ease } = getTransitionSettings(
-    'default',
+  const { duration: calcDuration, ease } = getTransitionSettings(
+    "default",
     duration
   );
 
-  // Create initial and animate states based on direction
-  let initial = {};
+  const initial = useMemo(() => {
+    switch (direction) {
+      case "up":
+        return { y: effectiveDistance, opacity: 0 };
+      case "down":
+        return { y: -effectiveDistance, opacity: 0 };
+      case "left":
+        return { x: effectiveDistance, opacity: 0 };
+      case "right":
+        return { x: -effectiveDistance, opacity: 0 };
+      case "scale":
+        return { scale: 0.92, opacity: 0 };
+      case "opacity":
+      default:
+        return { opacity: 0 };
+    }
+  }, [direction, effectiveDistance]);
 
-  switch (direction) {
-    case 'up':
-      initial = { y: effectiveDistance, opacity: 0 };
-      break;
-    case 'down':
-      initial = { y: -effectiveDistance, opacity: 0 };
-      break;
-    case 'left':
-      initial = { x: effectiveDistance, opacity: 0 };
-      break;
-    case 'right':
-      initial = { x: -effectiveDistance, opacity: 0 };
-      break;
-    case 'scale':
-      initial = { scale: 0.92, opacity: 0 };
-      break;
-    case 'opacity':
-    default:
-      initial = { opacity: 0 };
-      break;
+  const visible = useMemo(() => {
+    switch (direction) {
+      case "up":
+      case "down":
+        return { y: 0, opacity: 1 };
+      case "left":
+      case "right":
+        return { x: 0, opacity: 1 };
+      case "scale":
+        return { scale: 1, opacity: 1 };
+      case "opacity":
+      default:
+        return { opacity: 1 };
+    }
+  }, [direction]);
+
+  const transition = useMemo(
+    () =>
+      ({
+        type: transitionType,
+        delay,
+        duration: transitionType === "tween" ? calcDuration : undefined,
+        ease: transitionType === "tween" ? ease : undefined,
+        staggerChildren: stagger ? staggerDelay : undefined,
+        ...springConfig,
+      }) as MotionProps["transition"],
+    [
+      transitionType,
+      delay,
+      calcDuration,
+      ease,
+      stagger,
+      staggerDelay,
+      springConfig,
+    ]
+  );
+
+  /* ------------------------------------------------------------------ */
+  /*  Global animation manager (DEV only)                               */
+  /* ------------------------------------------------------------------ */
+  useEffect(() => {
+    if (!shouldAnimate()) return;
+    if (process.env.NODE_ENV === "development") {
+      const id = uniqueIdRef.current;
+      animationManager.trackAnimation(id, `scroll-reveal-${direction}`);
+      return () => animationManager.untrackAnimation(id);
+    }
+  }, [shouldAnimate, direction]);
+
+  /* ------------------------------------------------------------------ */
+  /*  Handlers                                                          */
+  /* ------------------------------------------------------------------ */
+  const handleAnimationComplete = () => {
+    if (animating) setAnimating(false);
+  };
+
+  /* ------------------------------------------------------------------ */
+  /*  Early‑exit when animations are disabled                           */
+  /* ------------------------------------------------------------------ */
+  if (!shouldAnimate()) {
+    return <Fragment>{children}</Fragment>;
   }
 
-  // Calculate a more generous margin for viewport
-  const viewportMargin = `${Math.round((1 - threshold) * 100)}px`;
+  /* ------------------------------------------------------------------ */
+  /*  Style with conditional will‑change                                */
+  /* ------------------------------------------------------------------ */
+  const style = useMemo(
+    () => ({
+      willChange: animating ? "transform, opacity" : undefined,
+    }),
+    [animating]
+  );
 
+  /* ------------------------------------------------------------------ */
+  /*  Render                                                            */
+  /* ------------------------------------------------------------------ */
   return (
-    <motion.div
+    <Motion.div
       className={className}
       initial={initial}
-      whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-      viewport={{
-        once,
-        margin: `-${viewportMargin}`,
-        amount: threshold
-      }}
-      transition={{
-        duration: calculatedDuration,
-        delay,
-        ease
-      }}
-      onViewportEnter={() => {
-        setHasBeenVisible(true);
-      }}
-      // For already viewed items, maintain their visible state with higher CSS priority
-      style={once && hasBeenVisible ? { opacity: 1, transform: 'none', visibility: 'visible' } : {}}
+      whileInView={visible}
+      viewport={{ once, amount: threshold, margin }}
+      transition={transition}
+      onAnimationComplete={handleAnimationComplete}
+      layout={layout}
+      layoutId={layoutId}
+      style={style}
       {...motionProps}
     >
       {children}
-    </motion.div>
+    </Motion.div>
   );
 };
 
-export default ScrollReveal;
+export default memo(ScrollReveal);

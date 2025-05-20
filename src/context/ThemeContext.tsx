@@ -1,8 +1,13 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 
-// Define theme types - ensure we include all available themes
 type ColorTheme =
   | "green"
   | "blue"
@@ -25,8 +30,8 @@ type ColorTheme =
   | "sunset-oasis"
   | "tropical-paradise"
   | "urban-splash"
-  | "winter" // Added winter
-  | "yellow"; // Added yellow
+  | "winter"
+  | "yellow";
 
 type Mode = "light" | "dark";
 
@@ -39,68 +44,58 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [colorTheme, setColorTheme] = useState<ColorTheme>("green");
   const [mode, setMode] = useState<Mode>("light");
 
-  // Initialize theme from localStorage or system preference
+  // Load saved preferences or system preference on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Check for stored theme preferences
-      const storedColorTheme = localStorage.getItem("colorTheme") as ColorTheme | null;
-      const storedMode = localStorage.getItem("mode") as Mode | null;
-
-      if (storedColorTheme) {
-        setColorTheme(storedColorTheme);
-      }
-
-      if (storedMode) {
-        setMode(storedMode);
-      } else {
-        // Check for system preference for light/dark mode
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const storedColor = localStorage.getItem("colorTheme") as ColorTheme;
+      const storedMode = localStorage.getItem("mode") as Mode;
+      if (storedColor) setColorTheme(storedColor);
+      if (storedMode) setMode(storedMode);
+      else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
         setMode(prefersDark ? "dark" : "light");
       }
     }
   }, []);
 
-  // Apply theme to document
+  // Apply only the data-attributes—do NOT wipe out all classes
   useEffect(() => {
     if (typeof document !== "undefined") {
-      // Clear previous themes
-      document.documentElement.className = "";
-
-      // Set both color theme and mode
+      // Set data attributes
       document.documentElement.setAttribute("data-color-theme", colorTheme);
       document.documentElement.setAttribute("data-mode", mode);
+      document.documentElement.setAttribute(
+        "data-theme",
+        `${colorTheme}-${mode}`
+      );
 
-      // Set combined theme attribute for CSS selectors
-      document.documentElement.setAttribute("data-theme", `${colorTheme}-${mode}`);
-
-      // Store preferences
+      // Persist
       localStorage.setItem("colorTheme", colorTheme);
       localStorage.setItem("mode", mode);
     }
   }, [colorTheme, mode]);
 
-  const toggleMode = () => {
-    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-  };
+  const toggleMode = () => setMode((m) => (m === "light" ? "dark" : "light"));
 
   return (
-    <ThemeContext.Provider value={{ colorTheme, mode, setColorTheme, toggleMode }}>
+    <ThemeContext.Provider
+      value={{ colorTheme, mode, setColorTheme, toggleMode }}
+    >
       {children}
     </ThemeContext.Provider>
   );
 };
 
-// Custom hook for accessing the theme context
 export const useTheme = (): ThemeContextType => {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error("useTheme must be used within ThemeProvider");
+  return ctx;
 };
-
-export default ThemeContext;

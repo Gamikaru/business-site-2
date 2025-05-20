@@ -1,3 +1,5 @@
+// FontSelector.tsx
+
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
@@ -5,10 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useFontContext } from "@/context/FontContext";
 import { cn } from "@/utils/classNames";
 import Icon from "@/components/common/Icons/Icon";
-import dynamic from 'next/dynamic';
-
-// Dynamically import the FontInspector to avoid SSR issues
-const FontInspector = dynamic(() => import('./FontInspector'), { ssr: false });
 
 interface FontSelectorProps {
   className?: string;
@@ -19,6 +17,13 @@ interface FontSelectorProps {
   customTrigger?: React.ReactNode;
 }
 
+interface DropdownPosition {
+  top?: number;
+  right?: number;
+  left?: number;
+  bottom?: number;
+}
+
 const FontSelector: React.FC<FontSelectorProps> = ({
   className = "",
   variant = "dropdown",
@@ -27,16 +32,19 @@ const FontSelector: React.FC<FontSelectorProps> = ({
   maxItems = 4,
   customTrigger = null,
 }) => {
-  const { fontSystem, changeFontSystem, FONT_SYSTEMS, currentSystemData, fontsLoaded } =
+  const { fontSystem, changeFontSystem, fontSystems, currentSystemInfo, fontsLoaded } =
     useFontContext();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement | HTMLButtonElement>(null);
+  const [dropdownPosition, setDropdownPosition] = useState<DropdownPosition>({
+    top: 0,
+    left: 0,
+    right: 0
+  });
 
   // Get all available font systems as an array
-  const fontSystems = Object.values(FONT_SYSTEMS);
-
-  // Get name of current font system
-  const currentFontName = currentSystemData?.name || "Modern";
+  const fontSystemsArray = Object.values(fontSystems);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -67,26 +75,6 @@ const FontSelector: React.FC<FontSelectorProps> = ({
     }
   }, [isOpen]);
 
-  // Handle toggle dropdown
-  const toggleDropdown = () => setIsOpen(!isOpen);
-
-  // Handle font selection
-  const handleFontSelect = (fontId: string) => {
-    changeFontSystem(fontId);
-    setIsOpen(false);
-  };
-
-  // Alignment classes
-  const alignmentClasses = {
-    left: "items-start text-left",
-    center: "items-center text-center",
-    right: "items-end text-right",
-  };
-
-  // State for managing dropdown position
-  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, right: 0 });
-  const triggerRef = useRef<HTMLDivElement | HTMLButtonElement>(null);
-
   // Calculate dropdown position on open
   useEffect(() => {
     if (isOpen && triggerRef.current) {
@@ -96,29 +84,47 @@ const FontSelector: React.FC<FontSelectorProps> = ({
       const spaceLeft = rect.right;
 
       // Determine if we have enough space below, otherwise position above
-      const verticalPosition = spaceBelow < 320 ? { bottom: window.innerHeight - rect.top } : { top: rect.bottom };
+      let position: DropdownPosition = {};
+
+      if (spaceBelow < 320) {
+        position.bottom = window.innerHeight - rect.top;
+      } else {
+        position.top = rect.bottom;
+      }
 
       // Determine horizontal position based on available space
-      let horizontalPosition;
       if (align === 'right') {
-        horizontalPosition = { right: window.innerWidth - rect.right };
+        position.right = window.innerWidth - rect.right;
       } else if (align === 'center') {
-        horizontalPosition = { left: rect.left + (rect.width / 2) - 120 }; // 240/2 = 120
+        position.left = rect.left + (rect.width / 2) - 120; // 240/2 = 120
       } else {
         // Default left alignment, but check if there's enough space
         if (spaceRight < 240 && spaceLeft >= 240) {
-          horizontalPosition = { right: window.innerWidth - rect.left };
+          position.right = window.innerWidth - rect.left;
         } else {
-          horizontalPosition = { left: rect.left };
+          position.left = rect.left;
         }
       }
 
-      setDropdownPosition({
-        ...verticalPosition,
-        ...horizontalPosition,
-      });
+      setDropdownPosition(position);
     }
   }, [isOpen, align]);
+
+  // Handle toggle dropdown
+  const toggleDropdown = () => setIsOpen(!isOpen);
+
+  // Handle font selection
+  const handleFontSelect = (fontId: string) => {
+    changeFontSystem(fontId as any);
+    setIsOpen(false); // Close dropdown after selection
+  };
+
+  // Alignment classes
+  const alignmentClasses = {
+    left: "items-start text-left",
+    center: "items-center text-center",
+    right: "items-end text-right",
+  };
 
   // Dropdown animation variants
   const dropdownVariants = {
@@ -142,44 +148,10 @@ const FontSelector: React.FC<FontSelectorProps> = ({
 
   // Group fonts by category for better organization
   const fontCategories = {
-    Modern: fontSystems.filter((f) =>
-      ["modern", "clarity", "corporate"].some(
-        (term) =>
-          f.id.toLowerCase().includes(term) ||
-          f.name.toLowerCase().includes(term)
-      )
-    ),
-    Serif: fontSystems.filter((f) =>
-      ["serif", "elegant", "classic"].some(
-        (term) =>
-          f.id.toLowerCase().includes(term) ||
-          f.name.toLowerCase().includes(term)
-      )
-    ),
-    Display: fontSystems.filter((f) =>
-      ["display", "creative"].some(
-        (term) =>
-          f.id.toLowerCase().includes(term) ||
-          f.name.toLowerCase().includes(term)
-      )
-    ),
-    Other: fontSystems.filter(
-      (f) =>
-        ![
-          "modern",
-          "clarity",
-          "corporate",
-          "serif",
-          "elegant",
-          "classic",
-          "display",
-          "creative",
-        ].some(
-          (term) =>
-            f.id.toLowerCase().includes(term) ||
-            f.name.toLowerCase().includes(term)
-        )
-    ),
+    "Sans Serif": fontSystemsArray.filter(f => f.category === "sans-serif"),
+    "Serif": fontSystemsArray.filter(f => f.category === "serif"),
+    "Display": fontSystemsArray.filter(f => f.category === "display"),
+    "Other": fontSystemsArray.filter(f => !f.category || !["sans-serif", "serif", "display"].includes(f.category)),
   };
 
   // Filter out empty categories
@@ -210,7 +182,7 @@ const FontSelector: React.FC<FontSelectorProps> = ({
             aria-expanded={isOpen}
             aria-haspopup="listbox"
           >
-            <span className="whitespace-normal text-sm">{currentFontName}</span>
+            <span className="whitespace-normal text-sm">{currentSystemInfo.name}</span>
             <Icon
               name={isOpen ? "fi:FiChevronUp" : "fi:FiChevronDown"}
               size={16}
@@ -276,17 +248,11 @@ const FontSelector: React.FC<FontSelectorProps> = ({
 
                         {showPreview && (
                           <div className="mt-1 text-xs opacity-70 whitespace-normal">
-                            <span
-                              className="font-heading"
-                              data-font-system={font.id}
-                            >
+                            <span className="font-heading inline-block mr-1">
                               Heading
                             </span>
                             {" + "}
-                            <span
-                              className="font-body"
-                              data-font-system={font.id}
-                            >
+                            <span className="font-body inline-block">
                               Body
                             </span>
                           </div>
@@ -309,10 +275,10 @@ const FontSelector: React.FC<FontSelectorProps> = ({
       <div
         className={`flex flex-wrap gap-2 ${className} ${alignmentClasses[align]}`}
       >
-        {fontSystems.slice(0, maxItems).map((font) => (
+        {fontSystemsArray.slice(0, maxItems).map((font) => (
           <button
             key={font.id}
-            onClick={() => changeFontSystem(font.id)}
+            onClick={() => changeFontSystem(font.id as any)}
             className={cn(
               "px-3 py-2 rounded-md border whitespace-normal text-sm transition-colors",
               fontSystem === font.id
@@ -324,45 +290,33 @@ const FontSelector: React.FC<FontSelectorProps> = ({
           </button>
         ))}
 
-        {fontSystems.length > maxItems && (
+        {fontSystemsArray.length > maxItems && (
           <button className="px-3 py-2 rounded-md bg-bg-tertiary/80 border border-divider hover:bg-bg-hover whitespace-normal text-sm">
-            +{fontSystems.length - maxItems} more
+            +{fontSystemsArray.length - maxItems} more
           </button>
         )}
       </div>
     );
   }
 
-  // Render variant: compact with improved styling and debugging
+  // Render variant: compact with improved styling
   return (
     <div className={`${className}`}>
       <select
         value={fontSystem}
-        onChange={(e) => changeFontSystem(e.target.value)}
+        onChange={(e) => changeFontSystem(e.target.value as any)}
         className="px-2 py-1 text-sm rounded-md bg-bg-tertiary/80 border border-divider
                  focus:outline-none focus:ring-2 focus:ring-accent-primary whitespace-normal"
-        style={{ fontFamily: currentSystemData?.body.family || 'inherit' }}
       >
-        {fontSystems.map((font) => (
+        {fontSystemsArray.map((font) => (
           <option
             key={font.id}
             value={font.id}
-            style={{
-              fontFamily: font.body.family,
-              fontWeight: fontSystem === font.id ? 'bold' : 'normal'
-            }}
           >
             {font.name}
           </option>
         ))}
       </select>
-
-      {/* Add FontInspector in development mode */}
-      {process.env.NODE_ENV === 'development' && (
-        <div className="mt-4">
-          <FontInspector />
-        </div>
-      )}
     </div>
   );
 };

@@ -1,12 +1,8 @@
-/* src/styles/globals.css */
+/* src/styles/global/globals.css */
+@import './font-themes.css';
+@import 'tailwindcss';
 
-/* First import Tailwind - NEW V4 SYNTAX */
-@import "tailwindcss";
 
-/* Import font systems */
-@import './font-systems.css';
-
-/* Then import theme variants */
 @import '../themes/variants/sunset-oasis-theme.css';
 @import '../themes/variants/cyber-punk-graffiti-theme.css';
 @import '../themes/variants/monochrome-theme.css';
@@ -27,101 +23,126 @@
 @import '../themes/variants/yellow-theme.css';
 @import '../themes/variants/green-theme.css';
 
-/* Define typography custom variants for readability */
-@custom-variant word-spacing-normal {
-  word-spacing: normal;
+/* Header height variables */
+:root {
+    --header-height: 80px;
+    --header-height-mobile: 64px;
 }
 
-@custom-variant word-spacing-wide {
-  word-spacing: 0.05em;
+@media (max-width: 767px) {
+    :root {
+        --header-height: var(--header-height-mobile);
+    }
 }
 
-@custom-variant word-spacing-wider {
-  word-spacing: 0.1em;
+/* Font utility classes */
+@layer utilities {
+
+    /* Base font family & tracking classes */
+    .font-heading {
+        font-family: var(--font-heading);
+        letter-spacing: var(--tracking-heading);
+    }
+
+    .font-body {
+        font-family: var(--font-body);
+        letter-spacing: var(--tracking-body);
+    }
+
+    .font-code {
+        font-family: var(--font-code);
+        letter-spacing: var(--tracking-code);
+    }
+
+    /* Typography utility classes */
+    .text-display {
+        font-family: var(--font-display, var(--font-heading));
+        /* Fallback to --font-heading */
+        font-weight: var(--font-weight-bold);
+        line-height: 1.1;
+        letter-spacing: var(--tracking-heading);
+    }
+
+    .text-heading-1 {
+        font-family: var(--font-heading);
+        font-size: var(--text-5xl, 3rem);
+        font-weight: var(--font-weight-bold, 700);
+        line-height: var(--text-5xl--line-height, 1);
+        letter-spacing: var(--tracking-heading);
+    }
+
+    .text-heading-2 {
+        font-family: var(--font-heading);
+        font-size: var(--text-4xl, 2.25rem);
+        font-weight: var(--font-weight-bold, 700);
+        line-height: var(--text-4xl--line-height, 1.111);
+        letter-spacing: var(--tracking-heading);
+    }
+
+    .text-heading-3 {
+        font-family: var(--font-heading);
+        font-size: var(--text-3xl, 1.875rem);
+        font-weight: var(--font-weight-semibold, 600);
+        line-height: var(--text-3xl--line-height, 1.2);
+        letter-spacing: var(--tracking-heading);
+    }
+
+    .text-heading-4 {
+        font-family: var(--font-heading);
+        font-size: var(--text-2xl, 1.5rem);
+        font-weight: var(--font-weight-semibold, 600);
+        line-height: var(--text-2xl--line-height, 1.333);
+        letter-spacing: var(--tracking-heading);
+    }
+
+    .text-body-large {
+        font-family: var(--font-body);
+        font-size: var(--text-lg, 1.125rem);
+        font-weight: var(--font-weight-normal, 400);
+        line-height: var(--text-lg--line-height, 1.555);
+        letter-spacing: var(--tracking-body);
+    }
+
+    .text-body {
+        font-family: var(--font-body);
+        font-size: var(--text-base, 1rem);
+        font-weight: var(--font-weight-normal, 400);
+        line-height: var(--text-base--line-height, 1.5);
+        letter-spacing: var(--tracking-body);
+    }
+
+    .text-body-small {
+        font-family: var(--font-body);
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: var(--font-weight-normal, 400);
+        line-height: var(--text-sm--line-height, 1.428);
+        letter-spacing: var(--tracking-body);
+    }
+
+    .text-label {
+        font-family: var(--font-body);
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: var(--font-weight-medium, 500);
+        line-height: var(--text-sm--line-height, 1.428);
+        letter-spacing: var(--tracking-wide, 0.025em);
+        /* Consider making this var(--tracking-label) */
+    }
+
+    .text-code {
+        font-family: var(--font-code);
+        font-size: var(--text-sm, 0.875rem);
+        line-height: var(--text-sm--line-height, 1.428);
+        letter-spacing: var(--tracking-code);
+    }
 }
 
-@custom-variant preserve-whitespace {
-  white-space: pre-wrap;
+/* Add to your global CSS or add as a style tag */
+.ease-custom {
+    transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
 }
 
-/* Define typography utilities */
-@utility text-display {
-  font-family: var(--font-display, var(--font-heading));
-  font-weight: var(--font-weight-bold);
-  line-height: 1.1;
-  letter-spacing: var(--tracking-tight, var(--tracking-heading));
+/* For the background gradient on the button */
+.bg-gradient-button {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
-@utility text-heading-1 {
-  font-family: var(--font-heading);
-  font-size: var(--text-5xl, 3rem);
-  font-weight: var(--font-weight-bold, 700);
-  line-height: var(--text-5xl--line-height, 1);
-  letter-spacing: var(--tracking-heading);
-}
-
-@utility text-heading-2 {
-  font-family: var(--font-heading);
-  font-size: var(--text-4xl, 2.25rem);
-  font-weight: var(--font-weight-bold, 700);
-  line-height: var(--text-4xl--line-height, 1.111);
-  letter-spacing: var(--tracking-heading);
-}
-
-@utility text-heading-3 {
-  font-family: var(--font-heading);
-  font-size: var(--text-3xl, 1.875rem);
-  font-weight: var(--font-weight-semibold, 600);
-  line-height: var(--text-3xl--line-height, 1.2);
-  letter-spacing: var(--tracking-heading);
-}
-
-@utility text-heading-4 {
-  font-family: var(--font-heading);
-  font-size: var(--text-2xl, 1.5rem);
-  font-weight: var(--font-weight-semibold, 600);
-  line-height: var(--text-2xl--line-height, 1.333);
-  letter-spacing: var(--tracking-heading);
-}
-
-@utility text-body-large {
-  font-family: var(--font-body);
-  font-size: var(--text-lg, 1.125rem);
-  font-weight: var(--font-weight-normal, 400);
-  line-height: var(--text-lg--line-height, 1.555);
-  letter-spacing: var(--tracking-body);
-}
-
-@utility text-body {
-  font-family: var(--font-body);
-  font-size: var(--text-base, 1rem);
-  font-weight: var(--font-weight-normal, 400);
-  line-height: var(--text-base--line-height, 1.5);
-  letter-spacing: var(--tracking-body);
-}
-
-@utility text-body-small {
-  font-family: var(--font-body);
-  font-size: var(--text-sm, 0.875rem);
-  font-weight: var(--font-weight-normal, 400);
-  line-height: var(--text-sm--line-height, 1.428);
-  letter-spacing: var(--tracking-body);
-}
-
-@utility text-label {
-  font-family: var(--font-body);
-  font-size: var(--text-sm, 0.875rem);
-  font-weight: var(--font-weight-medium, 500);
-  line-height: var(--text-sm--line-height, 1.428);
-  letter-spacing: var(--tracking-wide, 0.025em);
-}
-
-@utility text-code {
-  font-family: var(--font-code);
-  font-size: var(--text-sm, 0.875rem);
-  line-height: var(--text-sm--line-height, 1.428);
-  letter-spacing: var(--tracking-code);
-}
-
-
-/* Define any additional custom utilities and styles below */

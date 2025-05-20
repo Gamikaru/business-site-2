@@ -1,9 +1,10 @@
-// src/components/common/Animations/components/ScrollLinkedAnimation.tsx
+// src/components/core/Animations/components/ScrollLinkedAnimation.tsx
 "use client";
 
-import React, { ReactNode, useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, MotionProps } from "framer-motion";
+import React, { ReactNode, useRef, useEffect, useState, useMemo, memo } from "react";
+import { motion, useTransform, useMotionValue, MotionProps } from "framer-motion";
 import { useAnimationPreferences } from "../hooks/useAnimationPreferences";
+import { animationManager } from "../utils/AnimationManager";
 
 interface ScrollLinkedAnimationProps extends Omit<MotionProps, "style"> {
   children: ReactNode;
@@ -17,6 +18,7 @@ interface ScrollLinkedAnimationProps extends Omit<MotionProps, "style"> {
     property: string;
     range: [number, number];
   };
+  id?: string; // Optional ID for tracking
 }
 
 const ScrollLinkedAnimation: React.FC<ScrollLinkedAnimationProps> = ({
@@ -28,74 +30,151 @@ const ScrollLinkedAnimation: React.FC<ScrollLinkedAnimationProps> = ({
   scaleRange,
   rotateRange,
   customProperty,
+  id: providedId,
   ...motionProps
 }) => {
   const { shouldAnimate } = useAnimationPreferences();
-  const ref = useRef<HTMLDivElement>(null);
-  const [elementTop, setElementTop] = useState(0);
-  const [windowHeight, setWindowHeight] = useState(0);
 
-  // Update measurements
-  useEffect(() => {
-    if (!ref.current) return;
+  // Create a unique ID for this animation
+  const uniqueIdRef = useRef<string>(
+    providedId || `scroll-linked-${Math.random().toString(36).substring(2, 9)}`
+  );
 
-    const updateMeasurements = () => {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      setElementTop(rect.top + window.scrollY);
-      setWindowHeight(window.innerHeight);
-    };
+  // Create mutable refs to hold measurements to avoid re-renders
+  const elementRef = useRef<HTMLDivElement>(null);
+  const measurementsRef = useRef({
+    elementTop: 0,
+    windowHeight: 0,
+    scrollY: 0,
+    progress: 0,
+  });
 
-    updateMeasurements();
-    window.addEventListener("resize", updateMeasurements);
-
-    return () => window.removeEventListener("resize", updateMeasurements);
-  }, [ref]);
-
-  // Get scroll progress
-  const { scrollY } = useScroll();
-
-  // Calculate scroll progress range
-  const start = elementTop - windowHeight * scrubRange[0];
-  const end = elementTop - windowHeight * scrubRange[1];
-
-  // Create transform values
-  const scrollProgress = useTransform(scrollY, [start, end], [0, 1]);
-
-  // Always call hooks, assign values conditionally
-  const opacityValue = useTransform(scrollProgress, [0, 1], opacityRange ?? [1, 1]);
-  const translateYValue = useTransform(scrollProgress, [0, 1], translateYRange ?? [0, 0]);
-  const scaleValue = useTransform(scrollProgress, [0, 1], scaleRange ?? [1, 1]);
-  const rotateValue = useTransform(scrollProgress, [0, 1], rotateRange ?? [0, 0]);
+  // Create motion values for all properties
+  const progressValue = useMotionValue(0);
+  const opacityValue = useTransform(progressValue, [0, 1], opacityRange ?? [1, 1]);
+  const translateYValue = useTransform(progressValue, [0, 1], translateYRange ?? [0, 0]);
+  const scaleValue = useTransform(progressValue, [0, 1], scaleRange ?? [1, 1]);
+  const rotateValue = useTransform(progressValue, [0, 1], rotateRange ?? [0, 0]);
   const customValue = useTransform(
-    scrollProgress,
+    progressValue,
     [0, 1],
     customProperty?.range ?? [0, 0]
   );
 
-  // Generate transforms based on provided ranges
-  const transforms: Record<string, unknown> = {};
+  // Take a measurement once on mount and on window resize
+  const updateMeasurements = useMemo(() => () => {
+    if (!elementRef.current) return;
 
-  if (opacityRange) {
-    transforms.opacity = opacityValue;
-  }
-  if (translateYRange) {
-    transforms.y = translateYValue;
-  }
-  if (scaleRange) {
-    transforms.scale = scaleValue;
-  }
-  if (rotateRange) {
-    transforms.rotate = rotateValue;
-  }
-  if (customProperty && customProperty.property && customProperty.range) {
-    transforms[customProperty.property] = customValue;
-  }
+    const rect = elementRef.current.getBoundingClientRect();
+
+    measurementsRef.current = {
+      ...measurementsRef.current,
+      elementTop: rect.top + window.scrollY,
+      windowHeight: window.innerHeight,
+    };
+  }, []);
+
+  // Setup measurements
+  useEffect(() => {
+    updateMeasurements();
+
+    const id = uniqueIdRef.current;
+
+    // Register for resize events
+    animationManager.subscribeToResize(id, () => {
+      updateMeasurements();
+    });
+
+    // Cleanup on unmount
+    return () => {
+      animationManager.unsubscribeFromResize(id);
+    };
+  }, [updateMeasurements]);
+
+  // Update scroll-linked animation on scroll
+  useEffect(() => {
+    if (!shouldAnimate()) return;
+
+    const id = uniqueIdRef.current;
+
+    // Function to update progress based on scroll position
+    const updateProgress = (scrollY: number) => {
+      if (!elementRef.current) return;
+
+      const { elementTop, windowHeight } = measurementsRef.current;
+
+      // Calculate scroll progress range
+      const start = elementTop - windowHeight * scrubRange[0];
+      const end = elementTop - windowHeight * scrubRange[1];
+      const total = end - start;
+
+      if (total === 0) return; // Avoid division by zero
+
+      // Calculate progress (0 to 1)
+      let progress = (scrollY - start) / total;
+
+      // Clamp progress between 0 and 1
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Set the progress value for all motion transformations
+      progressValue.set(progress);
+
+      // Store current scroll position and progress for debugging
+      measurementsRef.current.scrollY = scrollY;
+      measurementsRef.current.progress = progress;
+    };
+
+    // Subscribe to scroll events
+    animationManager.subscribeToScroll(id, updateProgress);
+
+    // Register animation with manager for performance tracking
+    animationManager.trackAnimation(id, 'scroll-linked');
+
+    // Cleanup on unmount or when deps change
+    return () => {
+      animationManager.unsubscribeFromScroll(id);
+      animationManager.untrackAnimation(id);
+    };
+  }, [progressValue, scrubRange, shouldAnimate]);
+
+  // Generate transforms based on provided ranges
+  const transforms: Record<string, unknown> = useMemo(() => {
+    const result: Record<string, unknown> = {};
+
+    if (opacityRange) {
+      result.opacity = opacityValue;
+    }
+    if (translateYRange) {
+      result.y = translateYValue;
+    }
+    if (scaleRange) {
+      result.scale = scaleValue;
+    }
+    if (rotateRange) {
+      result.rotate = rotateValue;
+    }
+    if (customProperty && customProperty.property && customProperty.range) {
+      result[customProperty.property] = customValue;
+    }
+
+    return result;
+  }, [
+    opacityValue,
+    translateYValue,
+    scaleValue,
+    rotateValue,
+    customValue,
+    opacityRange,
+    translateYRange,
+    scaleRange,
+    rotateRange,
+    customProperty
+  ]);
 
   // If animations are disabled, just render children
   if (!shouldAnimate()) {
     return (
-      <div ref={ref} className={className}>
+      <div ref={elementRef} className={className}>
         {children}
       </div>
     );
@@ -103,9 +182,12 @@ const ScrollLinkedAnimation: React.FC<ScrollLinkedAnimationProps> = ({
 
   return (
     <motion.div
-      ref={ref}
+      ref={elementRef}
       className={className}
-      style={transforms}
+      style={{
+        ...transforms,
+        willChange: Object.keys(transforms).join(', ') || 'auto',
+      }}
       {...motionProps}
     >
       {children}
@@ -113,4 +195,5 @@ const ScrollLinkedAnimation: React.FC<ScrollLinkedAnimationProps> = ({
   );
 };
 
-export default ScrollLinkedAnimation;
+// Memoize to prevent unnecessary re-renders
+export default memo(ScrollLinkedAnimation);

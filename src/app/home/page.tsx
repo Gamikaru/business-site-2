@@ -10,13 +10,13 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 
 // Critical path components loaded immediately
-import HomeHero from './HomeHero'
-import HomeAbout from './HomeAbout'
-import HomeTestimonials from './HomeTestimonials'
+import HomeHero from './hero/HomeHero'
 import homeContent from './content'
+import MainLayout from '@/components/layout/MainLayout'
+import AboutSection from './about/AboutSection';
 
-// Import the client component wrapper instead of direct dynamic import
-import FontSystemDebugger from './components/FontSystemDebugger';
+
+
 
 // Enhanced metadata with structured data for SEO
 export async function generateMetadata(): Promise<Metadata> {
@@ -46,37 +46,27 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function HomePage() {
   return (
-    <main>
-      {/* Hero section */}
-      <HomeHero
-        headline={homeContent.hero.headline}
-        subheadline={homeContent.hero.subheadline}
-        ctaText={homeContent.hero.ctaText}
-        ctaLink={homeContent.hero.ctaLink}
-        imageSrc={homeContent.hero.imageSrc}
-        imageAlt={homeContent.hero.imageAlt}
-      />
+    <MainLayout>
+      <>
+        <HomeHero
+          headline={homeContent.hero.headline}
+          subheadline={homeContent.hero.subheadline}
+          ctaText={homeContent.hero.ctaText}
+          ctaLink={homeContent.hero.ctaLink}
+          imageSrc={homeContent.hero.imageSrc}
+          imageAlt={homeContent.hero.imageAlt}
+        />
 
-      {/* About section */}
-      <HomeAbout
-        heading={homeContent.about.heading}
-        content={homeContent.about.content}
-        ctaText={homeContent.about.ctaText}
-        ctaLink={homeContent.about.ctaLink}
-        imageSrc={homeContent.about.imageSrc}
-        imageAlt={homeContent.about.imageAlt}
-      />
-
-      {/* Testimonials section */}
-      <HomeTestimonials
-        heading={homeContent.testimonials.heading}
-        items={homeContent.testimonials.items}
-      />
-
-      {/* Add the FontSystemDebugger (will only show in development) */}
-      {process.env.NODE_ENV === 'development' && <FontSystemDebugger />}
-
-      {/* Other sections can be added here */}
-    </main>
+        {/* Other home page content */}
+        <AboutSection
+          heading={homeContent.about.heading}
+          content={homeContent.about.content}
+          ctaText={homeContent.about.ctaText}
+          ctaLink={homeContent.about.ctaLink}
+          imageSrc={homeContent.about.imageSrc}
+          imageAlt={homeContent.about.imageAlt}
+        />
+      </>
+    </MainLayout>
   )
 }

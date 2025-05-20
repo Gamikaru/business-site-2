@@ -1,5 +1,8 @@
-import "@/styles/global/globals.css";
+// src/app/layout.tsx
+import "@/styles/global/globals.css"; // Now this one comes first (it imports font-themes.css)
 
+// Remove this line - no longer needed:
+// import '@/styles/global/tokens.theme.css';
 
 import type { Metadata } from "next";
 import {
@@ -19,10 +22,33 @@ import {
   DM_Sans,
   Rajdhani,
   Quantico,
-  VT323
+  VT323,
+  // New fonts
+  Merriweather,
+  Open_Sans,
+  Poppins,
+  Work_Sans,
+  Quicksand,
+  Nunito,
+  Lora,
+  Karla,
+  IBM_Plex_Sans,
+  IBM_Plex_Serif,
+  Crimson_Pro,
+  Cabin,
+  Exo_2,
+  Barlow,
+  Caveat,
+  Outfit,
 } from "next/font/google";
 import Providers from "@/components/providers/Providers";
-import MainLayout from "@/components/layout/MainLayout";
+import { cn } from "@/utils/classNames";
+
+export const metadata: Metadata = {
+  title: "Gavriel Rudolph - Tech Professional",
+  description:
+    "Full-stack developer specialized in web development, AI, and automation solutions.",
+};
 
 // Group fonts by theme, with loading priorities
 // Modern theme (default, priority loading)
@@ -31,6 +57,7 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   display: "swap",
   preload: true,
+  weight: ["400", "500", "600", "700"],
 });
 
 const inter = Inter({
@@ -38,6 +65,7 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
   preload: true,
+  weight: ["400", "500", "600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -45,22 +73,25 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   display: "swap",
   preload: true,
+  weight: ["400", "500", "700"],
 });
 
-// Other themes (lower priority)
-// Elegant theme
+// For other important font systems, set at least some to preload=true
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair-display",
   display: "swap",
-  preload: false,
+  preload: true,
+  weight: ["400", "500", "600", "700"],
 });
 
+// Other themes (lower priority)
+// Elegant theme
 const lato = Lato({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-lato",
-  display: "optional", // Use optional for lower priority fonts
+  display: "optional",
   preload: false,
 });
 
@@ -69,6 +100,7 @@ const firaCode = Fira_Code({
   variable: "--font-fira-code",
   display: "optional",
   preload: false,
+  weight: ["400", "500", "700"],
 });
 
 // Technical theme
@@ -93,6 +125,7 @@ const inconsolata = Inconsolata({
   variable: "--font-inconsolata",
   display: "optional",
   preload: false,
+  weight: ["400", "700"],
 });
 
 // Editorial theme
@@ -101,6 +134,7 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   display: "optional",
   preload: false,
+  weight: ["400", "500", "600", "700"],
 });
 
 const libreFranklin = Libre_Franklin({
@@ -108,6 +142,7 @@ const libreFranklin = Libre_Franklin({
   variable: "--font-libre-franklin",
   display: "optional",
   preload: false,
+  weight: ["400", "500", "600", "700"],
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -122,15 +157,17 @@ const ibmPlexMono = IBM_Plex_Mono({
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
-  display: "optional",
-  preload: false,
+  display: "swap", // Changed to swap for testing, was "optional"
+  preload: true,  // Changed to true for testing
+  weight: ["400", "500", "600", "700"],
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
-  display: "optional",
-  preload: false,
+  display: "swap", // Changed to swap for testing, was "optional"
+  preload: true,  // Changed to true for testing
+  weight: ["400", "500", "700"],
 });
 
 // Cybervoid theme
@@ -138,8 +175,8 @@ const rajdhani = Rajdhani({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   variable: "--font-rajdhani",
-  display: "optional",
-  preload: false,
+  display: "swap",
+  preload: true,
 });
 
 const quantico = Quantico({
@@ -158,153 +195,193 @@ const vt323 = VT323({
   preload: false,
 });
 
-export const metadata: Metadata = {
-  title: "Gavriel Rudolph - Tech Professional",
-  description: "Full-stack developer specialized in web development, AI, and automation solutions.",
-};
+// New font pairings
+// Humanist theme
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  variable: "--font-merriweather",
+  display: "swap",
+  preload: false,
+  weight: ["400", "700"],
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+// Corporate theme
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-work-sans",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+// Creative theme
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  variable: "--font-quicksand",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+// Academic theme
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+const karla = Karla({
+  subsets: ["latin"],
+  variable: "--font-karla",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+// Minimal theme
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-sans",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+const ibmPlexSerif = IBM_Plex_Serif({
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-serif",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+// Vintage theme
+const crimsonPro = Crimson_Pro({
+  subsets: ["latin"],
+  variable: "--font-crimson-pro",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+const cabin = Cabin({
+  subsets: ["latin"],
+  variable: "--font-cabin",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+// Futuristic theme
+const exo2 = Exo_2({
+  subsets: ["latin"],
+  variable: "--font-exo-2",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  variable: "--font-barlow",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+// Casual theme
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Move all font variables to HTML tag for proper CSS variable scope
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Optimized font loading strategy
-              (function() {
-                document.documentElement.classList.add('font-loading');
-
-                // Check if we've already loaded fonts in this session
-                if (sessionStorage.fontsLoaded) {
-                  document.documentElement.classList.add('fonts-loaded');
-                  document.documentElement.classList.remove('font-loading');
-                  return;
-                }
-
-                // Priority fonts loaded first
-                const priorityFonts = ['Montserrat', 'Inter', 'JetBrains Mono'];
-
-                // Load only currently selected font theme initially
-                const currentFontTheme = localStorage.getItem('fontSystem') || 'modern';
-
-                // Use modern font performance API to control loading
-                if ('fonts' in document) {
-                  document.fonts.ready.then(function() {
-                    document.documentElement.classList.add('fonts-loaded');
-                    document.documentElement.classList.remove('font-loading');
-                    sessionStorage.fontsLoaded = true;
-                  });
-
-                  // Load non-critical fonts after page load
-                  if (window.requestIdleCallback) {
-                    window.requestIdleCallback(() => {
-                      // This runs when the browser is idle
-                      const fontLink = document.createElement('link');
-                      fontLink.rel = 'stylesheet';
-                      fontLink.href = '/api/load-additional-fonts';
-                      document.head.appendChild(fontLink);
-                    }, { timeout: 5000 });
-                  } else {
-                    // Fallback for browsers without requestIdleCallback
-                    setTimeout(() => {
-                      const fontLink = document.createElement('link');
-                      fontLink.rel = 'stylesheet';
-                      fontLink.href = '/api/load-additional-fonts';
-                      document.head.appendChild(fontLink);
-                    }, 3000); // Wait 3 seconds before loading additional fonts
-                  }
-                }
-              })();
-            `,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Additional font application strategy
-              (function() {
-                function applyFonts() {
-                  const fontSystem = localStorage.getItem('fontSystem') || 'modern';
-                  const fontMap = {
-                    modern: {
-                      heading: 'var(--font-montserrat)',
-                      body: 'var(--font-inter)',
-                      code: 'var(--font-jetbrains-mono)'
-                    },
-                    elegant: {
-                      heading: 'var(--font-playfair-display)',
-                      body: 'var(--font-lato)',
-                      code: 'var(--font-fira-code)'
-                    },
-                    technical: {
-                      heading: 'var(--font-roboto)',
-                      body: 'var(--font-source-sans-pro)',
-                      code: 'var(--font-inconsolata)'
-                    },
-                    editorial: {
-                      heading: 'var(--font-fraunces)',
-                      body: 'var(--font-libre-franklin)',
-                      code: 'var(--font-ibm-plex-mono)'
-                    },
-                    neoGeometric: {
-                      heading: 'var(--font-space-grotesk)',
-                      body: 'var(--font-dm-sans)',
-                      code: 'var(--font-jetbrains-mono)'
-                    },
-                    cybervoid: {
-                      heading: 'var(--font-rajdhani)',
-                      body: 'var(--font-quantico)',
-                      code: 'var(--font-vt323)'
-                    }
-                  };
-
-                  if (fontMap[fontSystem]) {
-                    const fonts = fontMap[fontSystem];
-                    document.documentElement.style.setProperty('--font-heading', fonts.heading);
-                    document.documentElement.style.setProperty('--font-body', fonts.body);
-                    document.documentElement.style.setProperty('--font-code', fonts.code);
-                  }
-                }
-
-                // Apply immediately and after content loads
-                applyFonts();
-                document.addEventListener('DOMContentLoaded', applyFonts);
-              })();
-            `
-          }}
-        />
-      </head>
-      <body
-        className={`
-          ${montserrat.variable}
-          ${inter.variable}
-          ${jetbrainsMono.variable}
-          ${playfairDisplay.variable}
-          ${lato.variable}
-          ${firaCode.variable}
-          ${roboto.variable}
-          ${sourceSansPro.variable}
-          ${inconsolata.variable}
-          ${fraunces.variable}
-          ${libreFranklin.variable}
-          ${ibmPlexMono.variable}
-          ${spaceGrotesk.variable}
-          ${dmSans.variable}
-          ${rajdhani.variable}
-          ${quantico.variable}
-          ${vt323.variable}
-          font-body
-        `}
-      >
-        <Providers>
-          <MainLayout fullWidth withPadding={false}>
-            {children}
-          </MainLayout>
-        </Providers>
+    <html
+      lang="en"
+      className={cn(
+        // Existing fonts
+        montserrat.variable,
+        inter.variable,
+        jetbrainsMono.variable,
+        playfairDisplay.variable,
+        lato.variable,
+        firaCode.variable,
+        roboto.variable,
+        sourceSansPro.variable,
+        inconsolata.variable,
+        fraunces.variable,
+        libreFranklin.variable,
+        ibmPlexMono.variable,
+        spaceGrotesk.variable,
+        dmSans.variable,
+        rajdhani.variable,
+        quantico.variable,
+        vt323.variable,
+        // New fonts
+        merriweather.variable,
+        openSans.variable,
+        poppins.variable,
+        workSans.variable,
+        quicksand.variable,
+        nunito.variable,
+        lora.variable,
+        karla.variable,
+        ibmPlexSans.variable,
+        ibmPlexSerif.variable,
+        crimsonPro.variable,
+        cabin.variable,
+        exo2.variable,
+        barlow.variable,
+        caveat.variable,
+        outfit.variable
+      )}
+      suppressHydrationWarning
+    >
+      <body>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

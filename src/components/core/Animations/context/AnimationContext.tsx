@@ -1,4 +1,4 @@
-// src/components/common/Animations/context/AnimationContext.tsx
+// src/components/core/Animations/context/AnimationContext.tsx
 "use client";
 
 import React, {
@@ -6,10 +6,13 @@ import React, {
   useContext,
   useState,
   useEffect,
+  useCallback,
+  useMemo,
   ReactNode,
 } from "react";
+import { animationManager } from "../utils/AnimationManager";
 
-interface AnimationPreferences {
+export interface AnimationPreferences {
   // Core animation preferences
   enabled: boolean; // Master toggle for animations
   reducedMotion: boolean; // Honor reduced motion OS setting
@@ -26,10 +29,16 @@ interface AnimationPreferences {
   hasGPUAcceleration: boolean; // Whether device likely has GPU acceleration
 }
 
-interface AnimationContextType {
+export interface AnimationContextType {
   preferences: AnimationPreferences;
   updatePreferences: (preferences: Partial<AnimationPreferences>) => void;
   resetPreferences: () => void;
+  getPreferenceValue: <K extends keyof AnimationPreferences>(
+    key: K
+  ) => AnimationPreferences[K];
+  isMobile: boolean;
+  isTablet: boolean;
+  isDesktop: boolean;
 }
 
 // Default preferences
@@ -46,15 +55,56 @@ const defaultPreferences: AnimationPreferences = {
 };
 
 // Create context
-const AnimationContext = createContext<AnimationContextType | undefined>(
-  undefined
-);
+const AnimationContext = createContext<AnimationContextType>({
+  preferences: defaultPreferences,
+  updatePreferences: () => {},
+  resetPreferences: () => {},
+  getPreferenceValue: (key) => defaultPreferences[key],
+  isMobile: false,
+  isTablet: false,
+  isDesktop: true,
+});
 
-export const AnimationProvider: React.FC<{ children: ReactNode }> = ({
+interface AnimationProviderProps {
+  children: ReactNode;
+  initialPreferences?: Partial<AnimationPreferences>;
+}
+
+export const AnimationProvider: React.FC<AnimationProviderProps> = ({
   children,
+  initialPreferences = {},
 }) => {
+  // Merge default preferences with any provided initial values
+  const initialState = useMemo(
+    () => ({ ...defaultPreferences, ...initialPreferences }),
+    [initialPreferences]
+  );
+
   const [preferences, setPreferences] =
-    useState<AnimationPreferences>(defaultPreferences);
+    useState<AnimationPreferences>(initialState);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  // Detect device type
+  useEffect(() => {
+    const checkDeviceType = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 768);
+      setIsTablet(width >= 768 && width < 1280);
+      setIsDesktop(width >= 1280);
+    };
+
+    // Initialize on mount
+    checkDeviceType();
+
+    // Set up listener for window resize
+    window.addEventListener("resize", checkDeviceType);
+
+    return () => {
+      window.removeEventListener("resize", checkDeviceType);
+    };
+  }, []);
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -67,64 +117,135 @@ export const AnimationProvider: React.FC<{ children: ReactNode }> = ({
     const dpr =
       typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
 
-    // Make a rough guess about GPU acceleration
-    // This is a simplification - in a production app you might use more sophisticated detection
+    // Make a better guess about GPU acceleration
     const hasGPU =
-      dpr > 1 ||
-      (typeof navigator !== "undefined" &&
-        navigator.userAgent.toLowerCase().indexOf("mac") > -1);
+      typeof window !== "undefined" &&
+      (dpr > 1.5 ||
+        window.matchMedia("(min-resolution: 2dppx)").matches ||
+        // Test for WebGL which is a better indicator of GPU
+        (() => {
+          try {
+            const canvas = document.createElement("canvas");
+            return !!(
+              window.WebGLRenderingContext &&
+              (canvas.getContext("webgl") ||
+                canvas.getContext("experimental-webgl"))
+            );
+          } catch (e) {
+            // Intentionally ignore error
+            return false;
+          }
+        })());
 
-    // Set initial preferences based on device capabilities
+    // Set performance level based on device capabilities
+    const determinePerformanceLevel = (): "low" | "medium" | "high" => {
+      if (!hasGPU || dpr < 1) return "low";
+      if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
+        return "low";
+      if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4)
+        return "medium";
+      return "high";
+    };
+
+    const performance = determinePerformanceLevel();
+
+    // Update preferences with detected values
     setPreferences((prev) => ({
       ...prev,
       reducedMotion: prefersReducedMotion,
       devicePixelRatio: dpr,
       hasGPUAcceleration: hasGPU,
-      // Adjust performance for lower-end devices
-      performance: dpr < 2 ? "low" : prev.performance,
+      performance,
     }));
 
-    // Listen for changes in reduced motion preference
+    // Register media query for reduced motion
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handleReducedMotionChange = (e: MediaQueryListEvent) => {
-      setPreferences((prev) => ({ ...prev, reducedMotion: e.matches }));
+
+    const handleReducedMotionChange = () => {
+      setPreferences((prev) => ({
+        ...prev,
+        reducedMotion: mediaQuery.matches,
+      }));
+
+      // Also update AnimationManager when reduced motion changes
+      animationManager.setEnabled(!mediaQuery.matches);
     };
 
-    // Add event listener with compatibility for older browsers
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener("change", handleReducedMotionChange);
-    } else if ("addListener" in mediaQuery) {
-      mediaQuery.addListener(handleReducedMotionChange);
-    }
+    // Add event listener (addEventListener is supported in all modern browsers)
+    mediaQuery.addEventListener("change", handleReducedMotionChange);
 
     // Cleanup
     return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener("change", handleReducedMotionChange);
-      } else if ("removeListener" in mediaQuery) {
-        mediaQuery.removeListener(handleReducedMotionChange);
-      }
+      mediaQuery.removeEventListener("change", handleReducedMotionChange);
     };
   }, []);
 
-  // Update preferences function
-  const updatePreferences = (newPreferences: Partial<AnimationPreferences>) => {
-    setPreferences((prev) => ({ ...prev, ...newPreferences }));
-  };
+  // When preferences change, update AnimationManager
+  useEffect(() => {
+    // Configure AnimationManager based on preferences
+    animationManager.setEnabled(
+      preferences.enabled && !preferences.reducedMotion
+    );
 
-  // Reset to defaults
-  const resetPreferences = () => {
+    // Debug mode in development environment
+    if (process.env.NODE_ENV === "development") {
+      animationManager.setDebugMode(true);
+    }
+
+    // Configure ScrollObserver settings
+    animationManager.configure({
+      // More responsive scrolling for high performance devices
+      throttleScrollMs: preferences.performance === "high" ? 8 : 16,
+      // Less frequent resize calculations for better performance
+      throttleResizeMs: preferences.performance === "low" ? 200 : 100,
+    });
+  }, [preferences.enabled, preferences.reducedMotion, preferences.performance]);
+
+  // Update preferences function - memoized to prevent recreation
+  const updatePreferences = useCallback(
+    (newPreferences: Partial<AnimationPreferences>) => {
+      setPreferences((prev) => ({ ...prev, ...newPreferences }));
+    },
+    []
+  );
+
+  // Reset to defaults - memoized to prevent recreation
+  const resetPreferences = useCallback(() => {
     setPreferences(defaultPreferences);
-  };
+  }, []);
+
+  // Get a specific preference value - useful for performance optimizations
+  const getPreferenceValue = useCallback(
+    <K extends keyof AnimationPreferences>(key: K): AnimationPreferences[K] => {
+      return preferences[key];
+    },
+    [preferences]
+  );
+
+  // Memoize the context value to prevent unnecessary re-renders
+  const contextValue = useMemo(
+    () => ({
+      preferences,
+      updatePreferences,
+      resetPreferences,
+      getPreferenceValue,
+      isMobile,
+      isTablet,
+      isDesktop,
+    }),
+    [
+      preferences,
+      updatePreferences,
+      resetPreferences,
+      getPreferenceValue,
+      isMobile,
+      isTablet,
+      isDesktop,
+    ]
+  );
 
   return (
-    <AnimationContext.Provider
-      value={{
-        preferences,
-        updatePreferences,
-        resetPreferences,
-      }}
-    >
+    <AnimationContext.Provider value={contextValue}>
       {children}
     </AnimationContext.Provider>
   );

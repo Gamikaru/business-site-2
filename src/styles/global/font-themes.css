@@ -1,0 +1,156 @@
+/* src/styles/global/font-themes.css */
+
+/* Modern - Default System */
+.font-system-modern {
+    --font-heading: var(--font-montserrat);
+    --font-body: var(--font-inter);
+    --font-code: var(--font-jetbrains-mono);
+    --tracking-heading: normal;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* EDITORIAL: now uses Fraunces for headings */
+.font-system-editorial {
+    --font-heading: var(--font-fraunces);
+    --font-body: var(--font-libre-franklin);
+    --font-code: var(--font-ibm-plex-mono);
+    --tracking-heading: -0.025em;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Technical System */
+.font-system-technical {
+    --font-heading: var(--font-roboto);
+    --font-body: var(--font-source-sans-pro);
+    --font-code: var(--font-inconsolata);
+    --tracking-heading: normal;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Elegant System */
+.font-system-elegant {
+    --font-heading: var(--font-playfair-display);
+    --font-body: var(--font-lato);
+    --font-code: var(--font-fira-code);
+    --tracking-heading: normal;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Neo Geometric System */
+.font-system-neo-geometric {
+    --font-heading: var(--font-space-grotesk);
+    --font-body: var(--font-dm-sans);
+    --font-code: var(--font-fira-code);
+    --tracking-heading: normal;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Cybervoid System */
+.font-system-cybervoid {
+    --font-heading: var(--font-rajdhani);
+    --font-body: var(--font-quantico);
+    --font-code: var(--font-vt323);
+    --tracking-heading: 0.025em;
+    --tracking-body: 0.025em;
+    --tracking-code: normal;
+}
+
+/* New font systems */
+
+/* Humanist System */
+.font-system-humanist {
+    --font-heading: var(--font-merriweather);
+    --font-body: var(--font-open-sans);
+    --font-code: var(--font-jetbrains-mono);
+    --tracking-heading: -0.01em;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Corporate System */
+.font-system-corporate {
+    --font-heading: var(--font-poppins);
+    --font-body: var(--font-work-sans);
+    --font-code: var(--font-fira-code);
+    --tracking-heading: -0.01em;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Creative System */
+.font-system-creative {
+    --font-heading: var(--font-quicksand);
+    --font-body: var(--font-nunito);
+    --font-code: var(--font-fira-code);
+    --tracking-heading: normal;
+    --tracking-body: 0.01em;
+    --tracking-code: normal;
+}
+
+/* Academic System */
+.font-system-academic {
+    --font-heading: var(--font-lora);
+    --font-body: var(--font-karla);
+    --font-code: var(--font-ibm-plex-mono);
+    --tracking-heading: -0.01em;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Minimal System */
+.font-system-minimal {
+    --font-heading: var(--font-ibm-plex-sans);
+    --font-body: var(--font-ibm-plex-serif);
+    --font-code: var(--font-ibm-plex-mono);
+    --tracking-heading: -0.01em;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Vintage System */
+.font-system-vintage {
+    --font-heading: var(--font-crimson-pro);
+    --font-body: var(--font-cabin);
+    --font-code: var(--font-ibm-plex-mono);
+    --tracking-heading: normal;
+    --tracking-body: 0.01em;
+    --tracking-code: normal;
+}
+
+/* Futuristic System */
+.font-system-futuristic {
+    --font-heading: var(--font-exo-2);
+    --font-body: var(--font-barlow);
+    --font-code: var(--font-fira-code);
+    --tracking-heading: 0.02em;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Casual System */
+.font-system-casual {
+    --font-heading: var(--font-caveat);
+    --font-body: var(--font-outfit);
+    --font-code: var(--font-fira-code);
+    --tracking-heading: 0.01em;
+    --tracking-body: normal;
+    --tracking-code: normal;
+}
+
+/* Define also the tracking properties */
+/* These specific rules below are now incorporated into the variable definitions above and can be removed. */
+/*
+.font-system-editorial .tracking-heading {
+  letter-spacing: -0.025em;
+}
+
+.font-system-cybervoid .tracking-heading,
+.font-system-cybervoid .tracking-body {
+  letter-spacing: 0.025em;
+}
+*/
